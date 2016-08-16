@@ -140,7 +140,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\WikiApp.Entities\EWiki.Core.Entities.csproj">
+    <ProjectReference Include="..\EWiki.Core.Entities\EWiki.Core.Entities.csproj">
       <Project>{8d348834-602c-460b-9ef2-1f890225dc59}</Project>
       <Name>EWiki.Core.Entities</Name>
     </ProjectReference>
