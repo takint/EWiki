@@ -140,9 +140,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\WikiApp.Entities\WikiApp.Entities.csproj">
+    <ProjectReference Include="..\EWiki.Core.Entities\EWiki.Core.Entities.csproj">
       <Project>{8d348834-602c-460b-9ef2-1f890225dc59}</Project>
-      <Name>WikiApp.Entities</Name>
+      <Name>EWiki.Core.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

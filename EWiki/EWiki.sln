@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiApp.Entities", "WikiApp.Entities\WikiApp.Entities.csproj", "{8D348834-602C-460B-9EF2-1F890225DC59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWiki.Core.Entities", "EWiki.Core.Entities\EWiki.Core.Entities.csproj", "{8D348834-602C-460B-9EF2-1F890225DC59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiApp.DataAccess", "WikiApp.DataAccess\WikiApp.DataAccess.csproj", "{E0D9FEC1-176B-44C0-A3AC-3662581585AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWiki.Core.DataAccess", "EWiki.Core.DataAccess\EWiki.Core.DataAccess.csproj", "{E0D9FEC1-176B-44C0-A3AC-3662581585AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiApp.UnitTest", "WikiApp.UnitTest\WikiApp.UnitTest.csproj", "{CB84A537-C8CE-4E69-8FE5-2F5C59F34AD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWiki.Test.UnitTest", "EWiki.Core.UnitTest\EWiki.Test.UnitTest.csproj", "{CB84A537-C8CE-4E69-8FE5-2F5C59F34AD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

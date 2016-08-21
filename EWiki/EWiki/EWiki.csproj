@@ -7,8 +7,8 @@
     <ProjectGuid>{B3FE1428-9717-43B6-9AED-9B0179B5052C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WikiApp</RootNamespace>
-    <AssemblyName>WikiApp</AssemblyName>
+    <RootNamespace>EWiki</RootNamespace>
+    <AssemblyName>EWiki</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
