@@ -20,6 +20,12 @@ namespace WikiApp.DataAccess.Models
 
         public float Height { get; set; }
 
+        public int Stamina { get; set; }
+
+        public int Attack { get; set; }
+
+        public int Defense { get; set; }
+
         public int Candy { get; set; }
 
         public float CPGain { get; set; }
@@ -32,9 +38,9 @@ namespace WikiApp.DataAccess.Models
 
         public Move[] SpecialMoves { get; set; }
 
-        public Move[] BestMoves { get; set; }
+        public Pokedex EvolveFrom { get; set; }
 
-        public Pokedex[] Evolves { get; set; }
+        public Pokedex[] EvolveInto { get; set; }
 
         // Location get from location data based on type
         public Location[] Locations { get; set; }

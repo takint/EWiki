@@ -25,5 +25,7 @@ namespace WikiApp.DataAccess.Models
         public float DPS { get; set; }
 
         public float WithSTAB { get; set; }
+
+        public float CritChange { get; set; }
     }
 }
