@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WikiApp.Entities.Models
 {
-    public class UserNewtalk : Tracking
+    public class UserNewtalk : EntityBase
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
         public string UserIp { get; set; }
         public DateTime UserLastSeen { get; set; }

@@ -1,8 +1,7 @@
 ﻿namespace WikiApp.Entities.Models
 {
-    public class PageRestriction : Tracking
+    public class PageRestriction : EntityBase
     {
-        public int Id { get; set; }
         public int PageRestrictedId { get; set; }
         public RestrictType ResType { get; set; }
         public RestrictLevel ResLevel { get; set; }

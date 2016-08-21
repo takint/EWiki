@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WikiApp.Entities.Models
 {
-    public class PageLang : Tracking
+    public class PageLang : EntityBase
     {
-        public int Id { get; set; }
         public int PageId { get; set; }
         public string Language { get; set; }
         public string Title { get; set; }
