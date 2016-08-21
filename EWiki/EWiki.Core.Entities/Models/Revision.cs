@@ -1,8 +1,7 @@
 ﻿namespace WikiApp.Entities.Models
 {
-    public class Revision : Tracking
+    public class Revision : EntityBase
     {
-        public int Id { get; set; }
         public int PageId { get; set; }
         public int PageContentId { get; set; }
         public string RevisionComment { get; set; }

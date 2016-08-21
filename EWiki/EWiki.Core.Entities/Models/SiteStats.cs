@@ -1,8 +1,7 @@
 namespace WikiApp.Entities.Models
 {
-    public class SiteStats : Entity
+    public class SiteStats : EntityBase
     {
-        public int Id { get; set; }
         public int TotalEdits { get; set; }
         public int GoodArticles { get; set; }
         public int TotalPages { get; set; }

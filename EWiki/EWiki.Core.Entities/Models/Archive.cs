@@ -1,8 +1,7 @@
 ﻿namespace WikiApp.Entities.Models
 {
-    public class Archive : Tracking
+    public class Archive : EntityBase
     {
-        public int Id { get; set; }
         public int NameSpace { get; set; }
         public string Title { get; set; }
         public string ContentText { get; set; }

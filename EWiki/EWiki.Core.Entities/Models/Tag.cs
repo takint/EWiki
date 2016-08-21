@@ -2,9 +2,8 @@
 
 namespace WikiApp.Entities.Models
 {
-    public class Tag : Entity
+    public class Tag : EntityBase
     {
-        public int Id { get; set; }
         public string FullName { get; set; }
         public string ShortName { get; set; }
         public string NickName { get; set; }

@@ -1,8 +1,7 @@
 ﻿namespace WikiApp.Entities.Models
 {
-    public class FileArchive : Tracking
+    public class FileArchive : EntityBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string ArchiveName { get; set; }
         public string FileSource { get; set; }

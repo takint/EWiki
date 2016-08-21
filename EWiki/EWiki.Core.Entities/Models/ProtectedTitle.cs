@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WikiApp.Entities.Models
 {
-    public class ProtectedTitle : Tracking
+    public class ProtectedTitle : EntityBase
     {
-        public int Id { get; set; }
         public int NameSpace { get; set; }
         public string Title { get; set; }
         public int? UserId { get; set; }

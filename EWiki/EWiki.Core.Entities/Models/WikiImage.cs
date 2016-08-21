@@ -1,9 +1,8 @@
 ﻿
 namespace WikiApp.Entities.Models
 {
-    public class WikiImage : Tracking
+    public class WikiImage : EntityBase
     {
-        public int Id { get; set; }
         public string ImageName { get; set; }
         public int ImageSize { get; set; }
         public int ImageWidth { get; set; }
