@@ -10,10 +10,10 @@ namespace WikiApp.DataAccess.Mappers
     {
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            Mapper.Initialize(m =>
             {
-                x.AddProfile<EFOToDTOMappingProfile>();
-                x.AddProfile<DTOToEFOMappingProfile>();
+                m.AddProfile<EFOToDTOMappingProfile>();
+                m.AddProfile<DTOToEFOMappingProfile>();
             });
         }
 

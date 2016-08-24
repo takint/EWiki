@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WikiApp.Entities.Models
 {
-    public class WatchList : Entity
+    public class WatchList : EntityBase
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
         public int NameSpace { get; set; }
         public string WatchTitle { get; set; }

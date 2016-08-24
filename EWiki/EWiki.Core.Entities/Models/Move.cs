@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WikiApp.DataAccess.Models
+namespace WikiApp.Entities.Models
 {
-    public class Move
+    public class Move : EntityBase
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string Type { get; set; }
@@ -25,5 +23,7 @@ namespace WikiApp.DataAccess.Models
         public float DPS { get; set; }
 
         public float WithSTAB { get; set; }
+
+        public float CritChange { get; set; }
     }
 }

@@ -2,9 +2,8 @@
 
 namespace WikiApp.Entities.Models
 {
-    public class Page : Tracking
+    public class Page : EntityBase
     {
-        public int Id { get; set; }
         public int NameSpace { get; set; }
         public string Title { get; set; }
         public bool IsRedirect { get; set; }

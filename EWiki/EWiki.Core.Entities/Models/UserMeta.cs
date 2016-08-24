@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WikiApp.Entities.Models
 {
-    public class UserMeta : Entity
+    public class UserMeta : EntityBase
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
         public string MetaKey { get; set; }
         public string MetaValue { get; set; }

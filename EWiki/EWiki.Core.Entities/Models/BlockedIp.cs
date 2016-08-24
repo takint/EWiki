@@ -2,9 +2,8 @@
 
 namespace WikiApp.Entities.Models
 {
-    public class BlockedIp : Tracking
+    public class BlockedIp : EntityBase
     {
-        public int Id { get; set; }
         public string IpAddress { get; set; }
         public string BlockReason { get; set; }
         /// <summary>

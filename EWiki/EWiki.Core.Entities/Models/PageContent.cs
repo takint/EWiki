@@ -2,9 +2,8 @@
 
 namespace WikiApp.Entities.Models
 {
-    public class PageContent : Tracking
+    public class PageContent : EntityBase
     {
-        public int Id { get; set; }
         public string ContentText { get; set; }
         public string ContentFlags { get; set; }
 

@@ -2,9 +2,8 @@ using System.Collections.Generic;
 
 namespace WikiApp.Entities.Models
 {
-    public class Site : Tracking
+    public class Site : EntityBase
     {
-        public int Id { get; set; }
         /// <summary>
         /// Example: enwiki or viwiki
         /// </summary>
