@@ -19,31 +19,27 @@ namespace EWiki.DataAccess.Mappers
 
         public class DTOToEFOMappingProfile : Profile
         {
+            public DTOToEFOMappingProfile()
+            {
+                CreateMap<GetPokedexDTO, Pokedex>();
+            }
+
             public override string ProfileName
             {
                 get { return "DTOToEFOMappings"; }
-            }
-
-#pragma warning disable CS0672 // Member overrides obsolete member
-            protected override void Configure()
-#pragma warning restore CS0672 // Member overrides obsolete member
-            {
-                CreateMap<CreateUserDTO, User>();
             }
         }
 
         public class EFOToDTOMappingProfile : Profile
         {
+            public EFOToDTOMappingProfile()
+            {
+                CreateMap<Pokedex, GetPokedexDTO>();
+            }
+
             public override string ProfileName
             {
                 get { return "EFOToDTOMappings"; }
-            }
-
-#pragma warning disable CS0672 // Member overrides obsolete member
-            protected override void Configure()
-#pragma warning restore CS0672 // Member overrides obsolete member
-            {
-                CreateMap<User, CreateUserDTO >();
             }
         }
     }

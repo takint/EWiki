@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(EWikiApi.Startup))]
 
@@ -12,7 +10,13 @@ namespace EWikiApi
     {
         public void Configuration(IAppBuilder app)
         {
+            HttpConfiguration httpConfig = new HttpConfiguration();
+
             ConfigureAuth(app);
+
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            app.UseWebApi(httpConfig);
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EWiki.Entities.Models;
 
-namespace EWiki.Entities.Models
+namespace EWiki.DataAccess.Models
 {
-    public class Move : EntityBase
+    public class MoveDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public float Power { get; set; }
