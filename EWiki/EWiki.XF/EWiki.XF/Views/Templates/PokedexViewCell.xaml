@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+          xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          prism:ViewModelLocator.AutowireViewModel="True"
+          x:Class="EWiki.XF.Views.Templates.PokedexViewCell">
+    <Grid RowSpacing="0" Margin="0,10,0,0" BackgroundColor="#FAFAFA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ffimageloading:CachedImage Source="{Binding Avatar}"
+                                    Aspect="AspectFill"
+                                    Grid.Row="0" Grid.Column="0"
+                                    Grid.RowSpan="4"/>
+        <Label Text="{Binding Name}" FontSize="22" FontAttributes="Bold" TextColor="#45686E" Grid.Row="0"
+               Margin="5,0,0,0"
+               Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" />
+        <Label Text="Pokemon Hạt Giống" FontSize="12" TextColor="#45686E" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
+               Grid.ColumnSpan="2"
+               VerticalOptions="Center" />
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0,0"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="{Binding MaxCP}" FontSize="22" TextColor="#FF4081" FontAttributes="Bold" Margin="0,0,0,1"
+                   VerticalOptions="Center" />
+            <Label Text="MaxCP" FontSize="12" FontAttributes="Bold" TextColor="#FF4081" Margin="-5,2,0,0"
+                   VerticalOptions="Center" />
+            <ffimageloading:CachedImage Source="Candy.png" Margin="5,2,0,0"
+                                        VerticalOptions="Center" HeightRequest="16" />
+            <Label Text="100" FontSize="12" TextColor="#45686E" FontAttributes="Bold" Margin="0,2,0,0"
+                   VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="5,0,0,5" Grid.Row="3" Grid.Column="1"
+                     Grid.ColumnSpan="2">
+            <ffimageloading:CachedImage Source="Grass.png" HeightRequest="22"/>
+            <ffimageloading:CachedImage Source="Poison.png" HeightRequest="22"/>
+        </StackLayout>
+    </Grid>
+</ViewCell>

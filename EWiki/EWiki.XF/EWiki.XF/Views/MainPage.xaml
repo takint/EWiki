@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rerenders:BottomTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:rerenders="clr-namespace:EWiki.XF.Views.Rerenders;assembly=EWiki.XF"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="EWiki.XF.Views.MainPage"
+             Title="MainPage">
+  
+</rerenders:BottomTabbedPage>
