@@ -6,10 +6,10 @@ using System.Data.Entity.Core.Objects;
 using System.Threading.Tasks;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 using Microsoft.Practices.ServiceLocation;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {

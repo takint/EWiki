@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public abstract class Service<TEntity> : IService<TEntity> where TEntity : class, IObjectState
     {

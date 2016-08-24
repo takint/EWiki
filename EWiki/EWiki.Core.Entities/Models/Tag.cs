@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public class Tag : EntityBase
     {

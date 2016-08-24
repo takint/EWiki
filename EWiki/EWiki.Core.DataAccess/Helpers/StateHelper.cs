@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Helpers
+namespace EWiki.DataAccess.Helpers
 {
     public class StateHelper
     {

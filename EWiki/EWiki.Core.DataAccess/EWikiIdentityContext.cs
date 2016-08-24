@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using WikiApp.DataAccess.Infrastructure;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess
+namespace EWiki.DataAccess
 {
-    public class WikiAppContext : DataContext
+    public class EWikiIdentityContext : IdentityDbContext<User>
     {
-        static WikiAppContext()
+        public EWikiIdentityContext()
+            : base("EWikiContext", throwIfV1Schema: false)
         {
-            Database.SetInitializer<WikiAppContext>(null);
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
-        public WikiAppContext() : base("Name=WikiAppContext") { }
 
         public DbSet<Archive> Archives { get; set; }
         public DbSet<BlockedIp> BlockedIps { get; set; }
@@ -27,22 +27,30 @@ namespace WikiApp.DataAccess
         public DbSet<Revision> Revisions { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<UserMeta> UserMetas { get; set; }
         public DbSet<UserNewtalk> UserNewtalks { get; set; }
         public DbSet<WatchList> WatchLists { get; set; }
         public DbSet<WikiImage> WikiImages { get; set; }
 
+        public static EWikiIdentityContext Create()
+        {
+            return new EWikiIdentityContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
-            modelBuilder.Ignore<IdentityUserRole>();
-            modelBuilder.Ignore<IdentityUserLogin>();
-            modelBuilder.Ignore<IdentityUserClaim>();
-            modelBuilder.Ignore<IdentityRole>();
             modelBuilder.Ignore<IdentityUser>();
+            modelBuilder.Entity<User>().ToTable("Users", "dbo").HasKey(p => p.Id);
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles", "dbo");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins", "dbo");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims", "dbo").HasKey(p => p.Id);
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles", "dbo").HasKey(p => p.Id);
+
+            //modelBuilder.Configurations.Add(new MenuConfiguration());
+            //modelBuilder.Configurations.Add(new ImageConfiguration());
+            //modelBuilder.Configurations.Add(new VideoConfiguration());
         }
     }
 }

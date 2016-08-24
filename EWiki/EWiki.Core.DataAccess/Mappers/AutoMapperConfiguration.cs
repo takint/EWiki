@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using System.Linq;
 using System.Security.Claims;
-using WikiApp.DataAccess.Models;
-using WikiApp.Entities.Models;
+using EWiki.DataAccess.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Mappers
+namespace EWiki.DataAccess.Mappers
 {
     public class AutoMapperConfiguration
     {
@@ -19,25 +19,27 @@ namespace WikiApp.DataAccess.Mappers
 
         public class DTOToEFOMappingProfile : Profile
         {
+            public DTOToEFOMappingProfile()
+            {
+                CreateMap<GetPokedexDTO, Pokedex>();
+            }
+
             public override string ProfileName
             {
                 get { return "DTOToEFOMappings"; }
-            }
-
-            protected override void Configure()
-            {
             }
         }
 
         public class EFOToDTOMappingProfile : Profile
         {
+            public EFOToDTOMappingProfile()
+            {
+                CreateMap<Pokedex, GetPokedexDTO>();
+            }
+
             public override string ProfileName
             {
                 get { return "EFOToDTOMappings"; }
-            }
-
-            protected override void Configure()
-            {
             }
         }
     }

@@ -2,10 +2,10 @@
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
-using WikiApp.DataAccess.Helpers;
-using WikiApp.Entities.Models;
+using EWiki.DataAccess.Helpers;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public class DataContext : DbContext, IDataContext
     {

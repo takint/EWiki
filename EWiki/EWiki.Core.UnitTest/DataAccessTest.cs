@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WikiApp.UnitTest
+namespace EWiki.UnitTest
 {
     [TestClass]
     public class DataAccessTest

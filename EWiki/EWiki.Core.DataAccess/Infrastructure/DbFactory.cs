@@ -1,12 +1,12 @@
-﻿namespace WikiApp.DataAccess.Infrastructure
+﻿namespace EWiki.DataAccess.Infrastructure
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        WikiAppContext dbContext;
+        EWikiContext dbContext;
 
-        public WikiAppContext Init()
+        public EWikiContext Init()
         {
-            return dbContext ?? (dbContext = new WikiAppContext());
+            return dbContext ?? (dbContext = new EWikiContext());
         }
 
         protected override void DisposeCore()

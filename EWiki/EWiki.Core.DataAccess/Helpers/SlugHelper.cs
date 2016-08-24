@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace WikiApp.DataAccess.Helpers
+namespace EWiki.DataAccess.Helpers
 {
     public static class SlugHelper
     {

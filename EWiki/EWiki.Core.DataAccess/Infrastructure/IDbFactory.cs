@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public interface IDbFactory : IDisposable
     {
-        WikiAppContext Init();
+        EWikiContext Init();
     }
 }

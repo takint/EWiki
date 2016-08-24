@@ -1,4 +1,4 @@
-﻿namespace WikiApp.Entities.Models
+﻿namespace EWiki.Entities.Models
 {
     public enum RestrictLevel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace WikiApp.DataAccess.Infrastructure.Identity
+namespace EWiki.DataAccess.Infrastructure.Identity
 {
     public class RolesFromClaims
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WikiApp.DataAccess.Repositories
+namespace EWiki.DataAccess.Repositories
 {
     public class AuthRepository
     {

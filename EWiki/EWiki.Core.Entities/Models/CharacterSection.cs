@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public class CharacterSection : EntityBase
     {

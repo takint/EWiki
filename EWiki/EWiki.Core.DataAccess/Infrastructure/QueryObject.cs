@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public abstract class QueryObject<TEntity> : IQueryObject<TEntity>
     {

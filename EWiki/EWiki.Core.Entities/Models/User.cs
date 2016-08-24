@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public class User : IdentityUser
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WikiApp.Models.Enums;
+using EWiki.Models.Enums;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public class InfoValue : EntityBase
     {

@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public interface IUnitOfWork
     {

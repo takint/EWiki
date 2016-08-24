@@ -1,4 +1,4 @@
-﻿namespace WikiApp.Models.Enums
+﻿namespace EWiki.Models.Enums
 {
     public enum VideoType
     {
