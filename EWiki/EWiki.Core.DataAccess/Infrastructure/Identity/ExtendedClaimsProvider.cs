@@ -4,9 +4,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using WikiApp.Entities.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Infrastructure.Identity
+namespace EWiki.DataAccess.Infrastructure.Identity
 {
     public static class ExtendedClaimsProvider
     {

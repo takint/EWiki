@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace WikiApp.DataAccess.Helpers
+namespace EWiki.DataAccess.Helpers
 {
     public static class ServiceResponseCodesHelper
     {

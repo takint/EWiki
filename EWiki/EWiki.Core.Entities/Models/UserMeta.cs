@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public class UserMeta : EntityBase
     {

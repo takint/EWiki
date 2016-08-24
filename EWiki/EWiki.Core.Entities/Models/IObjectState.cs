@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public interface IObjectState
     {

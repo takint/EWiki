@@ -7,8 +7,8 @@
     <ProjectGuid>{8D348834-602C-460B-9EF2-1F890225DC59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WikiApp.Entities</RootNamespace>
-    <AssemblyName>WikiApp.Entities</AssemblyName>
+    <RootNamespace>EWiki.Entities</RootNamespace>
+    <AssemblyName>EWiki.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

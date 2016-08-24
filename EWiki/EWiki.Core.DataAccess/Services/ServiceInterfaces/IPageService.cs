@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using WikiApp.DataAccess.Infrastructure;
-using WikiApp.DataAccess.Models;
-using WikiApp.Entities.Models;
+using EWiki.DataAccess.Infrastructure;
+using EWiki.DataAccess.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Services.ServiceInterfaces
+namespace EWiki.DataAccess.Services.ServiceInterfaces
 {
     public interface IPageService : IService<Page>
     {

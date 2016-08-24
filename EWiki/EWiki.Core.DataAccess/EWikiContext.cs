@@ -1,22 +1,33 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using WikiApp.Entities.Models;
+using EWiki.DataAccess.Infrastructure;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess
+namespace EWiki.DataAccess
 {
-    public class WikiAppIdentityContext : IdentityDbContext<User>
+    public class EWikiContext : DataContext
     {
-        public WikiAppIdentityContext()
-            : base("WikiAppContext", throwIfV1Schema: false)
+        static EWikiContext()
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            Database.SetInitializer<EWikiContext>(null);
         }
+        public EWikiContext() : base("Name=EWikiContext") { }
 
         public DbSet<Archive> Archives { get; set; }
         public DbSet<BlockedIp> BlockedIps { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<CharacterInfo> CharacterInfos { get; set; }
+        public DbSet<CharacterInfoGroup> CharacterInfoGroups { get; set; }
+        public DbSet<CharacterSection> CharacterSections { get; set; }
+        public DbSet<CharacterSectionGroup> CharacterSectionGroups { get; set; }
         public DbSet<FileArchive> FileArchives { get; set; }
+        public DbSet<InfoValue> InfoValues { get; set; }
+        // For pokedex
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Move> Moves { get; set; }
+        public DbSet<Pokedex> Pokedexes { get; set; }
+        // End pokedex
         public DbSet<Page> Pages { get; set; }
         public DbSet<PageContent> PageContents { get; set; }
         public DbSet<PageLang> PageLangs { get; set; }
@@ -24,33 +35,27 @@ namespace WikiApp.DataAccess
         public DbSet<PageRestriction> PageRestrictions { get; set; }
         public DbSet<ProtectedTitle> ProtectedTitles { get; set; }
         public DbSet<RecentChange> RecentChanges { get; set; }
+        public DbSet<Reference> References { get; set; }
         public DbSet<Revision> Revisions { get; set; }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<UserMeta> UserMetas { get; set; }
         public DbSet<UserNewtalk> UserNewtalks { get; set; }
         public DbSet<WatchList> WatchLists { get; set; }
         public DbSet<WikiImage> WikiImages { get; set; }
+        public DbSet<WikiVideo> WikiVideos { get; set; }
 
-        public static WikiAppIdentityContext Create()
-        {
-            return new WikiAppIdentityContext();
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
+            modelBuilder.Ignore<IdentityUserRole>();
+            modelBuilder.Ignore<IdentityUserLogin>();
+            modelBuilder.Ignore<IdentityUserClaim>();
+            modelBuilder.Ignore<IdentityRole>();
             modelBuilder.Ignore<IdentityUser>();
-            modelBuilder.Entity<User>().ToTable("Users", "dbo").HasKey(p => p.Id);
-            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles", "dbo");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins", "dbo");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims", "dbo").HasKey(p => p.Id);
-            modelBuilder.Entity<IdentityRole>().ToTable("Roles", "dbo").HasKey(p => p.Id);
-
-            //modelBuilder.Configurations.Add(new MenuConfiguration());
-            //modelBuilder.Configurations.Add(new ImageConfiguration());
-            //modelBuilder.Configurations.Add(new VideoConfiguration());
         }
     }
 }

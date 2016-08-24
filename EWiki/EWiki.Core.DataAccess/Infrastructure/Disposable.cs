@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WikiApp.DataAccess.Infrastructure
+namespace EWiki.DataAccess.Infrastructure
 {
     public class Disposable : IDisposable
     {

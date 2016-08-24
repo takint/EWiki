@@ -3,20 +3,20 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace WikiApp.DataAccess.Infrastructure.Identity
+namespace EWiki.DataAccess.Infrastructure.Identity
 {
-    public class WikiAppRoleManager : RoleManager<IdentityRole>
+    public class EWikiRoleManager : RoleManager<IdentityRole>
     {
-        public WikiAppRoleManager(IRoleStore<IdentityRole, string> roleStore)
+        public EWikiRoleManager(IRoleStore<IdentityRole, string> roleStore)
             : base(roleStore)
         {
         }
 
-        public static WikiAppRoleManager Create(IdentityFactoryOptions<WikiAppRoleManager> options, IOwinContext context)
+        public static EWikiRoleManager Create(IdentityFactoryOptions<EWikiRoleManager> options, IOwinContext context)
         {
-            WikiAppRoleManager wikiAppRoleManager = new WikiAppRoleManager(new RoleStore<IdentityRole>(context.Get<WikiAppIdentityContext>()));
+            EWikiRoleManager EWikiRoleManager = new EWikiRoleManager(new RoleStore<IdentityRole>(context.Get<EWikiIdentityContext>()));
 
-            return wikiAppRoleManager;
+            return EWikiRoleManager;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WikiApp.Entities.Models
+namespace EWiki.Entities.Models
 {
     public abstract class EntityBase : IObjectState
     {

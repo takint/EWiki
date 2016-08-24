@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using System.Linq;
 using System.Security.Claims;
-using WikiApp.DataAccess.Models;
-using WikiApp.Entities.Models;
+using EWiki.DataAccess.Models;
+using EWiki.Entities.Models;
 
-namespace WikiApp.DataAccess.Mappers
+namespace EWiki.DataAccess.Mappers
 {
     public class AutoMapperConfiguration
     {
@@ -24,8 +24,11 @@ namespace WikiApp.DataAccess.Mappers
                 get { return "DTOToEFOMappings"; }
             }
 
+#pragma warning disable CS0672 // Member overrides obsolete member
             protected override void Configure()
+#pragma warning restore CS0672 // Member overrides obsolete member
             {
+                CreateMap<CreateUserDTO, User>();
             }
         }
 
@@ -36,8 +39,11 @@ namespace WikiApp.DataAccess.Mappers
                 get { return "EFOToDTOMappings"; }
             }
 
+#pragma warning disable CS0672 // Member overrides obsolete member
             protected override void Configure()
+#pragma warning restore CS0672 // Member overrides obsolete member
             {
+                CreateMap<User, CreateUserDTO >();
             }
         }
     }

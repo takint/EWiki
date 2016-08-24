@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace WikiApp.DataAccess.Helpers
+namespace EWiki.DataAccess.Helpers
 {
     public class HashHelper
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{E0D9FEC1-176B-44C0-A3AC-3662581585AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WikiApp.DataAccess</RootNamespace>
-    <AssemblyName>WikiApp.DataAccess</AssemblyName>
+    <RootNamespace>EWiki.DataAccess</RootNamespace>
+    <AssemblyName>EWiki.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -121,20 +121,29 @@
     <Compile Include="Infrastructure\Service.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
+    <Compile Include="Migrations\201608240635003_InitialDB.cs" />
+    <Compile Include="Migrations\201608240635003_InitialDB.Designer.cs">
+      <DependentUpon>201608240635003_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CreateUserDTO.cs" />
     <Compile Include="Models\PageDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\ServiceInterfaces\IPageService.cs" />
-    <Compile Include="WikiAppContext.cs" />
-    <Compile Include="WikiAppIdentityContext.cs" />
+    <Compile Include="EWikiContext.cs" />
+    <Compile Include="EWikiIdentityContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608240635003_InitialDB.resx">
+      <DependentUpon>201608240635003_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.Core.Entities\EWiki.Core.Entities.csproj">
       <Project>{8d348834-602c-460b-9ef2-1f890225dc59}</Project>

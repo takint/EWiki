@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WikiApp.DataAccess.Models
+namespace EWiki.DataAccess.Models
 {
     public class CreateUserDTO
     {
