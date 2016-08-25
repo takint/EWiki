@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XF", "XF", "{9D7B44A6-B4DC-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWiki.XF.Service", "EWiki.XF.Service\EWiki.XF.Service.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWikiApi", "EWikiApi\EWikiApi.csproj", "{DDFECFB7-80C8-48B9-8DB7-5EC3663947F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWiki.Api", "EWiki.Api\EWiki.Api.csproj", "{DDFECFB7-80C8-48B9-8DB7-5EC3663947F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
