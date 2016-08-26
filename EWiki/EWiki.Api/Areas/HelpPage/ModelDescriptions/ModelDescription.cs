@@ -1,6 +1,6 @@
 using System;
 
-namespace EWikiApi.Areas.HelpPage.ModelDescriptions
+namespace EWiki.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

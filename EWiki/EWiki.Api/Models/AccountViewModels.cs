@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EWikiApi.Models
+namespace EWiki.Api.Models
 {
     // Models returned by AccountController actions.
 

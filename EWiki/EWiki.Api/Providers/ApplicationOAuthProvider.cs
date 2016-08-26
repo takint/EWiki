@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using EWikiApi.Models;
+using EWiki.Api.Models;
 
-namespace EWikiApi.Providers
+namespace EWiki.Api.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

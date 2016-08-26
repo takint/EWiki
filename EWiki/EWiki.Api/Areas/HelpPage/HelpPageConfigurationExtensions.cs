@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using EWikiApi.Areas.HelpPage.ModelDescriptions;
-using EWikiApi.Areas.HelpPage.Models;
+using EWiki.Api.Areas.HelpPage.ModelDescriptions;
+using EWiki.Api.Areas.HelpPage.Models;
 
-namespace EWikiApi.Areas.HelpPage
+namespace EWiki.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using EWikiApi.Models;
-using EWikiApi.Providers;
-using EWikiApi.Results;
+using EWiki.Api.Models;
+using EWiki.Api.Providers;
+using EWiki.Api.Results;
 
-namespace EWikiApi.Controllers
+namespace EWiki.Api.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

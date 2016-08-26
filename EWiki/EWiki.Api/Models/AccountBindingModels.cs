@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace EWikiApi.Models
+namespace EWiki.Api.Models
 {
     // Models used as parameters to AccountController actions.
 

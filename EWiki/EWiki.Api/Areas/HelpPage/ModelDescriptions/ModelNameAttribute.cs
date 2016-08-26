@@ -1,6 +1,6 @@
 using System;
 
-namespace EWikiApi.Areas.HelpPage.ModelDescriptions
+namespace EWiki.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Use this attribute to change the name of the <see cref="ModelDescription"/> generated for a type.

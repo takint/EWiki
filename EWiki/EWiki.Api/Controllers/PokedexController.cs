@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using EWiki.DataAccess.Models;using EWiki.DataAccess.Services.ServiceInterfaces;
 
-namespace EWikiApi.Controllers
+namespace EWiki.Api.Controllers
 {
     public class PokedexController : ApiController
     {

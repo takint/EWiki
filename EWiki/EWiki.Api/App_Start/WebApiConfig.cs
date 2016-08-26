@@ -8,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.AspNet.WebApi.Extensions.Compression.Server;
 using System.Net.Http.Extensions.Compression.Core.Compressors;
 
-namespace EWikiApi
+namespace EWiki.Api
 {
     public static class WebApiConfig
     {

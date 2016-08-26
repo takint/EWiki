@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace EWikiApi.Areas.HelpPage
+namespace EWiki.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

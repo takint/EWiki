@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using EWikiApi.Providers;
-using EWikiApi.Models;
+using EWiki.Api.Providers;
+using EWiki.Api.Models;
 
-namespace EWikiApi
+namespace EWiki.Api
 {
     public partial class Startup
     {

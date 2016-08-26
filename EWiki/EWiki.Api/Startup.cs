@@ -2,9 +2,9 @@
 using Owin;
 using System.Web.Http;
 
-[assembly: OwinStartup(typeof(EWikiApi.Startup))]
+[assembly: OwinStartup(typeof(EWiki.Api.Startup))]
 
-namespace EWikiApi
+namespace EWiki.Api
 {
     public partial class Startup
     {
@@ -14,9 +14,9 @@ namespace EWikiApi
 
             ConfigureAuth(app);
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            app.UseWebApi(httpConfig);
+            //app.UseWebApi(httpConfig);
         }
     }
 }

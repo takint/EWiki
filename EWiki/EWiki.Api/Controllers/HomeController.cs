@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EWikiApi.Controllers
+namespace EWiki.Api.Controllers
 {
     public class HomeController : Controller
     {

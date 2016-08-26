@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace EWikiApi.Areas.HelpPage.ModelDescriptions
+namespace EWiki.Api.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

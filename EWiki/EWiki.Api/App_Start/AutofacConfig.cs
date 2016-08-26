@@ -11,13 +11,13 @@ using EWiki.DataAccess.Repositories;
 using EWiki.DataAccess.Services;
 using EWiki.Entities.Models;
 
-namespace EWikiApi
+namespace EWiki.Api
 {
     public static class AutofacConfig
     {
         public static void Configure()
         {
-            var builder = new ContainerBuilder();
+            ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();

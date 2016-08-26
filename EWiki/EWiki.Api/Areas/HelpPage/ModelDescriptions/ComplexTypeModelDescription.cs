@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace EWikiApi.Areas.HelpPage.ModelDescriptions
+namespace EWiki.Api.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {
