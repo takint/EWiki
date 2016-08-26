@@ -1,22 +1,54 @@
-﻿using Microsoft.Owin;
-using Owin;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using EWiki.Api.DataAccess;
+using Microsoft.EntityFrameworkCore;
+using EWiki.Api.Models;
 
-[assembly: OwinStartup(typeof(EWikiApi.Startup))]
-
-namespace EWikiApi
+namespace EWiki.Api
 {
-    public partial class Startup
+    public class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public Startup(IHostingEnvironment env)
         {
-            HttpConfiguration httpConfig = new HttpConfiguration();
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
 
-            ConfigureAuth(app);
+        public IConfigurationRoot Configuration { get; }
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add framework services.
+            services.AddDbContext<EWikiContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            app.UseWebApi(httpConfig);
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<EWikiContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddMvc();
+
+            // Add application services.
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IPokedexRepository, PokedexRepository>();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseMvc();
         }
     }
 }

@@ -1,60 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
-using EWiki.DataAccess.Models;using EWiki.DataAccess.Services.ServiceInterfaces;
+using Microsoft.AspNetCore.Mvc;
+using EWiki.Api.Models;
+using EWiki.Api.DataAccess;
+using Microsoft.Data.Entity;
 
-namespace EWikiApi.Controllers
+namespace EWiki.Api.Controllers
 {
-    public class PokedexController : ApiController
+    [Route("api/[controller]")]
+    public class PokedexController : Controller
     {
-        private readonly IPokedexService _pokedexService;
-
-        public PokedexController(IPokedexService pokedexService)
+        [HttpGet]
+        public async Task<JsonResult> GetPokedex()
         {
-            _pokedexService = pokedexService;
+            EWikiContext _db = new EWikiContext();
+            List<Pokedex> result = await _db.Pokedexes.ToListAsync();
+            return new JsonResult(result);
         }
 
-        [HttpPost]
-        [Authorize]
-        [Route("api/pokedex/create")]
-        public async Task<string> CreatePokedex(NewPokedexDTO newPokedex)
+        [HttpGet("{id}")]
+        public JsonResult GetPokemon(string name)
         {
-            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
-            var userName = ClaimsPrincipal.Current.Identity.Name;
-            return await _pokedexService.AddPokemon(newPokedex, userName);
-        }
-
-        [HttpPost]
-        [Authorize]
-        [Route("api/pokedex/update")]
-        public async Task<string> UpdatePokedex(NewPokedexDTO updatePokedex)
-        {
-            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
-            string userName = ClaimsPrincipal.Current.Identity.Name;
-
-            return await _pokedexService.UpdatePokedex(updatePokedex, userName);
-        }
-
-        [HttpPost]
-        [Authorize]
-        [Route("api/pokedex/delete")]
-        public async Task<string> DeletePokedex(NewPokedexDTO deletePokedex)
-        {
-            return await _pokedexService.DeletePokedex(deletePokedex);
-        }
-
-        [Route("api/pokedex/getpokedexes")]
-        public async Task<IEnumerable<GetPokedexDTO>> GetPokedexes(int skip, int take)
-        {
-            return await _pokedexService.GetPokedexesAsync(skip, take, "", "");
-        }
-
-        [Route("api/pokedex/getpokemon")]
-        public async Task<GetPokedexDTO> GetPokemon(string name)
-        {
-            return await _pokedexService.GetPokemonAsync(name);
+            return new JsonResult(new Pokedex());
         }
     }
 }
