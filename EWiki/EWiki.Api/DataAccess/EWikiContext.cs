@@ -1,7 +1,7 @@
-﻿//using EWiki.DataAccess.Infrastructure;
-using EWiki.Api.Models;
+﻿using EWiki.Api.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EWiki.Api.DataAccess
 {
@@ -20,7 +20,6 @@ namespace EWiki.Api.DataAccess
         // For pokedex
         public DbSet<Location> Locations { get; set; }
         public DbSet<Move> Moves { get; set; }
-        public DbSet<Pokedex> Pokedexes { get; set; }
         // End pokedex
         public DbSet<Page> Pages { get; set; }
         public DbSet<PageContent> PageContents { get; set; }
@@ -44,10 +43,22 @@ namespace EWiki.Api.DataAccess
            return base.SaveChanges();
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=EWiki;User ID=sa;Password=123");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             // This needs to go before the other rules!
+            Characters.Add(new Character()
+            {
+                Name = "Bulbasaur",
+                Slug = "bulbasaur",
+                Description = "Hệ cây",
+                CreatedDate = DateTime.Now
+            });
         }
     }
 }

@@ -2,6 +2,6 @@
 
 namespace EWiki.Api.DataAccess
 {
-    public interface IPokedexRepository : IRepository<Pokedex>
+    public interface IPokedexRepository : IRepository<Character>
     { }
 }

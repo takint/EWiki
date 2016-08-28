@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using EWiki.Api.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using EWiki.Api.Models;
+using Microsoft.AspNetCore.Builder;
 
 namespace EWiki.Api
 {
@@ -29,7 +28,9 @@ namespace EWiki.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<EWikiContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<EWikiContext>(options =>
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<EWikiContext>()
@@ -38,8 +39,8 @@ namespace EWiki.Api
             services.AddMvc();
 
             // Add application services.
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IPokedexRepository, PokedexRepository>();
+            services.AddSingleton<IDbFactory, DbFactory>();
+            services.AddSingleton<IPokedexRepository, PokedexRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +48,33 @@ namespace EWiki.Api
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+
+                // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+                try
+                {
+                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                        .CreateScope())
+                    {
+                        serviceScope.ServiceProvider.GetService<EWikiContext>()
+                             .Database.Migrate();
+                    }
+                }
+                catch { }
+            }
+
+            app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc();
         }
