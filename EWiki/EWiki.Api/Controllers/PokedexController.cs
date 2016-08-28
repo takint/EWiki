@@ -5,25 +5,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EWiki.Api.Models;
 using EWiki.Api.DataAccess;
-using Microsoft.Data.Entity;
 
 namespace EWiki.Api.Controllers
 {
     [Route("api/[controller]")]
     public class PokedexController : Controller
     {
-        [HttpGet]
-        public async Task<JsonResult> GetPokedex()
+        private readonly IPokedexRepository pokedexRepository;
+
+        public PokedexController(IPokedexRepository repo)
         {
-            EWikiContext _db = new EWikiContext();
-            List<Pokedex> result = await _db.Pokedexes.ToListAsync();
-            return new JsonResult(result);
+            pokedexRepository = repo;
         }
 
-        [HttpGet("{id}")]
-        public JsonResult GetPokemon(string name)
+        [HttpGet]
+        public async Task<JsonResult> Get()
         {
-            return new JsonResult(new Pokedex());
+            IEnumerable<Character> result = await pokedexRepository.GetAllAsync();
+            return Json(result);
+        }
+
+        [HttpGet("{name}")]
+        public async Task<JsonResult> GetPokemon(string name)
+        {
+            Character pokemon = (await pokedexRepository.FindByAsync(p => p.Name == name)).FirstOrDefault();
+            return Json(pokemon);
         }
     }
 }

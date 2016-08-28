@@ -13,7 +13,6 @@ namespace EWiki.Api.DataAccess
     public class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : class, IEntity, new()
     {
         private EWikiContext _context;
-        private readonly DbSet<TEntity> _dbSet;
 
         protected IDbFactory DbFactory
         {
@@ -31,11 +30,6 @@ namespace EWiki.Api.DataAccess
         {
             DbFactory = dbFactory;
             _context = DbContext;
-
-            if (DbContext != null)
-            {
-                _dbSet = DbContext.Set<TEntity>();
-            }
         }
         #endregion
         public virtual IEnumerable<TEntity> GetAll()
@@ -103,7 +97,7 @@ namespace EWiki.Api.DataAccess
 
         public IQueryable<TEntity> Queryable()
         {
-            return _dbSet;
+            return DbContext.Set<TEntity>();
         }
 
         public virtual void Add(TEntity entity)
