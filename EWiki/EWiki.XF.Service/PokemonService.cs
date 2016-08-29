@@ -26,7 +26,7 @@ namespace EWiki.XF.Service
                     {
                         Name = "Bulbasaur",
                         Description = "Trên lưng của Bulbasaur có một hạt giống có thể nở nhờ ánh sáng nên nó thường ngủ trưa dưới ánh mặt trời. ",
-                        Avatar = "p001.png",
+                        Avatar = "p002.png",
                         MaxCP = 1530
                     }
                 };

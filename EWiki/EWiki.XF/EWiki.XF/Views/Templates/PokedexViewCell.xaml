@@ -19,7 +19,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ffimageloading:CachedImage Source="{Binding Avatar}"
+        <ffimageloading:CachedImage Source="avatar_background" 
+                                    Aspect="AspectFill"
+                                    Grid.Row="0" Grid.Column="0"
+                                    Grid.RowSpan="4"/>
+      <ffimageloading:CachedImage Source="{Binding Avatar}" 
                                     Aspect="AspectFill"
                                     Grid.Row="0" Grid.Column="0"
                                     Grid.RowSpan="4"/>

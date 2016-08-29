@@ -2,6 +2,7 @@
 using EWiki.XF.Service;
 using Prism.Unity;
 using EWiki.XF.Views;
+using EWiki.XF.Views.PokemonInfoElements;
 using Microsoft.Practices.Unity;
 
 namespace EWiki.XF
@@ -25,6 +26,8 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<Navigation>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<PokedexTab>();
+            Container.RegisterTypeForNavigation<PokemonInfoPage>();
+            Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterType<IPokemonService, PokemonService>();
         }
     }

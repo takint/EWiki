@@ -179,6 +179,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BottomTabbedPageRender.cs" />
+    <Compile Include="Renderers\ColoredProgressBarRender.cs" />
     <Compile Include="Renderers\LabelRender.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -275,6 +276,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\Poison.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Candy.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Grass.png" />
+    <AndroidResource Include="Resources\drawable\avatar_background.png" />
+    <AndroidResource Include="Resources\drawable\pokemon_info_background.png" />
+    <AndroidResource Include="Resources\drawable\arch.png" />
+    <AndroidResource Include="Resources\drawable\p001_white.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">

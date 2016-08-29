@@ -88,7 +88,7 @@ namespace EWiki.XF.ViewModels
 
         public void PokedexItemSelectedHandler(Pokemon pokemon)
         {
-            _navigationService.NavigateAsync($"LeftMenu/Navigation/PokemonDetailPage?PokemonId={pokemon.Id}", animated: false);
+            _navigationService.NavigateAsync($"LeftMenu/Navigation/PokemonInfoPage?PokemonId={pokemon.Id}", animated: false);
         }
     }
 }
