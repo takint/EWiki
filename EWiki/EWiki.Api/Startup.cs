@@ -7,6 +7,7 @@ using EWiki.Api.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using EWiki.Api.Models;
 using Microsoft.AspNetCore.Builder;
+using System;
 
 namespace EWiki.Api
 {
@@ -69,8 +70,13 @@ namespace EWiki.Api
                              .Database.Migrate();
                     }
                 }
-                catch { }
+                catch(Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
+
+            app.UseDefaultFiles();
 
             app.UseStaticFiles();
 
