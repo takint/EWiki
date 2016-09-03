@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/pokedex",
+      "launchUrl": "",//"api/pokedex",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
