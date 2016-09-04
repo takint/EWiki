@@ -42,6 +42,9 @@ namespace EWiki.Api
             // Add application services.
             services.AddSingleton<IDbFactory, DbFactory>();
             services.AddSingleton<IPokedexRepository, PokedexRepository>();
+            services.AddSingleton<ICategoryRepository, CategoryRepository>();
+            services.AddSingleton<IMoveRepository, MoveRepository>();
+            services.AddSingleton<ILocationRepository, LocationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,7 +79,7 @@ namespace EWiki.Api
                 }
             }
 
-            app.UseDefaultFiles();
+            //app.UseDefaultFiles();
 
             app.UseStaticFiles();
 
