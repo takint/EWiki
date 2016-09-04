@@ -52,13 +52,6 @@ namespace EWiki.Api.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             // This needs to go before the other rules!
-            Characters.Add(new Character()
-            {
-                Name = "Bulbasaur",
-                Slug = "bulbasaur",
-                Description = "Hệ cây",
-                CreatedDate = DateTime.Now
-            });
         }
     }
 }
