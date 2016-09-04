@@ -37,6 +37,8 @@
   <ItemGroup>
     <Compile Include="Behaviors\ListViewBehavior.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
+    <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
+    <Compile Include="ExtendedControls\ExtendedScrollView.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Models\LeftMenuItem.cs" />
     <Compile Include="Models\Pokemon.cs" />
