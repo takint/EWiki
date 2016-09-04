@@ -179,7 +179,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BottomTabbedPageRender.cs" />
-    <Compile Include="Renderers\ColoredProgressBarRender.cs" />
+    <Compile Include="Renderers\ExtendedProgressBarRender.cs" />
     <Compile Include="Renderers\LabelRender.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
