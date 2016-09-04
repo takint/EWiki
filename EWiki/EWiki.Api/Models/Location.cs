@@ -6,6 +6,6 @@ namespace EWiki.Api.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        virtual public ICollection<Category> Types { get; set; }
+        public string Type { get; set; }
     }
 }

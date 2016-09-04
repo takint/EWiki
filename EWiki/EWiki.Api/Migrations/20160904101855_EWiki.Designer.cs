@@ -8,7 +8,7 @@ using EWiki.Api.DataAccess;
 namespace EWiki.Api.Migrations
 {
     [DbContext(typeof(EWikiContext))]
-    [Migration("20160828184740_EWiki")]
+    [Migration("20160904101855_EWiki")]
     partial class EWiki
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace EWiki.Api.Migrations
 
                     b.Property<string>("ArchiveComment");
 
-                    b.Property<int>("ArchiveLength");
+                    b.Property<int?>("ArchiveLength");
 
                     b.Property<int?>("ArchivePageId");
 
@@ -122,17 +122,17 @@ namespace EWiki.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CatPages");
+                    b.Property<int?>("CatPages");
 
                     b.Property<string>("CatTitle");
+
+                    b.Property<string>("CatTitleVI");
 
                     b.Property<int?>("CharacterId");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("CreatedUserId");
-
-                    b.Property<int?>("LocationId");
 
                     b.Property<int>("NumberOfSubcat");
 
@@ -146,8 +146,6 @@ namespace EWiki.Api.Migrations
 
                     b.HasIndex("CreatedUserId");
 
-                    b.HasIndex("LocationId");
-
                     b.HasIndex("UpdatedUserId");
 
                     b.ToTable("Categories");
@@ -158,25 +156,27 @@ namespace EWiki.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Attack");
+                    b.Property<int?>("Attack");
 
-                    b.Property<float>("CPGain");
+                    b.Property<float?>("CPGain");
 
-                    b.Property<int>("Candy");
+                    b.Property<int?>("Candy");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("CreatedUserId");
 
-                    b.Property<int>("Defense");
+                    b.Property<int?>("Defense");
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("EvolveFromId");
+                    b.Property<int?>("EvolveFromId");
 
-                    b.Property<float>("Height");
+                    b.Property<string>("EvolveIntos");
 
-                    b.Property<float>("MaxCP");
+                    b.Property<float?>("Height");
+
+                    b.Property<float?>("MaxCP");
 
                     b.Property<string>("Name");
 
@@ -186,13 +186,13 @@ namespace EWiki.Api.Migrations
 
                     b.Property<string>("Species");
 
-                    b.Property<int>("Stamina");
+                    b.Property<int?>("Stamina");
 
                     b.Property<DateTime?>("UpdatedDate");
 
                     b.Property<string>("UpdatedUserId");
 
-                    b.Property<float>("Weight");
+                    b.Property<float?>("Weight");
 
                     b.HasKey("Id");
 
@@ -437,6 +437,8 @@ namespace EWiki.Api.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Type");
 
                     b.Property<DateTime?>("UpdatedDate");
 
@@ -1308,10 +1310,6 @@ namespace EWiki.Api.Migrations
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
 
-                    b.HasOne("EWiki.Api.Models.Location")
-                        .WithMany("Types")
-                        .HasForeignKey("LocationId");
-
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
                         .HasForeignKey("UpdatedUserId");
@@ -1325,8 +1323,7 @@ namespace EWiki.Api.Migrations
 
                     b.HasOne("EWiki.Api.Models.Character", "EvolveFrom")
                         .WithMany("EvolveInto")
-                        .HasForeignKey("EvolveFromId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EvolveFromId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()

@@ -22,6 +22,7 @@ namespace EWiki.Api.Models
         public float? MaxCP { get; set; }
         public string Description { get; set; }
         public int? EvolveFromId { get; set; }
+        public string EvolveIntos { get; set; }
 
         [ForeignKey("EvolveFromId")]
         virtual public Character EvolveFrom { get; set; }

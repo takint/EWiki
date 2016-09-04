@@ -1,10 +1,9 @@
-﻿using System;
+﻿using EWiki.Api.DataAccess;
+using EWiki.Api.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using EWiki.Api.Models;
-using EWiki.Api.DataAccess;
 
 namespace EWiki.Api.Controllers
 {
@@ -25,7 +24,7 @@ namespace EWiki.Api.Controllers
             return Json(result);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("GetPokemon")]
         public async Task<JsonResult> GetPokemon(string name)
         {
             Character pokemon = (await pokedexRepository.FindByAsync(p => p.Name == name)).FirstOrDefault();
