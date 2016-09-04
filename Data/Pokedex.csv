@@ -1,0 +1,152 @@
+﻿Number,Name,Types,Species,Description,Weight,Height,Stamina,Attack,Defense,Candy,CPGain,MaxCP,NormalMoves,SpecialMoves,EvolveFrom,EvolveInto
+#001,Bulbasaur,"Grass,Poison",Pokémon Hạt Giống,Trên lưng của Bulbasaur có một hạt giống có thể nở nhờ ánh sáng nên nó thường ngủ trưa dưới ánh mặt trời. ,6.9,0.7,90,126,126,25,13.8,1071,"Vine Whip,Tackle","Sludge Bomb,Seed Bomb,Power Whip",,#002
+#002,Ivysaur,"Grass,Poison",Pokémon Hạt Giống,"Sau khi tiến hoá từ Bulbasaur, hạt giống trên lưng trở thành nụ hoa. Vì vậy nó dành nhiều hơn thời gian dưới ánh mặt trời để tiến hoá.",13.0,1,120,156,158,100,21.6,1632,"Razor Leaf,Vine Whip","Sludge Bomb,Solar Beam,Power Whip",#001,#003
+#003,Venusaur,"Grass,Poison",Pokémon Hạt Giống,Dạng tiến hoá cao nhất khi mà hạt giống trên lưng đã nở thành hoa.Hương thơm từ hoa có thể làm dịu cảm xúc khi hít phải.,100.0,2,160,198,200,,34.8,2580,"Razor Leaf,Vine Whip","Sludge Bomb,Petal Blizzard,Solar Beam",#002,
+#004,Charmander,Fire,Pokémon Thằn Lằn,Ngọn lửa cháy trên đuôi biểu hiện cho cảm xúc của Charmander. Ngọn lửa nhấp nháy những lúc vui buồn hoặc cháy dữ dội khi chiến đấu.,8.5,0.6,78,128,108,25,12.2,955,"Ember,Scratch","Flame Charge,Flame Burst,Flamethrower",,#005
+#005,Charmeleon,Fire,Pokémon Lửa,"Charmeleon rất hiếu chiến với bộ vuốt sắc nhọn của nó. Ở trạng thái hưng phấn khi đối đầu với đối thủ mạnh, ngọn lửa trên đuôi của Charmeleon chuyển sang màu trắng xanh.",19.0,1.1,116,160,140,100,20.5,1557,"Ember,Scratch","Fire Punch,Flame Burst,Flamethrower",#004,#006
+#006,Charizard,"Fire,Flying",Pokémon Lửa,Charizard có khả năng bay lượn và luôn tìm những đối thủ mạnh mẽ hơn nó để chiến đấu. Nó có khả năng thổi ra những ngọn lửa với nhiệt độ cực cao và làm tan chảy tất cả.,90.5,1.7,156,212,182,,35.1,2602,"Ember,Wing Attack","Fire Blast,Dragon Claw,Flamethrower",#005,
+#007,Squirtle,Water,Pokémon Rùa Con,Mai của Squirtle ngoài khả năng phòng thủ còn giúp nó bơi lội cực nhanh trong nước bằng vào hình dáng tròn trịa của mình.,9.0,0.5,88,112,142,25,13,1008,"Bubble,Tackle","Aqua Jet,Aqua Tail,Water Pulse",,#008
+#008,Wartortle,Water,Pokémon Rùa,"Sau khi tiến hoá, đuôi của Wartortle lớn và dày hơn, đồng thời màu sắc của đuôi cũng đại diện cho tuổi thọ của nó. Bên cạnh đó, những vết sẹo trên mai cũng thể hiện cho chiến tích của nó qua những trận đấu.",22.5,1,118,144,176,100,20.9,1582,"Water Gun,Bite","Aqua Jet,Ice Beam,Hydro Pump",#007,#009
+#009,Blastoise,Water,Pokémon Rùa,Blastoise có hai cây súng nước trên mai của nó với khả năng bắn ra nhưng viên đạn nước có độ chính xác cực cao và xa.,85.5,1.6,158,186,222,,34.3,2542,"Water Gun,Bite","Flash Cannon,Ice Beam,Hydro Pump",#008,
+#010,Caterpie,Bug,Pokémon Sâu,"Caterpie rất tham ăn, nó có thể ăn lượng lá cây lớn hơn nó nhiều lần. Sừng của nó có khả năng toả ra mùi cực mạnh để xua đuổi pokémon khác.",2.9,0.3,90,62,66,12,5.3,443,"Bug Bite,Tackle",Struggle,,#011
+#011,Metapod,Bug,Pokémon Nhộng,Metapod có lớp vỏ cứng như sắt. Nó rất ít di chuyển mà chờ đợi tới lúc tiến hoá sau này.,9.9,0.7,100,56,86,50,5.8,477,"Bug Bite,Tackle",Struggle,#010,#012
+#012,Butterfree,"Bug,Flying",Pokémon Bướm,Butterfree rất giỏi trong việc tìm kiếm và thu thập mật hoa từ khoảng cách xa.,32.0,1.1,120,144,144,,19.1,1454,"Bug Bite,Confusion","Bug Buzz,Psychic,Signal Beam",#011,
+#013,Weedle,"Bug,Poison",Pokémon Sâu Lông,Weedle có khứa giác rất nhạy. Bằng cái mũi to tròn của mình nó có thể tìm kiếm những loại lá yêu thích.,3.2,0.3,80,68,64,12,5.4,449,"Bug Bite,Poison Sting",Struggle,,#014
+#014,Kakuna,"Bug,Poison",Pokémon Nhộng,"Kakuna luôn treo mình trên cây để chuẩn bị tiến hoá. Quá trình tiến hoá càng lâu, vỏ của nó sẽ càng nóng.",10.0,0.6,90,62,82,50,5.9,485,"Bug Bite,Poison Sting",Struggle,#013,#015
+#015,Beedrill,"Bug,Poison",Pokémon Ong độc,Beedrill trở nên cực kì nguy hiểm khi có người tiếp cận tổ của nó. Đáng sợ nhất là nó luôn tấn công theo bầy.,29.5,1,130,144,130,,18.9,1439,"Bug Bite,Poison Jab","Sludge Bomb,Aerial Ace,X Scissor",#014,
+#016,Pidgey,"Normal,Flying",Pokémon Chim Con,Pidgey có khả năng xác định phương hướng rất tốt giúp nó di chuyển khoảng cách xa mà không bị lac.,1.8,0.3,80,94,90,12,8.5,679,"Quick Attack,Tackle","Twister,Aerial Ace,Air Cutter",,#017
+#017,Pidgeotto,"Normal,Flying",Pokémon Chim,Pidgeotto luôn chiếm một khu vực lãnh thổ rất rộng và luôn tấn công những kẻ xâm nhập bằng bộ móng sắc nhọn của nó.,30.0,1.1,126,126,122,50,16,1223,"Wing Attack,Steel Wing","Twister,Aerial Ace,Air Cutter",#016,#018
+#018,Pidgeot,"Normal,Flying",Pokémon Chim,Pidgeot có một bộ lông rực rỡ với nhưng chiếc lông lộng lẫy. Đặc biệt là những chiếc lông trên đầu của nó khiến rất nhiều huấn luyện viên chọn Pidgeot trở thành pokémon của họ.,39.5,1.5,166,170,166,,28,2091,"Wing Attack,Steel Wing","Hurricane,Aerial Ace,Air Cutter",#017,
+#019,Rattata,Normal,Pokémon Chuột,Rattata cực kì cẩn thận và đề phòng xung quanh bằng đôi tai lớn của nó. Nó khá dễ tính và có thể sống ở bất cứ đâu.,3.5,0.3,60,92,86,25,7.2,581,"Tackle,Quick Attack","Dig,Hyper Fang,Body Slam",,#020
+#020,Raticate,Normal,Pokémon Chuột,"Với cặp răng nanh lớn, Raticate có khả năng gặm nhấm gỗ, đá và thậm chí là bức tường nhà.",18.5,0.7,110,146,150,,19,1444,"Bite,Quick Attack","Dig,Hyper Fang,Hyper Beam",#019,
+#021,Spearow,"Normal,Flying",Pokémon Chim Con,Spearow có tiếng kêu rất lớn nhằm cảnh báo nguy hiểm cho đồng loại của nó.,2.0,0.3,80,102,78,50,8.6,686,"Peck,Quick Attack","Aerial Ace,Drill Peck,Twister",,#022
+#022,Fearow,"Normal,Flying",Pokémon Chim,Fearow có cổ và đặc biệt là mỏ của nó khá dài giúp nó dễ dàng di chuyển và bắt mồi.,38.0,1.2,130,168,146,,23.2,1746,"Peck,Steel Wing","Aerial Ace,Drill Run,Twister",#021,
+#023,Ekans,Poison,Pokémon Rắn,Ekans thường cuộn tròn lại nằm nghỉ đồng thời giúp nó phản ứng nhanh khi có nguy hiểm xung quanh.,6.9,2,70,112,112,50,10.5,824,"Poison Sting,Acid","Wrap,Sludge Bomb,Gunk Shot",,#024
+#024,Arbok,Poison,Pokémon Rắn Hổ Mang,"Bằng khả năng quấn chặt cực mạnh của mình,đối thủ của  Arbok gần như không thể thoát khỏi khi bị nó quấn phải.",65.0,3.5,120,166,166,,23.5,1767,"Bite,Acid","Dark Pulse,Sludge Wave,Gunk Shot",#023,
+#025,Pikachu,Electric,Pokémon Chuột,Pikachu thường thể hiện sự hứng thú của nó bằng các tia điện. Nếu bạn nhìn thì quả berry bị điện cháy đen thì chắc chắn là do Pikachu làm.,6.0,0.4,70,124,108,50,11.3,887,"Thunder Shock,Quick Attack","Discharge,Thunderbolt,Thunder",,#026
+#026,Raichu,Electric,Pokémon Chuột,"Do có khả năng phóng điện mạnh nên mỗi khi dòng điện tích luỹ quá lớn, Raichu thường phóng thích dòng điện xuống đất qua cái đuôi bén nhọn của nó.",30.0,0.8,120,200,154,,27.1,2028,"Thunder Shock,Spark","Brick Break,Thunder Punch,Thunder",#025,
+#027,Sandshrew,Ground,Pokémon Chuột,Cơ thể của Sandshrew hấp thu nước tốt giúp nó có thể sinh sống trong khu vực sa mạc. Nó thường cuộn tròn cơ thể của mình khi phòng thủ.,12.0,0.6,100,90,114,50,10.1,798,"Scratch,Mud Shot","Dig,Rock Slide,Rock Tomb",,#028
+#028,Sandslash,Ground,Pokémon Chuột,Sandslash có những cái gai bén nhọn giúp nó phòng thủ cũng như tấn công. Bộ gai của nó thường được thay thế mỗi năm một lần.,29.5,1,150,150,172,,24.1,1810,"Metal Claw,Mud Shot","Earthquake,Rock Tomb,Bulldoze",#027,
+#029,Nidoran♀,Poison,Pokémon Gai Độc,Nidoran♀ có những gai cực độc trên cơ thể để bảo vệ nó. Độc cũng có thể truyền từ sừng của nó khi tấn công.,7.0,0.4,110,100,104,25,11.2,876,"Bite,Poison Sting","Poison Fang,Body Slam,Sludge Bomb",,#030
+#030,Nidorina,Poison,Pokémon Gai Độc,Nidorina có khả năng thu lại những gai độc của mình khi ở cùng với đồng loại của mình. Nó thường khá lo lắng khi bị tách khỏi bầy của mình.,20.0,0.8,140,132,136,100,18.4,1404,"Bite,Poison Sting","Poison Fang,Dig,Sludge Bomb",#029,#031
+#031,Nidoqueen,"Poison,Ground",Pokémon Mũi Khoan,Nidoqueen có cơ thể to lớn với bộ giáp cực kì cứng giúp nó dễ dàng húc bay đối thủ. Nidoqueen trở nên rất đáng sợ khi có kẻ đụng vào con của nó.,60.0,1.3,180,184,190,,33.5,2485,"Poison Jab,Bite","Earthquake,Sludge Wave,Stone Edge",#030,
+#032,Nidoran♂,Poison,Pokémon Gai Độc,Nidoran♂ có đôi tai cực lớn giúp nó nhận biết xung quanh và di chuyển một cách an toàn.,9.0,0.5,92,110,94,25,10.7,843,"Peck,Poison Sting","Horn Attack,Body Slam,Sludge Bomb",,#033
+#033,Nidorino,Poison,Pokémon Gai Độc,"Nidorino có sừng cứng hơn cả kim cương. Khi cảm thấy nguy hiểm, gai lưng của nó thường dựng lên để chiến đấu.",19.5,0.9,122,142,128,100,18,1372,"Poison Jab,Poison Sting","Horn Attack,Dig,Sludge Bomb",#032,#034
+#034,Nidoking,"Poison,Ground",Pokémon Mũi Khoan,"Với cái đuôi to lớn và mạnh mẽ có thể phá nát kim loại, rất ít pokémon có thể ngăn cản Nidoking khi nó nổi giận.",62.0,1.4,162,204,170,,33.3,2475,"Poison Jab,Fury Cutter","Earthquake,Sludge Wave,Megahorn",#033,
+#035,Clefairy,Fairy,Pokémon Tiên,Clefairy thường xuất hiện vào đêm trăng tròn để chơi cùng đồng bọn và trở về tổ khi bình minh đến.,7.5,0.6,140,116,124,50,15.6,1200,"Pound,Zen Headbutt","Disarming Voice,Body Slam,Moonblast",,#036
+#036,Clefable,Fairy,Pokémon Tiên,"Clefable có thể nhảy nhẹ nhàng bằng cặp cánh nhỏ của nó, kể cả trên nước. Nó thường đi dạo trên mặt hồ vào đêm trăng.",40.0,1.3,190,178,178,,32.3,2397,"Pound,Zen Headbutt","Dazzling Gleam,Psychic,Moonblast",#035,
+#037,Vulpix,Fire,Pokémon Cáo,Vulpix có một đuôi khi sinh ra và dần dần mọc tới sáu đuôi khi lớn. Đuôi của nó rất cong và đẹp.,9.9,0.6,76,106,118,50,10.6,831,"Quick Attack,Ember","Body Slam,Flamethrower,Flame Charge",,#038
+#038,Ninetales,Fire,Pokémon Cáo,Đôi mắt của Ninetales có thể phóng ra ánh sáng với khả năng điều khiển đối thủ. Ninetales được cho là có khả năng sống tới một ngàn năm.,19.9,1.1,146,176,194,,29.3,2188,"Feint Attack,Ember","Heat Wave,Flamethrower,Fire Blast",#037,
+#039,Jigglypuff,"Normal,Fairy",Pokémon Bóng Bay,"Bằng vào khả năng điều chỉnh giọng của mình, giọng hát của Jigglypuff có khả năng ru ngủ đối thủ.",5.5,0.5,230,98,54,50,11.6,917,"Pound,Feint Attack","Disarming Voice,Body Slam,Play Rough",,#040
+#040,Wigglytuff,"Normal,Fairy",Pokémon Bóng Bay,Wigglytuff có đôi mắt đẹp to tròn với một lớp nước mắt bảo vệ mắt nó khỏi bụi bẩn.,12.0,1,280,168,108,,29.1,2177,"Pound,Feint Attack","Dazzling Gleam,Hyper Beam,Play Rough",#039,
+#041,Zubat,"Poison,Flying",Pokémon Dơi,Zubat có thể bị thiêu cháy dưới ánh sáng mặt trời nên nó thường trốn trong bóng tối vào ban ngày.,7.5,0.8,80,88,90,50,8,642,"Quick Attack,Bite","Poison Fang,Air Cutter,Sludge Bomb",,#042
+#042,Golbat,"Poison,Flying",Pokémon Dơi,Golbat thường hút máu của động vật sống và nó thường hoạt động về đêm.,55.0,1.6,150,164,164,,25.6,1921,"Wing Attack,Bite","Poison Fang,Air Cutter,Ominous Wind",#041,
+#043,Oddish,"Grass,Poison",Pokémon Cỏ,"Oddish thường chôn mình dưới đất để hấp thu chất dinh dưỡng. Càng nhiều chất dinh dưỡng được hấp thu, lá của nó càng sáng bóng.",5.4,0.5,90,134,130,25,14.9,1148,"Razor Leaf,Acid","Seed Bomb,Sludge Bomb,Moonblast",,#044
+#044,Gloom,"Grass,Poison",Pokémon Cỏ,"Khi cảm thấy nguy hiểm, Gloom phóng thích mùi hôi từ nhuỵ của nó để đe doạ kẻ thù.",8.6,0.8,120,162,158,100,22.4,1689,"Razor Leaf,Acid","Petal Blizzard,Sludge Bomb,Moonblast",#043,#045
+#045,Vileplume,"Grass,Poison",Pokémon Hoa,"Vileplume thường thả ra phấn độc gây dịnh ứng mỗi khi bị tiếp cận từ bông hoa xinh đẹp trên đầu nó. Vì vậy, tốt nhất nên tránh xa các bông hoa lớn và đẹp trong rừng.",18.6,1.2,150,202,190,,33.6,2492,"Razor Leaf,Acid","Petal Blizzard,Solar Beam,Moonblast",#044,
+#046,Paras,"Bug,Grass",Pokémon Nấm,Paras có hai cây nấm sống kí sinh trên lưng nó. Chúng lớn lên bằng chất dinh dưỡng Paras hút từ cây lớn và là vị thuốc có giá trị giúp kéo dài tuổi thọ.,5.4,0.3,70,122,120,50,11.7,916,"Scratch,Bug Bite","Cross Poison,X Scissor,Seed Bomb",,#047
+#047,Parasect,"Bug,Grass",Pokémon Nấm,Parasect thường tàn phá các cây lớn bằng việc sống và hút chất dinh dưỡng từ các gốc cây.,29.5,1,120,162,170,,23.2,1747,"Bug Bite,Fury Cutter","Cross Poison,X Scissor,Solar Beam",#046,
+#048,Venonat,"Bug,Poison",Pokémon Côn Trùng,"Venonat có một bộ lông xù, mỏng và cứng giúp bảo vệ cơ thể của nó. Đôi mắt lớn giúp nó phát hiện con mồi dù rất nhỏ.",30.0,1,120,108,118,50,13.3,1029,"Bug Bite,Confusion","Psybeam,Dazzling Gleam,Shadow Ball",,#049
+#049,Venomoth,"Bug,Poison",Pokémon Bướm Đêm,Venomoth sống về đêm và thường săn bắt côn trùng nhỏ. Nó thường bị hấp dẫn bởi những đốm ánh sáng vào ban đêm.,12.5,1.5,140,172,154,,25.2,1890,"Bug Bite,Confusion","Poison Fang,Psychic,Bug Buzz",#048,
+#050,Diglett,Ground,Pokémon Chuột Chũi,Diglett thường chôn mình dưới đất và sống trong các trang trại. Nhờ có nó mà đất rất màu mỡ và thích hợp để trồng cây.,0.8,0.2,20,108,86,50,5.3,456,"Mud Shot,Scratch","Dig,Mud Bomb,Rock Tomb",,#051
+#051,Dugtrio,Ground,Pokémon Chuột Chũi,Dugtrio có ba đầu trên một cơ thể giúp nó phối hợp đào đất nhanh hơn.,33.3,0.7,70,148,140,,15.1,1168,"Sucker Punch,Mud Shot","Earthquake,Mud Bomb,Stone Edge",#050,
+#052,Meowth,Normal,Pokémon Mèo Cào,Meowth thu bộ vuốt của nó lại để di chuyển nhẹ nhàng hơn. Nó rất thích các đồng tiền sáng lấp lánh.,4.2,0.4,80,104,94,50,9.6,756,"Scratch,Bite","Night Slash,Dark Pulse,Body Slam",,#053
+#053,Persian,Normal,Pokémon Mèo,Bộ ria của Persian giúp nó trông mạnh mẽ hơn và giúp nó cảm nhận không khí xung quanh. Nhưng bộ ria cũng là điểm yếu của nó khi bị chạm vào.,32.0,1,130,156,146,,21.6,1631,"Scratch,Feint Attack","Night Slash,Power Gem,Play Rough",#052,
+#054,Psyduck,Water,Pokémon Vịt,Psyduck có năng lực bí ẩn phát ra sóng não chỉ xuất hiện khi ngủ. Nhưng điều này còn gây tranh cãi khá nhiều giữa các nhà nghiên cứu.,19.6,0.8,100,132,112,50,14.4,1109,"Water Gun,Zen Headbutt","Psybeam,Aqua Tail,Cross Chop",,#055
+#055,Golduck,Water,Pokémon Vịt,"Màng tay, chân và cơ thể dạng thuỷ động học giúp Golduck bơi rất nhanh dưới nước.",76.6,1.7,160,194,176,,32.1,2386,"Water Gun,Confusion","Psychic,Hydro Pump,Ice Beam",#054,
+#056,Mankey,Fighting,Pokémon Khỉ Heo,Thở mạnh là dấu hiệu cho thấy Mankey đang nổi giận. Không có bất cứ ai có thể thoát khỏi cơn thịnh nộ của nó.,28.0,0.5,80,122,96,50,11.2,878,"Karate Chop,Scratch","Cross Chop,Low Sweep,Brick Break",,#057
+#057,Primeape,Fighting,Pokémon Khỉ Heo,"Khi Primeape nổi giận, máu trong cơ thể nó vận chuyển nhanh hơn làm tăng sức mạnh cơ bắp nhưng cũng khiến nó trở nên khá ngu ngốc.",32.0,1,130,178,150,,24.8,1864,"Low Kick,Karate Chop","Cross Chop,Low Sweep,Night Slash",#056,
+#058,Growlithe,Fire,Pokémon Chó Con,Growlithe có khả năng đánh hơi và ghi nhớ mùi mạnh mẽ. Khứu giác của nó còn có khả năng nhận biết được cảm xúc của sinh vật sống khác.,19.0,0.7,110,156,110,50,17.5,1335,"Ember,Bite","Flame Wheel,Body Slam,Flamethrower",,#059
+#059,Arcanine,Fire,Pokémon Huyền Thoại,Arcanine được biết đến với khả năng chạy kì nhanh dựa vào nguồn năng lượng lửa bên trong cơ thể nó.,155.0,1.9,180,230,180,,40.5,2983,"Fire Fang,Bite","Fire Blast,Flamethrower,Bulldoze",#058,
+#060,Poliwag,Water,Pokémon Nòng Nọc,Poliwag có da mỏng nhưng cũng rất mềm dẻo đủ để giúp nó chống lại những chiếc răng nanh bén nhọn.,12.4,0.6,80,108,98,25,10.1,795,"Bubble,Mud Shot","Bubble Beam,Mud Bomb,Body Slam",,#061
+#061,Poliwhirl,Water,Pokémon Nòng Nọc,Bề mặt da của Poliwhirl khá trơn và nhầy giúp nó có thể trượt và tránh đòn dễ dàng trong chiến đấu.,20.0,1,130,132,132,100,17.6,1340,"Bubble,Mud Shot","Scald,Mud Bomb,Bubble Beam",#060,#062
+#062,Poliwrath,"Water,Fighting",Pokémon Nòng Nọc,Poliwrath có cơ bắp cực kì mạnh mẽ và không biết mệt mỏi giúp nó có thể dễ dàng bơi xuyên đại dương.,54.0,1.3,180,180,202,,33.8,2505,"Bubble,Mud Shot","Hydro Pump,Submission,Ice Punch",#061,
+#063,Abra,Psychic,Pokémon Tâm Linh,Abra ngủ 18 giờ một ngày nhưng nó vẫn có thể cảm nhận nguy hiểm xung quanh và dịch chuyển để bỏ chạy.,19.5,0.9,50,110,76,25,7.4,600,Zen Headbutt,"Psyshock,Signal Beam,Shadow Ball",,#064
+#064,Kadabra,Psychic,Pokémon Tâm Linh,"Kadabra luôn phát ra một luồng sóng alpha xung quanh nó gây nhức đầu cho người khác. Vì vậy, chỉ có những nhà huấn luyện có năng lực tâm linh mạnh mẽ mới điều khiển được nó.",56.5,1.3,80,150,112,100,14.6,1131,"Psycho Cut,Confusion","Psybeam,Dazzling Gleam,Shadow Ball",#063,#065
+#065,Alakazam,Psychic,Pokémon Tâm Linh,Não của Alakazam phát triển liên tục khiến cho đầu ngày càng to ra đến mức nó phải dùng năng lực tâm linh để nâng đầu lên.,48.0,1.5,110,186,152,,24.1,1813,"Psycho Cut,Confusion","Psychic,Dazzling Gleam,Shadow Ball",#064,
+#066,Machop,Fighting,Pokémon Sức Mạnh,Cơ bắp của Machop không bao giờ cảm thấy mệt mỏi trong khi sức mạnh của nó đủ để nâng hàng trăm người.,19.5,0.8,140,118,96,25,14.1,1089,"Low Kick,Karate Chop","Low Sweep,Brick Break,Cross Chop",,#067
+#067,Machoke,Fighting,Pokémon Sức Mạnh,Machoke luôn rèn luyện cơ bắp của nó trở nên cứng như thép. Nó có thể dễ dàng nâng một Sumo chỉ bằng một ngón tay.,70.5,1.5,160,154,144,100,23.4,1760,"Low Kick,Karate Chop","Submission,Brick Break,Cross Chop",#066,#068
+#068,Machamp,Fighting,Pokémon Sức Mạnh,Machamp có đủ sức mạnh để quăng bất cứ thứ gì. Nhưng do có bốn tay mà không suy nghĩ trước khi làm khiến tay của nó thường vướng với nhau.,130.0,1.6,180,198,180,,35,2594,"Bullet Punch,Karate Chop","Stone Edge,Submission,Cross Chop",#067,
+#069,Bellsprout,"Grass,Poison",Pokémon Hoa,"Với cơ thể nhỏ và mêm dẽo, Bellsprout có thể dễ dàng né tránh các đòn đánh. Còn miệng của nó thì có khả năng phun ra chất dịch có thể ăn mòn cả sắt.",4.0,0.7,100,158,78,25,14.4,1117,"Vine Whip,Acid","Power Whip,Sludge Bomb,Wrap",,#070
+#070,Weepinbell,"Grass,Poison",Pokémon Đớp Ruồi,Weepinbell có một cái móc nhỏ trên đầu giúp nó treo lơ lửng trên cây khi ngủ. Dù nó cỏ thể dễ dàng rơi xuống đất khi nhúc nhích.,6.4,1,130,190,110,100,22.8,1723,"Razor Leaf,Acid","Power Whip,Sludge Bomb,Seed Bomb",#069,#071
+#071,Victreebel,"Grass,Poison",Pokémon Đớp Ruồi,Victreebel có những sợi dây leo dài trên đầu giúp nó hấp dẫn con mồi và nuốt chửng chúng.,15.5,1.7,160,222,152,,34.1,2530,"Razor Leaf,Acid","Leaf Blade,Sludge Bomb,Solar Beam",#070,
+#072,Tentacool,"Water,Poison",Pokémon Sứa,Cơ thể của Tentacool được cấu thành từ nước và dễ dàng khô lại rong không khí nên chúng chỉ có thể sống dưới biển.,45.5,0.9,80,106,136,50,11.6,905,"Bubble,Poison Sting","Bubble Beam,Water Pulse,Wrap",,#073
+#073,Tentacruel,"Water,Poison",Pokémon Sứa,Hai quả cầu trên đầu Tentacruel có khả năng phát ra sóng siêu âm cực mạnh để tấn công đối thủ xung quanh.,55.0,1.6,160,170,196,,29.8,2220,"Acid,Poison Jab","Hydro Pump,Sludge Wave,Blizzard",#072,
+#074,Geodude,"Rock,Ground",Pokémon Đá,Geodude sống càng lâu thì cơ thể nó càng trở nên trơn và tròn.,20.0,0.4,80,106,118,25,10.8,849,"Rock Throw,Tackle","Rock Slide,Rock Tomb,Dig",,#075
+#075,Graveler,"Rock,Ground",Pokémon Đá,Graveler dùng đá làm thức ăn và ăn một lượng lớn mỗi ngày. Món yêu thích của nó là đá có rêu.,105.0,1,110,142,156,100,18.8,1433,"Rock Throw,Mud Shot","Dig,Stone Edge,Rock Slide",#074,#076
+#076,Golem,"Rock,Ground",Pokémon Siêu Trọng,Golem thường sống trên núi. Do ảnh hưởng của động đất mà chúng có thể lăn xuống núi và tàn phá tất cả trên đường đi.,300.0,1.4,160,176,198,,30.9,2303,"Rock Throw,Mud Shot","Stone Edge,Ancient Power,Earthquake",#075,
+#077,Ponyta,Fire,Pokémon Ngựa Lửa,Ponyta khá yếu khi còn nhỏ và dần trở nên mạnh hơn sau nhiều cố gắng để chạy theo mẹ của chúng.,30.0,1,100,168,138,50,20,1516,"Tackle,Ember","Flame Charge,Flame Wheel,Fire Blast",,#078
+#078,Rapidash,Fire,Pokémon Ngựa Lửa,Rapidash thường xuất hiện tại cánh đồng hoặc thảo nguyên. Chúng có thể phi cực nhanh bằng vào năng lượng toả ra từ cái bờm đầy lửa của mình.,95.0,1.7,130,200,170,,29.5,2199,"Low Kick,Ember","Fire Blast,Drill Run,Heat Wave",#077,
+#079,Slowpoke,"Water,Psychic",Pokémon Ngốc,Slowpoke dùng đuôi của nó để bắt cá nhưng nó rất hay quên và thường nằm cả ngày bên bờ sông.,36.0,1.2,180,110,110,50,15.9,1218,"Water Gun,Confusion","Water Pulse,Psyshock,Psychic",,#080
+#080,Slowbro,"Water,Psychic",Pokémon Cua,"Slowpoke tiến hoá thành Slowbro sau khi bị Shellder cắn vào đuôi nó. Vì vậy, nó không thể câu cá nữa mà phải tự bơi đi kiếm ăn.",78.5,1.6,190,184,198,,35.1,2597,"Water Gun,Confusion","Water Pulse,Psychic,Ice Beam",#079,
+#081,Magnemite,"Electric,Steel",Pokémon Nam Châm,Magnemite sống dựa trên các nguồn điện nên chúng thường bám vào các đường đây điện hoặc cấu chì.,6.0,0.3,50,128,138,50,11.3,890,"Spark,Thunder Shock","Discharge,Magnet Bomb,Thunderbolt",,#082
+#082,Magneton,"Electric,Steel",Pokémon Nam Châm,Magneton thường phóng ra các luồng từ tính mạng làm nhiễu sóng radio và gây hại tới các thiết bị điện tử.,60.0,1,100,186,180,,25,1879,"Spark,Thunder Shock","Discharge,Magnet Bomb,Flash Cannon",#081,
+#083,Farfetch'd,"Normal,Flying",PokémonVịt,Farfetch'd thường cầm một cây hành bên người để ăn cũng như làm vũ khí.,15.0,0.8,104,138,132,,16.5,1263,"Cut,Fury Cutter","Aerial Ace,Air Cutter,Leaf Blade",,
+#084,Doduo,"Normal,Flying",Pokémon Song Điểu,Hai đầu của Doduo luôn thay nhau ngủ để đề phòng kẻ thù xung quanh.,39.2,1.4,70,126,96,50,10.9,855,"Peck,Quick Attack","Drill Peck,Aerial Ace,Swift",,#085
+#085,Dodrio,"Normal,Flying",Pokémon Tam Điểu,Khi mà ba đầu của Dodrio nhìn theo ba hướng khác nhau thì tốt nhất không nên lại gần vì chúng đang rất cảnh giác xung quanh và có thể tấn công bạn.,85.2,1.8,120,182,150,,24.4,1836,"Feint Attack,Steel Wing","Drill Peck,Aerial Ace,Air Cutter",#084,
+#086,Seel,Water,Pokémon Sư Tử Biển,Seel thích sống và bơi trong môi trường lạnh. Chiếc sừng nhô ra ở đầu nó rất cứng và có thể xuyên thủng lớp băng dày.,90.0,1.1,130,104,138,50,14.3,1107,"Ice Shard,Water Gun","Aqua Jet,Icy Wind,Aqua Tail",,#087
+#087,Dewgong,"Water,Ice",Pokémon Sư Tử Biển,Dewgong thích ngủ trong môi trường băng lạnh. Thỉnh thoảng nó nằm trên những tảng băng trôi và từng bị nhìn nhầm là nàng tiên cá bởi các thủy thủ.,120.0,1.7,180,156,192,,28.7,2145,"Frost Breath,Ice Shard","Icy Wind,Aqua Jet,Blizzard",#086,
+#088,Grimer,Poison,Pokémon Bùn,"Cơ thể nhớt nhợt của Grimer có thể lách qua bất cứ khe hở nào, cho dù nó có nhỏ đến đâu. Nó thích uống nước thải từ các cống rãnh.",30.0,0.9,160,124,110,50,16.8,1284,"Acid,Mud Slap","Sludge,Mud Bomb,Sludge Bomb",,#089
+#089,Muk,Poison,Pokémon Bùn,Toàn bộ cơ thể của Muk được bao quanh bởi một lớp bùn quánh độc hại. Chỉ một giọt dịch cơ thể của nó cũng đủ làm ô nhiễm một hồ nước.,30.0,1.2,210,180,188,,35.1,2602,"Acid,Poison Jab","Dark Pulse,Gunk Shot,Sludge Wave",#088,
+#090,Shellder,Water,Pokémon Vỏ Sò,"Vỏ của Shellder cứng hơn cả kim cương, có thể chịu được mọi đòn tấn công. Vào ban đêm, nó dùng chiếc lưỡi để đào một hốc nhỏ trên bề mặt đáy biển để ngủ.",4.0,0.3,60,120,112,50,10.4,822,"Ice Shard,Tackle","Bubble Beam,Water Pulse,Icy Wind",,#091
+#091,Cloyster,"Water,Ice",Pokémon Vỏ Sò,Cloyster bơi bằng cách hút nước vào cơ thể rồi bơm ra ngoài theo các rãnh trên vỏ. Nó bắn các gai cũng bằng cơ chế này.,132.5,1.5,100,196,196,,27.4,2052,"Frost Breath,Ice Shard","Icy Wind,Hydro Pump,Blizzard",#090,
+#092,Gastly,"Ghost,Poison",Pokémon Khí Độc,Phần lớn cơ thể của Gastly là các loại khí gas. Nhưng vì vậy mà nó cũng có thể bị gió cuốn đi.,0.1,1.3,60,136,82,25,10.1,804,"Lick,Sucker Punch","Ominous Wind,Dark Pulse,Sludge Bomb",,#093
+#093,Haunter,"Ghost,Poison",Pokémon Khí Độc,,0.1,1.6,90,172,118,100,18,1380,"Shadow Claw,Lick","Shadow Ball,Dark Pulse,Sludge Bomb",#092,#094
+#094,Gengar,"Ghost,Poison",Pokémon Bóng,,40.5,1.5,120,204,156,,27.8,2078,"Sucker Punch,Shadow Claw","Shadow Ball,Dark Pulse,Sludge Wave",#093,
+#095,Onix,"Rock,Ground",Pokémon,,210.0,8.8,70,90,186,,10.9,857,"Rock Throw,Tackle","Rock Slide,Stone Edge,Iron Head",,
+#096,Drowzee,Psychic,Pokémon,,32.4,1,120,104,140,50,13.9,1075,"Pound,Confusion","Psybeam,Psyshock,Psychic",,
+#097,Hypno,Psychic,Pokémon,,75.6,1.6,170,162,196,,29.3,2184,"Zen Headbutt,Confusion","Psyshock,Psychic,Shadow Ball",,
+#098,Krabby,Water,Pokémon,,6.5,0.4,60,116,110,50,10,792,"Bubble,Mud Shot","Vice Grip,Bubble Beam,Water Pulse",,#099
+#099,Kingler,Water,Pokémon,,60.0,1.3,110,178,168,,24.2,1823,"Metal Claw,Mud Shot","Vice Grip,X Scissor,Water Pulse",#098,
+#100,Voltorb,Electric,Pokémon,,10.4,0.5,80,102,124,50,10.7,839,"Spark,Tackle","Discharge,Thunderbolt,Signal Beam",,#101
+#101,Electrode,Electric,Pokémon,,66.6,1.2,120,150,174,,21.8,1646,"Spark,Tackle","Discharge,Thunderbolt,Hyper Beam",#100,
+#102,Exeggcute,"Grass,Psychic",Pokémon,,2.5,0.4,120,110,132,50,14.2,1099,Confusion,"Seed Bomb,Psychic,Ancient Power",,#103
+#103,Exeggutor,"Grass,Psychic",Pokémon,,120.0,2,190,232,164,,40.1,2955,"Confusion,Zen Headbutt","Seed Bomb,Psychic,Solar Beam",#102,
+#104,Cubone,Ground,Pokémon,,6.5,0.4,100,102,150,50,13,1006,"Mud Slap,Rock Smash","Bone Club,Dig,Bulldoze",,#105
+#105,Marowak,Ground,Pokémon,,45.0,1,120,140,202,,21.9,1656,"Mud Slap,Rock Smash","Bone Club,Dig,Earthquake",#104,
+#106,Hitmonlee,Fighting,Pokémon,,49.8,1.5,100,148,172,,19.6,1492,"Low Kick,Rock Smash","Stomp,Low Sweep,Stone Edge",,
+#107,Hitmonchan,Fighting,Pokémon,,50.2,1.4,100,138,204,,19.9,1516,"Bullet Punch,Rock Smash","Fire Punch,Ice Punch,Thunder Punch,Brick Break",,
+#108,Lickitung,Normal,Pokémon,,65.5,1.2,180,126,160,,21.5,1626,"Lick,Zen Headbutt","Hyper Beam,Stomp,Power Whip",,
+#109,Koffing,Poison,Pokémon,,1.0,0.6,80,136,142,50,14.9,1151,"Acid,Tackle","Sludge,Sludge Bomb,Dark Pulse",,#110
+#110,Weezing,Poison,Pokémon,,9.5,1.2,130,190,198,,30.2,2250,"Acid,Tackle","Sludge Bomb,Shadow Ball,Dark Pulse",#109,
+#111,Rhyhorn,"Ground,Rock",Pokémon,,115.0,1,160,110,116,50,15.4,1182,"Mud Slap,Rock Smash","Bulldoze,Horn Attack,Stomp",,#112
+#112,Rhydon,"Ground,Rock",Pokémon,,120.0,1.9,210,166,160,,30.1,2243,"Mud Slap,Rock Smash","Megahorn,Earthquake,Stone Edge",#111,
+#113,Chansey,Normal,Pokémon,,34.6,1.1,500,40,60,,8,675,"Pound,Zen Headbutt","Psychic,Psybeam,Dazzling Gleam",,
+#114,Tangela,Grass,Pokémon,,35.0,1,130,164,152,,23.1,1739,Vine Whip,"Power Whip,Sludge Bomb,Solar Beam",,
+#115,Kangaskhan,Normal,Pokémon,,80.0,2.2,210,142,178,,27.3,2043,"Mud Slap,Low Kick","Brick Break,Earthquake,Stomp",,
+#116,Horsea,Water,Pokémon,,8.0,0.4,60,122,100,50,10,794,"Water Gun,Bubble","Bubble Beam,Dragon Pulse,Flash Cannon",,#117
+#117,Seadra,Water,Pokémon,,25.0,1.2,110,176,150,,22.7,1713,"Water Gun,Dragon Breath","Blizzard,Dragon Pulse,Hydro Pump",#116,
+#118,Goldeen,Water,Pokémon,,15.0,0.6,90,112,126,50,12.4,965,"Peck,Mud Shot","Water Pulse,Horn Attack,Aqua Tail",,#119
+#119,Seaking,Water,Pokémon,,39.0,1.3,160,172,160,,27.3,2043,"Peck,Poison Jab","Icy Wind,Drill Run,Megahorn",#118,
+#120,Staryu,Water,Pokémon,,34.5,0.8,60,130,128,50,12,937,"Quick Attack,Water Gun","Swift,Bubble Beam,Power Gem",,#121
+#121,Starmie,"Water,Psychic",Pokémon,,80.0,1.1,120,194,192,,29.2,2182,"Quick Attack,Water Gun","Hydro Pump,Power Gem,Psybeam",#120,
+#122,Mr. Mime,"Psychic,Fairy",Pokémon,,54.5,1.3,80,154,196,,19.6,1494,"Confusion,Zen Headbutt","Psybeam,Psychic,Shadow Ball",,
+#123,Scyther,"Bug,Flying",Pokémon,,56.0,1.5,140,176,180,,27.7,2073,"Fury Cutter,Steel Wing","Night Slash,X Scissor,Bug Buzz",,
+#124,Jynx,"Ice,Psychic",Pokémon,,40.6,1.4,130,172,134,,22.8,1716,"Frost Breath,Pound","Draining Kiss,Ice Punch,Psyshock",,
+#125,Electabuzz,Electric,Pokémon,,30.0,1.1,130,198,160,,28.3,2119,"Thunder Shock,Low Kick","Thunder Punch,Thunderbolt,Thunder",,
+#126,Magmar,Fire,Pokémon,,44.5,1.3,130,214,158,,30.4,2265,"Ember,Karate Chop","Fire Blast,Fire Punch,Flamethrower",,
+#127,Pinsir,Bug,Pokémon,,55.0,1.5,130,184,186,,28.4,2121,"Rock Smash,Fury Cutter","Vice Grip,X Scissor,Submission",,
+#128,Tauros,Normal,Pokémon,,88.4,1.4,150,148,184,,24.5,1844,"Tackle,Zen Headbutt","Horn Attack,Iron Head,Earthquake",,
+#129,Magikarp,Water,Pokémon,,10.0,0.9,40,42,84,400,3,262,Splash,Struggle,,#130
+#130,Gyarados,"Water,Flying",Pokémon,,235.0,6.5,190,192,196,,36.4,2688,"Dragon Breath,Bite","Hydro Pump,Twister,Dragon Pulse",#129,
+#131,Lapras,"Water,Ice",Pokémon,,220.0,2.5,260,186,190,,40.4,2980,"Frost Breath,Ice Shard","Dragon Pulse,Ice Beam,Blizzard",,
+#132,Ditto,Normal,Pokémon,,4.0,0.3,96,110,110,,11.8,919,Pound,Struggle,,
+#133,Eevee,Normal,Pokémon,,6.5,0.3,110,114,128,25,13.9,1077,"Quick Attack,Tackle","Dig,Swift,Body Slam",,"#134,#135,#136"
+#134,Vaporeon,Water,Pokémon,,29.0,1,260,186,168,,38.1,2816,Water Gun,"Water Pulse,Hydro Pump,Aqua Tail",#133,
+#135,Jolteon,Electric,Pokémon,,24.5,0.8,130,192,174,,28.6,2140,Thunder Shock,"Discharge,Thunderbolt,Thunder",#133,
+#136,Flareon,Fire,Pokémon,,25.0,0.9,130,238,178,,35.6,2643,Ember,"Fire Blast,Flamethrower,Heat Wave",#133,
+#137,Porygon,Normal,Pokémon,,36.5,0.8,130,156,158,,22.4,1691,"Quick Attack,Tackle","Psybeam,Signal Beam,Discharge",,
+#138,Omanyte,"Rock,Water",Pokémon,,7.5,0.4,70,132,160,50,14.4,1119,"Water Gun,Mud Shot","Ancient Power,Brine,Rock Tomb",,#139
+#139,Omastar,"Rock,Water",Pokémon,,35.0,1,140,180,202,,30,2233,"Rock Throw,Water Gun","Ancient Power,Hydro Pump,Rock Slide",#138,
+#140,Kabuto,"Rock,Water",Pokémon,,11.5,0.5,60,148,142,50,14.2,1104,"Scratch,Mud Shot","Ancient Power,Aqua Jet,Rock Tomb",,#141
+#141,Kabutops,"Rock,Water",Pokémon,,40.5,1.3,120,190,190,,28.5,2130,"Mud Shot,Fury Cutter","Ancient Power,Water Pulse,Stone Edge",#140,
+#142,Aerodactyl,"Rock,Flying",Pokémon,,59.0,1.8,160,182,162,,29,2165,"Steel Wing,Bite","Ancient Power,Iron Head,Hyper Beam",,
+#143,Snorlax,Normal,Pokémon,,460.0,2.1,320,180,180,,42.2,3112,"Zen Headbutt,Lick","Body Slam,Hyper Beam,Earthquake",,
+#144,Articuno,"Ice,Flying",Pokémon,,55.4,1.7,180,198,242,,40.4,2978,Frost Breath,"Ice Beam,Icy Wind,Blizzard",,
+#145,Zapdos,"Electric,Flying",Pokémon,,52.6,1.6,180,232,194,,42.3,3114,Thunder Shock,"Discharge,Thunderbolt,Thunder",,
+#146,Moltres,"Fire,Flying",Pokémon,,60.0,2,180,242,194,,44.1,3240,Ember,"Fire Blast,Heat Wave,Flamethrower",,
+#147,Dratini,Dragon,Pokémon,,3.3,1.8,82,128,110,25,12.6,983,Dragon Breath,"Wrap,Twister,Aqua Tail",,#148
+#148,Dragonair,Dragon,Pokémon,,16.5,4,122,170,152,100,23.2,1747,Dragon Breath,"Wrap,Aqua Tail,Dragon Pulse",#147,#149
+#149,Dragonite,"Dragon,Flying",Pokémon,,210.0,2.2,182,250,212,,47.7,3500,"Dragon Breath,Steel Wing","Dragon Pulse,Hyper Beam,Dragon Claw",#148,
+#150,Mewtwo,Psychic,Pokémon,,122.0,2,212,284,202,,56.8,4144,"Psycho Cut,Confusion","Psychic,Shadow Ball,Hyper Beam",,
+#151,Mew,Psychic,Pokémon,,4.0,0.4,200,220,220,,44.9,3299,Pound,"Hurricane,Earthquake,Psychic,Dragon Pulse,Thunder,Moonblast,Fire Blast,Solar Beam,Hyper Beam",,

@@ -1,0 +1,1 @@
+Copy data in this folder to ~\EWiki\EWiki.Api\bin\Debug\netcoreapp1.0

@@ -1,0 +1,19 @@
+﻿#,Type,Locations,Description
+1,Normal,"Khu Dân Cư,Trường Học",
+2,Fire,"Khu Dân Cư,Thành Phố,Khí Hậu Nóng,Khí Hậu Ẩm,Bãi Biển,Công Viên",
+3,Water,"Kênh,Hồ,Biển,Sông,Đầm Lầy,Cảng,Bể Nước",
+4,Electric,"Khu Công Nghiệp,Khu Dân Cư,Trường Học,Đường,Khu Mua Sắm",
+5,Grass,"Công Viên,Khu Nông Nghiệp,Rừng,Đường,Vườn,Sân Gôn,Bãi Cỏ,Khu Bảo Tồn Thiên Nhiên",
+6,Ice,"Gần Nước,Khí Hậu Lạnh, Đồng Cỏ",
+7,Fighting,"Gym,Sân Vận Động,Khu Giải Trí",
+8,Poison,"Khu Công Nghiệp,Hồ,Đầm Lầy",
+9,Ground,"Công Viên,Mỏ,Khu Nông Nghiệp,Sân Gôn",
+10,Flying,"Khu Công Nghiệp,Rừng,Bãi Cỏ,Khu Bảo Tồn Thiên Nhiên,Khu Giải Trí,Công Viên,Vườn",
+11,Psychic,"Khu Dân Cư(Đêm),Bệnh Viện,Bãi Cỏ",Trừ Mew và Mewtwo chỉ xuất hiện trong các sự kiện đặc biệt
+12,Bug,"Công Viên,Khu Nông Nghiệp,Rừng,Vườn, Sân Gôn,Bãi Cỏ,Khu Bảo Tồn Thiên Nhiên",
+13,Rock,"Mỏ,Khu Nông Nghiệp,Thành Phố,Đường,Khu Bảo Tồn Thiên Nhiên",
+14,Ghost,"Nhà Thờ,Khu Dân Cư(Đêm),Nghĩa Trang",
+15,Dragon,"Sân Gôn,Địa Danh,Khu Du Lịch",
+16,Dark,,Chưa xác định
+17,Steel,"Toà Nhà,Đường",
+18,Fairy,"Nhà Thờ,Địa Danh,Khu Du Lịch,Nghĩa Trang",
