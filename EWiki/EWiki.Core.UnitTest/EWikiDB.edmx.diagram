@@ -5,57 +5,60 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="022538774a5e442e99eddd6ae61690c3" Name="Diagram1">
-        <EntityTypeShape EntityType="EWikiModel.Archive" Width="1.5" PointX="17.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.BlockedIp" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Category" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterInfoGroup" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterInfo" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Character" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterSectionGroup" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterSection" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.FileArchive" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.InfoValue" Width="1.5" PointX="7.5" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Location" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Move" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.PageContent" Width="1.5" PointX="15" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.PageLang" Width="1.5" PointX="14.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.PageMeta" Width="1.5" PointX="14.25" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.PageRestriction" Width="1.5" PointX="14.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Page" Width="1.5" PointX="12" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.ProtectedTitle" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.RecentChanx" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Reference" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Revision" Width="1.5" PointX="17.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Site" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.Tag" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.UserMeta" Width="1.5" PointX="11.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.UserNewtalk" Width="1.5" PointX="13.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.WatchList" Width="1.5" PointX="15.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.WikiImage" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWikiModel.WikiVideo" Width="1.5" PointX="3" PointY="34" IsExpanded="true" />
-        <AssociationConnector Association="EWikiModel.FK_Archives_PageContents_ContentId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_BlockedIps_BlockedIps_BlockedIpId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Categories_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterInfoGroups_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterInfos_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterSectionGroups_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterSections_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Locations_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Moves_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Moves_Characters_CharacterId1" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_References_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_WikiImages_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_WikiImages_Characters_CharacterId1" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_WikiVideos_Characters_CharacterId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Revisions_PageContents_PageContentId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_PageLangs_Pages_PageId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_PageMetas_Pages_PageId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_PageRestrictions_Pages_PageResctrictedId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Pages_Tags_TagId" ManuallyRouted="false" />
-        <AssociationConnector Association="EWikiModel.FK_Revisions_Pages_PageId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EWikiModel.Archive" Width="1.5" PointX="18.25" PointY="1.75" />
+        <EntityTypeShape EntityType="EWikiModel.BlockedIp" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.Category" Width="1.5" PointX="0.75" PointY="15.875" />
+        <EntityTypeShape EntityType="EWikiModel.CharacterInfoGroup" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="EWikiModel.CharacterInfo" Width="1.5" PointX="10.5" PointY="21.5" />
+        <EntityTypeShape EntityType="EWikiModel.Character" Width="1.5" PointX="3" PointY="23" />
+        <EntityTypeShape EntityType="EWikiModel.CharacterSectionGroup" Width="1.5" PointX="5.25" PointY="33.875" />
+        <EntityTypeShape EntityType="EWikiModel.CharacterSection" Width="1.5" PointX="7.5" PointY="28.125" />
+        <EntityTypeShape EntityType="EWikiModel.FileArchive" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.InfoValue" Width="1.5" PointX="12.75" PointY="21.75" />
+        <EntityTypeShape EntityType="EWikiModel.Location" Width="1.5" PointX="8.25" PointY="21.625" />
+        <EntityTypeShape EntityType="EWikiModel.Move" Width="1.5" PointX="8.25" PointY="15.875" />
+        <EntityTypeShape EntityType="EWikiModel.PageContent" Width="1.5" PointX="16" PointY="3.5" />
+        <EntityTypeShape EntityType="EWikiModel.PageLang" Width="1.5" PointX="15.25" PointY="8" />
+        <EntityTypeShape EntityType="EWikiModel.PageMeta" Width="1.5" PointX="15.25" PointY="11.5" />
+        <EntityTypeShape EntityType="EWikiModel.PageRestriction" Width="1.5" PointX="15.25" PointY="15" />
+        <EntityTypeShape EntityType="EWikiModel.Page" Width="1.5" PointX="13" PointY="6.625" />
+        <EntityTypeShape EntityType="EWikiModel.ProtectedTitle" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.RecentChanx" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EWikiModel.Reference" Width="1.5" PointX="5.25" PointY="29.625" />
+        <EntityTypeShape EntityType="EWikiModel.Revision" Width="1.5" PointX="18.25" PointY="7.125" />
+        <EntityTypeShape EntityType="EWikiModel.Site" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.Tag" Width="1.5" PointX="10.75" PointY="7.125" />
+        <EntityTypeShape EntityType="EWikiModel.UserMeta" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EWikiModel.UserNewtalk" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EWikiModel.WatchList" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.WikiImage" Width="1.5" PointX="5.25" PointY="20.125" />
+        <EntityTypeShape EntityType="EWikiModel.WikiVideo" Width="1.5" PointX="5.25" PointY="25.125" />
+        <AssociationConnector Association="EWikiModel.FK_Archives_PageContents_ContentId" />
+        <AssociationConnector Association="EWikiModel.FK_BlockedIps_BlockedIps_BlockedIpId" />
+        <AssociationConnector Association="EWikiModel.FK_Locations_Categories_LocationType" />
+        <AssociationConnector Association="EWikiModel.FK_Moves_Categories_MoveCategoryId" />
+        <AssociationConnector Association="EWikiModel.FK_Moves_Categories_MoveType" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterInfoGroups_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterInfos_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterSectionGroups_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterSections_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_References_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_WikiImages_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_WikiImages_Characters_CharacterId1" />
+        <AssociationConnector Association="EWikiModel.FK_WikiVideos_Characters_CharacterId" />
+        <AssociationConnector Association="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" />
+        <AssociationConnector Association="EWikiModel.FK_Revisions_PageContents_PageContentId" />
+        <AssociationConnector Association="EWikiModel.FK_PageLangs_Pages_PageId" />
+        <AssociationConnector Association="EWikiModel.FK_PageMetas_Pages_PageId" />
+        <AssociationConnector Association="EWikiModel.FK_PageRestrictions_Pages_PageResctrictedId" />
+        <AssociationConnector Association="EWikiModel.FK_Pages_Tags_TagId" />
+        <AssociationConnector Association="EWikiModel.FK_Revisions_Pages_PageId" />
+        <AssociationConnector Association="EWikiModel.PokemonLocation" />
+        <AssociationConnector Association="EWikiModel.PokemonMove" />
+        <AssociationConnector Association="EWikiModel.PokemonSpecialMove" />
+        <AssociationConnector Association="EWikiModel.Type" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,9 +8,10 @@ using EWiki.Api.DataAccess;
 namespace EWiki.Api.Migrations
 {
     [DbContext(typeof(EWikiContext))]
-    partial class EWikiContextModelSnapshot : ModelSnapshot
+    [Migration("20160911171833_UpdateEntity")]
+    partial class UpdateEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -429,9 +430,11 @@ namespace EWiki.Api.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("LocationType");
+                    b.Property<int?>("LocationTypeId");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("TypeId");
 
                     b.Property<DateTime?>("UpdatedDate");
 
@@ -441,7 +444,7 @@ namespace EWiki.Api.Migrations
 
                     b.HasIndex("CreatedUserId");
 
-                    b.HasIndex("LocationType");
+                    b.HasIndex("LocationTypeId");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -452,6 +455,8 @@ namespace EWiki.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoryId");
 
                     b.Property<float>("Cooldown");
 
@@ -467,11 +472,13 @@ namespace EWiki.Api.Migrations
 
                     b.Property<int?>("MoveCategoryId");
 
-                    b.Property<int?>("MoveType");
+                    b.Property<int?>("MoveTypeId");
 
                     b.Property<string>("Name");
 
                     b.Property<float>("Power");
+
+                    b.Property<int>("TypeId");
 
                     b.Property<DateTime?>("UpdatedDate");
 
@@ -485,7 +492,7 @@ namespace EWiki.Api.Migrations
 
                     b.HasIndex("MoveCategoryId");
 
-                    b.HasIndex("MoveType");
+                    b.HasIndex("MoveTypeId");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -1485,7 +1492,7 @@ namespace EWiki.Api.Migrations
 
                     b.HasOne("EWiki.Api.Models.Category", "Type")
                         .WithMany()
-                        .HasForeignKey("LocationType");
+                        .HasForeignKey("LocationTypeId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
@@ -1504,7 +1511,7 @@ namespace EWiki.Api.Migrations
 
                     b.HasOne("EWiki.Api.Models.Category", "Type")
                         .WithMany()
-                        .HasForeignKey("MoveType");
+                        .HasForeignKey("MoveTypeId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()

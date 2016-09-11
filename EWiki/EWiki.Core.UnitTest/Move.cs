@@ -14,10 +14,14 @@ namespace EWiki.UnitTest
     
     public partial class Move
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Move()
+        {
+            this.Characters = new HashSet<Character>();
+            this.Characters1 = new HashSet<Character>();
+        }
+    
         public int Id { get; set; }
-        public string Category { get; set; }
-        public Nullable<int> CharacterId { get; set; }
-        public Nullable<int> CharacterId1 { get; set; }
         public float Cooldown { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
@@ -26,12 +30,17 @@ namespace EWiki.UnitTest
         public int Energy { get; set; }
         public string Name { get; set; }
         public float Power { get; set; }
-        public string Type { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
         public float WithSTAB { get; set; }
+        public Nullable<int> MoveCategoryId { get; set; }
+        public Nullable<int> MoveType { get; set; }
     
-        public virtual Character Character { get; set; }
-        public virtual Character Character1 { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Category Category1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Character> Characters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Character> Characters1 { get; set; }
     }
 }
