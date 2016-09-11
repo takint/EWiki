@@ -25,13 +25,13 @@ namespace EWiki.Api.Models
         public string EvolveIntos { get; set; }
 
         [ForeignKey("EvolveFromId")]
-        virtual public Character EvolveFrom { get; set; }
+        public virtual Character EvolveFrom { get; set; }
         // Location get from location data based on type
-        virtual public ICollection<Location> Locations { get; set; }
-        virtual public ICollection<Move> NormalMoves { get; set; }
-        virtual public ICollection<Move> SpecialMoves { get; set; }
-        virtual public ICollection<Character> EvolveInto { get; set; }
-        virtual public ICollection<Category> Types { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
+        public virtual ICollection<Move> NormalMoves { get; set; }
+        public virtual ICollection<Move> SpecialMoves { get; set; }
+        public virtual ICollection<Character> EvolveInto { get; set; }
+        public virtual ICollection<Category> Types { get; set; }
         public virtual ICollection<WikiImage> Avatars { get; set; }
         public virtual ICollection<CharacterInfoGroup> CharacterInfoGroups { get; set; }
         public virtual ICollection<CharacterSectionGroup> CharacterSectionGroups { get; set; }

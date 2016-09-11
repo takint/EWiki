@@ -21,6 +21,7 @@ namespace EWiki.Api.Controllers
         public async Task<JsonResult> Get()
         {
             IEnumerable<Character> result = await pokedexRepository.GetAllAsync();
+            result = result.OrderBy(r => r.Number);
             return Json(result);
         }
 

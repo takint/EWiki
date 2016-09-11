@@ -1,7 +1,9 @@
 ﻿using EWiki.Api.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.IO;
 
 namespace EWiki.Api.DataAccess
 {
@@ -45,7 +47,12 @@ namespace EWiki.Api.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=EWiki;User ID=sa;Password=123");
+            IConfigurationRoot config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            optionsBuilder.UseSqlServer(config.GetSection("Data:DefaultConnection:ConnectionString").Value);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
