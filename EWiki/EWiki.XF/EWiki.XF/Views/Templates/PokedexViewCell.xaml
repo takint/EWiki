@@ -30,7 +30,7 @@
         <Label Text="{Binding Name}" FontSize="22" FontAttributes="Bold" TextColor="#45686E" Grid.Row="0"
                Margin="5,0,0,0"
                Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" />
-        <Label Text="Pokemon Hạt Giống" FontSize="12" TextColor="#45686E" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
+        <Label Text="{Binding Species}" FontSize="12" TextColor="#45686E" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
                Grid.ColumnSpan="2"
                VerticalOptions="Center" />
         <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0,0"
@@ -41,7 +41,7 @@
                    VerticalOptions="Center" />
             <ffimageloading:CachedImage Source="Candy.png" Margin="5,2,0,0"
                                         VerticalOptions="Center" HeightRequest="16" />
-            <Label Text="100" FontSize="12" TextColor="#45686E" FontAttributes="Bold" Margin="0,2,0,0"
+            <Label Text="{Binding Candy}" FontSize="12" TextColor="#45686E" FontAttributes="Bold" Margin="0,2,0,0"
                    VerticalOptions="Center" />
         </StackLayout>
         <StackLayout Orientation="Horizontal" Margin="5,0,0,5" Grid.Row="3" Grid.Column="1"

@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using EWiki.XF.Service.Models;
 using EWiki.XF.Service.Requests.Pokemon;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace EWiki.XF.Service
 {
@@ -13,6 +15,7 @@ namespace EWiki.XF.Service
 
     public class PokemonService : IPokemonService
     {
+        HttpClient client = new HttpClient();
         public PokemonService()
         {
 
@@ -20,16 +23,8 @@ namespace EWiki.XF.Service
 
         public async Task<List<PokemonSM>> GetPokemons(GetPokemonsRq rq)
         {
-            var pokemons = new List<PokemonSM>()
-                {
-                    new PokemonSM()
-                    {
-                        Name = "Bulbasaur",
-                        Description = "Trên lưng của Bulbasaur có một hạt giống có thể nở nhờ ánh sáng nên nó thường ngủ trưa dưới ánh mặt trời. ",
-                        Avatar = "p002.png",
-                        MaxCP = 1530
-                    }
-                };
+            var response = await client.GetStringAsync("http://192.168.1.9:2675/api/pokedex");
+            var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
             return pokemons;
         }
 

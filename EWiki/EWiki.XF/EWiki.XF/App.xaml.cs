@@ -17,7 +17,7 @@ namespace EWiki.XF
 
             InitializeComponent();
 
-            NavigationService.NavigateAsync("LeftMenu/Navigation/PokemonInfoPage");
+            NavigationService.NavigateAsync("LeftMenu/Navigation/MainPage");
         }
 
         protected override void RegisterTypes()
