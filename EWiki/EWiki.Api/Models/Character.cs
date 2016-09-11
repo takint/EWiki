@@ -21,17 +21,16 @@ namespace EWiki.Api.Models
         public float? CPGain { get; set; }
         public float? MaxCP { get; set; }
         public string Description { get; set; }
-        public int? EvolveFromId { get; set; }
         public string EvolveIntos { get; set; }
 
         [ForeignKey("EvolveFromId")]
         public virtual Character EvolveFrom { get; set; }
         // Location get from location data based on type
-        public virtual ICollection<Location> Locations { get; set; }
-        public virtual ICollection<Move> NormalMoves { get; set; }
-        public virtual ICollection<Move> SpecialMoves { get; set; }
+        public virtual ICollection<PokemonLocation> Locations { get; set; }
+        public virtual ICollection<PokemonMove> NormalMoves { get; set; }
+        public virtual ICollection<PokemonSpecialMove> SpecialMoves { get; set; }
         public virtual ICollection<Character> EvolveInto { get; set; }
-        public virtual ICollection<Category> Types { get; set; }
+        public virtual ICollection<PokemonType> Types { get; set; }
         public virtual ICollection<WikiImage> Avatars { get; set; }
         public virtual ICollection<CharacterInfoGroup> CharacterInfoGroups { get; set; }
         public virtual ICollection<CharacterSectionGroup> CharacterSectionGroups { get; set; }

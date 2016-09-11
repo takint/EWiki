@@ -17,18 +17,18 @@ namespace EWiki.UnitTest
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Character()
         {
-            this.Categories = new HashSet<Category>();
             this.CharacterInfoGroups = new HashSet<CharacterInfoGroup>();
             this.CharacterInfos = new HashSet<CharacterInfo>();
             this.CharacterSectionGroups = new HashSet<CharacterSectionGroup>();
             this.CharacterSections = new HashSet<CharacterSection>();
-            this.Locations = new HashSet<Location>();
-            this.Moves = new HashSet<Move>();
-            this.Moves1 = new HashSet<Move>();
             this.References = new HashSet<Reference>();
             this.WikiImages = new HashSet<WikiImage>();
             this.WikiImages1 = new HashSet<WikiImage>();
             this.WikiVideos = new HashSet<WikiVideo>();
+            this.Locations = new HashSet<Location>();
+            this.Moves = new HashSet<Move>();
+            this.Moves1 = new HashSet<Move>();
+            this.Categories = new HashSet<Category>();
         }
     
         public int Id { get; set; }
@@ -53,8 +53,6 @@ namespace EWiki.UnitTest
         public string EvolveIntos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CharacterInfoGroup> CharacterInfoGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CharacterInfo> CharacterInfos { get; set; }
@@ -63,12 +61,6 @@ namespace EWiki.UnitTest
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CharacterSection> CharacterSections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Move> Moves { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Move> Moves1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reference> References { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WikiImage> WikiImages { get; set; }
@@ -76,5 +68,13 @@ namespace EWiki.UnitTest
         public virtual ICollection<WikiImage> WikiImages1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WikiVideo> WikiVideos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Location> Locations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Move> Moves { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Move> Moves1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace EWiki.Api.Controllers
         [HttpGet]
         public async Task<JsonResult> Get()
         {
-            IEnumerable<Character> result = await pokedexRepository.GetAllAsync();
+            IEnumerable<Character> result = await pokedexRepository.AllIncludingAsync(c => c.Types);
             result = result.OrderBy(r => r.Number);
             return Json(result);
         }
