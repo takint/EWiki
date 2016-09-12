@@ -30,6 +30,13 @@ namespace EWiki.XF.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
+
+            StartLocationFeeder();
+        }
+
+        private void StartLocationFeeder()
+        {
+            
         }
     }
 

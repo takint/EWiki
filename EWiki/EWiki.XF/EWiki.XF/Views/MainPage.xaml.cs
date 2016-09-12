@@ -17,7 +17,7 @@ namespace EWiki.XF.Views
             {
                 Icon = "lnr-magic-wand"
             });
-            Children.Add(new ContentPage()
+            Children.Add(new LocationFeederTab()
             {
                 Icon = "lnr-map-marker"
             });
