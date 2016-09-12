@@ -41,6 +41,7 @@
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
     <Compile Include="ExtendedControls\ExtendedScrollView.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Models\LeftMenuItem.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

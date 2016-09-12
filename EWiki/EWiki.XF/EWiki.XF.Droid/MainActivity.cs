@@ -1,15 +1,18 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using EWiki.XF.Droid.Services;
 using EWiki.XF.Droid.Utils.IconizeModules;
 using FormsPlugin.Iconize.Droid;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Xamarin.Forms;
 
 namespace EWiki.XF.Droid
 {
@@ -32,11 +35,25 @@ namespace EWiki.XF.Droid
             LoadApplication(new App(new AndroidInitializer()));
 
             StartLocationFeeder();
+            SetupBackgroundServices();
         }
 
         private void StartLocationFeeder()
         {
             
+        }
+
+        private void SetupBackgroundServices()
+        {
+            MessagingCenter.Subscribe<StartTestBackgroundServiceMessage>(this, "StartTestBackgroundService", message => {
+                var intent = new Intent(this, typeof(TestBackgroundService));
+                StartService(intent);
+            });
+
+            MessagingCenter.Subscribe<StopTestBackgroundServiceMessage>(this, "StopTestBackgroundService", message => {
+                var intent = new Intent(this, typeof(TestBackgroundService));
+                StopService(intent);
+            });
         }
     }
 

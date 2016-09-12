@@ -11,6 +11,7 @@ using EWiki.XF.Service.Requests.Pokemon;
 using Prism.Commands;
 using Prism.Navigation;
 using EWiki.XF.AppServices;
+using Xamarin.Forms;
 
 namespace EWiki.XF.ViewModels
 {
@@ -35,6 +36,12 @@ namespace EWiki.XF.ViewModels
             _locationFeederService = locationFeederService;
             RefreshCommand = DelegateCommand.FromAsyncHandler(ExecuteRefreshCommand, CanExecuteRefreshCommand);
             LoadMoreCommand = DelegateCommand<Pokemon>.FromAsyncHandler(ExecuteLoadMoreCommand, CanExecuteLoadMoreCommand);
+
+            // Subscribe to PokemonResultFetched message to update UI base on continuously fetched results
+            MessagingCenter.Subscribe<PokemonResultFetchedMessage>(this, "PokemonResultFetched", message =>
+            {
+                var xxx = message.Pokemons;
+            });
         }
 
         public bool CanExecuteRefreshCommand()

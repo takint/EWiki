@@ -4,6 +4,7 @@ using Prism.Unity;
 using EWiki.XF.Views;
 using EWiki.XF.Views.PokemonInfoElements;
 using Microsoft.Practices.Unity;
+using Xamarin.Forms;
 
 namespace EWiki.XF
 {
@@ -29,6 +30,12 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterType<IPokemonService, PokemonService>();
+        }
+
+        protected override void OnStart()
+        {
+            var message = new StartTestBackgroundServiceMessage();
+            MessagingCenter.Send(message, "StartTestBackgroundService");
         }
     }
 }
