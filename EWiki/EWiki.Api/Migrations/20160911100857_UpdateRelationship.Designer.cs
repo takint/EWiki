@@ -8,9 +8,10 @@ using EWiki.Api.DataAccess;
 namespace EWiki.Api.Migrations
 {
     [DbContext(typeof(EWikiContext))]
-    partial class EWikiContextModelSnapshot : ModelSnapshot
+    [Migration("20160911100857_UpdateRelationship")]
+    partial class UpdateRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -423,15 +424,17 @@ namespace EWiki.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CharacterId");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("CreatedUserId");
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("LocationType");
-
                     b.Property<string>("Name");
+
+                    b.Property<string>("Type");
 
                     b.Property<DateTime?>("UpdatedDate");
 
@@ -439,9 +442,9 @@ namespace EWiki.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedUserId");
+                    b.HasIndex("CharacterId");
 
-                    b.HasIndex("LocationType");
+                    b.HasIndex("CreatedUserId");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -452,6 +455,12 @@ namespace EWiki.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Category");
+
+                    b.Property<int?>("CharacterId");
+
+                    b.Property<int?>("CharacterId1");
 
                     b.Property<float>("Cooldown");
 
@@ -465,13 +474,11 @@ namespace EWiki.Api.Migrations
 
                     b.Property<int>("Energy");
 
-                    b.Property<int?>("MoveCategoryId");
-
-                    b.Property<int?>("MoveType");
-
                     b.Property<string>("Name");
 
                     b.Property<float>("Power");
+
+                    b.Property<string>("Type");
 
                     b.Property<DateTime?>("UpdatedDate");
 
@@ -481,11 +488,11 @@ namespace EWiki.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CharacterId");
+
+                    b.HasIndex("CharacterId1");
+
                     b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("MoveCategoryId");
-
-                    b.HasIndex("MoveType");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -652,51 +659,6 @@ namespace EWiki.Api.Migrations
                     b.HasIndex("UpdatedUserId");
 
                     b.ToTable("PageRestrictions");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonLocation", b =>
-                {
-                    b.Property<int>("CharacterId");
-
-                    b.Property<int>("LocationId");
-
-                    b.HasKey("CharacterId", "LocationId");
-
-                    b.HasIndex("CharacterId");
-
-                    b.HasIndex("LocationId");
-
-                    b.ToTable("PokemonLocation");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonMove", b =>
-                {
-                    b.Property<int>("CharacterId");
-
-                    b.Property<int>("MoveId");
-
-                    b.HasKey("CharacterId", "MoveId");
-
-                    b.HasIndex("CharacterId");
-
-                    b.HasIndex("MoveId");
-
-                    b.ToTable("PokemonMove");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonSpecialMove", b =>
-                {
-                    b.Property<int>("CharacterId");
-
-                    b.Property<int>("MoveId");
-
-                    b.HasKey("CharacterId", "MoveId");
-
-                    b.HasIndex("CharacterId");
-
-                    b.HasIndex("MoveId");
-
-                    b.ToTable("PokemonSpecialMove");
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.PokemonType", b =>
@@ -1479,13 +1441,13 @@ namespace EWiki.Api.Migrations
 
             modelBuilder.Entity("EWiki.Api.Models.Location", b =>
                 {
+                    b.HasOne("EWiki.Api.Models.Character")
+                        .WithMany("Locations")
+                        .HasForeignKey("CharacterId");
+
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.Category", "Type")
-                        .WithMany()
-                        .HasForeignKey("LocationType");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
@@ -1494,17 +1456,17 @@ namespace EWiki.Api.Migrations
 
             modelBuilder.Entity("EWiki.Api.Models.Move", b =>
                 {
+                    b.HasOne("EWiki.Api.Models.Character")
+                        .WithMany("NormalMoves")
+                        .HasForeignKey("CharacterId");
+
+                    b.HasOne("EWiki.Api.Models.Character")
+                        .WithMany("SpecialMoves")
+                        .HasForeignKey("CharacterId1");
+
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.Category", "MoveCategory")
-                        .WithMany()
-                        .HasForeignKey("MoveCategoryId");
-
-                    b.HasOne("EWiki.Api.Models.Category", "Type")
-                        .WithMany()
-                        .HasForeignKey("MoveType");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
@@ -1582,45 +1544,6 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
                         .HasForeignKey("UpdatedUserId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonLocation", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.Character", "Pokemon")
-                        .WithMany("Locations")
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EWiki.Api.Models.Location", "PokeLocation")
-                        .WithMany("PokemonLocations")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonMove", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.Character", "Pokemon")
-                        .WithMany("NormalMoves")
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EWiki.Api.Models.Move", "PokeMove")
-                        .WithMany("PokemoMoves")
-                        .HasForeignKey("MoveId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.PokemonSpecialMove", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.Character", "Pokemon")
-                        .WithMany("SpecialMoves")
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EWiki.Api.Models.Move", "PokeSpecialMove")
-                        .WithMany("PokemoSpecialMoves")
-                        .HasForeignKey("MoveId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.PokemonType", b =>

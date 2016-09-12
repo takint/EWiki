@@ -14,16 +14,23 @@ namespace EWiki.UnitTest
     
     public partial class Location
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Location()
+        {
+            this.Characters = new HashSet<Character>();
+        }
+    
         public int Id { get; set; }
-        public Nullable<int> CharacterId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
-        public string Type { get; set; }
+        public Nullable<int> LocationType { get; set; }
     
-        public virtual Character Character { get; set; }
+        public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Character> Characters { get; set; }
     }
 }

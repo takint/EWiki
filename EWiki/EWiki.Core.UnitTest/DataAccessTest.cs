@@ -30,7 +30,7 @@ namespace EWiki.UnitTest
         private void ImportTypes()
         {
             LoadOptions loadOptions = new LoadOptions(LoadFormat.CSV);
-            Workbook csvPokedexType = new Workbook("..//Types.csvPokedex", loadOptions);
+            Workbook csvPokedexType = new Workbook("..//Types.csv", loadOptions);
 
             if (csvPokedexType != null)
             {
@@ -60,7 +60,7 @@ namespace EWiki.UnitTest
         private void ImportMoves()
         {
             LoadOptions loadOptions = new LoadOptions(LoadFormat.CSV);
-            Workbook csvPokedexMoves = new Workbook("..//Moves.csvPokedex", loadOptions);
+            Workbook csvPokedexMoves = new Workbook("..//Moves.csv", loadOptions);
 
             if (csvPokedexMoves != null)
             {
@@ -74,11 +74,9 @@ namespace EWiki.UnitTest
                     Move move = new Move()
                     {
                         Name = moveData.GetCell(row, 1).StringValue,
-                        Type = moveData.GetCell(row, 2).StringValue,
                         Power = float.Parse(moveData.GetCell(row, 3).StringValue),
                         Cooldown = float.Parse(moveData.GetCell(row, 4).StringValue),
                         Energy = int.Parse(moveData.GetCell(row, 5).StringValue),
-                        Category = moveData.GetCell(row, 6).StringValue,
                         DPS = float.Parse(moveData.GetCell(row, 7).StringValue),
                         WithSTAB = float.Parse(moveData.GetCell(row, 8).StringValue),
                         CritChange = float.Parse(moveData.GetCell(row, 9).StringValue),
@@ -96,7 +94,7 @@ namespace EWiki.UnitTest
         private void ImportLocation()
         {
             LoadOptions loadOptions = new LoadOptions(LoadFormat.CSV);
-            Workbook csvPokedexLocations = new Workbook("..//Location.csvPokedex", loadOptions);
+            Workbook csvPokedexLocations = new Workbook("..//Location.csv", loadOptions);
 
             if (csvPokedexLocations != null)
             {
@@ -109,7 +107,6 @@ namespace EWiki.UnitTest
                 {
                     Location location = new Location()
                     {
-                        Type = locationData.GetCell(row, 1).StringValue,
                         Name = locationData.GetCell(row, 2) != null ? locationData.GetCell(row, 2).StringValue : string.Empty,
                         Description = locationData.GetCell(row, 3) != null ? locationData.GetCell(row, 3).StringValue : string.Empty,
                         CreatedDate = DateTime.Now
@@ -163,7 +160,6 @@ namespace EWiki.UnitTest
                         Number = pokemonData.GetCell(row, 0).StringValue,
                         Name = pokemonData.GetCell(row, 1).StringValue,
                         Slug = pokemonData.GetCell(row, 1).StringValue.ToLower(),
-                        Categories = types,
                         Species = pokemonData.GetCell(row, 3).StringValue,
                         Description = pokemonData.GetCell(row, 4) != null ? pokemonData.GetCell(row, 4).StringValue : string.Empty,
                         Weight = float.Parse(pokemonData.GetCell(row, 5).StringValue),
@@ -180,7 +176,6 @@ namespace EWiki.UnitTest
                         EvolveIntos = pokemonData.GetCell(row, 16) != null ? pokemonData.GetCell(row, 16).StringValue : string.Empty,
                         CreatedDate = DateTime.Now
                     };
-
                     pokemons.Add(pokemon);
                 }
 

@@ -22,6 +22,7 @@ namespace EWiki.Api.DataAccess
         // For pokedex
         public DbSet<Location> Locations { get; set; }
         public DbSet<Move> Moves { get; set; }
+        public DbSet<PokemonType> Type { get; set; }
         // End pokedex
         public DbSet<Page> Pages { get; set; }
         public DbSet<PageContent> PageContents { get; set; }
@@ -59,6 +60,62 @@ namespace EWiki.Api.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             // This needs to go before the other rules!
+
+            // Pokemon and Type many-to-many relation ship
+            modelBuilder.Entity<PokemonType>()
+                .HasKey(t => new { t.CharacterId, t.TypeId });
+
+            modelBuilder.Entity<PokemonType>()
+                .HasOne(pt => pt.Pokemon)
+                .WithMany(p => p.Types)
+                .HasForeignKey(pt => pt.CharacterId);
+
+            modelBuilder.Entity<PokemonType>()
+                .HasOne(pt => pt.Type)
+                .WithMany(t => t.PokemoTypes)
+                .HasForeignKey(pt => pt.TypeId);
+
+            // Pokemon and Move many-to-many relation ship
+            modelBuilder.Entity<PokemonMove>()
+                .HasKey(t => new { t.CharacterId, t.MoveId });
+
+            modelBuilder.Entity<PokemonMove>()
+                .HasOne(pm => pm.Pokemon)
+                .WithMany(p => p.NormalMoves)
+                .HasForeignKey(pm => pm.CharacterId);
+
+            modelBuilder.Entity<PokemonMove>()
+                .HasOne(pt => pt.PokeMove)
+                .WithMany(t => t.PokemoMoves)
+                .HasForeignKey(pt => pt.MoveId);
+
+            // Special move
+            modelBuilder.Entity<PokemonSpecialMove>()
+               .HasKey(t => new { t.CharacterId, t.MoveId });
+
+            modelBuilder.Entity<PokemonSpecialMove>()
+                .HasOne(pm => pm.Pokemon)
+                .WithMany(p => p.SpecialMoves)
+                .HasForeignKey(pm => pm.CharacterId);
+
+            modelBuilder.Entity<PokemonSpecialMove>()
+                .HasOne(pt => pt.PokeSpecialMove)
+                .WithMany(t => t.PokemoSpecialMoves)
+                .HasForeignKey(pt => pt.MoveId);
+
+            // Pokemon and Location many-to-many relation ship
+            modelBuilder.Entity<PokemonLocation>()
+                .HasKey(t => new { t.CharacterId, t.LocationId });
+
+            modelBuilder.Entity<PokemonLocation>()
+                .HasOne(pl => pl.Pokemon)
+                .WithMany(p => p.Locations)
+                .HasForeignKey(pt => pt.CharacterId);
+
+            modelBuilder.Entity<PokemonLocation>()
+                .HasOne(pl => pl.PokeLocation)
+                .WithMany(l => l.PokemonLocations)
+                .HasForeignKey(pl => pl.LocationId);
         }
     }
 }
