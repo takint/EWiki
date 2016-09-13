@@ -8,7 +8,10 @@ namespace EWiki.XF.Views
         public MainPage()
         {
             InitializeComponent();
-            Children.Add(new PokedexTab());
+            Children.Add(new LocationFeederTab()
+            {
+                Icon = "lnr-map-marker"
+            });
             Children.Add(new ContentPage()
             {
                 Icon = "iv_percentage"
@@ -17,10 +20,7 @@ namespace EWiki.XF.Views
             {
                 Icon = "lnr-magic-wand"
             });
-            Children.Add(new LocationFeederTab()
-            {
-                Icon = "lnr-map-marker"
-            });
+            Children.Add(new PokedexTab());
         }
     }
 }

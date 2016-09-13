@@ -21,67 +21,28 @@ namespace EWiki.XF.ViewModels
         private readonly IPokemonService _pokemonService;
         private readonly ILocationFeederService _locationFeederService;
 
-        private ObservableCollection<Pokemon> _pokemons = new ObservableCollection<Pokemon>();
-        public ObservableCollection<Pokemon> Pokemons => _pokemons;
+        private ObservableCollection<SniperInfo> _pokemons = new ObservableCollection<SniperInfo>();
+        public ObservableCollection<SniperInfo> Pokemons => _pokemons;
 
         private int _totalPokemons;
-
-        public DelegateCommand RefreshCommand { get; set; }
-        public DelegateCommand<Pokemon> LoadMoreCommand { get; set; }
 
         public LocationFeederTabViewModel(INavigationService navigationService, IPokemonService pokemonService, ILocationFeederService locationFeederService)
         {
             _pokemonService = pokemonService;
             _navigationService = navigationService;
             _locationFeederService = locationFeederService;
-            RefreshCommand = DelegateCommand.FromAsyncHandler(ExecuteRefreshCommand, CanExecuteRefreshCommand);
-            LoadMoreCommand = DelegateCommand<Pokemon>.FromAsyncHandler(ExecuteLoadMoreCommand, CanExecuteLoadMoreCommand);
 
             // Subscribe to PokemonResultFetched message to update UI base on continuously fetched results
             MessagingCenter.Subscribe<PokemonResultFetchedMessage>(this, "PokemonResultFetched", message =>
             {
-                var xxx = message.Pokemons;
+                foreach (var pokemon in message.Pokemons.Where(p => p.ExpirationTimestamp > DateTime.Now).OrderByDescending(p => p.ReceivedTimeStamp))
+                {
+                    if (!_pokemons.Any(p => p.Latitude == pokemon.Latitude && p.Longitude == pokemon.Longitude && p.Id == pokemon.Id))
+                    {
+                        _pokemons.Insert(0, pokemon);
+                    }
+                };
             });
-        }
-
-        public bool CanExecuteRefreshCommand()
-        {
-            return IsNotBusy;
-        }
-
-        public async Task ExecuteRefreshCommand()
-        {
-            IsBusy = true;
-
-            _pokemons = new ObservableCollection<Pokemon>();
-            await LoadPokemons(0);
-
-            IsBusy = false;
-        }
-
-        public bool CanExecuteLoadMoreCommand(Pokemon item)
-        {
-            return IsNotBusy && _pokemons.Count > _totalPokemons;
-        }
-
-        public async Task ExecuteLoadMoreCommand(Pokemon item)
-        {
-            IsBusy = true;
-
-            var skip = _pokemons.Count;
-            await LoadPokemons(skip);
-
-            IsBusy = false;
-        }
-
-        public async Task LoadPokemons(int skip)
-        {
-            _locationFeederService.Start();
-        }
-
-        public void PokedexItemSelectedHandler(Pokemon pokemon)
-        {
-            _navigationService.NavigateAsync($"LeftMenu/Navigation/PokemonInfoPage?PokemonId={pokemon.Id}", animated: false);
         }
     }
 }

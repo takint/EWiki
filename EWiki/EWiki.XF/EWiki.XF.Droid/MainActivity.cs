@@ -12,6 +12,7 @@ using EWiki.XF.Droid.Utils.IconizeModules;
 using FormsPlugin.Iconize.Droid;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Plugin.Iconize.Fonts;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Droid
@@ -28,6 +29,7 @@ namespace EWiki.XF.Droid
 
             FFImageLoading.Forms.Droid.CachedImageRenderer.Init();
             FormsPlugin.Iconize.Droid.IconControls.Init();
+            Plugin.Iconize.Iconize.With(new MaterialModule());
             Plugin.Iconize.Iconize.With(new LinearModule());
             IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
 

@@ -196,8 +196,6 @@
     <Compile Include="LocationFeeder\Common\GeoCoordinates.cs" />
     <Compile Include="LocationFeeder\Common\Output.cs" />
     <Compile Include="LocationFeeder\Config\Settings.cs" />
-    <Compile Include="LocationFeeder\Helper\Enum\PokemonId.cs" />
-    <Compile Include="LocationFeeder\Helper\Enum\PokemonMove.cs" />
     <Compile Include="LocationFeeder\Helper\GeoCoordinatesParser.cs" />
     <Compile Include="LocationFeeder\Helper\IVParser.cs" />
     <Compile Include="LocationFeeder\Helper\JsonSerializerSettingsFactory.cs" />

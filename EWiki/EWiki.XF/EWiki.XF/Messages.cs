@@ -1,8 +1,5 @@
-﻿using System;
+﻿using EWiki.XF.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EWiki.XF
 {
@@ -16,7 +13,7 @@ namespace EWiki.XF
 
     public class PokemonResultFetchedMessage
     {
-        public List<string> Pokemons { get; set; }
+        public List<SniperInfo> Pokemons { get; set; }
     }
 
     public class CancelledMessage

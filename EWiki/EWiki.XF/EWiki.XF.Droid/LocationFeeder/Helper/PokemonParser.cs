@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using EWiki.XF.Droid.LocationFeeder.Helper.Enum;
+using EWiki.XF.Models.Enum;
 using Android.Util;
 
 namespace EWiki.XF.Droid.LocationFeeder.Helper

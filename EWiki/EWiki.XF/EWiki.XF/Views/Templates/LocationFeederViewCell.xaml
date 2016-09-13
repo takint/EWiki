@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+          xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+          xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          prism:ViewModelLocator.AutowireViewModel="True"
+          x:Class="EWiki.XF.Views.Templates.LocationFeederViewCell">
+    <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="5" BackgroundColor="#FAFAFA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+      <ffimageloading:CachedImage Source="{Binding Avatar}" 
+                                    Aspect="AspectFit"
+                                    Grid.Row="0" Grid.Column="0"
+                                    Grid.RowSpan="3"/>
+        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#45686E" Grid.Row="0"
+               Margin="5,0,0,0"
+               Grid.Column="1" VerticalOptions="Center" />
+        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="FillAndExpand"
+                       VerticalOptions="CenterAndExpand">
+          <iconize:IconLabel Text="{Binding VerifyIcon}" FontSize="16" FontAttributes="Bold" TextColor="{Binding VerifyColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+          <Label Text="{Binding ExpirationSeconds, StringFormat='{0}s'}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Grid.Column="1">
+          <Label Text="{Binding IV, StringFormat='IV {0}%'}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
+          <Label Text="{Binding Move1}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
+          <Label Text="{Binding Move2}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="5,0,0,5"
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="{Binding Latitude}" LineBreakMode="TailTruncation" FontSize="14" TextColor="#212121" FontAttributes="Bold" 
+                   VerticalOptions="Center" />
+            <Label Text="{Binding Longitude}" LineBreakMode="TailTruncation" FontSize="14" FontAttributes="Bold" TextColor="#212121" 
+                   VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Spacing="0" Margin="0,0,5,5" HorizontalOptions="End"
+                       VerticalOptions="CenterAndExpand">
+          <iconize:IconButton Text="md-person-pin-circle" WidthRequest="50" BackgroundColor="#009688" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding OpenMapCommand}"
+                 VerticalOptions="Center" /> 
+          <iconize:IconButton Text="md-my-location" WidthRequest="50" BackgroundColor="#FF4081" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding SnipCommand}"
+                 VerticalOptions="Center" />
+        </StackLayout>
+    </Grid>
+</ViewCell>

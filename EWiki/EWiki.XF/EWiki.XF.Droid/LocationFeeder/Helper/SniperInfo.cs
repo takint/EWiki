@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using EWiki.XF.Droid.LocationFeeder.Common;
-using EWiki.XF.Droid.LocationFeeder.Helper.Enum;
+using EWiki.XF.Models.Enum;
 
 namespace EWiki.XF.Droid.LocationFeeder.Helper
 {
     public class SniperInfo
     {
+        public string Number {
+            get
+            {
+                var number = "";
+                for(var i = 0; i < 3 - Id.ToString().Length; i++)
+                {
+                    number += "0";
+                }
+                return $"{number}{(int)Id}";
+            }
+        }
         [JsonIgnore]
         public ulong EncounterId { get; set; }
         public DateTime ExpirationTimestamp { get; set; } = default(DateTime);
