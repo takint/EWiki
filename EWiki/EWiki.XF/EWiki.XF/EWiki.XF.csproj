@@ -35,7 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppServices\LocationFeederService.cs" />
     <Compile Include="Behaviors\ListViewBehavior.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />

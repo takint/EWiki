@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:rerenders="clr-namespace:EWiki.XF.Views.Rerenders;assembly=EWiki.XF"
+             xmlns:views="clr-namespace:EWiki.XF.Views;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.MainPage"
-             Title="MainPage">
-  
+             Title="Location Feeder">
+  <views:LocationFeederTab Title="Location Feeder" Icon="lnr-map-marker"/>
+  <views:PokedexTab Title="Pokedex" Icon="pokedex"/>
+  <ContentPage Title="IV Calculator" Icon="iv_percentage"/>
+  <ContentPage Title="News + Gags" Icon="lnr-magic-wand"/>
 </rerenders:BottomTabbedPage>

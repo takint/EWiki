@@ -23,7 +23,7 @@ namespace EWiki.XF.Service
 
         public async Task<List<PokemonSM>> GetPokemons(GetPokemonsRq rq)
         {
-            var response = await client.GetStringAsync("http://192.168.70.103:2675/api/pokedex");
+            var response = await client.GetStringAsync("http://192.168.1.9:2675/api/pokedex");
             var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
             return pokemons;
         }

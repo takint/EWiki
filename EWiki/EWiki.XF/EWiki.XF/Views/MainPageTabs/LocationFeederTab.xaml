@@ -8,8 +8,7 @@
              x:Name="ParentPage"
              BackgroundColor="#eceff4">
   <ContentPage.Content>
-    <ListView x:Name="PokedexListView"
-              CachingStrategy="RecycleElement"
+    <ListView CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Pokemons}"
               HasUnevenRows="true"

@@ -16,10 +16,10 @@ using EWiki.XF.Droid.LocationFeeder.Repository;
 using Android.Util;
 using EWiki.XF.Droid.LocationFeeder.Helper;
 
-namespace EWiki.XF.Droid.Services
+namespace EWiki.XF.Droid.BackgroundServices
 {
     [Service]
-    public class TestBackgroundService : Service
+    public class LocationFeederBackgroundService : Service
     {
         List<CancellationTokenSource> _ctsList = new List<CancellationTokenSource>();
 

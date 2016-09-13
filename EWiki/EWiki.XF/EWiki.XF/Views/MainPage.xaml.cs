@@ -1,4 +1,5 @@
-﻿using EWiki.XF.Views.Rerenders;
+﻿using System.Linq;
+using EWiki.XF.Views.Rerenders;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Views
@@ -8,19 +9,12 @@ namespace EWiki.XF.Views
         public MainPage()
         {
             InitializeComponent();
-            Children.Add(new LocationFeederTab()
-            {
-                Icon = "lnr-map-marker"
-            });
-            Children.Add(new ContentPage()
-            {
-                Icon = "iv_percentage"
-            });
-            Children.Add(new ContentPage()
-            {
-                Icon = "lnr-magic-wand"
-            });
-            Children.Add(new PokedexTab());
+            CurrentPageChanged += UpdateTitle;
+        }
+
+        private void UpdateTitle()
+        {
+            Title = CurrentPage.Title;
         }
     }
 }
