@@ -108,11 +108,6 @@ namespace EWiki.XF.Droid.BackgroundServices
         private void WriteOutListeners(List<SniperInfo> sniperInfos)
         {
             List<SniperInfo> sniperInfosToSend = sniperInfos;
-            var sniperInfo = sniperInfosToSend.FirstOrDefault(s => s.IV > 0);
-            if (sniperInfo != null)
-            {
-
-            }
             var message = new PokemonResultFetchedMessage
             {
                 Pokemons = sniperInfosToSend.Select(s => new Models.SniperInfo
@@ -121,7 +116,8 @@ namespace EWiki.XF.Droid.BackgroundServices
                     Name = s.Id.ToString(),
                     ChannelName = s.ChannelInfo.channel,
                     EncounterId = s.EncounterId,
-                    ExpirationTimestamp = s.ExpirationTimestamp == DateTime.MinValue ? DateTime.Now.AddSeconds(300) : s.ExpirationTimestamp,
+                    ExpirationTimestamp = s.ExpirationTimestamp == DateTime.MinValue ? DateTime.Now.AddSeconds(150) : s.ExpirationTimestamp,
+                    TrueExpirationTimestamp = s.ExpirationTimestamp > DateTime.MinValue,
                     IV = s.IV,
                     Latitude = s.Latitude,
                     Longitude = s.Longitude,

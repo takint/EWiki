@@ -29,7 +29,7 @@
         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="FillAndExpand"
                        VerticalOptions="CenterAndExpand">
           <iconize:IconLabel Text="{Binding Verified, Converter={x:Static converters:VerifiedIconConverter.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{Binding Verified, Converter={x:Static converters:VerifiedColorConverter.Instance}}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-          <Label Text="{Binding ExpirationSeconds, StringFormat='{0}s'}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+          <Label Text="{Binding ExpirationSeconds}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
         <StackLayout Grid.Row="1" Grid.Column="1">
           <Label Text="{Binding IV, StringFormat='IV {0}%', Converter={x:Static converters:IVConverter.Instance}}" FontSize="12" TextColor="{Binding IV, Converter={x:Static converters:IVColorConverter.Instance}}"  Margin="5,0,0,0" VerticalOptions="Center" />

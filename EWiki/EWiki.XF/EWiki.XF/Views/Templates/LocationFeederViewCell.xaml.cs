@@ -26,16 +26,26 @@ namespace EWiki.XF.Views.Templates
                 var parentContext = Parent.BindingContext as LocationFeederTabViewModel;
                 try
                 {
+                    var expirationSeconds = (int)(context.ExpirationTimestamp - DateTime.Now).TotalSeconds;
+                    if (expirationSeconds <= 0)
+                    {
+                        parentContext?.Pokemons.Remove(context);
+                        return;
+                    }
                     await Task.Run(async () =>
                     {
-                        while ((int)(context.ExpirationTimestamp - DateTime.Now).TotalSeconds > 0 &&
+                        while (expirationSeconds > 0 &&
                                !_cts.IsCancellationRequested)
                         {
+
+                            context.ExpirationSeconds = context.TrueExpirationTimestamp ? $"{expirationSeconds}s" : $"? {expirationSeconds}s";
+                            
                             await Task.Delay(1000);
-                            context.ExpirationSeconds = (int)(context.ExpirationTimestamp - DateTime.Now).TotalSeconds;
-                            if (context.ExpirationSeconds <= 0)
+                            expirationSeconds--;
+                            if (expirationSeconds <= 0)
                             {
                                 parentContext?.Pokemons.Remove(context);
+                                return;
                             }
                         }
                     }, _cts.Token);

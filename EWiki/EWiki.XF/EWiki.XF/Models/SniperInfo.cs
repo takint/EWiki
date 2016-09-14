@@ -25,8 +25,16 @@ namespace EWiki.XF.Models
         public ulong EncounterId { get; set; }
         public DateTime ExpirationTimestamp { get; set; }
 
-        private int _expirationSeconds;
-        public int ExpirationSeconds
+        private bool _trueExpirationTimestamp;
+
+        public bool TrueExpirationTimestamp
+        {
+            get { return _trueExpirationTimestamp; }
+            set { SetProperty(ref _trueExpirationTimestamp, value); }
+        }
+
+        private string _expirationSeconds;
+        public string ExpirationSeconds
         {
             get { return _expirationSeconds; }
             set { SetProperty(ref _expirationSeconds, value); }
