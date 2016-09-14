@@ -95,7 +95,14 @@ namespace EWiki.XF.Models
 
         public void ExecuteSnipCommand()
         {
-            Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
+            try
+            {
+                Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         public void ExecuteOpenMapCommand()

@@ -20,19 +20,28 @@ namespace EWiki.XF.ViewModels
             {
                 foreach (var pokemon in message.Pokemons.OrderByDescending(p => p.IV))
                 {
-                    var existedPokemon =
-                        _pokemons.FirstOrDefault(
-                            p => p.Latitude.ToString() == pokemon.Latitude.ToString() && p.Longitude.ToString() == pokemon.Longitude.ToString() && p.Id == pokemon.Id);
-                    if (existedPokemon == null)
+                    try
                     {
-                        _pokemons.Insert(0, pokemon);
+                        var existedPokemon =
+                            _pokemons.FirstOrDefault(
+                                p =>
+                                    Math.Abs(p.Latitude - pokemon.Latitude) < 0.0001 &&
+                                    Math.Abs(p.Longitude - pokemon.Longitude) < 0.0001 && p.Id == pokemon.Id);
+                        if (existedPokemon == null)
+                        {
+                            _pokemons.Insert(0, pokemon);
+                        }
+                        else
+                        {
+                            existedPokemon.IV = pokemon.IV > 0 ? pokemon.IV : existedPokemon.IV;
+                            existedPokemon.Move1 = pokemon.Move1 ?? existedPokemon.Move1;
+                            existedPokemon.Move2 = pokemon.Move2 ?? existedPokemon.Move2;
+                            existedPokemon.Verified = pokemon.Verified ? pokemon.Verified : existedPokemon.Verified;
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        existedPokemon.IV = pokemon.IV > 0 ? pokemon.IV : existedPokemon.IV;
-                        existedPokemon.Move1 = pokemon.Move1 ?? existedPokemon.Move1;
-                        existedPokemon.Move2 = pokemon.Move2 ?? existedPokemon.Move2;
-                        existedPokemon.Verified = pokemon.Verified ? pokemon.Verified : existedPokemon.Verified;
+                        // ignored
                     }
                 };
             });
