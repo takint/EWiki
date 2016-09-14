@@ -21,11 +21,7 @@ namespace EWiki.XF.Models
                 return $"{number}{(int)Id}";
             }
         }
-        public string Avatar {
-            get {
-                return $"No{Number}";
-            }
-        }
+        public string Avatar => $"No{Number}";
         public ulong EncounterId { get; set; }
         public DateTime ExpirationTimestamp { get; set; }
 
@@ -41,12 +37,39 @@ namespace EWiki.XF.Models
         public double Longitude { get; set; }
         public PokemonId Id { get; set; }
         public string SpawnPointId { get; set; } = null;
-        public PokemonMove Move1 { get; set; }
-        public PokemonMove Move2 { get; set; }
-        public double IV { get; set; }
-        public string VerifyIcon => Verified ? "md-check-circle" : "md-help-outline";
-        public Color VerifyColor => Verified ? Color.FromHex("009688") : Color.FromHex("212121");
-        public bool Verified { get; set; } = false;
+
+        private string _move1;
+
+        public string Move1
+        {
+            get { return _move1; }
+            set { SetProperty(ref _move1, value); }
+        }
+
+        private string _move2;
+
+        public string Move2
+        {
+            get { return _move2; }
+            set { SetProperty(ref _move2, value); }
+        }
+
+        private double _IV;
+
+        public double IV
+        {
+            get { return _IV; }
+            set { SetProperty(ref _IV, value); }
+        }
+
+        private bool _verified;
+
+        public bool Verified
+        {
+            get { return _verified; }
+            set { SetProperty(ref _verified, value); }
+        }
+
         public DateTime VerifiedOn { get; set; } 
         public string ChannelName { get; set; }
         public DateTime ReceivedTimeStamp { get; set; }

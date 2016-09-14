@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Behaviors\ListViewBehavior.cs" />
+    <Compile Include="Converters\VerifiedConverter.cs" />
+    <Compile Include="Converters\IVConverter.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
     <Compile Include="ExtendedControls\ExtendedScrollView.cs" />

@@ -201,6 +201,7 @@
     <Compile Include="LocationFeeder\Helper\Partitioner.cs" />
     <Compile Include="LocationFeeder\Helper\PokemonParser.cs" />
     <Compile Include="LocationFeeder\Helper\SniperInfo.cs" />
+    <Compile Include="LocationFeeder\Helper\StringHelper.cs" />
     <Compile Include="LocationFeeder\Helper\UserAgentHelper.cs" />
     <Compile Include="LocationFeeder\Repository\IRarePokemonRepository.cs" />
     <Compile Include="LocationFeeder\Repository\PokemonGoIVClubRarePokemonRepository.cs" />

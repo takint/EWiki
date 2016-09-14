@@ -5,7 +5,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 {
     public class RarePokemonsFactory
     {
-        public static List<PokemonId> createRarePokemonList()
+        public static List<PokemonId> CreateRarePokemonList()
         {
             var rarePokemonIds = new List<PokemonId>
             {

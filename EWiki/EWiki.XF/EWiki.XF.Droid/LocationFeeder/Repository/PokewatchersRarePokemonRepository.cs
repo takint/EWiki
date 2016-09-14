@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using EWiki.XF.Droid.LocationFeeder.Common;
 using EWiki.XF.Droid.LocationFeeder.Helper;
 using Android.Util;
+using EWiki.XF.Models.Enum;
 
 namespace EWiki.XF.Droid.LocationFeeder.Repository
 {
@@ -176,6 +177,10 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
                 DateTime.Now.AddMinutes(Constants.MaxExpirationInTheFuture) : timeStamp;
             sniperInfo.ChannelInfo = new ChannelInfo { server = Channel };
 
+            sniperInfo.IV = Convert.ToDouble(result.IV);
+            sniperInfo.Move1 = result.Move1?.ToPascalCase();
+            sniperInfo.Move2 = result.Move2?.ToPascalCase();
+
             return sniperInfo;
         }
     }
@@ -195,6 +200,15 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         [JsonProperty("icon")]
         public string icon { get; set; }
+
+        [JsonProperty("iv")]
+        public string IV { get; set; }
+
+        [JsonProperty("move1")]
+        public string Move1 { get; set; }
+
+        [JsonProperty("move2")]
+        public string Move2 { get; set; }
     }
 
 }

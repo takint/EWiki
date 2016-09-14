@@ -28,8 +28,8 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
         public PokemonId Id { get; set; } = PokemonId.Missingno;
         [JsonIgnore]
         public string SpawnPointId { get; set; } = null;
-        public PokemonMove Move1 { get; set; }
-        public PokemonMove Move2 { get; set; }
+        public string Move1 { get; set; }
+        public string Move2 { get; set; }
         public double IV { get; set; }
         public bool Verified { get; set; } = false;
         public DateTime VerifiedOn { get; set; } = default(DateTime);
@@ -52,8 +52,8 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
                    (!sniperInfo.IV.Equals(default(double))
                        ? $"{sniperInfo.IV}% IV"
                        : "unknown IV")
-                   + (sniperInfo.Move1 != PokemonMove.MoveUnset && sniperInfo.Move1 != null ? $" Move1: {sniperInfo.Move1.ToString()}" : "")
-                   + (sniperInfo.Move2 != PokemonMove.MoveUnset && sniperInfo.Move2 != null ? $" Move2: {sniperInfo.Move2.ToString()}" : "")
+                   + (sniperInfo.Move1 != null ? $" Move1: {sniperInfo.Move1}" : "")
+                   + (sniperInfo.Move2 != null ? $" Move2: {sniperInfo.Move2}" : "")
                    + (sniperInfo.EncounterId != default(ulong) && sniperInfo.EncounterId != null ? $" EncounterId: {sniperInfo.EncounterId.ToString()}" : "")
                    + (sniperInfo.ExpirationTimestamp != default(DateTime)
                        ? $" until {sniperInfo.ExpirationTimestamp.ToString(timeFormat)}"

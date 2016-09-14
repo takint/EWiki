@@ -4,6 +4,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using EWiki.XF.Droid.LocationFeeder.Helper;
 using Android.Util;
+using EWiki.XF.Models.Enum;
 
 namespace EWiki.XF.Droid.LocationFeeder.Repository
 {
@@ -63,6 +64,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
             sniperInfo.Id = pokemonId;
             sniperInfo.Latitude = result.lat;
             sniperInfo.Longitude = result.lon;
+            sniperInfo.IV = Convert.ToDouble(result.IV);
 
             sniperInfo.ChannelInfo = new ChannelInfo { server = Channel };
             return sniperInfo;
@@ -81,6 +83,9 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         [JsonProperty("lon")]
         public double lon { get; set; }
+
+        [JsonProperty("IV")]
+        public string IV { get; set; }
     }
 
 }

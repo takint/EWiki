@@ -67,12 +67,12 @@ namespace EWiki.XF.Droid.BackgroundServices
 
         private async Task RareRepoThread(IRarePokemonRepository rarePokemonRepository)
         {
-            var _cts = new CancellationTokenSource();
-            _ctsList.Add(_cts);
-            const int delay = 1000;
+            var cts = new CancellationTokenSource();
+            _ctsList.Add(cts);
+            const int delay = 5 * 1000;
             try
             {
-                while (!_cts.IsCancellationRequested)
+                while (!cts.IsCancellationRequested)
                 {
                     Thread.Sleep(delay);
                     for (var retrys = 0; retrys <= 1; retrys++)
@@ -95,7 +95,7 @@ namespace EWiki.XF.Droid.BackgroundServices
             }
             finally
             {
-                if (_cts.IsCancellationRequested)
+                if (cts.IsCancellationRequested)
                 {
                     var message = new CancelledMessage();
                     Device.BeginInvokeOnMainThread(
@@ -105,17 +105,23 @@ namespace EWiki.XF.Droid.BackgroundServices
             }
         }
 
-        private async void WriteOutListeners(List<SniperInfo> sniperInfos)
+        private void WriteOutListeners(List<SniperInfo> sniperInfos)
         {
             List<SniperInfo> sniperInfosToSend = sniperInfos;
+            var sniperInfo = sniperInfosToSend.FirstOrDefault(s => s.IV > 0);
+            if (sniperInfo != null)
+            {
+
+            }
             var message = new PokemonResultFetchedMessage
             {
-                Pokemons = sniperInfosToSend.Select(s => new Models.SniperInfo {
+                Pokemons = sniperInfosToSend.Select(s => new Models.SniperInfo
+                {
                     Id = s.Id,
                     Name = s.Id.ToString(),
                     ChannelName = s.ChannelInfo.channel,
                     EncounterId = s.EncounterId,
-                    ExpirationTimestamp = s.ExpirationTimestamp,
+                    ExpirationTimestamp = s.ExpirationTimestamp == DateTime.MinValue ? DateTime.Now.AddSeconds(300) : s.ExpirationTimestamp,
                     IV = s.IV,
                     Latitude = s.Latitude,
                     Longitude = s.Longitude,
@@ -140,13 +146,9 @@ namespace EWiki.XF.Droid.BackgroundServices
 
         public override void OnDestroy()
         {
-            foreach(var _cts in _ctsList)
+            foreach(var cts in _ctsList)
             {
-                if (_cts != null)
-                {
-                    _cts.Token.ThrowIfCancellationRequested();
-                    _cts.Cancel();
-                }
+                cts?.Cancel();
             }
 
             base.OnDestroy();

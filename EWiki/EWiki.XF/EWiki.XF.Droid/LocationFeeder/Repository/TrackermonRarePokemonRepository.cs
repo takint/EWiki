@@ -19,7 +19,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         public TrackemonRarePokemonRepository()
         {
-            this._pokemonIdsToFind = RarePokemonsFactory.createRarePokemonList();
+            this._pokemonIdsToFind = RarePokemonsFactory.CreateRarePokemonList();
         }
 
         public List<SniperInfo> FindAll()

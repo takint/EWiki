@@ -5,6 +5,7 @@
           xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
           xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
           xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
           prism:ViewModelLocator.AutowireViewModel="True"
           x:Class="EWiki.XF.Views.Templates.LocationFeederViewCell">
     <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="5" BackgroundColor="#FAFAFA">
@@ -27,13 +28,13 @@
                Grid.Column="1" VerticalOptions="Center" />
         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="FillAndExpand"
                        VerticalOptions="CenterAndExpand">
-          <iconize:IconLabel Text="{Binding VerifyIcon}" FontSize="16" FontAttributes="Bold" TextColor="{Binding VerifyColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+          <iconize:IconLabel Text="{Binding Verified, Converter={x:Static converters:VerifiedIconConverter.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{Binding Verified, Converter={x:Static converters:VerifiedColorConverter.Instance}}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
           <Label Text="{Binding ExpirationSeconds, StringFormat='{0}s'}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
         <StackLayout Grid.Row="1" Grid.Column="1">
-          <Label Text="{Binding IV, StringFormat='IV {0}%'}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
-          <Label Text="{Binding Move1}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
-          <Label Text="{Binding Move2}" FontSize="12" TextColor="#212121"  Margin="5,0,0,0" VerticalOptions="Center" />
+          <Label Text="{Binding IV, StringFormat='IV {0}%', Converter={x:Static converters:IVConverter.Instance}}" FontSize="12" TextColor="{Binding IV, Converter={x:Static converters:IVColorConverter.Instance}}"  Margin="5,0,0,0" VerticalOptions="Center" />
+          <Label Text="{Binding Move1}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
+          <Label Text="{Binding Move2}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
         </StackLayout>
         <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="5,0,0,5"
                      VerticalOptions="CenterAndExpand">
