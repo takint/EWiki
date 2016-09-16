@@ -79,6 +79,10 @@ namespace EWiki.XF.Droid.Renderers
             for (var i = 0; i < tabLayout.TabCount; i++)
             {
                 var tab = tabLayout.GetTabAt(i);
+                if (_icons.Any())
+                {
+                    tab.SetText("");
+                }
 
                 var icon = Plugin.Iconize.Iconize.FindIconForKey(_icons[i]);
                 if (icon != null)

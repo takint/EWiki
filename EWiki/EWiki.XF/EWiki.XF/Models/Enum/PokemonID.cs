@@ -1,4 +1,4 @@
-namespace EWiki.XF.Droid.LocationFeeder.Helper.Enum
+namespace EWiki.XF.Models.Enum
 {
     public enum PokemonId
     {

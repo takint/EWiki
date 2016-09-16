@@ -190,20 +190,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppServices\LocationFeederService.cs" />
     <Compile Include="LocationFeeder\Common\ChannelInfo.cs" />
     <Compile Include="LocationFeeder\Common\Constants.cs" />
     <Compile Include="LocationFeeder\Common\GeoCoordinates.cs" />
     <Compile Include="LocationFeeder\Common\Output.cs" />
     <Compile Include="LocationFeeder\Config\Settings.cs" />
-    <Compile Include="LocationFeeder\Helper\Enum\PokemonId.cs" />
-    <Compile Include="LocationFeeder\Helper\Enum\PokemonMove.cs" />
     <Compile Include="LocationFeeder\Helper\GeoCoordinatesParser.cs" />
     <Compile Include="LocationFeeder\Helper\IVParser.cs" />
     <Compile Include="LocationFeeder\Helper\JsonSerializerSettingsFactory.cs" />
     <Compile Include="LocationFeeder\Helper\Partitioner.cs" />
     <Compile Include="LocationFeeder\Helper\PokemonParser.cs" />
     <Compile Include="LocationFeeder\Helper\SniperInfo.cs" />
+    <Compile Include="LocationFeeder\Helper\StringHelper.cs" />
     <Compile Include="LocationFeeder\Helper\UserAgentHelper.cs" />
     <Compile Include="LocationFeeder\Repository\IRarePokemonRepository.cs" />
     <Compile Include="LocationFeeder\Repository\PokemonGoIVClubRarePokemonRepository.cs" />
@@ -220,6 +218,7 @@
     <Compile Include="Renderers\LabelRender.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BackgroundServices\LocationFeederBackgroundService.cs" />
     <Compile Include="Utils\IconizeModules\Collections\LinearCollection.cs" />
     <Compile Include="Utils\IconizeModules\LinearModule.cs" />
     <Compile Include="Utils\Typeface\TypefaceUtil.cs" />

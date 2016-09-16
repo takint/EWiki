@@ -1,80 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
 using EWiki.XF.Models;
+using EWiki.XF.Models.Enum;
 using EWiki.XF.Service;
-using EWiki.XF.Service.Requests.Pokemon;
-using Prism.Commands;
 using Prism.Navigation;
-using EWiki.XF.AppServices;
+using Xamarin.Forms;
 
 namespace EWiki.XF.ViewModels
 {
     public class LocationFeederTabViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        private readonly IPokemonService _pokemonService;
-        private readonly ILocationFeederService _locationFeederService;
+        private ObservableCollection<SniperInfo> _pokemons = new ObservableCollection<SniperInfo>();
+        public ObservableCollection<SniperInfo> Pokemons => _pokemons;
 
-        private ObservableCollection<Pokemon> _pokemons = new ObservableCollection<Pokemon>();
-        public ObservableCollection<Pokemon> Pokemons => _pokemons;
-
-        private int _totalPokemons;
-
-        public DelegateCommand RefreshCommand { get; set; }
-        public DelegateCommand<Pokemon> LoadMoreCommand { get; set; }
-
-        public LocationFeederTabViewModel(INavigationService navigationService, IPokemonService pokemonService, ILocationFeederService locationFeederService)
+        public LocationFeederTabViewModel()
         {
-            _pokemonService = pokemonService;
-            _navigationService = navigationService;
-            _locationFeederService = locationFeederService;
-            RefreshCommand = DelegateCommand.FromAsyncHandler(ExecuteRefreshCommand, CanExecuteRefreshCommand);
-            LoadMoreCommand = DelegateCommand<Pokemon>.FromAsyncHandler(ExecuteLoadMoreCommand, CanExecuteLoadMoreCommand);
-        }
-
-        public bool CanExecuteRefreshCommand()
-        {
-            return IsNotBusy;
-        }
-
-        public async Task ExecuteRefreshCommand()
-        {
-            IsBusy = true;
-
-            _pokemons = new ObservableCollection<Pokemon>();
-            await LoadPokemons(0);
-
-            IsBusy = false;
-        }
-
-        public bool CanExecuteLoadMoreCommand(Pokemon item)
-        {
-            return IsNotBusy && _pokemons.Count > _totalPokemons;
-        }
-
-        public async Task ExecuteLoadMoreCommand(Pokemon item)
-        {
-            IsBusy = true;
-
-            var skip = _pokemons.Count;
-            await LoadPokemons(skip);
-
-            IsBusy = false;
-        }
-
-        public async Task LoadPokemons(int skip)
-        {
-            _locationFeederService.Start();
-        }
-
-        public void PokedexItemSelectedHandler(Pokemon pokemon)
-        {
-            _navigationService.NavigateAsync($"LeftMenu/Navigation/PokemonInfoPage?PokemonId={pokemon.Id}", animated: false);
+            MessagingCenter.Subscribe<PokemonResultFetchedMessage>(this, "PokemonResultFetched", message =>
+            {
+                foreach (var pokemon in message.Pokemons.OrderByDescending(p => p.IV))
+                {
+                    try
+                    {
+                        var existedPokemon =
+                            _pokemons.FirstOrDefault(
+                                p =>
+                                    Math.Abs(p.Latitude - pokemon.Latitude) < 0.0001 &&
+                                    Math.Abs(p.Longitude - pokemon.Longitude) < 0.0001 && p.Id == pokemon.Id);
+                        if (existedPokemon == null)
+                        {
+                            _pokemons.Insert(0, pokemon);
+                        }
+                        else
+                        {
+                            existedPokemon.IV = pokemon.IV > 0 ? pokemon.IV : existedPokemon.IV;
+                            existedPokemon.Move1 = pokemon.Move1 ?? existedPokemon.Move1;
+                            existedPokemon.Move2 = pokemon.Move2 ?? existedPokemon.Move2;
+                            existedPokemon.Verified = pokemon.Verified ? pokemon.Verified : existedPokemon.Verified;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
+                };
+            });
         }
     }
 }

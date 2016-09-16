@@ -35,14 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppServices\LocationFeederService.cs" />
     <Compile Include="Behaviors\ListViewBehavior.cs" />
+    <Compile Include="Converters\VerifiedConverter.cs" />
+    <Compile Include="Converters\IVConverter.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
     <Compile Include="ExtendedControls\ExtendedScrollView.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Models\Enum\PokemonId.cs" />
+    <Compile Include="Models\Enum\PokemonMove.cs" />
     <Compile Include="Models\LeftMenuItem.cs" />
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="Models\SniperInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
@@ -70,6 +75,9 @@
     </Compile>
     <Compile Include="Views\Rerenders\ColoredProgressBar.cs" />
     <Compile Include="Views\Rerenders\BottomTabbedPage.cs" />
+    <Compile Include="Views\Templates\LocationFeederViewCell.xaml.cs">
+      <DependentUpon>LocationFeederViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Templates\PokedexViewCell.xaml.cs">
       <DependentUpon>PokedexViewCell.xaml</DependentUpon>
     </Compile>
@@ -226,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MainPageTabs\LocationFeederTab.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Templates\LocationFeederViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

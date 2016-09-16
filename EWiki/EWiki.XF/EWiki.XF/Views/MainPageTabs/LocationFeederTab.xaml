@@ -2,41 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
-             xmlns:behaviors="clr-namespace:EWiki.XF.Behaviors;assembly=EWiki.XF"
              xmlns:templates="clr-namespace:EWiki.XF.Views.Templates;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.LocationFeederTab"
-             Icon="pokedex"
+             x:Name="ParentPage"
              BackgroundColor="#eceff4">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <converters:ItemVisibilityEventArgstemConverter
-          x:Key="ItemVisibilityConverter" />
-    </ResourceDictionary>
-  </ContentPage.Resources>
   <ContentPage.Content>
-    <ListView x:Name="PokedexListView"
-              CachingStrategy="RecycleElement"
+    <ListView CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Pokemons}"
               HasUnevenRows="true"
-              IsPullToRefreshEnabled="true"
-              RefreshCommand="{Binding RefreshCommand}"
-              IsRefreshing="{Binding IsBusy}"
-              Margin="10,0,10,0"
-              ItemSelected="PokedexList_OnItemSelected"
-              SeparatorVisibility="None"
-              AbsoluteLayout.LayoutFlags="All"
-              AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
-      <ListView.Behaviors>
-        <behaviors:ListViewBehavior
-            Command="{Binding LoadMoreCommand}"
-            Converter="{StaticResource ItemVisibilityConverter}" />
-      </ListView.Behaviors>
+              Margin="5"
+              SeparatorVisibility="None">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <templates:PokedexViewCell />
+          <templates:LocationFeederViewCell />
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>

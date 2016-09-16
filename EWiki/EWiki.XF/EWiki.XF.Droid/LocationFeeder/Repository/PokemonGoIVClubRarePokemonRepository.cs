@@ -120,6 +120,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
             sniperInfo.Latitude = Math.Round(result.lat, 7);
             sniperInfo.Longitude = Math.Round(result.lon, 7);
             sniperInfo.ChannelInfo = new ChannelInfo { server = Channel };
+            sniperInfo.IV = Convert.ToDouble(result.IV);
             return sniperInfo;
         }
     }
@@ -134,5 +135,8 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         [JsonProperty("lon")]
         public double lon { get; set; }
+
+        [JsonProperty("IV")]
+        public string IV { get; set; }
     }
 }

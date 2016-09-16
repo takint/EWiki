@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using EWiki.XF.Droid.LocationFeeder.Common;
 using EWiki.XF.Droid.LocationFeeder.Helper;
-using EWiki.XF.Droid.LocationFeeder.Helper.Enum;
+using EWiki.XF.Models.Enum;
 using Android.Util;
 
 namespace EWiki.XF.Droid.LocationFeeder.Repository
@@ -19,7 +19,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         public TrackemonRarePokemonRepository()
         {
-            this._pokemonIdsToFind = RarePokemonsFactory.createRarePokemonList();
+            this._pokemonIdsToFind = RarePokemonsFactory.CreateRarePokemonList();
         }
 
         public List<SniperInfo> FindAll()
