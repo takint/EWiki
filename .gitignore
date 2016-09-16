@@ -245,3 +245,5 @@ ModelManifest.xml
 .fake/
 EWiki/EWiki.Api-old/
 EWiki/EWiki.Api/wwwroot/libs/
+EWiki/EWiki.Api/wwwroot/app/bower_components/
+EWiki/EWiki.Api/wwwroot/dist/

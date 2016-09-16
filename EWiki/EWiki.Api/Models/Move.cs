@@ -16,6 +16,21 @@ namespace EWiki.Api.Models
         public float DPS { get; set; }
         public float WithSTAB { get; set; }
         public float CritChange { get; set; }
+        public float Bars
+        {
+            get
+            {
+                return 100 / Math.Abs(Energy);
+            }
+        }
+
+        public float BarLength
+        {
+            get
+            {
+                return 1 / Bars;
+            }
+        }
 
         [ForeignKey("MoveType")]
         public virtual Category Type { get; set; }
