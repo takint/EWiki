@@ -3,9 +3,19 @@
 
         return function (key) {
             var strings = {
-                'example': 'Example Test'
+                'article': 'Article',
+                'articlesList': 'Article List',
+                'articlesHeader': 'Article Management',
+                'articlesSubheader': 'Articles',
+
+                'homeLinkText': 'Dashboard'
             };
             return strings[key] || key;
         };
 
+    })
+    .filter('log', function () {
+        return function (data) {
+            console.log(data);
+        };
     });

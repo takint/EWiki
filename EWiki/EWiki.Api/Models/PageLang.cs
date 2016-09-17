@@ -11,7 +11,5 @@ namespace EWiki.Api.Models
         public int PageId { get; set; }
         public string Language { get; set; }
         public string Title { get; set; }
-
-        public virtual Page LangPage { get; set; }
     }
 }

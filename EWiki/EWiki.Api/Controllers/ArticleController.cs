@@ -3,7 +3,9 @@ using EWiki.Api.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,57 +15,56 @@ namespace EWiki.Api.Controllers
     [EnableCors("AllowEwikiBDOrigin")]
     public class ArticleController : Controller
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly IPageRepository pageRepository;
 
-        public ArticleController(ICategoryRepository repo)
+        public ArticleController(IPageRepository repo)
         {
-            categoryRepository = repo;
+            pageRepository = repo;
         }
 
         [HttpGet]
         public async Task<IActionResult> List(int skip = 0, int take = 10)
         {
-            IEnumerable<Category> result = await categoryRepository.GetAllAsync();
-            result = result.Skip(skip).Take(take);
+            IEnumerable<Page> pageData = await pageRepository.GetAllPageWithContentAsync();
+            pageData = pageData.Skip(skip).Take(take);
 
-            return Json(result);
+            return Json(pageData);
         }
 
         [HttpGet("GetCategory")]
         public async Task<IActionResult> GetCategory(int catId)
         {
-            Category cat = (await categoryRepository.FindByAsync(p => p.Id == catId)).FirstOrDefault();
+            Page cat = (await pageRepository.FindByAsync(p => p.Id == catId)).FirstOrDefault();
             return Json(cat);
         }
 
         [HttpGet("Search")]
         public async Task<IActionResult> SearchCategory(string searchTerm)
         {
-            IQueryable<Category> query = categoryRepository.Queryable()
-                .Where(c => c.CatTitle.Contains(searchTerm) ||
-                c.CatTitleVI.Contains(searchTerm));
+            IQueryable<Page> query = pageRepository.Queryable()
+                .Where(c => c.Title.Contains(searchTerm));
 
-            List<Category> result = await query.ToListAsync();
+            List<Page> result = await query.ToListAsync();
 
             return Json(result);
         }
 
         [HttpGet("Update")]
-        public async Task<IActionResult> UpdateCategory(Category category)
+        public async Task<IActionResult> UpdateCategory(Page page)
         {
-            categoryRepository.Update(category);
-            await categoryRepository.CommitAsync();
+            pageRepository.Update(page);
+            await pageRepository.CommitAsync();
 
-            return Json(category);
+            return Json(page);
         }
 
         [HttpGet("Add")]
-        public async Task<IActionResult> AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(Page page)
         {
-            categoryRepository.Add(category);
-            await categoryRepository.CommitAsync();
+            pageRepository.Add(page);
+            await pageRepository.CommitAsync();
 
-            return Json(category);
+            return Json(page);
         }
     }
 }

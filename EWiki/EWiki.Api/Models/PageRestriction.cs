@@ -7,7 +7,5 @@
         public RestrictLevel ResLevel { get; set; }
         public bool IsCascade { get; set; }
         public decimal ResctrictionExpiry { get; set; }
-
-        public virtual Page PageResctricted { get; set; }
     }
 }

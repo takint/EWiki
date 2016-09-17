@@ -32,6 +32,7 @@ function ArticleFactory($http) {
 
             if (articles.length !== 0) {
                 articles.forEach(function (item) {
+                    console.log(item);
                     _self.articles.push(item);
                 });
 
