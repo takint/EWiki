@@ -8,7 +8,7 @@
               <span class="block m-t-xs">
                 <strong class="font-bold">{{main.userName}}</strong>
               </span>
-              <span class="text-muted text-xs block">Example menu<b class="caret"></b></span>
+              <span class="text-muted text-xs block">User Menu<b class="caret"></b></span>
             </span>
           </a>
           <ul uib-dropdown-menu class="animated flipInX m-t-xs">
@@ -23,7 +23,16 @@
         <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">Main page</span> </a>
       </li>
       <li ui-sref-active="active">
-        <a ui-sref="index.minor"><i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span></a>
+        <a ui-sref="index.article"><i class="fa fa-newspaper-o"></i> <span class="nav-label">Articles</span> </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="index.pokedex"><i class="fa fa-chrome"></i> <span class="nav-label">Pokedex</span> </a>
+        <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('pokedex')}">
+          <li ui-sref-active="active"><a ui-sref="index.pokedex"><i class="fa fa-camera-retro"></i> Pokemons</a></li>
+          <li ui-sref-active="active"><a ui-sref="index.move"><i class="fa fa-cubes"></i> Moves</a></li>
+          <li ui-sref-active="active"><a ui-sref="index.location"><i class="fa fa-map-marker"></i> Locations</a></li>
+          <li ui-sref-active="active"><a ui-sref="index.category"><i class="fa fa-th-list"></i> Categories</a></li>
+        </ul>
       </li>
     </ul>
   </div>
