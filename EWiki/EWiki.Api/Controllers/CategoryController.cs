@@ -1,5 +1,6 @@
 ﻿using EWiki.Api.DataAccess;
 using EWiki.Api.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace EWiki.Api.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowEwikiBDOrigin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository categoryRepository;

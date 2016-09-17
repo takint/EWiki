@@ -51,10 +51,18 @@ namespace EWiki.Api
 
             // Add application services.
             services.AddSingleton<IDbFactory, DbFactory>();
-            services.AddSingleton<IPokedexRepository, PokedexRepository>();
+
+            services.AddSingleton<IArchiveRepository, ArchiveRepository>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
-            services.AddSingleton<IMoveRepository, MoveRepository>();
             services.AddSingleton<ILocationRepository, LocationRepository>();
+            services.AddSingleton<IMoveRepository, MoveRepository>();
+            services.AddSingleton<IPageRepository, PageRepository>();
+            services.AddSingleton<IPageContentRepository, PageContentRepository>();
+            services.AddSingleton<IPageLangRepository, PageLangRepository>();
+            services.AddSingleton<IPageMetaRepository, PageMetaRepository>();
+            services.AddSingleton<IPokedexRepository, PokedexRepository>();
+            services.AddSingleton<IRevisionRepository, RevisionRepository>();
+            services.AddSingleton<IWikiImageRepository, WikiImageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

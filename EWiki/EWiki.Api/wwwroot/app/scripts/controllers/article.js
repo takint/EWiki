@@ -9,6 +9,4 @@ function ArticleCtrl($scope, $rootScope, Article) {
 
     _self.Article = new Article();
     _self.Article.GetAllArticles();
-
-    
 }
