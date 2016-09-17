@@ -19,7 +19,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> Get(int skip = 0, int take = 10)
+        public async Task<IActionResult> Get(int skip = 0, int take = 10)
         {
             IEnumerable<Character> result = await pokedexRepository.AllIncludingAsync(c => c.Types);
             result = result.OrderBy(r => r.Number)
@@ -30,14 +30,14 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("GetPokemon")]
-        public async Task<JsonResult> GetPokemon(string name)
+        public async Task<IActionResult> GetPokemon(string name)
         {
             Character pokemon = (await pokedexRepository.FindByAsync(p => p.Name == name)).FirstOrDefault();
             return Json(pokemon);
         }
 
         [HttpGet("Search")]
-        public async Task<JsonResult> SearchPokemon(string searchTerm)
+        public async Task<IActionResult> SearchPokemon(string searchTerm)
         {
             IQueryable<Character> query = pokedexRepository.Queryable()
                 .Where(c => c.Name.Contains(searchTerm) ||
@@ -50,7 +50,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Update")]
-        public async Task<JsonResult> UpdatePokemon(Character pokemon)
+        public async Task<IActionResult> UpdatePokemon(Character pokemon)
         {
             pokedexRepository.Update(pokemon);
             await pokedexRepository.CommitAsync();
@@ -59,7 +59,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Add")]
-        public async Task<JsonResult> AddPokemon(Character pokemon)
+        public async Task<IActionResult> AddPokemon(Character pokemon)
         {
             pokedexRepository.Add(pokemon);
             await pokedexRepository.CommitAsync();

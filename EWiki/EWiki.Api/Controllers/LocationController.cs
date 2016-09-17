@@ -19,7 +19,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> List(int skip = 0, int take = 10)
+        public async Task<IActionResult> List(int skip = 0, int take = 10)
         {
             IEnumerable<Location> result = await locationRepository.AllIncludingAsync(c => c.Type);
             result = result.OrderBy(r => r.Name)
@@ -30,14 +30,14 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("GetLocation")]
-        public async Task<JsonResult> GetLocation(int locationId)
+        public async Task<IActionResult> GetLocation(int locationId)
         {
             Location locate = (await locationRepository.FindByAsync(p => p.Id == locationId)).FirstOrDefault();
             return Json(locate);
         }
 
         [HttpGet("Search")]
-        public async Task<JsonResult> SearchLocation(string searchTerm)
+        public async Task<IActionResult> SearchLocation(string searchTerm)
         {
             IQueryable<Location> query = locationRepository.Queryable()
                 .Include(c => c.Type)
@@ -52,7 +52,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Update")]
-        public async Task<JsonResult> UpdateLocation(Location location)
+        public async Task<IActionResult> UpdateLocation(Location location)
         {
             locationRepository.Update(location);
             await locationRepository.CommitAsync();
@@ -61,7 +61,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Add")]
-        public async Task<JsonResult> AddLocation(Location location)
+        public async Task<IActionResult> AddLocation(Location location)
         {
             locationRepository.Add(location);
             await locationRepository.CommitAsync();

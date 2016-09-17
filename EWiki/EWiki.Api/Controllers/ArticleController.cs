@@ -30,14 +30,14 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("GetCategory")]
-        public async Task<JsonResult> GetCategory(int catId)
+        public async Task<IActionResult> GetCategory(int catId)
         {
             Category cat = (await categoryRepository.FindByAsync(p => p.Id == catId)).FirstOrDefault();
             return Json(cat);
         }
 
         [HttpGet("Search")]
-        public async Task<JsonResult> SearchCategory(string searchTerm)
+        public async Task<IActionResult> SearchCategory(string searchTerm)
         {
             IQueryable<Category> query = categoryRepository.Queryable()
                 .Where(c => c.CatTitle.Contains(searchTerm) ||
@@ -49,7 +49,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Update")]
-        public async Task<JsonResult> UpdateCategory(Category category)
+        public async Task<IActionResult> UpdateCategory(Category category)
         {
             categoryRepository.Update(category);
             await categoryRepository.CommitAsync();
@@ -58,7 +58,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Add")]
-        public async Task<JsonResult> AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(Category category)
         {
             categoryRepository.Add(category);
             await categoryRepository.CommitAsync();
