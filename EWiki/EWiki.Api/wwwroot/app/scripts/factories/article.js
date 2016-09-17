@@ -31,12 +31,15 @@ function ArticleFactory($http) {
             var articles = data;
 
             if (articles.length !== 0) {
-                _self.articles.push(articles);
+                articles.forEach(function (item) {
+                    _self.articles.push(item);
+                });
+
                 _self.busy = false;
                 _self.skip += _self.take;
             }
         }).error(function (data, status, headers, config) {
-            console.log(status);
+            _self.busy = false;
         });
     };
 

@@ -19,7 +19,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> Get(int skip = 0, int take = 10)
+        public async Task<IActionResult> Get(int skip = 0, int take = 10)
         {
             IEnumerable<Move> result = await moveRepository.AllIncludingAsync(c => c.Type);
             result = result.Skip(skip).Take(take);
@@ -28,14 +28,14 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("GetMove")]
-        public async Task<JsonResult> GetMove(int moveId)
+        public async Task<IActionResult> GetMove(int moveId)
         {
             Move move = (await moveRepository.FindByAsync(p => p.Id == moveId)).FirstOrDefault();
             return Json(move);
         }
 
         [HttpGet("Search")]
-        public async Task<JsonResult> SearchMove(string searchTerm)
+        public async Task<IActionResult> SearchMove(string searchTerm)
         {
             IQueryable<Move> query = moveRepository.Queryable()
                 .Where(c => c.Name.Contains(searchTerm));
@@ -46,7 +46,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Update")]
-        public async Task<JsonResult> UpdateMove(Move move)
+        public async Task<IActionResult> UpdateMove(Move move)
         {
             moveRepository.Update(move);
             await moveRepository.CommitAsync();
@@ -55,7 +55,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Add")]
-        public async Task<JsonResult> AddPokemon(Move move)
+        public async Task<IActionResult> AddPokemon(Move move)
         {
             moveRepository.Add(move);
             await moveRepository.CommitAsync();
