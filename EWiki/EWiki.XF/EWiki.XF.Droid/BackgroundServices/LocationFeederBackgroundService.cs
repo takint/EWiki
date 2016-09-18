@@ -22,6 +22,14 @@ namespace EWiki.XF.Droid.BackgroundServices
     public class LocationFeederBackgroundService : Service
     {
         List<CancellationTokenSource> _ctsList = new List<CancellationTokenSource>();
+        private readonly SniperInfoRepository _serverRepository;
+        private readonly SniperInfoRepositoryManager _sniperInfoRepositoryManager;
+
+        public LocationFeederBackgroundService()
+        {
+            _serverRepository = new SniperInfoRepository();
+            _sniperInfoRepositoryManager = new SniperInfoRepositoryManager(_serverRepository);
+        }
 
         public override IBinder OnBind(Intent intent)
         {
@@ -108,31 +116,11 @@ namespace EWiki.XF.Droid.BackgroundServices
         private void WriteOutListeners(List<SniperInfo> sniperInfos)
         {
             List<SniperInfo> sniperInfosToSend = sniperInfos;
-            var message = new PokemonResultFetchedMessage
+            sniperInfosToSend = sniperInfosToSend.OrderBy(m => m.ExpirationTimestamp).ToList();
+            foreach (SniperInfo sniperInfo in sniperInfosToSend)
             {
-                Pokemons = sniperInfosToSend.Select(s => new Models.SniperInfo
-                {
-                    Id = s.Id,
-                    Name = s.Id.ToString(),
-                    ChannelName = s.ChannelInfo.channel,
-                    EncounterId = s.EncounterId,
-                    ExpirationTimestamp = s.ExpirationTimestamp == DateTime.MinValue ? DateTime.Now.AddSeconds(150) : s.ExpirationTimestamp,
-                    TrueExpirationTimestamp = s.ExpirationTimestamp > DateTime.MinValue,
-                    IV = s.IV,
-                    Latitude = s.Latitude,
-                    Longitude = s.Longitude,
-                    Move1 = s.Move1,
-                    Move2 = s.Move2,
-                    NeedVerification = s.NeedVerification,
-                    ReceivedTimeStamp = s.ReceivedTimeStamp,
-                    SpawnPointId = s.SpawnPointId,
-                    Verified = s.Verified,
-                    VerifiedOn = s.VerifiedOn
-                }).ToList()
-            };
-            Device.BeginInvokeOnMainThread(
-                () => MessagingCenter.Send(message, "PokemonResultFetched")
-            );
+                _sniperInfoRepositoryManager.AddToRepository(sniperInfo);
+            }
         }
 
         private async Task<Task> StartPollRarePokemonRepository(GlobalSettings globalSettings, IRarePokemonRepository rarePokemonRepository)

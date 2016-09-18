@@ -47,13 +47,23 @@ namespace EWiki.XF.Droid
 
         private void SetupBackgroundServices()
         {
-            MessagingCenter.Subscribe<StartTestBackgroundServiceMessage>(this, "StartTestBackgroundService", message => {
+            MessagingCenter.Subscribe<StartLocationFeederBackgroundServiceMessage>(this, "StartLocationFeederBackgroundService", message => {
                 var intent = new Intent(this, typeof(LocationFeederBackgroundService));
                 StartService(intent);
             });
 
-            MessagingCenter.Subscribe<StopTestBackgroundServiceMessage>(this, "StopTestBackgroundService", message => {
+            MessagingCenter.Subscribe<StopLocationFeederBackgroundServiceMessage>(this, "StopLocationFeederBackgroundService", message => {
                 var intent = new Intent(this, typeof(LocationFeederBackgroundService));
+                StopService(intent);
+            });
+
+            MessagingCenter.Subscribe<StartPokeFeederBackgroundServiceMessage>(this, "StartPokeFeederBackgroundService", message => {
+                var intent = new Intent(this, typeof(PokeFeederBackgroundService));
+                StartService(intent);
+            });
+
+            MessagingCenter.Subscribe<StopPokeFeederBackgroundServiceMessage>(this, "StopPokeFeederBackgroundService", message => {
+                var intent = new Intent(this, typeof(PokeFeederBackgroundService));
                 StopService(intent);
             });
         }

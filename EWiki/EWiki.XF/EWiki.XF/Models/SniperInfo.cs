@@ -46,17 +46,17 @@ namespace EWiki.XF.Models
         public PokemonId Id { get; set; }
         public string SpawnPointId { get; set; } = null;
 
-        private string _move1;
+        private PokemonMove _move1;
 
-        public string Move1
+        public PokemonMove Move1
         {
             get { return _move1; }
             set { SetProperty(ref _move1, value); }
         }
 
-        private string _move2;
+        private PokemonMove _move2;
 
-        public string Move2
+        public PokemonMove Move2
         {
             get { return _move2; }
             set { SetProperty(ref _move2, value); }
@@ -82,6 +82,7 @@ namespace EWiki.XF.Models
         public string ChannelName { get; set; }
         public DateTime ReceivedTimeStamp { get; set; }
         public bool NeedVerification { get; set; } = false;
+        public DateTime CreatedDate { get; set; }
 
 
         public DelegateCommand SnipCommand { get; set; }
@@ -89,6 +90,7 @@ namespace EWiki.XF.Models
 
         public SniperInfo()
         {
+            CreatedDate = DateTime.Now;
             SnipCommand = new DelegateCommand(ExecuteSnipCommand);
             OpenMapCommand = new DelegateCommand(ExecuteOpenMapCommand);
         }
@@ -97,9 +99,10 @@ namespace EWiki.XF.Models
         {
             try
             {
+                //SniperProgram.Start(new[] { $"pokesniper2://{Name}/{Latitude},{Longitude}" } );
                 Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 // ignored
             }

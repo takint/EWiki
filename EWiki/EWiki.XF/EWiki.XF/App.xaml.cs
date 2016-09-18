@@ -34,8 +34,11 @@ namespace EWiki.XF
 
         protected override void OnStart()
         {
-            var message = new StartTestBackgroundServiceMessage();
-            MessagingCenter.Send(message, "StartTestBackgroundService");
+            var message = new StartLocationFeederBackgroundServiceMessage();
+            MessagingCenter.Send(message, "StartLocationFeederBackgroundService");
+
+            var startLocationFeederBackgroundServiceMessage = new StartPokeFeederBackgroundServiceMessage();
+            MessagingCenter.Send(startLocationFeederBackgroundServiceMessage, "StartPokeFeederBackgroundServiceMessage");
         }
     }
 }

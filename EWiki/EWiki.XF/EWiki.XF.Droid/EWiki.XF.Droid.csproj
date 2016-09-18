@@ -190,8 +190,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundServices\PokeFeederBackgroundService.cs" />
     <Compile Include="LocationFeeder\Common\ChannelInfo.cs" />
+    <Compile Include="LocationFeeder\Common\ChannelParser.cs" />
     <Compile Include="LocationFeeder\Common\Constants.cs" />
+    <Compile Include="LocationFeeder\Common\Filter.cs" />
+    <Compile Include="LocationFeeder\Common\FilterFactory.cs" />
     <Compile Include="LocationFeeder\Common\GeoCoordinates.cs" />
     <Compile Include="LocationFeeder\Common\Output.cs" />
     <Compile Include="LocationFeeder\Config\Settings.cs" />
@@ -203,6 +207,7 @@
     <Compile Include="LocationFeeder\Helper\SniperInfo.cs" />
     <Compile Include="LocationFeeder\Helper\StringHelper.cs" />
     <Compile Include="LocationFeeder\Helper\UserAgentHelper.cs" />
+    <Compile Include="LocationFeeder\Common\PokemonFilterToBinary.cs" />
     <Compile Include="LocationFeeder\Repository\IRarePokemonRepository.cs" />
     <Compile Include="LocationFeeder\Repository\PokemonGoIVClubRarePokemonRepository.cs" />
     <Compile Include="LocationFeeder\Repository\PokeSnipeRarePokemonRepository.cs" />
@@ -211,6 +216,8 @@
     <Compile Include="LocationFeeder\Repository\PokezzRarePokemonRepository.cs" />
     <Compile Include="LocationFeeder\Repository\RarePokemonRepositoryFactory.cs" />
     <Compile Include="LocationFeeder\Repository\RarePokemonsFactory.cs" />
+    <Compile Include="LocationFeeder\Repository\SniperInfoRepository.cs" />
+    <Compile Include="LocationFeeder\Repository\SniperInfoRepositoryManager.cs" />
     <Compile Include="LocationFeeder\Repository\TrackermonRarePokemonRepository.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BottomTabbedPageRender.cs" />

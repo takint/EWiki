@@ -3,11 +3,19 @@ using System.Collections.Generic;
 
 namespace EWiki.XF
 {
-    public class StartTestBackgroundServiceMessage
+    public class StartLocationFeederBackgroundServiceMessage
     {
     }
 
-    public class StopTestBackgroundServiceMessage
+    public class StopLocationFeederBackgroundServiceMessage
+    {
+    }
+
+    public class StartPokeFeederBackgroundServiceMessage
+    {
+    }
+
+    public class StopPokeFeederBackgroundServiceMessage
     {
     }
 

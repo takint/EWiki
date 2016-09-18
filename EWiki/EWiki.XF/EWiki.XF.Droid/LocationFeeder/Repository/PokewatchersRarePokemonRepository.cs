@@ -178,8 +178,6 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
             sniperInfo.ChannelInfo = new ChannelInfo { server = Channel };
 
             sniperInfo.IV = Convert.ToDouble(result.IV);
-            sniperInfo.Move1 = result.Move1?.ToPascalCase();
-            sniperInfo.Move2 = result.Move2?.ToPascalCase();
 
             return sniperInfo;
         }

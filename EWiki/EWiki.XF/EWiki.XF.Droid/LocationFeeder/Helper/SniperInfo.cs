@@ -28,8 +28,8 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
         public PokemonId Id { get; set; } = PokemonId.Missingno;
         [JsonIgnore]
         public string SpawnPointId { get; set; } = null;
-        public string Move1 { get; set; }
-        public string Move2 { get; set; }
+        public PokemonMove Move1 { get; set; }
+        public PokemonMove Move2 { get; set; }
         public double IV { get; set; }
         public bool Verified { get; set; } = false;
         public DateTime VerifiedOn { get; set; } = default(DateTime);
