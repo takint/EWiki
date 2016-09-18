@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Reflection;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -34,6 +34,10 @@ namespace EWiki.XF.Droid
             IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            var cv = typeof(Xamarin.Forms.CarouselView);
+            var assembly = Assembly.Load(cv.FullName);
+
             LoadApplication(new App(new AndroidInitializer()));
 
             StartLocationFeeder();

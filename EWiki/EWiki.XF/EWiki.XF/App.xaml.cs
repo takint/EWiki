@@ -5,6 +5,7 @@ using EWiki.XF.Views;
 using EWiki.XF.Views.PokemonInfoElements;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace EWiki.XF
 {
@@ -18,7 +19,8 @@ namespace EWiki.XF
 
             InitializeComponent();
 
-            NavigationService.NavigateAsync("LeftMenu/Navigation/MainPage");
+            //NavigationService.NavigateAsync("LeftMenu/Navigation/MainPage");
+            NavigationService.NavigateAsync("NewsTab");
         }
 
         protected override void RegisterTypes()
@@ -27,9 +29,11 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<Navigation>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<PokedexTab>();
+            Container.RegisterTypeForNavigation<NewsTab>();
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterType<IPokemonService, PokemonService>();
+            Container.RegisterType<INewsService, NewsService>();
         }
 
         protected override void OnStart()

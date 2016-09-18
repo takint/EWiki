@@ -41,17 +41,23 @@
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
     <Compile Include="ExtendedControls\ExtendedScrollView.cs" />
+    <Compile Include="ExtendedControls\HorizontalListView.xaml.cs">
+      <DependentUpon>HorizontalListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Models\Enum\PokemonId.cs" />
     <Compile Include="Models\Enum\PokemonMove.cs" />
     <Compile Include="Models\LeftMenuItem.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\SniperInfo.cs" />
+    <Compile Include="Utilities\ObservableRangeCollection.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\LocationFeederTabViewModel.cs" />
+    <Compile Include="ViewModels\NewsTabViewModel.cs" />
     <Compile Include="ViewModels\PokedexTabViewModel.cs" />
     <Compile Include="Views\LeftMenu.xaml.cs">
       <DependentUpon>LeftMenu.xaml</DependentUpon>
@@ -60,6 +66,9 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\MainPageTabs\LocationFeederTab.xaml.cs">
       <DependentUpon>LocationFeederTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPageTabs\NewsTab.xaml.cs">
+      <DependentUpon>NewsTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPageTabs\PokedexTab.xaml.cs">
       <DependentUpon>PokedexTab.xaml</DependentUpon>
@@ -110,19 +119,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Transformations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.7\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FormsPlugin.Iconize, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
@@ -153,16 +162,20 @@
       <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XLabs.Core, Version=2.0.5782.12218, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
@@ -244,13 +257,25 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MainPageTabs\NewsTab.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExtendedControls\HorizontalListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
