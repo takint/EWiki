@@ -1,6 +1,7 @@
 ﻿using PokemonGo.RocketAPI.Logging;
 using System;
 using System.IO;
+using SuperWebSocket;
 
 namespace PokemonGo.RocketAPI
 {
@@ -37,8 +38,9 @@ namespace PokemonGo.RocketAPI
             AddLog(message);
 		}
 
-        public static void ColoredConsoleWrite(ConsoleColor color, string text, LogLevel level = LogLevel.Info)
+        public static void ColoredConsoleWrite(ConsoleColor color, string text, LogLevel level = LogLevel.Info, WebSocketSession session = null)
         {
+            session?.Send(text);
             ConsoleColor originalColor = Console.ForegroundColor;
             Console.ForegroundColor = color;
             Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] "+ text);
@@ -46,17 +48,19 @@ namespace PokemonGo.RocketAPI
             AddLog(text);
         }
 
-        public static void ColoredConsoleWrite(ConsoleColor color, string text)
-        {
-            ConsoleColor originalColor = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-            Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] " + text);
-            Console.ForegroundColor = originalColor;
-            AddLog(text);
-        }
+        //public static void ColoredConsoleWrite(ConsoleColor color, string text, WebSocketSession session = null)
+        //{
+        //    session?.Send(text);
+        //    ConsoleColor originalColor = Console.ForegroundColor;
+        //    Console.ForegroundColor = color;
+        //    Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] " + text);
+        //    Console.ForegroundColor = originalColor;
+        //    AddLog(text);
+        //}
 
-        public static void Error(string text)
+        public static void Error(string text, WebSocketSession session = null)
         {
+            session?.Send(text);
             ConsoleColor originalColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] " + text);

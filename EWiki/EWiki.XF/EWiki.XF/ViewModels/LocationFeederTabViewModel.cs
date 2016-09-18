@@ -16,6 +16,14 @@ namespace EWiki.XF.ViewModels
         private ObservableCollection<SniperInfo> _pokemons = new ObservableCollection<SniperInfo>();
         public ObservableCollection<SniperInfo> Pokemons => _pokemons;
 
+        private string _message;
+
+        public string Message
+        {
+            get { return _message; }
+            set { SetProperty(ref _message, value); }
+        }
+
         CancellationTokenSource _cts;
 
         public LocationFeederTabViewModel()
@@ -33,6 +41,11 @@ namespace EWiki.XF.ViewModels
                         // ignored
                     }
                 };
+            });
+
+            MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
+            {
+                _message = message.Message;
             });
 
             _cts = new CancellationTokenSource();

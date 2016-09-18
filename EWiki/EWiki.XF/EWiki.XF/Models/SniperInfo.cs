@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EWiki.XF.Models.Enum;
+using EWiki.XF.Services;
 using Prism.Commands;
 using Prism.Mvvm;
+using WebSocket4Net;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Models
@@ -91,16 +94,17 @@ namespace EWiki.XF.Models
         public SniperInfo()
         {
             CreatedDate = DateTime.Now;
-            SnipCommand = new DelegateCommand(ExecuteSnipCommand);
+            SnipCommand = DelegateCommand.FromAsyncHandler(ExecuteSnipCommand);
             OpenMapCommand = new DelegateCommand(ExecuteOpenMapCommand);
         }
 
-        public void ExecuteSnipCommand()
+        public async Task ExecuteSnipCommand()
         {
             try
             {
-                //SniperProgram.Start(new[] { $"pokesniper2://{Name}/{Latitude},{Longitude}" } );
-                Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
+                var service = DependencyService.Get<ISniperService>();
+                await service.Snipe(Id, Latitude, Longitude);
+                //Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
             }
             catch (Exception exception)
             {

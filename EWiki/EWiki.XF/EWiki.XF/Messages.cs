@@ -28,4 +28,9 @@ namespace EWiki.XF
     {
         
     }
+
+    public class SniperMessage
+    {
+        public string Message { get; set; }
+    }
 }

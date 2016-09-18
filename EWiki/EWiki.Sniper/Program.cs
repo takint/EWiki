@@ -18,11 +18,16 @@ using PokemonGo.RocketAPI.Console;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Logging;
 using PokemonGo.RocketAPI.Logic;
+using POGOProtos.Settings;
+using SuperSocket.SocketBase;
+using SuperWebSocket;
 
 namespace EWiki.Sniper
 {
     internal class Program
     {
+        private static WebSocketServer _webSocketServer;
+
         public static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
         public static string path_translation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Translations");
         public static string path_device = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Device");
@@ -44,7 +49,7 @@ namespace EWiki.Sniper
         public static string pokelog = Path.Combine(logPath, "PokeLog.txt");
         public static string manualTransferLog = Path.Combine(logPath, "TransferLog.txt");
         public static string EvolveLog = Path.Combine(logPath, "EvolveLog.txt");
-        public static NumberStyles cords = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
+        public static NumberStyles numberStyles = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
 
         public static string path_pokedata = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PokeData");
 
@@ -54,24 +59,80 @@ namespace EWiki.Sniper
         static void Main(string[] args)
         {
             //configureNBug();
+            InitWebSocket();
+            InitSniper();
+        }
 
-            SleepHelper.PreventSleep();
-            if (args != null && args.Length > 0)
+        private static void InitWebSocket()
+        {
+            Logger.ColoredConsoleWrite(ConsoleColor.Blue, "Init WebSocket");
+            _webSocketServer = new WebSocketServer();
+            SuperSocket.SocketBase.Config.RootConfig rootConfig = new SuperSocket.SocketBase.Config.RootConfig();
+            var serverConfig = new SuperSocket.SocketBase.Config.ServerConfig();
+            serverConfig.Name = "Pokit";
+            serverConfig.ServerTypeName = "WebSocketService";
+            serverConfig.Ip = "Any";
+            serverConfig.Port = 7777;
+            serverConfig.MaxRequestLength = 4096;
+            serverConfig.MaxConnectionNumber = 100 * 1000;
+            serverConfig.SendingQueueSize = 25;
+            serverConfig.SendTimeOut = 5000;
+            var socketServerFactory = new SuperSocket.SocketEngine.SocketServerFactory();
+            _webSocketServer.Setup(rootConfig, serverConfig, socketServerFactory);
+            _webSocketServer.Start();
+            _webSocketServer.NewMessageReceived += new SessionHandler<WebSocketSession, string>(socketServer_NewMessageReceived);
+            _webSocketServer.NewSessionConnected += socketServer_NewSessionConnected;
+            _webSocketServer.SessionClosed += socketServer_SessionClosed;
+        }
+
+        private static void socketServer_NewSessionConnected(WebSocketSession session)
+        {
+            session.Send($"Connected");
+        }
+
+        private static void socketServer_SessionClosed(WebSocketSession session, CloseReason closeReason)
+        {
+            session.Send($"Closed");
+        }
+
+        private static async void socketServer_NewMessageReceived(WebSocketSession session, string value)
+        {
+            try
             {
-                foreach (string arg in args)
+                var matches = Regex.Matches(value, @"(\[(\w*)\=((\w|\.|\-)*)\])");
+                if (matches.Count > 0)
                 {
-                    if (arg.Contains(","))
+                    var actionParameter = matches[0].Value;
+                    var action = actionParameter.Split('=')[1].Replace("]", "");
+                    if (action == "Snipe")
                     {
-                        Logger.ColoredConsoleWrite(ConsoleColor.Green, $"Found coordinates in command line: {arg}");
-                        if (File.Exists(lastcords))
-                        {
-                            Logger.ColoredConsoleWrite(ConsoleColor.Yellow, "Last coords file exists, trying to delete it");
-                            File.Delete(lastcords);
-                        }
-
-                        cmdCoords = arg;
+                        var pokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), matches[1].Value.Split('=')[1].Replace("]", ""));
+                        var latitude = double.Parse(matches[2].Value.Split('=')[1].Replace("]", ""));
+                        var longitude = double.Parse(matches[3].Value.Split('=')[1].Replace("]", ""));
+                        await Snipe(pokemonId, latitude, longitude, session);
                     }
                 }
+                session.Send("OK");
+            }
+            catch (Exception e)
+            {
+                session.Send("People talking without speaking");
+            }
+        }
+
+        private static void InitSniper(string cords = null)
+        {
+            SleepHelper.PreventSleep();
+            if (!string.IsNullOrEmpty(cords))
+            {
+                Logger.ColoredConsoleWrite(ConsoleColor.Green, $"Found coordinates in command line: {cords}");
+                if (File.Exists(lastcords))
+                {
+                    Logger.ColoredConsoleWrite(ConsoleColor.Yellow, "Last coords file exists, trying to delete it");
+                    File.Delete(lastcords);
+                }
+
+                cmdCoords = cords;
             }
 
             if (!Directory.Exists(path))
@@ -115,246 +176,246 @@ namespace EWiki.Sniper
 
             //if (args != null && args.Length > 0 && args[0].Contains("-nogui"))
             //{
-                Logger.ColoredConsoleWrite(ConsoleColor.Red, "You added -nogui! If you didnt setup correctly with the GUI. It wont work.");
-                int i = 1;
-                if (File.Exists(account))
+            Logger.ColoredConsoleWrite(ConsoleColor.Blue, "Init Sniper");
+            int i = 1;
+            if (File.Exists(account))
+            {
+                string[] lines = File.ReadAllLines(@account);
+                foreach (string line in lines)
                 {
-                    string[] lines = File.ReadAllLines(@account);
-                    foreach (string line in lines)
-                    {
-                        try
-                        {
-                            switch (i)
-                            {
-                                case 1:
-                                    if (line == "Google")
-                                        Globals.acc = AuthType.Google;
-                                    else
-                                        Globals.acc = AuthType.Ptc;
-                                    break;
-                                case 2:
-                                    Globals.username = line;
-                                    break;
-                                case 3:
-                                    Globals.password = line;
-                                    break;
-                                case 4:
-                                    if (line.Split('.').Length - 1 > 1)
-                                    { // Coords in one line, comma-delimited.
-                                        string[] crdParts = line.Split(',');
-                                        Globals.latitute = double.Parse(crdParts[0].Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                        Globals.longitude = double.Parse(crdParts[1].Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                        i++;
-                                    }
-                                    else
-                                    {
-                                        Globals.latitute = double.Parse(line.Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                    }
-                                    break;
-                                case 5:
-                                    Globals.longitude = double.Parse(line.Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                    break;
-                                case 6:
-                                    Globals.altitude = double.Parse(line.Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                    break;
-                                case 7:
-                                    Globals.speed = double.Parse(line.Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                                    break;
-                                case 8:
-                                    Globals.radius = int.Parse(line);
-                                    break;
-                                case 9:
-                                    Globals.defLoc = bool.Parse(line);
-                                    break;
-                                case 10:
-                                    Globals.transfer = bool.Parse(line);
-                                    break;
-                                case 11:
-                                    Globals.duplicate = int.Parse(line);
-                                    break;
-                                case 12:
-                                    Globals.evolve = bool.Parse(line);
-                                    break;
-                                case 13:
-                                    Globals.maxCp = int.Parse(line);
-                                    break;
-                                case 14:
-                                    Globals.telAPI = line;
-                                    break;
-                                case 15:
-                                    Globals.telName = line;
-                                    break;
-                                case 16:
-                                    Globals.telDelay = int.Parse(line);
-                                    break;
-                                case 17:
-                                    //Globals.telDelay = int.Parse(line);
-                                    // NavigationOption...
-                                    break;
-                                case 18:
-                                    Globals.useluckyegg = bool.Parse(line);
-                                    break;
-                                case 19:
-
-                                    break;
-                                case 20:
-                                    Globals.useincense = bool.Parse(line);
-                                    break;
-                                case 21:
-                                    Globals.ivmaxpercent = int.Parse(line);
-                                    break;
-                                case 22:
-                                    Globals.pokeList = bool.Parse(line);
-                                    break;
-                                case 23:
-                                    Globals.keepPokemonsThatCanEvolve = bool.Parse(line);
-                                    break;
-                                case 24:
-                                    //Globals.pokevision = bool.Parse(line);
-                                    break;
-                                case 25:
-                                    Globals.useluckyegg = bool.Parse(line);
-                                    break;
-                                case 26:
-                                    Globals.autoIncubate = bool.Parse(line);
-                                    break;
-                                case 27:
-                                    Globals.useBasicIncubators = bool.Parse(line);
-                                    break;
-                                case 28:
-                                    Globals.TransferFirstLowIV = bool.Parse(line);
-                                    break;
-                                case 34:
-                                    Globals.usePwdEncryption = bool.Parse(line);
-                                    break;
-                                    //case 35:
-                                    //    Globals.itemsList = bool.Parse(line);
-                                    //    break;
-                            }
-                        }
-                        catch (Exception)
-                        {
-                            Logger.ColoredConsoleWrite(ConsoleColor.Red, $"Problem with value: {line} (line #{i})");
-                            throw;
-                        }
-                        i++;
-                    }
-                    if (Globals.usePwdEncryption)
-                    {
-                        Globals.password = Encryption.Decrypt(Globals.password);
-                    }
-
-                    if (cmdCoords != string.Empty)
-                    {
-                        string[] crdParts = cmdCoords.Split(',');
-                        Globals.latitute = double.Parse(crdParts[0].Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                        Globals.longitude = double.Parse(crdParts[1].Replace(',', '.'), cords, System.Globalization.NumberFormatInfo.InvariantInfo);
-                    }
-                    Logger.ColoredConsoleWrite(ConsoleColor.Yellow, $"Starting at: {Globals.latitute},{Globals.longitude}");
-                }
-
-                if (File.Exists(items))
-                {
-                    string[] lines = File.ReadAllLines(@items);
-                    i = 1;
-                    foreach (string line in lines)
+                    try
                     {
                         switch (i)
                         {
                             case 1:
-                                Globals.pokeball = int.Parse(line);
+                                if (line == "Google")
+                                    Globals.acc = AuthType.Google;
+                                else
+                                    Globals.acc = AuthType.Ptc;
                                 break;
                             case 2:
-                                Globals.greatball = int.Parse(line);
+                                Globals.username = line;
                                 break;
                             case 3:
-                                Globals.ultraball = int.Parse(line);
+                                Globals.password = line;
                                 break;
                             case 4:
-                                Globals.masterball = int.Parse(line);
+                                if (line.Split('.').Length - 1 > 1)
+                                { // Coords in one line, comma-delimited.
+                                    string[] crdParts = line.Split(',');
+                                    Globals.latitute = double.Parse(crdParts[0].Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
+                                    Globals.longitude = double.Parse(crdParts[1].Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
+                                    i++;
+                                }
+                                else
+                                {
+                                    Globals.latitute = double.Parse(line.Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
+                                }
                                 break;
                             case 5:
-                                Globals.revive = int.Parse(line);
+                                Globals.longitude = double.Parse(line.Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
                                 break;
                             case 6:
-                                Globals.toprevive = int.Parse(line);
+                                Globals.altitude = double.Parse(line.Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
                                 break;
                             case 7:
-                                Globals.potion = int.Parse(line);
+                                Globals.speed = double.Parse(line.Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
                                 break;
                             case 8:
-                                Globals.superpotion = int.Parse(line);
+                                Globals.radius = int.Parse(line);
                                 break;
                             case 9:
-                                Globals.hyperpotion = int.Parse(line);
+                                Globals.defLoc = bool.Parse(line);
                                 break;
                             case 10:
-                                Globals.toppotion = int.Parse(line);
+                                Globals.transfer = bool.Parse(line);
                                 break;
                             case 11:
-                                Globals.berry = int.Parse(line);
+                                Globals.duplicate = int.Parse(line);
                                 break;
+                            case 12:
+                                Globals.evolve = bool.Parse(line);
+                                break;
+                            case 13:
+                                Globals.maxCp = int.Parse(line);
+                                break;
+                            case 14:
+                                Globals.telAPI = line;
+                                break;
+                            case 15:
+                                Globals.telName = line;
+                                break;
+                            case 16:
+                                Globals.telDelay = int.Parse(line);
+                                break;
+                            case 17:
+                                //Globals.telDelay = int.Parse(line);
+                                // NavigationOption...
+                                break;
+                            case 18:
+                                Globals.useluckyegg = bool.Parse(line);
+                                break;
+                            case 19:
+
+                                break;
+                            case 20:
+                                Globals.useincense = bool.Parse(line);
+                                break;
+                            case 21:
+                                Globals.ivmaxpercent = int.Parse(line);
+                                break;
+                            case 22:
+                                Globals.pokeList = bool.Parse(line);
+                                break;
+                            case 23:
+                                Globals.keepPokemonsThatCanEvolve = bool.Parse(line);
+                                break;
+                            case 24:
+                                //Globals.pokevision = bool.Parse(line);
+                                break;
+                            case 25:
+                                Globals.useluckyegg = bool.Parse(line);
+                                break;
+                            case 26:
+                                Globals.autoIncubate = bool.Parse(line);
+                                break;
+                            case 27:
+                                Globals.useBasicIncubators = bool.Parse(line);
+                                break;
+                            case 28:
+                                Globals.TransferFirstLowIV = bool.Parse(line);
+                                break;
+                            case 34:
+                                Globals.usePwdEncryption = bool.Parse(line);
+                                break;
+                                //case 35:
+                                //    Globals.itemsList = bool.Parse(line);
+                                //    break;
                         }
-                        i++;
                     }
+                    catch (Exception)
+                    {
+                        Logger.ColoredConsoleWrite(ConsoleColor.Red, $"Problem with value: {line} (line #{i})");
+                        throw;
+                    }
+                    i++;
+                }
+                if (Globals.usePwdEncryption)
+                {
+                    Globals.password = Encryption.Decrypt(Globals.password);
                 }
 
-                if (File.Exists(Program.throws))
+                if (cmdCoords != string.Empty)
                 {
-                    string[] lines = File.ReadAllLines(@Program.throws);
-                    i = 1;
-                    foreach (string line in lines)
-                    {
-                        switch (i)
-                        {
-                            case 1:
-                                Globals.excellentthrow = int.Parse(line);
-                                break;
-                            case 2:
-                                Globals.greatthrow = int.Parse(line);
-                                break;
-                            case 3:
-                                Globals.nicethrow = int.Parse(line);
-                                break;
-                            case 4:
-                                Globals.ordinarythrow = int.Parse(line);
-                                break;
-                            default:
-                                break;
-                        }
-                        i++;
-                    }
+                    string[] crdParts = cmdCoords.Split(',');
+                    Globals.latitute = double.Parse(crdParts[0].Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
+                    Globals.longitude = double.Parse(crdParts[1].Replace(',', '.'), numberStyles, System.Globalization.NumberFormatInfo.InvariantInfo);
                 }
+                Logger.ColoredConsoleWrite(ConsoleColor.Yellow, $"Starting at: {Globals.latitute},{Globals.longitude}");
+            }
 
-                if (File.Exists(keep))
+            if (File.Exists(items))
+            {
+                string[] lines = File.ReadAllLines(@items);
+                i = 1;
+                foreach (string line in lines)
                 {
-                    string[] lines = System.IO.File.ReadAllLines(@keep);
-                    foreach (string line in lines)
+                    switch (i)
                     {
-                        if (line != string.Empty)
-                            Globals.noTransfer.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
+                        case 1:
+                            Globals.pokeball = int.Parse(line);
+                            break;
+                        case 2:
+                            Globals.greatball = int.Parse(line);
+                            break;
+                        case 3:
+                            Globals.ultraball = int.Parse(line);
+                            break;
+                        case 4:
+                            Globals.masterball = int.Parse(line);
+                            break;
+                        case 5:
+                            Globals.revive = int.Parse(line);
+                            break;
+                        case 6:
+                            Globals.toprevive = int.Parse(line);
+                            break;
+                        case 7:
+                            Globals.potion = int.Parse(line);
+                            break;
+                        case 8:
+                            Globals.superpotion = int.Parse(line);
+                            break;
+                        case 9:
+                            Globals.hyperpotion = int.Parse(line);
+                            break;
+                        case 10:
+                            Globals.toppotion = int.Parse(line);
+                            break;
+                        case 11:
+                            Globals.berry = int.Parse(line);
+                            break;
                     }
+                    i++;
                 }
+            }
 
-                if (File.Exists(ignore))
+            if (File.Exists(Program.throws))
+            {
+                string[] lines = File.ReadAllLines(@Program.throws);
+                i = 1;
+                foreach (string line in lines)
                 {
-                    string[] lines = System.IO.File.ReadAllLines(@ignore);
-                    foreach (string line in lines)
+                    switch (i)
                     {
-                        if (line != string.Empty)
-                            Globals.noCatch.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
+                        case 1:
+                            Globals.excellentthrow = int.Parse(line);
+                            break;
+                        case 2:
+                            Globals.greatthrow = int.Parse(line);
+                            break;
+                        case 3:
+                            Globals.nicethrow = int.Parse(line);
+                            break;
+                        case 4:
+                            Globals.ordinarythrow = int.Parse(line);
+                            break;
+                        default:
+                            break;
                     }
+                    i++;
                 }
+            }
 
-                if (File.Exists(evolve))
+            if (File.Exists(keep))
+            {
+                string[] lines = System.IO.File.ReadAllLines(@keep);
+                foreach (string line in lines)
                 {
-                    string[] lines = System.IO.File.ReadAllLines(@evolve);
-                    foreach (string line in lines)
-                    {
-                        if (line != string.Empty)
-                            Globals.doEvolve.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
-                    }
+                    if (line != string.Empty)
+                        Globals.noTransfer.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
                 }
+            }
+
+            if (File.Exists(ignore))
+            {
+                string[] lines = System.IO.File.ReadAllLines(@ignore);
+                foreach (string line in lines)
+                {
+                    if (line != string.Empty)
+                        Globals.noCatch.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
+                }
+            }
+
+            if (File.Exists(evolve))
+            {
+                string[] lines = System.IO.File.ReadAllLines(@evolve);
+                foreach (string line in lines)
+                {
+                    if (line != string.Empty)
+                        Globals.doEvolve.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
+                }
+            }
 
             //}
             //else
@@ -386,8 +447,14 @@ namespace EWiki.Sniper
             Logger.SetLogger(new ConsoleLogger(LogLevel.Info));
 
             Globals.infoObservable.HandleNewHuntStats += SaveHuntStats;
+            
+            System.Console.ReadLine();
+            SleepHelper.AllowSleep();
+        }
 
-            Task.Run(async () =>
+        private static async Task Snipe(PokemonId pokemonId, double latitude, double longitude, WebSocketSession session)
+        {
+            await Task.Run(async () =>
             {
 
                 CheckVersion();
@@ -417,10 +484,8 @@ namespace EWiki.Sniper
                     logic = new Logic(new Settings(), Globals.infoObservable);
                 }
 
-                await logic.CatchPokemon(PokemonId.Arcanine,37.5091041,15.0858364);
+                await logic.CatchPokemon(pokemonId, latitude, longitude, session);
             });
-            System.Console.ReadLine();
-            SleepHelper.AllowSleep();
         }
 
         private static void SaveHuntStats(string newHuntStat)
