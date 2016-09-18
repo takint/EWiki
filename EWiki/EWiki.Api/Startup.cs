@@ -39,12 +39,30 @@ namespace EWiki.Api
 
             services.AddMvc();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowEwikiBDOrigin",
+                    builder => builder
+                                .WithOrigins("http://localhost:8080")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod()
+                                .WithExposedHeaders());
+            });
+
             // Add application services.
             services.AddSingleton<IDbFactory, DbFactory>();
-            services.AddSingleton<IPokedexRepository, PokedexRepository>();
+
+            services.AddSingleton<IArchiveRepository, ArchiveRepository>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
-            services.AddSingleton<IMoveRepository, MoveRepository>();
             services.AddSingleton<ILocationRepository, LocationRepository>();
+            services.AddSingleton<IMoveRepository, MoveRepository>();
+            services.AddSingleton<IPageRepository, PageRepository>();
+            services.AddSingleton<IPageContentRepository, PageContentRepository>();
+            services.AddSingleton<IPageLangRepository, PageLangRepository>();
+            services.AddSingleton<IPageMetaRepository, PageMetaRepository>();
+            services.AddSingleton<IPokedexRepository, PokedexRepository>();
+            services.AddSingleton<IRevisionRepository, RevisionRepository>();
+            services.AddSingleton<IWikiImageRepository, WikiImageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,13 +97,16 @@ namespace EWiki.Api
                 }
             }
 
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
 
             app.UseStaticFiles();
 
             app.UseIdentity();
 
             app.UseMvc();
+
+            // For more details: https://docs.asp.net/en/latest/security/cors.html
+            app.UseCors("AllowEwikiBDOrigin");
         }
     }
 }
