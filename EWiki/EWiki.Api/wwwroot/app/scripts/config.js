@@ -10,21 +10,21 @@ ewikiBD
                 .state('index', {
                     abstract: true,
                     url: "/index",
-                    templateUrl: "views/common/content.html"
+                    templateUrl: appBaseUrl + "views/common/content.html"
                 })
                 .state('index.article', {
                     url: "/article",
-                    templateUrl: "views/article.html",
+                    templateUrl: appBaseUrl + "views/article.html",
                     data: { pageTitle: 'Article page' }
                 })
                 .state('index.main', {
                     url: "/main",
-                    templateUrl: "views/main.html",
+                    templateUrl: appBaseUrl + "views/main.html",
                     data: { pageTitle: 'Example view' }
                 })
                 .state('index.minor', {
                     url: "/minor",
-                    templateUrl: "views/minor.html",
+                    templateUrl: appBaseUrl + "views/minor.html",
                     data: { pageTitle: 'Example view' }
                 });
         }]);

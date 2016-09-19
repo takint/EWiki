@@ -103,7 +103,12 @@ namespace EWiki.Api
 
             app.UseIdentity();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             // For more details: https://docs.asp.net/en/latest/security/cors.html
             app.UseCors("AllowEwikiBDOrigin");
