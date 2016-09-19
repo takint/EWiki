@@ -11,5 +11,6 @@ namespace EWiki.Api.Models
         public string ImageMediaType { get; set; }
         public string ImageMime { get; set; }
         public string ImageDescription { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -1,0 +1,6 @@
+﻿/**
+ * WikiImage - service
+ */
+function WikiImageService() {
+
+}
