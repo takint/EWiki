@@ -4,66 +4,64 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              xmlns:controls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+             xmlns:ffImageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="EWiki.XF.Views.NewsTab">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="2*"/>
-    </Grid.RowDefinitions>
-
-    <!-- Featured News -->
-    <forms:CarouselView Grid.Row="0" ItemsSource="{Binding FeaturedNewsList}">
-      <forms:CarouselView.ItemTemplate>
-        <DataTemplate>
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding ImageUrl}"/>
-            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-              <Label TextColor="White" Text="{Binding Title}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation"/>
-            </StackLayout>
-          </Grid>
-        </DataTemplate>
-      </forms:CarouselView.ItemTemplate>
-    </forms:CarouselView>
-
-    <!-- News by category -->
-    <ListView Grid.Row="1" CachingStrategy="RecycleElement"
+             x:Class="EWiki.XF.Views.NewsTab"
+             x:Name="Page">
+  <ListView CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding NewsGroups}"
-              Margin="10,0,10,0"
               SeparatorVisibility="None"
               RowHeight="220">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Orientation="Vertical">
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition/>
-                  <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+    <ListView.Header>
+      <controls:ExtendedCarouselView ItemsSource="{Binding BindingContext.FeaturedNewsList, Source={x:Reference Page}}" HeightRequest="200" IndicatorColor="Teal">
+        <controls:ExtendedCarouselView.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <Image Grid.RowSpan="2" Aspect="AspectFit" Source="{Binding ImageUrl}"/>
+              <!--<StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                <Label TextColor="White" Text="{Binding Title}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation"/>
+              </StackLayout>-->
+            </Grid>
+          </DataTemplate>
+        </controls:ExtendedCarouselView.ItemTemplate>
+      </controls:ExtendedCarouselView>
+    </ListView.Header>
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Orientation="Vertical" Margin="5,0,5,10">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Text="{Binding Category}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Start"/>
-                <Button Grid.Column="1" Text="More" HorizontalOptions="End" BackgroundColor="Red" TextColor="White"/>
-              </Grid>
-              <controls:HorizontalListView ItemsSource="{Binding NewsList}">
-                <controls:HorizontalListView.ItemTemplate>
-                  <DataTemplate>
-                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="100">
-                      <Image Source="{Binding ImageUrl}"/>
-                      <Label Text="{Binding Title}"/>
-                    </StackLayout>
-                  </DataTemplate>
-                </controls:HorizontalListView.ItemTemplate>
-              </controls:HorizontalListView>
-            </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </Grid>
+              <Label Grid.Column="0" Text="{Binding Category}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+              <Button Grid.Column="1" Text="More" HorizontalOptions="End" BackgroundColor="Red" TextColor="White" VerticalOptions="Center"/>
+            </Grid>
+            <controls:HorizontalListView ItemsSource="{Binding NewsList}">
+              <controls:HorizontalListView.ItemTemplate>
+                <DataTemplate>
+                  <Grid HeightRequest="200" WidthRequest="120" BackgroundColor="#80000000">
+                    <Grid.RowDefinitions>
+                      <RowDefinition/>
+                      <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <ffImageLoading:CachedImage Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+                    <controls:ExtendedLabel Grid.Row="1" Text="{Binding Title}" TextColor="White" Margin="2,0,2,0"/>
+                  </Grid>
+                </DataTemplate>
+              </controls:HorizontalListView.ItemTemplate>
+            </controls:HorizontalListView>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>

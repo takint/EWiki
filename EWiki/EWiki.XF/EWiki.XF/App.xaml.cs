@@ -19,8 +19,8 @@ namespace EWiki.XF
 
             InitializeComponent();
 
-            //NavigationService.NavigateAsync("LeftMenu/Navigation/MainPage");
-            NavigationService.NavigateAsync("NewsTab");
+            NavigationService.NavigateAsync("LeftMenu/Navigation/MainPage");
+            //NavigationService.NavigateAsync("NewsTab");
         }
 
         protected override void RegisterTypes()

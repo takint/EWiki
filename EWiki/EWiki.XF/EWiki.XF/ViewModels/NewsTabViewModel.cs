@@ -19,39 +19,39 @@ namespace EWiki.XF.ViewModels
         {
             new News
             {
-                Title = "aaa",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "111"
+                Title = "asfs aiudhj najsdnas asdja qnw",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 1"
             },
             new News
             {
-                Title = "bbb",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "111"
+                Title = "asdad qwkjewqe qwkje jqwqk fqjwdmaksd",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 1"
             },
             new News
             {
-                Title = "ccc",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "222"
+                Title = "qwr sdf erwaet tdr grgasf",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 2"
             },
             new News
             {
-                Title = "ddd",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "222"
+                Title = "weretert eesfs",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 2"
             },
             new News
             {
-                Title = "eee",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "222"
+                Title = "f rr wearwa3w ewaere",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 2"
             },
             new News
             {
-                Title = "fff",
-                ImageUrl = "http://pngfever.com/wp-content/uploads/2016/08/Sunny-Leone-Spicy-Photo.jpg",
-                Category = "333"
+                Title = "safn aksjdfnsdl fkjsdfskdlnf kjdsfb sjk",
+                ImageUrl = "https://s-media-cache-ak0.pinimg.com/736x/37/f7/56/37f7568269edc2aa4bbb3ac02c461a4a.jpg",
+                Category = "Just do it 3"
             }
         };
 
@@ -76,23 +76,27 @@ namespace EWiki.XF.ViewModels
             _newsService = newsService;
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
+        //public override async void OnNavigatedTo(NavigationParameters parameters)
+        //{
+        //    base.OnNavigatedTo(parameters);
 
-            await LoadNews();
-        }
+        //    await LoadNewsAsync();
+        //}
 
-        private async Task LoadNews()
+        public async Task LoadNewsAsync()
         {
+            if (FeaturedNewsList.Any())
+                return;
+
             FeaturedNewsList.AddRange(_dummyData);
 
-            foreach (var category in _dummyData.Select(x => x.Category).Distinct())
+            var temp = _dummyData.Concat(_dummyData).Concat(_dummyData).ToList();
+            foreach (var category in temp.Select(x => x.Category).Distinct())
             {
                 var group = new NewsGroup
                 {
                     Category = category,
-                    NewsList = new ObservableCollection<News>(_dummyData.Where(x => x.Category == category))
+                    NewsList = new ObservableCollection<News>(temp.Where(x => x.Category == category))
                 };
 
                 NewsGroups.Add(group);

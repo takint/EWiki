@@ -13,11 +13,11 @@ namespace EWiki.XF.ExtendedControls
     public partial class HorizontalListView : ContentView
     {
         public static readonly BindableProperty ItemTemplateProperty =
-            BindableProperty.Create("ItemTemplate", typeof(DataTemplate), typeof(HorizontalListView), null,
+            BindableProperty.Create(nameof(ItemTemplate), typeof(DataTemplate), typeof(HorizontalListView), null,
                                         propertyChanged: (bindable, oldvalue, newvalue) => ((HorizontalListView)bindable).OnSizeChanged());
         
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create("ItemsSource", typeof(IEnumerable), typeof(HorizontalListView), null,
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(HorizontalListView), null,
                                         propertyChanged: (bindable, oldvalue, newvalue) => ((HorizontalListView)bindable).OnItemsSourceChanged(oldvalue as IEnumerable, newvalue as IEnumerable));
 
         public DataTemplate ItemTemplate
@@ -68,7 +68,7 @@ namespace EWiki.XF.ExtendedControls
 
         private void BindItems(IEnumerable items)
         {
-            stackItems.Children.Clear();
+            StackItems.Children.Clear();
             foreach (object item in items)
             {
                 var child = ItemTemplate.CreateContent() as View;
@@ -76,7 +76,7 @@ namespace EWiki.XF.ExtendedControls
                     return;
 
                 child.BindingContext = item;
-                stackItems.Children.Add(child);
+                StackItems.Children.Add(child);
             }
         }
     }

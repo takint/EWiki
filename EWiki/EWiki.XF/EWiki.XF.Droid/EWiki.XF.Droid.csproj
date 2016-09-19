@@ -218,6 +218,7 @@
     <Compile Include="LocationFeeder\Repository\TrackermonRarePokemonRepository.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BottomTabbedPageRender.cs" />
+    <Compile Include="Renderers\ExtendedLabelRenderer.cs" />
     <Compile Include="Renderers\ExtendedProgressBarRender.cs" />
     <Compile Include="Renderers\LabelRender.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
