@@ -242,7 +242,7 @@ namespace PokemonGo.RocketAPI.Logic
             }
         }
 
-        public async Task CatchPokemon(PokemonId pokemonId, double latitude, double longitude, WebSocketSession session)
+        public async Task SnipePokemon(PokemonId pokemonId, double latitude, double longitude, WebSocketSession session)
         {
             try
             {
@@ -255,6 +255,9 @@ namespace PokemonGo.RocketAPI.Logic
                    .OrderBy(
                        i =>
                        LocationUtils.CalculateDistanceInMeters(_client.CurrentLatitude, _client.CurrentLongitude, i.Latitude, i.Longitude)).Where(p => p.PokemonId == pokemonId);
+
+                await _client.Player.UpdatePlayerLocation(_client.Settings.DefaultLatitude, _client.Settings.DefaultLongitude, _client.Settings.DefaultAltitude);
+
                 if (!pokemons.Any())
                 {
                     session.Send($"There is no {pokemonId} here.");
@@ -262,10 +265,8 @@ namespace PokemonGo.RocketAPI.Logic
                 }
                 foreach (var pokemon in pokemons)
                 {
-                    await catchPokemon(pokemon.EncounterId, pokemon.SpawnPointId, pokemon.PokemonId, pokemon.Longitude, pokemon.Latitude, session);
+                    await CatchPokemon(pokemon.EncounterId, pokemon.SpawnPointId, pokemon.PokemonId, pokemon.Longitude, pokemon.Latitude, true, session);
                 }
-
-                await _client.Player.UpdatePlayerLocation(_client.Settings.DefaultLatitude, _client.Settings.DefaultLongitude, _client.Settings.DefaultAltitude);
             }
             catch (Exception ex)
             {
@@ -1145,7 +1146,7 @@ namespace PokemonGo.RocketAPI.Logic
                         {
                             if (lure != pokeStop.Id || luredpokemoncaught != lure_Pokemon)
                             {
-                                await catchPokemon(pokeStop.LureInfo.EncounterId, pokeStop.LureInfo.FortId, pokeStop.LureInfo.ActivePokemonId);
+                                await CatchPokemon(pokeStop.LureInfo.EncounterId, pokeStop.LureInfo.FortId, pokeStop.LureInfo.ActivePokemonId);
                                 luredpokemoncaught = lure_Pokemon;
                                 lure = pokeStop.Id;
                             }
@@ -1263,7 +1264,7 @@ namespace PokemonGo.RocketAPI.Logic
                     await Task.Delay(distance > 100 ? 1000 : 100);
 
                     // Do Catch here
-                    await catchPokemon(pokemon.EncounterId, pokemon.SpawnPointId, pokemon.PokemonId, pokemon.Longitude, pokemon.Latitude);
+                    await CatchPokemon(pokemon.EncounterId, pokemon.SpawnPointId, pokemon.PokemonId, pokemon.Longitude, pokemon.Latitude);
                 }
             }
         }
@@ -1299,11 +1300,22 @@ namespace PokemonGo.RocketAPI.Logic
             #endregion
         }
 
-        private async Task catchPokemon(ulong encounter_id, string spawnpoint_id, PokemonId pokeid, double poke_long = 0, double poke_lat = 0, WebSocketSession session = null)
+        private async Task CatchPokemon(ulong encounter_id, string spawnpoint_id, PokemonId pokeid, double poke_long = 0, double poke_lat = 0, bool snipe = false, WebSocketSession session = null)
         {
             var missCount = 0;
             var forceHit = false;
+
+            if (snipe)
+            {
+                await _client.Player.UpdatePlayerLocation(poke_lat, poke_long, 10);
+            }
+
             var encounterPokemonResponse = await _client.Encounter.EncounterPokemon(encounter_id, spawnpoint_id);
+
+            if (snipe)
+            {
+                await _client.Player.UpdatePlayerLocation(_client.Settings.DefaultLatitude, _client.Settings.DefaultLongitude, _client.Settings.DefaultAltitude);
+            }
 
             if (encounterPokemonResponse.Status == EncounterResponse.Types.Status.EncounterSuccess)
             {
@@ -1400,7 +1412,7 @@ namespace PokemonGo.RocketAPI.Logic
                             forceHit = true;
                         }
                     }
-                    caughtPokemonResponse = await CatchPokemonWithRandomVariables(encounter_id, spawnpoint_id, bestPokeball, forceHit);
+                    caughtPokemonResponse = await CatchPokemonWithRandomVariables(encounter_id, spawnpoint_id, bestPokeball, forceHit, session);
                     if (caughtPokemonResponse.Status == CatchPokemonResponse.Types.CatchStatus.CatchMissed)
                     {
                         Logger.ColoredConsoleWrite(ConsoleColor.Magenta, $"Missed {StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} while using {bestPokeball}", LogLevel.Info, session);
@@ -1460,7 +1472,7 @@ namespace PokemonGo.RocketAPI.Logic
                 }
                 else
                 {
-                    Logger.ColoredConsoleWrite(ConsoleColor.DarkYellow, $"{StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} CP {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} IV {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% got away while using {bestPokeball}..");
+                    Logger.ColoredConsoleWrite(ConsoleColor.DarkYellow, $"{StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} CP {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} IV {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% got away while using {bestPokeball}..", LogLevel.Info, session);
                     failed_softban++;
                     if (failed_softban > 10)
                     {
@@ -1476,7 +1488,7 @@ namespace PokemonGo.RocketAPI.Logic
             await RandomHelper.RandomDelay(1500, 2000);
         }
 
-        private async Task<CatchPokemonResponse> CatchPokemonWithRandomVariables(ulong encounter_id, string spawnpoint_id, ItemId bestPokeball, bool forceHit)
+        private async Task<CatchPokemonResponse> CatchPokemonWithRandomVariables(ulong encounter_id, string spawnpoint_id, ItemId bestPokeball, bool forceHit, WebSocketSession session)
         {
             #region Reset Function Variables
             double normalizedRecticleSize = 1.95;
@@ -1534,7 +1546,7 @@ namespace PokemonGo.RocketAPI.Logic
             //round to 2 decimals  
             normalizedRecticleSize = Math.Round(normalizedRecticleSize, 2);
             //if not miss, log throw variables
-            if (forceHit) { Logger.ColoredConsoleWrite(ConsoleColor.DarkMagenta, $"{hitTxt} throw as {spinTxt} ball."); }
+            if (forceHit) { Logger.ColoredConsoleWrite(ConsoleColor.DarkMagenta, $"{hitTxt} throw as {spinTxt} ball.", LogLevel.Info, session); }
             return await _client.Encounter.CatchPokemon(encounter_id, spawnpoint_id, bestPokeball, forceHit, normalizedRecticleSize, spinModifier);
         }
 

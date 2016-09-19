@@ -112,7 +112,6 @@ namespace EWiki.Sniper
                         await Snipe(pokemonId, latitude, longitude, session);
                     }
                 }
-                session.Send("OK");
             }
             catch (Exception e)
             {
@@ -484,7 +483,7 @@ namespace EWiki.Sniper
                     logic = new Logic(new Settings(), Globals.infoObservable);
                 }
 
-                await logic.CatchPokemon(pokemonId, latitude, longitude, session);
+                await logic.SnipePokemon(pokemonId, latitude, longitude, session);
             });
         }
 
