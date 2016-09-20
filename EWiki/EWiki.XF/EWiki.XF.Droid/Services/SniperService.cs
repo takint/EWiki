@@ -15,7 +15,7 @@ namespace EWiki.XF.Droid.Services
         private WebSocket client;
         public SniperService()
         {
-            client = new WebSocket($"ws://192.168.0.100:7777", "basic", WebSocketVersion.Rfc6455);
+            client = new WebSocket($"ws://210.245.27.38:7777", "basic", WebSocketVersion.Rfc6455);
             client.Opened += (sender, args) =>
             {
                 client.Send("Connected");
