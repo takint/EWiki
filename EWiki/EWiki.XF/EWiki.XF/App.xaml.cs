@@ -3,6 +3,7 @@ using EWiki.XF.Service;
 using Prism.Unity;
 using EWiki.XF.Views;
 using EWiki.XF.Views.PokemonInfoElements;
+using EWiki.XF.Views.Popups;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
 
@@ -29,6 +30,7 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<PokedexTab>();
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
+            Container.RegisterTypeForNavigation<SnipePokemonPopup>();
             Container.RegisterType<IPokemonService, PokemonService>();
         }
 

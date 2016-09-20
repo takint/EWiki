@@ -260,8 +260,7 @@ namespace PokemonGo.RocketAPI.Logic
 
                 if (!pokemons.Any())
                 {
-                    session.Send($"There is no {pokemonId} here.");
-                    Logger.ColoredConsoleWrite(ConsoleColor.Yellow, $"There is no {pokemonId} here.");
+                    Logger.ColoredConsoleWrite(ConsoleColor.Yellow, $"There is no {pokemonId} here.", LogLevel.Info, session);
                 }
                 foreach (var pokemon in pokemons)
                 {
@@ -1448,7 +1447,7 @@ namespace PokemonGo.RocketAPI.Logic
                         {
                             File.AppendAllText(logs, $"[{date}] Caught new {StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} (CP: {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} | IV: {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% | Pokeball used: {bestPokeball} | XP: {caughtPokemonResponse.CaptureAward.Xp.Sum()}) " + Environment.NewLine);
                         }
-                        Logger.ColoredConsoleWrite(ConsoleColor.White,
+                        Logger.ColoredConsoleWrite(ConsoleColor.Green,
                             $"Caught New {StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} CP {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} IV {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% using {bestPokeball} got {caughtPokemonResponse.CaptureAward.Xp.Sum()} XP.", LogLevel.Info, session);
                         pokemonCatchCount++;
 
@@ -1459,7 +1458,7 @@ namespace PokemonGo.RocketAPI.Logic
                         {
                             File.AppendAllText(logs, $"[{date}] Caught {StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} (CP: {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} | IV: {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% | Pokeball used: {bestPokeball} | XP: {caughtPokemonResponse.CaptureAward.Xp.Sum()}) " + Environment.NewLine);
                         }
-                        Logger.ColoredConsoleWrite(ConsoleColor.Gray,
+                        Logger.ColoredConsoleWrite(ConsoleColor.DarkGreen,
                             $"Caught {StringUtils.getPokemonNameByLanguage(_clientSettings, pokeid)} CP {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} IV {PokemonInfo.CalculatePokemonPerfection(encounterPokemonResponse.WildPokemon.PokemonData).ToString("0.00")}% using {bestPokeball} got {caughtPokemonResponse.CaptureAward.Xp.Sum()} XP.", LogLevel.Info, session);
                         pokemonCatchCount++;
 

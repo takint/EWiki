@@ -7,8 +7,7 @@
              x:Class="EWiki.XF.Views.LocationFeederTab"
              x:Name="ParentPage"
              BackgroundColor="#eceff4">
-  <StackLayout>
-    <Label Text="{Binding Message}" FontSize="16"></Label>
+  <ContentPage.Content>
     <ListView CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Pokemons}"
@@ -21,5 +20,5 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

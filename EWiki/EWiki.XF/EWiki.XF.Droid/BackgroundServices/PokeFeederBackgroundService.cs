@@ -95,7 +95,7 @@ namespace EWiki.XF.Droid.BackgroundServices
                                             // Got the results, notify to the subscriber (the subscriber in this case is LocationFeederTabViewModel)
                                             var message = new PokemonResultFetchedMessage
                                             {
-                                                Pokemons = sniperInfos.Select(sniperInfo => new Models.SniperInfo
+                                                Pokemons = sniperInfos.Select(sniperInfo => new Models.SniperInfo()
                                                 {
                                                     Id = sniperInfo.Id,
                                                     Name = sniperInfo.Id.ToString(),
