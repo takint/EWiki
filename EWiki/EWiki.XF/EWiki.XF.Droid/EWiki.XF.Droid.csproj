@@ -478,6 +478,7 @@
     <AndroidResource Include="Resources\drawable\No151.png" />
     <AndroidResource Include="Resources\drawable\target.png" />
     <AndroidResource Include="Resources\drawable\pokeball.png" />
+    <AndroidResource Include="Resources\drawable\left_profile_background.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">
