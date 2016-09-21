@@ -71,6 +71,16 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _featuredNewsList, value); }
         }
 
+        private int _indicationPosition;
+        public int IndicationPosition
+        {
+            get { return _indicationPosition; }
+            set
+            {
+                SetProperty(ref _indicationPosition, value);
+            }
+        }
+
         public NewsTabViewModel(INewsService newsService)
         {
             _newsService = newsService;

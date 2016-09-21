@@ -5,6 +5,7 @@
              xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              xmlns:controls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
              xmlns:ffImageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:crs="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.NewsTab"
              x:Name="Page">
@@ -14,8 +15,8 @@
               SeparatorVisibility="None"
               RowHeight="220">
     <ListView.Header>
-      <controls:ExtendedCarouselView ItemsSource="{Binding BindingContext.FeaturedNewsList, Source={x:Reference Page}}" HeightRequest="200" IndicatorColor="Teal">
-        <controls:ExtendedCarouselView.ItemTemplate>
+      <crs:CarouselViewControl ItemsSource="{Binding BindingContext.FeaturedNewsList, Source={x:Reference Page}}" Orientation="Horizontal" PageIndicators="True" CurrentPageIndicatorTintColor="White" HeightRequest="200" BackgroundColor="#80000000">
+        <crs:CarouselViewControl.ItemTemplate>
           <DataTemplate>
             <Grid>
               <Grid.RowDefinitions>
@@ -28,8 +29,8 @@
               </StackLayout>-->
             </Grid>
           </DataTemplate>
-        </controls:ExtendedCarouselView.ItemTemplate>
-      </controls:ExtendedCarouselView>
+        </crs:CarouselViewControl.ItemTemplate>
+      </crs:CarouselViewControl>
     </ListView.Header>
     <ListView.ItemTemplate>
       <DataTemplate>

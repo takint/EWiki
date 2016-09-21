@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using UIKit;
 using Prism.Unity;
@@ -25,6 +26,8 @@ namespace EWiki.XF.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            CarouselViewRenderer.Init();
 
             var cv = typeof(Xamarin.Forms.CarouselView);
             var assembly = Assembly.Load(cv.FullName);
