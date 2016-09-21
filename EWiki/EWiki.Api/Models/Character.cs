@@ -25,17 +25,13 @@ namespace EWiki.Api.Models
 
         [ForeignKey("EvolveFromId")]
         public virtual Character EvolveFrom { get; set; }
+        [ForeignKey("AvatarImageId")]
+        public virtual WikiImage Avatar { get; set; }
         // Location get from location data based on type
         public virtual ICollection<PokemonLocation> Locations { get; set; }
         public virtual ICollection<PokemonMove> NormalMoves { get; set; }
         public virtual ICollection<PokemonSpecialMove> SpecialMoves { get; set; }
         public virtual ICollection<Character> EvolveInto { get; set; }
         public virtual ICollection<PokemonType> Types { get; set; }
-        public virtual ICollection<WikiImage> Avatars { get; set; }
-        public virtual ICollection<CharacterInfoGroup> CharacterInfoGroups { get; set; }
-        public virtual ICollection<CharacterSectionGroup> CharacterSectionGroups { get; set; }
-        public virtual ICollection<Reference> References { get; set; }
-        public virtual ICollection<WikiImage> Images { get; set; }
-        public virtual ICollection<WikiVideo> Videos { get; set; }
     }
 }

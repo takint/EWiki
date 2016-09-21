@@ -1,12 +1,19 @@
-﻿<div ng-controller="ArticleCtrl as article" class="wrapper wrapper-content animated fadeInRight">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="text-center m-t-lg">
-        <h1>
-          {{article.helloText}}
-        </h1>
-          {{'example' | stringRes}}
-      </div>
-    </div>
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>New Article</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a ui-sref="index.main">{{'homeLinkText' | stringRes}}</a>
+      </li>
+      <li>
+        <a>{{'article' | stringRes}}</a>
+      </li>
+      <li class="active">
+        <strong ng-model="articleTitle"></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
   </div>
 </div>

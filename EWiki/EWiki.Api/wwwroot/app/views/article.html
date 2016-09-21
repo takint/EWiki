@@ -31,6 +31,7 @@
                 <th>Language</th>
                 <th>Created Date</th>
                 <th>Created By</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -40,6 +41,11 @@
                 <td>{{ art.pageLangs[0].language }}</td>
                 <td>{{ art.createdDate }}</td>
                 <td>{{ art.createdUser }}</td>
+                <td>
+                  <a href="#">Edit</a> | 
+                  <a href="#">Details</a> | 
+                  <a href="#">Delete</a>
+                </td>
               </tr>
             </tbody>
           </table>
