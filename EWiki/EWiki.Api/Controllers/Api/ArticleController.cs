@@ -31,15 +31,15 @@ namespace EWiki.Api.Controllers
             return Json(pageData);
         }
 
-        [HttpGet("GetCategory")]
-        public async Task<IActionResult> GetCategory(int catId)
+        [HttpGet("GetArticle")]
+        public async Task<IActionResult> GetArticle(int artId)
         {
-            Page cat = (await pageRepository.FindByAsync(p => p.Id == catId)).FirstOrDefault();
+            Page cat = (await pageRepository.FindByAsync(p => p.Id == artId)).FirstOrDefault();
             return Json(cat);
         }
 
         [HttpGet("Search")]
-        public async Task<IActionResult> SearchCategory(string searchTerm)
+        public async Task<IActionResult> SearchArticle(string searchTerm)
         {
             IQueryable<Page> query = pageRepository.Queryable()
                 .Where(c => c.Title.Contains(searchTerm));
@@ -50,7 +50,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Update")]
-        public async Task<IActionResult> UpdateCategory(Page page)
+        public async Task<IActionResult> UpdateArticle(Page page)
         {
             pageRepository.Update(page);
             await pageRepository.CommitAsync();
@@ -59,7 +59,7 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("Add")]
-        public async Task<IActionResult> AddCategory(Page page)
+        public async Task<IActionResult> AddArticle(Page page)
         {
             pageRepository.Add(page);
             await pageRepository.CommitAsync();

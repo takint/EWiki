@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,10 +11,9 @@ namespace EWiki.Api.Models
         public string Name { get; set; }
         public int Priority { get; set; }
         public bool IsMain { get; set; }
-        public virtual ICollection<InfoValue> InfoValues { get; set; }
-        public int CharacterId { get; set; }
-        public virtual Character Character { get; set; }
-        public int CharacterInfoGroupId { get; set; }
+
+        [ForeignKey("CharacterInfoGroupId")]
         public virtual CharacterInfoGroup CharacterInfoGroup { get; set; }
+        public virtual ICollection<InfoValue> InfoValues { get; set; }
     }
 }
