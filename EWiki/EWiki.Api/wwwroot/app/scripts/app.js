@@ -1,12 +1,13 @@
 'use strict';
 var ewikiBD = angular.module('ewikibd', [
-        'ui.router',
         'oc.lazyLoad',
-        'ui.bootstrap',
         'ngIdle',
-        'ngSanitize'
+        'ngSanitize',
+        'cloudinary',
+        'ui.bootstrap',
+        'ui.router'
 ]);
 
-var apiBaseUrl = 'http://localhost:2675/api/';
 var baseUrl = $('base').attr('href');
-var appBaseUrl = '';//baseUrl + '/';
+var appBaseUrl = baseUrl + '/';
+var apiBaseUrl = 'http://localhost:2675/api/';

@@ -5,16 +5,16 @@
  */
 function WikiImageFactory($http) {
     var WikiImage = function () {
-        this.articles = [];
+        this.images = [];
         this.busy = false;
         this.skip = 0;
-        this.take = 10;
+        this.take = 30;
     };
 
     // apiBaseUrl is set in app.js
-    WikiImage.prototype.GetAllArticles = function () {
+    WikiImage.prototype.GetAllWikiImages = function () {
         var _self = this;
-        var url = apiBaseUrl + 'article';
+        var url = apiBaseUrl + 'wikiimage';
 
         if (_self.busy) {
             return;
@@ -28,12 +28,11 @@ function WikiImageFactory($http) {
                 take: _self.take
             }
         }).success(function (data) {
-            var articles = data;
+            var images = data;
 
-            if (articles.length !== 0) {
-                articles.forEach(function (item) {
-                    console.log(item);
-                    _self.articles.push(item);
+            if (images.length !== 0) {
+                images.forEach(function (item) {
+                    _self.images.push(item);
                 });
 
                 _self.busy = false;
@@ -44,5 +43,5 @@ function WikiImageFactory($http) {
         });
     };
 
-    return ArtWikiImageicle;
+    return WikiImage;
 }

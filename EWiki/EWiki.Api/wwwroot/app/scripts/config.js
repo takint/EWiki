@@ -33,20 +33,20 @@ ewikiBD
                             return $ocLazyLoad.load([
                                 {
                                     serie: true,
-                                    files: ['bower_components/dataTables/datatables.min.js',
-                                        'styles/plugins/dataTables/datatables.min.css'
+                                    files: ['app/bower_components/dataTables/datatables.min.js',
+                                        'app/styles/plugins/dataTables/datatables.min.css'
                                     ]
                                 },
                                 {
                                     serie: true,
                                     name: 'datatables',
-                                    files: ['bower_components/angular-datatables/dist/angular-datatables.min.js'
+                                    files: ['app/bower_components/angular-datatables/dist/angular-datatables.min.js'
                                     ]
                                 },
                                 {
                                     serie: true,
                                     name: 'datatables.buttons',
-                                    files: ['bower_components/dataTables/angular-datatables.buttons.min.js']
+                                    files: ['app/bower_components/dataTables/angular-datatables.buttons.min.js']
                                 }
                             ]);
                         }
@@ -60,16 +60,33 @@ ewikiBD
                 .state('index.wiki-image', {
                     url: "/wiki-image",
                     templateUrl: appBaseUrl + "views/wiki-image.html",
-                    data: { pageTitle: 'Wiki Images' }
-                })
-                .state('index.wiki-image-details', {
-                    url: "/wiki-image-details",
-                    templateUrl: appBaseUrl + "views/wiki-image-details.html",
-                    data: { pageTitle: 'Wiki Images details' }
+                    controller: WikiImageCtrl,
+                    data: { pageTitle: 'Wiki Gallery' },
+                    resolve: {
+                        loadPlugin: function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                {
+                                    files: ['app/bower_components/ng-file-upload/ng-file-upload-all.min.js',
+                                    'app/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js']
+                                }
+                            ]);
+                        }
+                    }
                 })
                 .state('index.main', {
                     url: "/main",
                     templateUrl: appBaseUrl + "views/main.html",
                     data: { pageTitle: 'Example view' }
                 });
+        }]);
+
+ewikiBD
+    .config([
+        'cloudinaryProvider',
+        function (cloudinaryProvider) {
+            cloudinaryProvider
+                .set("cloud_name", "ewiki-io")
+                .set("upload_preset", "geesqi2u")
+                .set("api_key", "742665545865257")
+                .set("api_secret", "S1PQu71FWZ8l8b-PjsLRzTtoeLg");
         }]);

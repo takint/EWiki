@@ -59,7 +59,7 @@ namespace EWiki.UnitTest
 
         private void ImportMoves()
         {
-            LoadOptions loadOptions = new LoadOptions(LoadFormat.CSV);
+            LoadOptions loadOptions = new LoadOptions(LoadFormat.Xlsx);
             Workbook csvPokedexMoves = new Workbook("..//Moves.csv", loadOptions);
 
             if (csvPokedexMoves != null)

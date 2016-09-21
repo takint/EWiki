@@ -51,7 +51,7 @@ namespace EWiki.Api.Controllers
             return Json(result);
         }
 
-        [HttpGet("Update")]
+        [HttpPost("Update")]
         public async Task<IActionResult> UpdateWikiImage(WikiImage image)
         {
             imageRepository.Update(image);
@@ -60,7 +60,8 @@ namespace EWiki.Api.Controllers
             return Json(image);
         }
 
-        [HttpGet("Add")]
+        [HttpPost("Add")]
+        [EnableCors("AllowEwikiBDOrigin")]
         public async Task<IActionResult> AddWikiImage(WikiImage image)
         {
             imageRepository.Add(image);

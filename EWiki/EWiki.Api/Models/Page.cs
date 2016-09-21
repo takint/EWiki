@@ -16,6 +16,8 @@ namespace EWiki.Api.Models
         public decimal PageLength { get; set; }
         public int? ContentLanguage { get; set; }
 
+        [ForeignKey("FeatureImageId")]
+        public virtual WikiImage FeaturesImage { get; set; }
         /// <summary>
         /// Restrict may be are edit, view, create or add content, etc...
         /// </summary>
