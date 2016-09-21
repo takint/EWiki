@@ -13,6 +13,8 @@ using POGOProtos.Enums;
 using System.Device.Location;
 using System.Globalization;
 using System.Net.Mime;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using PokemonGo.RocketAPI;
 using PokemonGo.RocketAPI.Console;
 using PokemonGo.RocketAPI.Enums;
@@ -98,24 +100,12 @@ namespace EWiki.Sniper
         {
             try
             {
-                var matches = Regex.Matches(value, @"(\[(\w*)\=((\w|\.|\-)*)\])");
-                if (matches.Count > 0)
-                {
-                    var actionParameter = matches[0].Value;
-                    var action = actionParameter.Split('=')[1].Replace("]", "");
-                    if (action == "Snipe")
-                    {
-                        var pokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), matches[1].Value.Split('=')[1].Replace("]", ""));
-                        var latitude = double.Parse(matches[2].Value.Split('=')[1].Replace("]", ""));
-                        var longitude = double.Parse(matches[3].Value.Split('=')[1].Replace("]", ""));
-                        await Snipe(pokemonId, latitude, longitude, session);
-                        session.Send("End");
-                    }
-                }
+                var snipeRq = JsonConvert.DeserializeObject<SnipeRq>(value);
+                await Snipe(snipeRq, session);
             }
             catch (Exception e)
             {
-                session.Send("End");
+                Logger.Error($"Error: {e.Message}", session);
             }
         }
 
@@ -451,39 +441,60 @@ namespace EWiki.Sniper
             SleepHelper.AllowSleep();
         }
 
-        private static async Task Snipe(PokemonId pokemonId, double latitude, double longitude, WebSocketSession session)
+        private static async Task Snipe(SnipeRq snipeRq, WebSocketSession session)
         {
             await Task.Run(async () =>
             {
 
-                CheckVersion();
+                //CheckVersion();
+
+                if (string.IsNullOrWhiteSpace(snipeRq.UserName) || string.IsNullOrWhiteSpace(snipeRq.Password))
+                {
+                    Logger.Error("Please input UserName and Password.", session);
+                    return;
+                }
+
+                var settings = new Settings();
+
+                if (snipeRq.UserName.Contains("@gmail.com"))
+                {
+                    settings.AuthType = AuthType.Google;
+                    settings.GoogleUsername = snipeRq.UserName;
+                    settings.GooglePassword = snipeRq.Password;
+                }
+                else
+                {
+                    settings.AuthType = AuthType.Ptc;
+                    settings.PtcUsername = snipeRq.UserName;
+                    settings.PtcPassword = snipeRq.Password;
+                }
 
                 try
                 {
-                    logic = new Logic(new Settings(), Globals.infoObservable);
+                    logic = new Logic(settings, Globals.infoObservable);
                 }
                 catch (PtcOfflineException)
                 {
-                    Logger.ColoredConsoleWrite(ConsoleColor.Red, "PTC Servers are probably down OR you credentials are wrong.", LogLevel.Error);
-                    Logger.ColoredConsoleWrite(ConsoleColor.Red, "Trying again in 20 seconds...");
+                    Logger.Error("PTC Servers are probably down OR you credentials are wrong.", session);
+                    Logger.Error("Trying again in 20 seconds...", session);
                     Thread.Sleep(20000);
-                    logic = new Logic(new Settings(), Globals.infoObservable);
+                    logic = new Logic(settings, Globals.infoObservable);
                 }
                 catch (AccountNotVerifiedException)
                 {
-                    Logger.ColoredConsoleWrite(ConsoleColor.Red, "Your PTC Account is not activated. Exiting in 10 Seconds.");
+                    Logger.Error("Your PTC Account is not activated. Exiting in 10 Seconds.", session);
                     Thread.Sleep(10000);
                     Environment.Exit(0);
                 }
                 catch (Exception ex)
                 {
-                    Logger.ColoredConsoleWrite(ConsoleColor.Red, $"Unhandled exception: {ex}", LogLevel.Error);
-                    Logger.Error("Restarting in 20 Seconds.");
+                    Logger.Error($"Unhandled exception: {ex}", session);
+                    Logger.Error("Restarting in 20 Seconds.", session);
                     Thread.Sleep(20000);
-                    logic = new Logic(new Settings(), Globals.infoObservable);
+                    logic = new Logic(settings, Globals.infoObservable);
                 }
 
-                await logic.SnipePokemon(pokemonId, latitude, longitude, session);
+                await logic.SnipePokemon(snipeRq.PokemonId, snipeRq.Latitude, snipeRq.Longitude, session);
             });
         }
 
@@ -575,6 +586,19 @@ namespace EWiki.Sniper
 
 
     }
+
+    public class SnipeRq
+    {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PokemonId PokemonId { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public double DefaultLatitude { get; set; }
+        public double DefaultLongitude { get; set; }
+    }
+
     public static class Globals
     {
         public static AuthType acc = AuthType.Google;

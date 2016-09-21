@@ -4,6 +4,7 @@ using Android.Widget;
 using EWiki.XF.Droid.Services;
 using EWiki.XF.Models.Enum;
 using EWiki.XF.Services;
+using Newtonsoft.Json;
 using WebSocket4Net;
 using Xamarin.Forms;
 
@@ -38,14 +39,36 @@ namespace EWiki.XF.Droid.Services
             };
             client.Open();
         }
-        public async Task Snipe(PokemonId pokemonId, double latitude, double longitude              )
+        public async Task Snipe(PokemonId pokemonId, double latitude, double longitude, string pokemonGoAccount)
         {
+            if (pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
+            {
+                var message = new SniperMessage()
+                {
+                    Message = "Please input Pokemon Go info..."
+                };
+                Device.BeginInvokeOnMainThread(
+                () => MessagingCenter.Send(message, "Sniper")
+                );
+                return;
+            }
             var running = true;
             while (running)
             {
                 if (client.State == WebSocketState.Open)
                 {
-                    client.Send($"[Action=Snipe][PokemonId={pokemonId}][Latitude={latitude}][Longitude={longitude}]");
+                    var snipeRq = new SnipeRq()
+                    {
+                        Action = "Snipe",
+                        PokemonId = pokemonId,
+                        Latitude = latitude,
+                        Longitude = longitude,
+                        UserName = pokemonGoAccount.Split(':')[0],
+                        Password = pokemonGoAccount.Split(':')[1],
+                        DefaultLatitude = double.Parse(pokemonGoAccount.Split(':')[2]),
+                        DefaultLongitude = double.Parse(pokemonGoAccount.Split(':')[3])
+                    };
+                    client.Send(JsonConvert.SerializeObject(snipeRq));
                     running = false;
                 }
 

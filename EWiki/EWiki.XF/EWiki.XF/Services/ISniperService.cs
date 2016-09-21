@@ -5,6 +5,6 @@ namespace EWiki.XF.Services
 {
     public interface ISniperService
     {
-        Task Snipe(PokemonId pokemonId, double latitude, double longitude);
+        Task Snipe(PokemonId pokemonId, double latitude, double longitude, string pokemonGoAccount);
     }
 }

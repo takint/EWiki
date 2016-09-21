@@ -66,7 +66,7 @@ namespace PokemonGo.RocketAPI
 
         public static void Error(string text, WebSocketSession session = null)
         {
-            ColoredConsoleWrite(ConsoleColor.Red, text);
+            ColoredConsoleWrite(ConsoleColor.Red, text, LogLevel.Info, session);
         }
 
         public static void AddLog(string line)

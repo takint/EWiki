@@ -36,10 +36,17 @@
               <Label Text="troylee@gmail.com" FontSize="16" TextColor="White"  VerticalOptions="End" />
             </StackLayout>
 
-          </Grid>
+          </Grid>          
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="CenterAndExpand">
+          <Entry Placeholder="UserName" Text="{Binding UserName}" />
+          <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
+          <Entry Placeholder="CurrentLatitude" Text="{Binding Latitude}" />
+          <Entry Placeholder="CurrentLongitude" Text="{Binding Longitude}" />
         </StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand">
+        <!--<StackLayout VerticalOptions="CenterAndExpand">
           <ListView x:Name="LeftMenuListView" ItemsSource="{Binding MenuItems}" 
                     ItemSelected="LeftMenu_OnItemSelected">
             <ListView.ItemTemplate>
@@ -80,7 +87,7 @@
               </DataTemplate>
             </ListView.ItemTemplate>
           </ListView>
-        </StackLayout>
+        </StackLayout>-->
       </StackLayout>
     </ContentPage>
   </MasterDetailPage.Master>

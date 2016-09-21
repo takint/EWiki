@@ -12,7 +12,7 @@ namespace PokemonGo.RocketAPI
         /* ===================================[SETTINGS]================================= */
         
         /* AUTHENTICATION */
-        AuthType AuthType { get; }
+        AuthType AuthType { get; set; }
         string PtcPassword { get; }
         string PtcUsername { get; }
         string GoogleUsername { get; }

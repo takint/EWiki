@@ -37,9 +37,9 @@ namespace EWiki.XF.Views.Popups
                     });
 
                     var service = DependencyService.Get<ISniperService>();
-                    await service.Snipe(context.PokemonId, context.Latitude, context.Longitude);
+                    await service.Snipe(context.PokemonId, context.Latitude, context.Longitude, App.PokemonGoAccount);
 
-                    MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
+                    MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", async message =>
                     {
                         switch (message.Message)
                         {
@@ -62,6 +62,7 @@ namespace EWiki.XF.Views.Popups
                                         context.Messages.Insert(0, deserializedMessage);
 
                                         if (deserializedMessage.ColorName.Contains("Green") ||
+                                            deserializedMessage.ColorName.Contains("Red") ||
                                             deserializedMessage.ColorName.Contains("Yellow"))
                                         {
                                             runningCts.Cancel();
@@ -78,6 +79,7 @@ namespace EWiki.XF.Views.Popups
                                 }
                                 break;
                         }
+                        await Task.Delay(1000, runningCts.Token);
                     });
 
                     

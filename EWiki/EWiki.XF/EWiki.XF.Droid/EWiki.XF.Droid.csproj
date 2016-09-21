@@ -234,6 +234,8 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackgroundServices\LocationFeederBackgroundService.cs" />
+    <Compile Include="Services\BaseRq.cs" />
+    <Compile Include="Services\SnipeRq.cs" />
     <Compile Include="Services\SniperService.cs" />
     <Compile Include="Utils\IconizeModules\Collections\LinearCollection.cs" />
     <Compile Include="Utils\IconizeModules\LinearModule.cs" />

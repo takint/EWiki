@@ -13,18 +13,18 @@ namespace EWiki.Sniper
         public bool UseLastCords => true; // Only disable this if your sure what you're doing!
 
 
-        public string GoogleUsername => Globals.username;
+        public string GoogleUsername { get; set; } = Globals.username;
 
-        public string GooglePassword => Globals.password;
+        public string GooglePassword { get; set; } = Globals.password;
 
         public bool UseIncense => Globals.useincense;
 
-        AuthType ISettings.AuthType => Globals.acc;
+        public AuthType AuthType { get; set; } = Globals.acc;
 
-        public string PtcUsername => Globals.username;
-        public string PtcPassword => Globals.password;
-        public double DefaultLatitude => Globals.latitute;
-        public double DefaultLongitude => Globals.longitude;
+        public string PtcUsername { get; set; } = Globals.username;
+        public string PtcPassword { get; set; } = Globals.password;
+        public double DefaultLatitude { get; set; } = Globals.latitute;
+        public double DefaultLongitude { get; set; } = Globals.longitude;
         public double DefaultAltitude => Globals.altitude;
 
         public bool WalkBackToDefaultLocation => Globals.defLoc;
