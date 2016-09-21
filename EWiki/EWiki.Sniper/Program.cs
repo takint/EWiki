@@ -65,7 +65,6 @@ namespace EWiki.Sniper
 
         private static void InitWebSocket()
         {
-            Logger.ColoredConsoleWrite(ConsoleColor.Blue, "Init WebSocket");
             _webSocketServer = new WebSocketServer();
             SuperSocket.SocketBase.Config.RootConfig rootConfig = new SuperSocket.SocketBase.Config.RootConfig();
             var serverConfig = new SuperSocket.SocketBase.Config.ServerConfig();

@@ -1,6 +1,7 @@
 ﻿using PokemonGo.RocketAPI.Logging;
 using System;
 using System.IO;
+using Newtonsoft.Json;
 using SuperWebSocket;
 
 namespace PokemonGo.RocketAPI
@@ -40,7 +41,12 @@ namespace PokemonGo.RocketAPI
 
         public static void ColoredConsoleWrite(ConsoleColor color, string text, LogLevel level = LogLevel.Info, WebSocketSession session = null)
         {
-            session?.Send(text);
+            session?.Send(JsonConvert.SerializeObject(new ResponseMessage()
+            {
+                Content = text,
+                Color = color.ToString(),
+                CreatedDate = DateTime.Now
+            }));
             ConsoleColor originalColor = Console.ForegroundColor;
             Console.ForegroundColor = color;
             Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] "+ text);
@@ -60,12 +66,7 @@ namespace PokemonGo.RocketAPI
 
         public static void Error(string text, WebSocketSession session = null)
         {
-            session?.Send(text);
-            ConsoleColor originalColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}] " + text);
-            Console.ForegroundColor = originalColor;
-            AddLog(text);
+            ColoredConsoleWrite(ConsoleColor.Red, text);
         }
 
         public static void AddLog(string line)
@@ -87,7 +88,12 @@ namespace PokemonGo.RocketAPI
         }
     }
 
-  
+    public class ResponseMessage
+    {
+        public string Content { get; set; }
+        public string Color { get; set; }
+        public DateTime CreatedDate { get; set; }
+    }
 
     public enum LogLevel
 	{

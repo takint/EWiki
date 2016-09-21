@@ -50,22 +50,28 @@ namespace PokemonGo.RocketAPI.Helpers
         public bool setupdevicedone = false;
 
         public void setUpDevice()
-        { 
-            string[] arrLine = File.ReadAllLines(deviceinfo); 
+        {
+            string[] arrLine = !File.Exists(deviceinfo) ? new []{ "galaxy6", "336e0816fb5da84d" } : File.ReadAllLines(deviceinfo);
 
-            string DevicePackageName = arrLine[0].ToString(); 
+            if (arrLine.Length < 2)
+            {
+                arrLine = new[] {"galaxy6", "336e0816fb5da84d"};
+            }
+
+            string DevicePackageName = arrLine[0].ToString();
             // Read DeviceID of File
             if (arrLine[1].ToString() != " ")
             {
                 DeviceId = arrLine[1].ToString();
-            } else
+            }
+            else
             {
                 DeviceId = RandomString(16, "0123456789abcdef");
                 // Save to file
                 string[] b = new string[] { DevicePackageName, DeviceId };
 
                 File.WriteAllLines(deviceinfo, b);
-            } 
+            }
 
             // Setuprest
             AndroidBoardName = DeviceInfoHelper.DeviceInfoSets[DevicePackageName]["AndroidBoardName"];
@@ -80,7 +86,7 @@ namespace PokemonGo.RocketAPI.Helpers
             FirmwareType = DeviceInfoHelper.DeviceInfoSets[DevicePackageName]["FirmwareType"];
             HardwareManufacturer = DeviceInfoHelper.DeviceInfoSets[DevicePackageName]["HardwareManufacturer"];
             HardwareModel = DeviceInfoHelper.DeviceInfoSets[DevicePackageName]["HardwareModel"];
-        
+
             setupdevicedone = true;
         }
 

@@ -46,11 +46,13 @@
     <Compile Include="Models\Enum\PokemonId.cs" />
     <Compile Include="Models\Enum\PokemonMove.cs" />
     <Compile Include="Models\LeftMenuItem.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\SniperInfo.cs" />
     <Compile Include="Services\ISniperService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
+    <Compile Include="ViewModels\SnipePokemonPopupViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\LocationFeederTabViewModel.cs" />
     <Compile Include="ViewModels\PokedexTabViewModel.cs" />
@@ -73,6 +75,9 @@
     </Compile>
     <Compile Include="Views\PokemonInfoPage.xaml.cs">
       <DependentUpon>PokemonInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\SnipePokemonPopup.xaml.cs">
+      <DependentUpon>SnipePokemonPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Rerenders\ColoredProgressBar.cs" />
     <Compile Include="Views\Rerenders\BottomTabbedPage.cs" />
@@ -138,6 +143,10 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Plugin.Iconize, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Iconize.1.0.10\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Plugin.Iconize.dll</HintPath>
       <Private>True</Private>
@@ -152,6 +161,10 @@
     </Reference>
     <Reference Include="Prism.Unity.Forms, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.0-pre5\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebSocket4Net">
@@ -244,6 +257,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Templates\LocationFeederViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Popups\SnipePokemonPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

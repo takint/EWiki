@@ -43,11 +43,6 @@ namespace EWiki.XF.ViewModels
                 };
             });
 
-            MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
-            {
-                _message = message.Message;
-            });
-
             _cts = new CancellationTokenSource();
             Cleanup();
         }

@@ -2,8 +2,12 @@
 using System.Threading.Tasks;
 using EWiki.XF.Models.Enum;
 using EWiki.XF.Services;
+using EWiki.XF.ViewModels;
+using EWiki.XF.Views.Popups;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
+using Rg.Plugins.Popup.Services;
 using WebSocket4Net;
 using Xamarin.Forms;
 
@@ -100,16 +104,16 @@ namespace EWiki.XF.Models
 
         public async Task ExecuteSnipCommand()
         {
-            try
+            var snipePokemonPopup = new SnipePokemonPopup()
             {
-                var service = DependencyService.Get<ISniperService>();
-                await service.Snipe(Id, Latitude, Longitude);
-                //Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
-            }
-            catch (Exception exception)
-            {
-                // ignored
-            }
+                BindingContext = new SnipePokemonPopupViewModel()
+                {
+                    PokemonId = Id,
+                    Latitude = Latitude,
+                    Longitude = Longitude
+                }
+            };
+            await PopupNavigation.PushAsync(snipePokemonPopup);
         }
 
         public void ExecuteOpenMapCommand()

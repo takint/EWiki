@@ -76,7 +76,7 @@ namespace EWiki.XF.ViewModels
             var isEven = _pokemons.LastOrDefault() != null && _pokemons.LastOrDefault().IsEven;
             foreach (var pokemonSM in newPokemons)
             {
-                if (_pokemons.All(p => p.Id != pokemonSM.Id))
+                if (_pokemons.All(p => (int)p.Id != pokemonSM.Id))
                 {
                     var pokemon = Mapper.Map<Pokemon>(pokemonSM);
                     isEven = !isEven;
