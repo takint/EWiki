@@ -109,12 +109,13 @@ namespace EWiki.Sniper
                         var latitude = double.Parse(matches[2].Value.Split('=')[1].Replace("]", ""));
                         var longitude = double.Parse(matches[3].Value.Split('=')[1].Replace("]", ""));
                         await Snipe(pokemonId, latitude, longitude, session);
+                        session.Send("End");
                     }
                 }
             }
             catch (Exception e)
             {
-                session.Send("People talking without speaking");
+                session.Send("End");
             }
         }
 

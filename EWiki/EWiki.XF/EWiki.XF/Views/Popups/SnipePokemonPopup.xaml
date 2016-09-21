@@ -47,10 +47,7 @@
         </ListView>
       </StackLayout>
         <AbsoluteLayout Grid.Row="2" Grid.Column="0" BackgroundColor="Transparent" HeightRequest="80">
-            <ffimageloading:CachedImage Source="pokeball.png" HeightRequest="75" 
-                                        AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                                        AbsoluteLayout.LayoutFlags="PositionProportional" />
-            <ActivityIndicator IsRunning="True" 
+            <ffimageloading:CachedImage x:Name="PokeBall" Source="pokeball.png" HeightRequest="75" 
                                         AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
                                         AbsoluteLayout.LayoutFlags="PositionProportional" />
         </AbsoluteLayout>

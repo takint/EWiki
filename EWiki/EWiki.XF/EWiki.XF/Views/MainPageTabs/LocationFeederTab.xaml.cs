@@ -9,6 +9,15 @@ namespace EWiki.XF.Views
         public LocationFeederTab()
         {
             InitializeComponent();
+            SniperInfoListView.ItemAppearing += (sender, args) =>
+            {
+                if (ActivityIndicator.IsVisible)
+                {
+                    ActivityIndicator.IsRunning = false;
+                    ActivityIndicator.IsVisible = false;
+                    Message.IsVisible = false;
+                }
+            };
         }
     }
 }

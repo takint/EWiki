@@ -15,10 +15,16 @@ namespace EWiki.XF.Droid.Services
         private WebSocket client;
         public SniperService()
         {
-            client = new WebSocket($"ws://210.245.27.38:7777", "basic", WebSocketVersion.Rfc6455);
+            client = new WebSocket($"ws://bongvl.vn:7777", "basic", WebSocketVersion.Rfc6455);
             client.Opened += (sender, args) =>
             {
-                client.Send("Connected");
+                var message = new SniperMessage()
+                {
+                    Message = "Accepted"
+                };
+                Device.BeginInvokeOnMainThread(
+                () => MessagingCenter.Send(message, "Sniper")
+                );
             };
             client.MessageReceived += (sender, args) =>
             {

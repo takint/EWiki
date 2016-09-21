@@ -25,14 +25,14 @@ namespace EWiki.XF.Views.Popups
             if (context == null) return;
 
             _cts = new CancellationTokenSource();
+            var runningCts = new CancellationTokenSource();
             try
             {
                 Task.Run(async () =>
                 {
-
                     context.Messages.Add(new Message()
                     {
-                        Content = $"Requested catch {context.PokemonId} at {context.Latitude}, {context.Longitude}",
+                        Content = $"Requested catch {context.PokemonId} at {context.Latitude}, {context.Longitude}. Waiting response...",
                         ColorName = "White"
                     });
 
@@ -41,13 +41,56 @@ namespace EWiki.XF.Views.Popups
 
                     MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
                     {
-                        if (!string.IsNullOrEmpty(message.Message))
+                        switch (message.Message)
                         {
-                            var deserializedMessage = JsonConvert.DeserializeObject<Message>(message.Message);
-                            context.Messages.Insert(0, deserializedMessage);
+                            case "Accepted":
+                                context.Messages.Insert(0, new Message()
+                                {
+                                    Content = "Accepted. Catching...",
+                                    ColorName = "Magenta"
+                                });
+                                break;
+                            case "End":
+                                runningCts.Cancel();
+                                break;
+                            default:
+                                if (!string.IsNullOrEmpty(message.Message))
+                                {
+                                    try
+                                    {
+                                        var deserializedMessage = JsonConvert.DeserializeObject<Message>(message.Message);
+                                        context.Messages.Insert(0, deserializedMessage);
+
+                                        if (deserializedMessage.ColorName.Contains("Green") ||
+                                            deserializedMessage.ColorName.Contains("Yellow"))
+                                        {
+                                            runningCts.Cancel();
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        context.Messages.Insert(0, new Message()
+                                        {
+                                            Content = message.Message
+                                        });
+                                        // ignored
+                                    }
+                                }
+                                break;
                         }
                     });
+
+                    
                 }, _cts.Token);
+
+                Task.Run(async () =>
+                {
+                    while (!runningCts.IsCancellationRequested)
+                    {
+                        await PokeBall.RotateTo(360, 500U);
+                        PokeBall.Rotation = 0;
+                    }
+                }, runningCts.Token);
                 //Device.OpenUri(new Uri($"pokesniper2://{Name}/{Latitude},{Longitude}"));
             }
             catch (Exception exception)

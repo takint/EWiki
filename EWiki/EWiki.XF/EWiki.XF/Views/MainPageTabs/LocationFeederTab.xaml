@@ -7,8 +7,10 @@
              x:Class="EWiki.XF.Views.LocationFeederTab"
              x:Name="ParentPage"
              BackgroundColor="#eceff4">
-  <ContentPage.Content>
-    <ListView CachingStrategy="RecycleElement"
+  <StackLayout>
+    <ActivityIndicator x:Name="ActivityIndicator" IsRunning="True" Margin="0,30,0,0"/>
+    <Label x:Name="Message" HorizontalOptions="CenterAndExpand" FontSize="14" TextColor="#FF4081" Text="Retrieving Pokemons..."/>
+    <ListView x:Name="SniperInfoListView" CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Pokemons}"
               HasUnevenRows="true"
@@ -20,5 +22,5 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </ContentPage.Content>
+  </StackLayout>
 </ContentPage>
