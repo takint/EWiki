@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EWiki.XF.Models;
 using EWiki.XF.Service;
 using EWiki.XF.Utilities;
+using EWiki.XF.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -56,6 +57,7 @@ namespace EWiki.XF.ViewModels
         };
 
         private readonly INewsService _newsService;
+        private readonly INavigationService _navigationService;
 
         private ObservableRangeCollection<NewsGroup> _newsGroups;
         public ObservableRangeCollection<NewsGroup> NewsGroups
@@ -71,20 +73,15 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _featuredNewsList, value); }
         }
 
-        private int _indicationPosition;
-        public int IndicationPosition
-        {
-            get { return _indicationPosition; }
-            set
-            {
-                SetProperty(ref _indicationPosition, value);
-            }
-        }
+        public DelegateCommand<NewsGroup> MoreNewsCommand { get; set; }
 
-        public NewsTabViewModel(INewsService newsService)
+        public NewsTabViewModel(INewsService newsService, INavigationService navigationService)
         {
             _newsService = newsService;
-        }
+            _navigationService = navigationService;
+
+            MoreNewsCommand = new DelegateCommand<NewsGroup>(async (group) => await ExecuteMoreNewsCommandAsync(group));
+        }       
 
         //public override async void OnNavigatedTo(NavigationParameters parameters)
         //{
@@ -111,6 +108,16 @@ namespace EWiki.XF.ViewModels
 
                 NewsGroups.Add(group);
             }
+        }
+
+        private async Task ExecuteMoreNewsCommandAsync(NewsGroup group)
+        {
+            var navParams = new NavigationParameters
+            {
+                {"Category", new NewsCategory { Title = group.Category } }
+            };
+
+            await _navigationService.NavigateAsync($"{nameof(NewsCategoryPage)}", navParams, false);
         }
     }
 

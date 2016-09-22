@@ -31,6 +31,7 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<PokedexTab>();
             Container.RegisterTypeForNavigation<NewsTab>();
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
+            Container.RegisterTypeForNavigation<NewsCategoryPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterType<IPokemonService, PokemonService>();
             Container.RegisterType<INewsService, NewsService>();

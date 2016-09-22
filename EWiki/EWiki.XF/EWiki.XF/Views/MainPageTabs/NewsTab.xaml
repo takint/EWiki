@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
              xmlns:ffImageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:crs="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:behaviors="clr-namespace:EWiki.XF.Behaviors;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.NewsTab"
              x:Name="Page">
@@ -14,8 +15,16 @@
               ItemsSource="{Binding NewsGroups}"
               SeparatorVisibility="None"
               RowHeight="220">
+    <ListView.Behaviors>
+        <behaviors:ListViewBehavior AllowSelectItem="False" />
+      </ListView.Behaviors>
     <ListView.Header>
-      <crs:CarouselViewControl ItemsSource="{Binding BindingContext.FeaturedNewsList, Source={x:Reference Page}}" Orientation="Horizontal" PageIndicators="True" CurrentPageIndicatorTintColor="White" HeightRequest="200" BackgroundColor="#80000000">
+      <crs:CarouselViewControl ItemsSource="{Binding BindingContext.FeaturedNewsList, Source={x:Reference Page}}"
+                               Orientation="Horizontal"
+                               PageIndicators="True"
+                               CurrentPageIndicatorTintColor="White"
+                               HeightRequest="200"
+                               BackgroundColor="#80000000">
         <crs:CarouselViewControl.ItemTemplate>
           <DataTemplate>
             <Grid>
@@ -43,7 +52,7 @@
               </Grid.ColumnDefinitions>
 
               <Label Grid.Column="0" Text="{Binding Category}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-              <Button Grid.Column="1" Text="More" HorizontalOptions="End" BackgroundColor="Red" TextColor="White" VerticalOptions="Center"/>
+              <Button Grid.Column="1" Text="More" HorizontalOptions="End" BackgroundColor="Red" TextColor="White" VerticalOptions="Center" Command="{Binding BindingContext.MoreNewsCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
             </Grid>
             <controls:HorizontalListView ItemsSource="{Binding NewsList}">
               <controls:HorizontalListView.ItemTemplate>
