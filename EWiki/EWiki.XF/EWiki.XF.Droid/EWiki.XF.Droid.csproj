@@ -48,7 +48,7 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
     <AotAssemblies>False</AotAssemblies>
     <EnableLLVM>False</EnableLLVM>
@@ -230,6 +230,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BottomTabbedPageRender.cs" />
     <Compile Include="Renderers\ExtendedProgressBarRender.cs" />
+    <Compile Include="Renderers\EntryRender.cs" />
     <Compile Include="Renderers\LabelRender.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

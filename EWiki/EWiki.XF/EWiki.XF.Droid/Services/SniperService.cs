@@ -21,7 +21,7 @@ namespace EWiki.XF.Droid.Services
             {
                 var message = new SniperMessage()
                 {
-                    Message = "Accepted"
+                    Message = "Opened"
                 };
                 Device.BeginInvokeOnMainThread(
                 () => MessagingCenter.Send(message, "Sniper")
@@ -41,17 +41,6 @@ namespace EWiki.XF.Droid.Services
         }
         public async Task Snipe(PokemonId pokemonId, double latitude, double longitude, string pokemonGoAccount)
         {
-            if (pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
-            {
-                var message = new SniperMessage()
-                {
-                    Message = "Please input Pokemon Go info..."
-                };
-                Device.BeginInvokeOnMainThread(
-                () => MessagingCenter.Send(message, "Sniper")
-                );
-                return;
-            }
             var running = true;
             while (running)
             {

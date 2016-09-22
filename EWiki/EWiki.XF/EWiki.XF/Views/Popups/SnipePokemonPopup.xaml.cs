@@ -21,6 +21,7 @@ namespace EWiki.XF.Views.Popups
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             var context = BindingContext as SnipePokemonPopupViewModel;
             if (context == null) return;
 
@@ -39,14 +40,14 @@ namespace EWiki.XF.Views.Popups
                     var service = DependencyService.Get<ISniperService>();
                     await service.Snipe(context.PokemonId, context.Latitude, context.Longitude, App.PokemonGoAccount);
 
-                    MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", async message =>
+                    MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
                     {
                         switch (message.Message)
                         {
-                            case "Accepted":
+                            case "Opened":
                                 context.Messages.Insert(0, new Message()
                                 {
-                                    Content = "Accepted. Catching...",
+                                    Content = "Accepted. Awaiting for login and catching...",
                                     ColorName = "Magenta"
                                 });
                                 break;
@@ -79,7 +80,6 @@ namespace EWiki.XF.Views.Popups
                                 }
                                 break;
                         }
-                        await Task.Delay(1000, runningCts.Token);
                     });
 
                     

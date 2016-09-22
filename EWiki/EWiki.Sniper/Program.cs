@@ -88,12 +88,12 @@ namespace EWiki.Sniper
 
         private static void socketServer_NewSessionConnected(WebSocketSession session)
         {
-            session.Send($"Connected");
+            //session.Send($"Connected");
         }
 
         private static void socketServer_SessionClosed(WebSocketSession session, CloseReason closeReason)
         {
-            session.Send($"Closed");
+            //session.Send($"Closed");
         }
 
         private static async void socketServer_NewMessageReceived(WebSocketSession session, string value)
