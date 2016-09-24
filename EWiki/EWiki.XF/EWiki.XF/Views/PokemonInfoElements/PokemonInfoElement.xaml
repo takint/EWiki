@@ -30,7 +30,7 @@
                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=5}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"/>
       </RelativeLayout>
       <ffimageloading:CachedImage Source="arch.png" HeightRequest="150" WidthRequest="290" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -145}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=-130}" />
-      <ffimageloading:CachedImage Source="p002.png" HeightRequest="120" WidthRequest="120" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -60}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=-100}" />      
+      <ffimageloading:CachedImage Source="No_Bulbasaur.png" HeightRequest="120" WidthRequest="120" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -60}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=-100}" />      
       <Label Text="Ivysaur" FontSize="24" TextColor="#45686E"
           HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=10}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
       <Label Text="Pokemon Hat Giong" FontSize="14" TextColor="#45686E"

@@ -28,7 +28,7 @@ namespace EWiki.XF.Models
                 return $"{number}{(int)Id}";
             }
         }
-        public string Avatar => $"No{Number}";
+        public string Avatar => $"No_{Name}";
         public ulong EncounterId { get; set; }
         public DateTime ExpirationTimestamp { get; set; }
 

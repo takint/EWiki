@@ -4506,40 +4506,493 @@ namespace EWiki.XF.Droid
 			public const int No151 = 2130837833;
 			
 			// aapt resource value: 0x7f02014a
-			public const int no_avatar = 2130837834;
+			public const int No_Abra = 2130837834;
 			
 			// aapt resource value: 0x7f02014b
-			public const int Normal = 2130837835;
-			
-			// aapt resource value: 0x7f020155
-			public const int notification_template_icon_bg = 2130837845;
+			public const int No_Aerodactyl = 2130837835;
 			
 			// aapt resource value: 0x7f02014c
-			public const int Poison = 2130837836;
+			public const int No_Alakazam = 2130837836;
 			
 			// aapt resource value: 0x7f02014d
-			public const int pokeball = 2130837837;
+			public const int No_Arbok = 2130837837;
 			
 			// aapt resource value: 0x7f02014e
-			public const int pokedex = 2130837838;
+			public const int No_Arcanine = 2130837838;
 			
 			// aapt resource value: 0x7f02014f
-			public const int pokemon_info_background = 2130837839;
+			public const int No_Articuno = 2130837839;
 			
 			// aapt resource value: 0x7f020150
-			public const int Psychic = 2130837840;
+			public const int no_avatar = 2130837840;
 			
 			// aapt resource value: 0x7f020151
-			public const int Rock = 2130837841;
+			public const int No_Beedrill = 2130837841;
 			
 			// aapt resource value: 0x7f020152
-			public const int Steel = 2130837842;
+			public const int No_Bellsprout = 2130837842;
 			
 			// aapt resource value: 0x7f020153
-			public const int target = 2130837843;
+			public const int No_Blastoise = 2130837843;
 			
 			// aapt resource value: 0x7f020154
-			public const int Water = 2130837844;
+			public const int No_Bulbasaur = 2130837844;
+			
+			// aapt resource value: 0x7f020155
+			public const int No_Butterfree = 2130837845;
+			
+			// aapt resource value: 0x7f020156
+			public const int No_Caterpie = 2130837846;
+			
+			// aapt resource value: 0x7f020157
+			public const int No_Chansey = 2130837847;
+			
+			// aapt resource value: 0x7f020158
+			public const int No_Charizard = 2130837848;
+			
+			// aapt resource value: 0x7f020159
+			public const int No_Charmander = 2130837849;
+			
+			// aapt resource value: 0x7f02015a
+			public const int No_Charmeleon = 2130837850;
+			
+			// aapt resource value: 0x7f02015b
+			public const int No_Clefable = 2130837851;
+			
+			// aapt resource value: 0x7f02015c
+			public const int No_Clefairy = 2130837852;
+			
+			// aapt resource value: 0x7f02015d
+			public const int No_Cloyster = 2130837853;
+			
+			// aapt resource value: 0x7f02015e
+			public const int No_Cubone = 2130837854;
+			
+			// aapt resource value: 0x7f02015f
+			public const int No_Dewgong = 2130837855;
+			
+			// aapt resource value: 0x7f020160
+			public const int No_Diglett = 2130837856;
+			
+			// aapt resource value: 0x7f020161
+			public const int No_Ditto = 2130837857;
+			
+			// aapt resource value: 0x7f020162
+			public const int No_Dodrio = 2130837858;
+			
+			// aapt resource value: 0x7f020163
+			public const int No_Doduo = 2130837859;
+			
+			// aapt resource value: 0x7f020164
+			public const int No_Dragonair = 2130837860;
+			
+			// aapt resource value: 0x7f020165
+			public const int No_Dragonite = 2130837861;
+			
+			// aapt resource value: 0x7f020166
+			public const int No_Dratini = 2130837862;
+			
+			// aapt resource value: 0x7f020167
+			public const int No_Drowzee = 2130837863;
+			
+			// aapt resource value: 0x7f020168
+			public const int No_Dugtrio = 2130837864;
+			
+			// aapt resource value: 0x7f020169
+			public const int No_Eevee = 2130837865;
+			
+			// aapt resource value: 0x7f02016a
+			public const int No_Ekans = 2130837866;
+			
+			// aapt resource value: 0x7f02016b
+			public const int No_Electabuzz = 2130837867;
+			
+			// aapt resource value: 0x7f02016c
+			public const int No_Electrode = 2130837868;
+			
+			// aapt resource value: 0x7f02016d
+			public const int No_Exeggcute = 2130837869;
+			
+			// aapt resource value: 0x7f02016e
+			public const int No_Exeggutor = 2130837870;
+			
+			// aapt resource value: 0x7f02016f
+			public const int No_Farfetchd = 2130837871;
+			
+			// aapt resource value: 0x7f020170
+			public const int No_Fearow = 2130837872;
+			
+			// aapt resource value: 0x7f020171
+			public const int No_Flareon = 2130837873;
+			
+			// aapt resource value: 0x7f020172
+			public const int No_Gastly = 2130837874;
+			
+			// aapt resource value: 0x7f020173
+			public const int No_Gengar = 2130837875;
+			
+			// aapt resource value: 0x7f020174
+			public const int No_Geodude = 2130837876;
+			
+			// aapt resource value: 0x7f020175
+			public const int No_Gloom = 2130837877;
+			
+			// aapt resource value: 0x7f020176
+			public const int No_Golbat = 2130837878;
+			
+			// aapt resource value: 0x7f020177
+			public const int No_Goldeen = 2130837879;
+			
+			// aapt resource value: 0x7f020178
+			public const int No_Golduck = 2130837880;
+			
+			// aapt resource value: 0x7f020179
+			public const int No_Golem = 2130837881;
+			
+			// aapt resource value: 0x7f02017a
+			public const int No_Graveler = 2130837882;
+			
+			// aapt resource value: 0x7f02017b
+			public const int No_Grimer = 2130837883;
+			
+			// aapt resource value: 0x7f02017c
+			public const int No_Growlithe = 2130837884;
+			
+			// aapt resource value: 0x7f02017d
+			public const int No_Gyarados = 2130837885;
+			
+			// aapt resource value: 0x7f02017e
+			public const int No_Haunter = 2130837886;
+			
+			// aapt resource value: 0x7f02017f
+			public const int No_Hitmonchan = 2130837887;
+			
+			// aapt resource value: 0x7f020180
+			public const int No_Hitmonlee = 2130837888;
+			
+			// aapt resource value: 0x7f020181
+			public const int No_Horsea = 2130837889;
+			
+			// aapt resource value: 0x7f020182
+			public const int No_Hypno = 2130837890;
+			
+			// aapt resource value: 0x7f020183
+			public const int No_Ivysaur = 2130837891;
+			
+			// aapt resource value: 0x7f020184
+			public const int No_Jigglypuff = 2130837892;
+			
+			// aapt resource value: 0x7f020185
+			public const int No_Jolteon = 2130837893;
+			
+			// aapt resource value: 0x7f020186
+			public const int No_Jynx = 2130837894;
+			
+			// aapt resource value: 0x7f020187
+			public const int No_Kabuto = 2130837895;
+			
+			// aapt resource value: 0x7f020188
+			public const int No_Kabutops = 2130837896;
+			
+			// aapt resource value: 0x7f020189
+			public const int No_Kadabra = 2130837897;
+			
+			// aapt resource value: 0x7f02018a
+			public const int No_Kakuna = 2130837898;
+			
+			// aapt resource value: 0x7f02018b
+			public const int No_Kangaskhan = 2130837899;
+			
+			// aapt resource value: 0x7f02018c
+			public const int No_Kingler = 2130837900;
+			
+			// aapt resource value: 0x7f02018d
+			public const int No_Koffing = 2130837901;
+			
+			// aapt resource value: 0x7f02018e
+			public const int No_Krabby = 2130837902;
+			
+			// aapt resource value: 0x7f02018f
+			public const int No_Lapras = 2130837903;
+			
+			// aapt resource value: 0x7f020190
+			public const int No_Lickitung = 2130837904;
+			
+			// aapt resource value: 0x7f020191
+			public const int No_Machamp = 2130837905;
+			
+			// aapt resource value: 0x7f020192
+			public const int No_Machoke = 2130837906;
+			
+			// aapt resource value: 0x7f020193
+			public const int No_Machop = 2130837907;
+			
+			// aapt resource value: 0x7f020194
+			public const int No_Magikarp = 2130837908;
+			
+			// aapt resource value: 0x7f020195
+			public const int No_Magmar = 2130837909;
+			
+			// aapt resource value: 0x7f020196
+			public const int No_Magnemite = 2130837910;
+			
+			// aapt resource value: 0x7f020197
+			public const int No_Magneton = 2130837911;
+			
+			// aapt resource value: 0x7f020198
+			public const int No_Mankey = 2130837912;
+			
+			// aapt resource value: 0x7f020199
+			public const int No_Marowak = 2130837913;
+			
+			// aapt resource value: 0x7f02019a
+			public const int No_Meowth = 2130837914;
+			
+			// aapt resource value: 0x7f02019b
+			public const int No_Metapod = 2130837915;
+			
+			// aapt resource value: 0x7f02019c
+			public const int No_Mew = 2130837916;
+			
+			// aapt resource value: 0x7f02019d
+			public const int No_Mewtwo = 2130837917;
+			
+			// aapt resource value: 0x7f02019e
+			public const int No_Moltres = 2130837918;
+			
+			// aapt resource value: 0x7f02019f
+			public const int No_MrMime = 2130837919;
+			
+			// aapt resource value: 0x7f0201a0
+			public const int No_Muk = 2130837920;
+			
+			// aapt resource value: 0x7f0201a1
+			public const int No_Nidoking = 2130837921;
+			
+			// aapt resource value: 0x7f0201a2
+			public const int No_Nidoqueen = 2130837922;
+			
+			// aapt resource value: 0x7f0201a3
+			public const int No_NidoranFemale = 2130837923;
+			
+			// aapt resource value: 0x7f0201a4
+			public const int No_NidoranMale = 2130837924;
+			
+			// aapt resource value: 0x7f0201a5
+			public const int No_Nidorina = 2130837925;
+			
+			// aapt resource value: 0x7f0201a6
+			public const int No_Nidorino = 2130837926;
+			
+			// aapt resource value: 0x7f0201a7
+			public const int No_Ninetales = 2130837927;
+			
+			// aapt resource value: 0x7f0201a8
+			public const int No_Oddish = 2130837928;
+			
+			// aapt resource value: 0x7f0201a9
+			public const int No_Omanyte = 2130837929;
+			
+			// aapt resource value: 0x7f0201aa
+			public const int No_Omastar = 2130837930;
+			
+			// aapt resource value: 0x7f0201ab
+			public const int No_Onix = 2130837931;
+			
+			// aapt resource value: 0x7f0201ac
+			public const int No_Paras = 2130837932;
+			
+			// aapt resource value: 0x7f0201ad
+			public const int No_Parasect = 2130837933;
+			
+			// aapt resource value: 0x7f0201ae
+			public const int No_Persian = 2130837934;
+			
+			// aapt resource value: 0x7f0201af
+			public const int No_Pidgeot = 2130837935;
+			
+			// aapt resource value: 0x7f0201b0
+			public const int No_Pidgeotto = 2130837936;
+			
+			// aapt resource value: 0x7f0201b1
+			public const int No_Pidgey = 2130837937;
+			
+			// aapt resource value: 0x7f0201b2
+			public const int No_Pikachu = 2130837938;
+			
+			// aapt resource value: 0x7f0201b3
+			public const int No_Pinsir = 2130837939;
+			
+			// aapt resource value: 0x7f0201b4
+			public const int No_Poliwag = 2130837940;
+			
+			// aapt resource value: 0x7f0201b5
+			public const int No_Poliwhirl = 2130837941;
+			
+			// aapt resource value: 0x7f0201b6
+			public const int No_Poliwrath = 2130837942;
+			
+			// aapt resource value: 0x7f0201b7
+			public const int No_Ponyta = 2130837943;
+			
+			// aapt resource value: 0x7f0201b8
+			public const int No_Porygon = 2130837944;
+			
+			// aapt resource value: 0x7f0201b9
+			public const int No_Primeape = 2130837945;
+			
+			// aapt resource value: 0x7f0201ba
+			public const int No_Psyduck = 2130837946;
+			
+			// aapt resource value: 0x7f0201bb
+			public const int No_Raichu = 2130837947;
+			
+			// aapt resource value: 0x7f0201bc
+			public const int No_Rapidash = 2130837948;
+			
+			// aapt resource value: 0x7f0201bd
+			public const int No_Raticate = 2130837949;
+			
+			// aapt resource value: 0x7f0201be
+			public const int No_Rattata = 2130837950;
+			
+			// aapt resource value: 0x7f0201bf
+			public const int No_Rhydon = 2130837951;
+			
+			// aapt resource value: 0x7f0201c0
+			public const int No_Rhyhorn = 2130837952;
+			
+			// aapt resource value: 0x7f0201c1
+			public const int No_Sandshrew = 2130837953;
+			
+			// aapt resource value: 0x7f0201c2
+			public const int No_Sandslash = 2130837954;
+			
+			// aapt resource value: 0x7f0201c3
+			public const int No_Scyther = 2130837955;
+			
+			// aapt resource value: 0x7f0201c4
+			public const int No_Seadra = 2130837956;
+			
+			// aapt resource value: 0x7f0201c5
+			public const int No_Seaking = 2130837957;
+			
+			// aapt resource value: 0x7f0201c6
+			public const int No_Seel = 2130837958;
+			
+			// aapt resource value: 0x7f0201c7
+			public const int No_Shellder = 2130837959;
+			
+			// aapt resource value: 0x7f0201c8
+			public const int No_Slowbro = 2130837960;
+			
+			// aapt resource value: 0x7f0201c9
+			public const int No_Slowpoke = 2130837961;
+			
+			// aapt resource value: 0x7f0201ca
+			public const int No_Snorlax = 2130837962;
+			
+			// aapt resource value: 0x7f0201cb
+			public const int No_Spearow = 2130837963;
+			
+			// aapt resource value: 0x7f0201cc
+			public const int No_Squirtle = 2130837964;
+			
+			// aapt resource value: 0x7f0201cd
+			public const int No_Starmie = 2130837965;
+			
+			// aapt resource value: 0x7f0201ce
+			public const int No_Staryu = 2130837966;
+			
+			// aapt resource value: 0x7f0201cf
+			public const int No_Tangela = 2130837967;
+			
+			// aapt resource value: 0x7f0201d0
+			public const int No_Tauros = 2130837968;
+			
+			// aapt resource value: 0x7f0201d1
+			public const int No_Tentacool = 2130837969;
+			
+			// aapt resource value: 0x7f0201d2
+			public const int No_Tentacruel = 2130837970;
+			
+			// aapt resource value: 0x7f0201d3
+			public const int No_Vaporeon = 2130837971;
+			
+			// aapt resource value: 0x7f0201d4
+			public const int No_Venomoth = 2130837972;
+			
+			// aapt resource value: 0x7f0201d5
+			public const int No_Venonat = 2130837973;
+			
+			// aapt resource value: 0x7f0201d6
+			public const int No_Venusaur = 2130837974;
+			
+			// aapt resource value: 0x7f0201d7
+			public const int No_Victreebel = 2130837975;
+			
+			// aapt resource value: 0x7f0201d8
+			public const int No_Vileplume = 2130837976;
+			
+			// aapt resource value: 0x7f0201d9
+			public const int No_Voltorb = 2130837977;
+			
+			// aapt resource value: 0x7f0201da
+			public const int No_Vulpix = 2130837978;
+			
+			// aapt resource value: 0x7f0201db
+			public const int No_Wartortle = 2130837979;
+			
+			// aapt resource value: 0x7f0201dc
+			public const int No_Weedle = 2130837980;
+			
+			// aapt resource value: 0x7f0201dd
+			public const int No_Weepinbell = 2130837981;
+			
+			// aapt resource value: 0x7f0201de
+			public const int No_Weezing = 2130837982;
+			
+			// aapt resource value: 0x7f0201df
+			public const int No_Wigglytuff = 2130837983;
+			
+			// aapt resource value: 0x7f0201e0
+			public const int No_Zapdos = 2130837984;
+			
+			// aapt resource value: 0x7f0201e1
+			public const int No_Zubat = 2130837985;
+			
+			// aapt resource value: 0x7f0201e2
+			public const int Normal = 2130837986;
+			
+			// aapt resource value: 0x7f0201ec
+			public const int notification_template_icon_bg = 2130837996;
+			
+			// aapt resource value: 0x7f0201e3
+			public const int Poison = 2130837987;
+			
+			// aapt resource value: 0x7f0201e4
+			public const int pokeball = 2130837988;
+			
+			// aapt resource value: 0x7f0201e5
+			public const int pokedex = 2130837989;
+			
+			// aapt resource value: 0x7f0201e6
+			public const int pokemon_info_background = 2130837990;
+			
+			// aapt resource value: 0x7f0201e7
+			public const int Psychic = 2130837991;
+			
+			// aapt resource value: 0x7f0201e8
+			public const int Rock = 2130837992;
+			
+			// aapt resource value: 0x7f0201e9
+			public const int Steel = 2130837993;
+			
+			// aapt resource value: 0x7f0201ea
+			public const int target = 2130837994;
+			
+			// aapt resource value: 0x7f0201eb
+			public const int Water = 2130837995;
 			
 			static Drawable()
 			{

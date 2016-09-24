@@ -30,7 +30,7 @@ namespace EWiki.XF.Mappers
 
             protected override void Configure()
             {
-                CreateMap<PokemonSM, Pokemon>().ForMember(p => p.Avatar, o => o.MapFrom(p => p.Number.Replace("#", "No")));
+                CreateMap<PokemonSM, Pokemon>().ForMember(p => p.Avatar, o => o.MapFrom(p => $"No_{p.Name}"));
             }
         }
 

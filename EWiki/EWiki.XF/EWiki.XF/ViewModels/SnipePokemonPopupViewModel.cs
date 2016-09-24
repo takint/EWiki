@@ -50,7 +50,7 @@ namespace EWiki.XF.ViewModels
             }
         }
 
-        public string Avatar => $"No{Number}";
+        public string Avatar => $"No_{Name}";
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
         {

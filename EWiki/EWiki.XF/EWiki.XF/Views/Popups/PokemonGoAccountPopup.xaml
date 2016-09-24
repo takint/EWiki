@@ -16,19 +16,19 @@
     </Grid.RowDefinitions>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="0" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="UserName" TextColor="White" Text="{Binding UserName}" />
+      <Entry Placeholder="UserName" TextColor="White" Text="{Binding UserName}" HorizontalOptions="StartAndExpand"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="1" Padding="10,0,10,0">
     <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-    <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Password}" />
+    <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Password}" HorizontalOptions="StartAndExpand" />
       </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="2" Padding="10,0,10,0">
     <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-    <Entry Placeholder="CurrentLatitude" TextColor="White" Text="{Binding Latitude}" />
+    <Entry Placeholder="CurrentLatitude" TextColor="White" Text="{Binding Latitude}" HorizontalOptions="StartAndExpand" />
       </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="3" Padding="10,0,10,0">
     <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-    <Entry Placeholder="CurrentLongitude" TextColor="White" Text="{Binding Longitude}" />
+    <Entry Placeholder="CurrentLongitude" TextColor="White" Text="{Binding Longitude}" HorizontalOptions="StartAndExpand" />
       </StackLayout>
   </Grid>
 </pages:PopupPage>
