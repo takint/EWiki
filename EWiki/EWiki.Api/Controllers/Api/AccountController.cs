@@ -1,5 +1,4 @@
-﻿using EWiki.Api.DTOs;
-using EWiki.Api.Models;
+﻿using EWiki.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
@@ -21,7 +20,7 @@ namespace EWiki.Api.Controllers
 
         [HttpPost("Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(UserDTO model)
+        public async Task<IActionResult> Register(UserDto model)
         {
             if (model == null)
             {

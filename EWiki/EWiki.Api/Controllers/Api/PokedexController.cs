@@ -1,5 +1,6 @@
 ﻿using EWiki.Api.DataAccess;
 using EWiki.Api.Models;
+using EWiki.Api.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -21,12 +22,15 @@ namespace EWiki.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(int skip = 0, int take = 10)
         {
-            IEnumerable<Character> result = await pokedexRepository.AllIncludingAsync(c => c.Types);
+            IEnumerable<Character> result = await pokedexRepository.GetAllWithAllIncludeAsync();
+
             result = result.OrderBy(r => r.Number)
                 .Skip(skip)
                 .Take(take);
 
-            return Json(result);
+            List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p)).ToList();
+
+            return Json(responeData);
         }
 
         [HttpGet("GetPokemon")]

@@ -40,24 +40,29 @@ function WikiImageCtrl($scope, $rootScope, $state, $http, Upload, cloudinary, Wi
                 }).progress(function (e) {
                     var progressValue = e.loaded * 100.0 / e.total;
 
-                    $scope.fileProgress = Math.round(progressValue);
-                    file.status = "Uploading... " + $scope.fileProgress + "%";
+                    file.progress = Math.round(progressValue);
+                    file.status = "Uploading... " + progressValue + "%";
                 }).success(function (data, status, headers, config) {
 
                     $rootScope.photos = $rootScope.photos || [];
                     file.result = data;
                     $rootScope.photos.push(data);
 
+                    var fileName = $scope.title !== '' ? $scope.title : data.original_filename;
+                    var description = fileName.replace(/(\d*)([^\d]*)/, function (match, p1, p2, offset, string) {
+                        return [p1, p2].join(' - ');
+                    });
+
                     var image = {
                         BitDepth: 24,
-                        CreatedDate: '2016-09-20',
-                        ImageName: data.original_filename + '-' + $scope.title,
+                        CreatedDate: '2016-09-25',
+                        ImageName: fileName,
                         ImageSize: data.bytes,
                         ImageWidth: data.width,
                         ImageHeight: data.height,
                         ImageMediaType: data.format,
                         ImageMime: 'image/png',
-                        ImageDescription: $scope.description,
+                        ImageDescription: description,
                         ImageUrl: data.url
                     };
 
@@ -67,6 +72,8 @@ function WikiImageCtrl($scope, $rootScope, $state, $http, Upload, cloudinary, Wi
                         data: image
                     }).success(function (data) {
                         _self.WikiImage.images.push(data);
+                    }).error(function (e) {
+                        console.log(e);
                     });
 
                 }).error(function (data, status, headers, config) {

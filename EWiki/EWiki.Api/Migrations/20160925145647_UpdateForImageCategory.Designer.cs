@@ -8,9 +8,10 @@ using EWiki.Api.DataAccess;
 namespace EWiki.Api.Migrations
 {
     [DbContext(typeof(EWikiContext))]
-    partial class EWikiContextModelSnapshot : ModelSnapshot
+    [Migration("20160925145647_UpdateForImageCategory")]
+    partial class UpdateForImageCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

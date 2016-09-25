@@ -42,11 +42,11 @@
             <div class="file" ng-repeat="file in files">
               <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
               <div class="status">{{file.status}}</div>
-              <uib-progressbar value="{{fileProgress}}" type="success" class="progress-striped active"></uib-progressbar>
+              <uib-progressbar value="file.progress" type="success" class="progress-striped active"></uib-progressbar>
               <div class="form_line">
                 <div class="form_controls">
                   <div class="preview">
-                    <img ngf-src="file.result.url || file">
+                    <img class="img-responsive" ngf-src="file.result.url || file">
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
               <a href="">
                 <span class="corner"></span>
                 <div class="">
-                  <img class="img-responsive" alt="{{image.imageDescription}}" src="{{image.imageUrl}}">
+                  <img class="img-responsive" alt="{{image.imageDescription}}" ngf-src="image.imageUrl">
                 </div>
                 <div class="file-name">
                   {{image.imageName}}.{{image.imageMediaType}}

@@ -21,8 +21,7 @@ namespace EWiki.UnitTest
         }
     
         public int Id { get; set; }
-        public int CharacterId { get; set; }
-        public int CharacterInfoGroupId { get; set; }
+        public Nullable<int> CharacterInfoGroupId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public bool IsMain { get; set; }
@@ -32,7 +31,6 @@ namespace EWiki.UnitTest
         public string UpdatedUserId { get; set; }
     
         public virtual CharacterInfoGroup CharacterInfoGroup { get; set; }
-        public virtual Character Character { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InfoValue> InfoValues { get; set; }
     }

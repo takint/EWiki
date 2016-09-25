@@ -31,7 +31,6 @@ namespace EWiki.Api.Models
         public virtual ICollection<PokemonLocation> Locations { get; set; }
         public virtual ICollection<PokemonMove> NormalMoves { get; set; }
         public virtual ICollection<PokemonSpecialMove> SpecialMoves { get; set; }
-        public virtual ICollection<Character> EvolveInto { get; set; }
         public virtual ICollection<PokemonType> Types { get; set; }
     }
 }
