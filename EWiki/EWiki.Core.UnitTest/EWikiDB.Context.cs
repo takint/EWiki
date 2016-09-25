@@ -25,15 +25,12 @@ namespace EWiki.UnitTest
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Archive> Archives { get; set; }
-        public virtual DbSet<BlockedIp> BlockedIps { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CharacterInfoGroup> CharacterInfoGroups { get; set; }
         public virtual DbSet<CharacterInfo> CharacterInfos { get; set; }
         public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<CharacterSectionGroup> CharacterSectionGroups { get; set; }
         public virtual DbSet<CharacterSection> CharacterSections { get; set; }
-        public virtual DbSet<FileArchive> FileArchives { get; set; }
         public virtual DbSet<InfoValue> InfoValues { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Move> Moves { get; set; }

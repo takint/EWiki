@@ -17,7 +17,6 @@ namespace EWiki.UnitTest
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PageContent()
         {
-            this.Archives = new HashSet<Archive>();
             this.Revisions = new HashSet<Revision>();
         }
     
@@ -29,8 +28,6 @@ namespace EWiki.UnitTest
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Archive> Archives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Revision> Revisions { get; set; }
     }

@@ -93,12 +93,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Archive.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BlockedIp.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
@@ -132,9 +126,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EWikiDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="FileArchive.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="InfoValue.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>

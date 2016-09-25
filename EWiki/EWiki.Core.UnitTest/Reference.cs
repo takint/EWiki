@@ -15,7 +15,6 @@ namespace EWiki.UnitTest
     public partial class Reference
     {
         public int Id { get; set; }
-        public Nullable<int> CharacterId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public string Description { get; set; }
@@ -26,7 +25,5 @@ namespace EWiki.UnitTest
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
         public string UrlFormat { get; set; }
-    
-        public virtual Character Character { get; set; }
     }
 }

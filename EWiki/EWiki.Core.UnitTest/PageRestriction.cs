@@ -18,13 +18,13 @@ namespace EWiki.UnitTest
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public bool IsCascade { get; set; }
-        public Nullable<int> PageResctrictedId { get; set; }
         public int PageRestrictedId { get; set; }
         public int ResLevel { get; set; }
         public int ResType { get; set; }
         public decimal ResctrictionExpiry { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
+        public Nullable<int> PageId { get; set; }
     
         public virtual Page Page { get; set; }
     }

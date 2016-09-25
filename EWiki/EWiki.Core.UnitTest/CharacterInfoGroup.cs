@@ -21,7 +21,6 @@ namespace EWiki.UnitTest
         }
     
         public int Id { get; set; }
-        public Nullable<int> CharacterId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public string Name { get; set; }
@@ -29,7 +28,6 @@ namespace EWiki.UnitTest
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
     
-        public virtual Character Character { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CharacterInfo> CharacterInfos { get; set; }
     }

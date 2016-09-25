@@ -14,10 +14,14 @@ namespace EWiki.UnitTest
     
     public partial class WikiImage
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public WikiImage()
+        {
+            this.Characters = new HashSet<Character>();
+        }
+    
         public int Id { get; set; }
         public int BitDepth { get; set; }
-        public Nullable<int> CharacterId { get; set; }
-        public Nullable<int> CharacterId1 { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public string ImageDescription { get; set; }
@@ -29,8 +33,9 @@ namespace EWiki.UnitTest
         public int ImageWidth { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
+        public string ImageUrl { get; set; }
     
-        public virtual Character Character { get; set; }
-        public virtual Character Character1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Character> Characters { get; set; }
     }
 }
