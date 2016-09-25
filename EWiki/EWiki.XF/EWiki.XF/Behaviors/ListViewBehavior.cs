@@ -12,6 +12,9 @@ namespace EWiki.XF.Behaviors
         public static readonly BindableProperty InputConverterProperty =
             BindableProperty.Create("Converter", typeof(IValueConverter), typeof(ListViewBehavior), null);
 
+        public static readonly BindableProperty AllowSelectItemProperty =
+            BindableProperty.Create("AllowSelectItem", typeof(bool), typeof(ListViewBehavior), true);
+
         public ListView AssociatedObject { get; private set; }
 
         public ICommand Command
@@ -26,6 +29,12 @@ namespace EWiki.XF.Behaviors
             set { SetValue(InputConverterProperty, value); }
         }
 
+        public bool AllowSelectItem
+        {
+            get { return (bool)GetValue(AllowSelectItemProperty); }
+            set { SetValue(AllowSelectItemProperty, value); }
+        }
+
         protected override void OnAttachedTo(ListView bindable)
         {
             base.OnAttachedTo(bindable);
@@ -33,6 +42,7 @@ namespace EWiki.XF.Behaviors
             AssociatedObject = bindable;
             bindable.BindingContextChanged += OnBindingContextChanged;
             bindable.ItemAppearing += OnItemAppearing;
+            bindable.ItemTapped += OnItemTapped;
         }
 
         protected override void OnDetachingFrom(ListView bindable)
@@ -41,6 +51,7 @@ namespace EWiki.XF.Behaviors
 
             bindable.BindingContextChanged -= OnBindingContextChanged;
             bindable.ItemAppearing -= OnItemAppearing;
+            bindable.ItemTapped -= OnItemTapped;
             AssociatedObject = null;
         }
 
@@ -66,6 +77,15 @@ namespace EWiki.XF.Behaviors
                 Command.Execute(parameter);
             }
 
+        }
+
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var lv = ((ListView)sender);
+            if (!AllowSelectItem)
+            {
+                lv.SelectedItem = null;
+            }
         }
 
         protected override void OnBindingContextChanged()

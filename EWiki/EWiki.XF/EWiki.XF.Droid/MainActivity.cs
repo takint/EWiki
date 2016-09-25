@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Reflection;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 using EWiki.XF.Droid.BackgroundServices;
 using EWiki.XF.Droid.Utils.IconizeModules;
 using FormsPlugin.Iconize.Droid;
@@ -34,6 +35,12 @@ namespace EWiki.XF.Droid
             IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            CarouselViewRenderer.Init();
+
+            var cv = typeof(Xamarin.Forms.CarouselView);
+            var assembly = Assembly.Load(cv.FullName);
+
             LoadApplication(new App(new AndroidInitializer()));
 
             StartLocationFeeder();

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EWiki.XF.Views.NewsCategoryPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:xlab="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}">
+  <xlab:GridView x:Name="GridNews" ItemsSource="{Binding NewsList}" ColumnSpacing="5" RowSpacing="5" Margin="5">
+    <xlab:GridView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid BackgroundColor="#80000000">
+            <Grid.RowDefinitions>
+              <RowDefinition/>
+              <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <forms:CachedImage Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+            <extendedControls:ExtendedLabel Grid.Row="1" Text="{Binding Title}" TextColor="White" Margin="2,0,2,0"/>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </xlab:GridView.ItemTemplate>
+  </xlab:GridView>
+
+</ContentPage>
