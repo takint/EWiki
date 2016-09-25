@@ -5,13 +5,16 @@
                   xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
                   xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                   xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                  xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+                  xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="EWiki.XF.Views.LeftMenu">
+                  x:Class="EWiki.XF.Views.LeftMenu"
+                  x:Name="Page">
   <MasterDetailPage.Master>
     <ContentPage Title="Default">
       <StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="200">
-          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Black"> 
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Black">
             <Grid.RowDefinitions>
               <RowDefinition Height="3*" />
               <RowDefinition Height="2*" />
@@ -20,27 +23,55 @@
               <ColumnDefinition Width="Auto" />
               <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+
             <ffimageloading:CachedImage Source="left_profile_background" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"></ffimageloading:CachedImage>
-            <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Padding="10" HorizontalOptions="End">
-              <ffimageloading:CachedImage Source="no_avatar"
+
+            <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="no_avatar"
                                           WidthRequest="75"
                                           HeightRequest="75"
                                           HorizontalOptions="StartAndExpand"
                                           VerticalOptions="EndAndExpand"
-                                          Margin="0,0,0,20">
-                <ffimageloading:CachedImage.Transformations>
-                  <transformations:CircleTransformation />
-                </ffimageloading:CachedImage.Transformations>
-              </ffimageloading:CachedImage>
-              <Label Text="Troy Lee Go" FontSize="16" FontAttributes="Bold" TextColor="White"  VerticalOptions="End" />
-              <Label Text="troylee@gmail.com" FontSize="16" TextColor="White"  VerticalOptions="End" />
+                                          Margin="10,0,0,20">
+              <ffimageloading:CachedImage.Transformations>
+                <transformations:CircleTransformation />
+              </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+
+            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0">
+              <Label Text="Troy Lee Go" FontSize="16" FontAttributes="Bold" TextColor="White" />
+              <Label Text="troylee@gmail.com" FontSize="16" TextColor="White" />
             </StackLayout>
 
-          </Grid>          
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0">
+              <Label Text="Pokemon Go Accounts" FontSize="16" FontAttributes="Bold" TextColor="White" />
+              <StackLayout Orientation="Horizontal">
+                <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
+                  <extendedControls:ExtendedScrollView.ItemTemplate>
+                    <DataTemplate>
+                      <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
+                        <ffimageloading:CachedImage.Transformations>
+                          <transformations:CircleTransformation />
+                        </ffimageloading:CachedImage.Transformations>
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding BindingContext.SelectAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                      </ffimageloading:CachedImage>
+                    </DataTemplate>
+                  </extendedControls:ExtendedScrollView.ItemTemplate>
+                </extendedControls:ExtendedScrollView>
+
+                <iconize:IconImage Icon="{Binding IsPokemonAccountsExpand, Converter={x:Static converters:ExpandCollapseIconConverter.Instance}}" IconColor="White" WidthRequest="30" HeightRequest="30" Margin="0,0,0,0">
+                  <iconize:IconImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TogglePokemonAccountsCommand}"/>
+                  </iconize:IconImage.GestureRecognizers>
+                </iconize:IconImage>
+              </StackLayout>
+            </StackLayout>
+          </Grid>
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-          <ListView x:Name="LeftMenuListView" ItemsSource="{Binding MenuItems}" 
+          <ListView x:Name="LeftMenuListView" ItemsSource="{Binding MenuItems}"
                     ItemSelected="LeftMenu_OnItemSelected">
             <ListView.ItemTemplate>
               <DataTemplate>

@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Behaviors\ListViewBehavior.cs" />
+    <Compile Include="Converters\ExpandCollapseIconConverter.cs" />
+    <Compile Include="Converters\IsSelectedOpacityConverter.cs" />
     <Compile Include="Converters\VerifiedConverter.cs" />
     <Compile Include="Converters\IVConverter.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NewsCategory.cs" />
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="Models\PokemonAccount.cs" />
     <Compile Include="Models\SniperInfo.cs" />
     <Compile Include="Services\ISniperService.cs" />
     <Compile Include="Utilities\ObservableRangeCollection.cs" />

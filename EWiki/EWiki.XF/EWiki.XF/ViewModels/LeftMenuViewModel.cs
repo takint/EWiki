@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EWiki.XF.Models;
+using EWiki.XF.Utilities;
 using Prism.Commands;
 using Prism.Navigation;
 
@@ -56,11 +57,31 @@ namespace EWiki.XF.ViewModels
 
         }
 
+        private ObservableRangeCollection<PokemonAccount> _pokemonAccounts;
+        public ObservableRangeCollection<PokemonAccount> PokemonAccounts
+        {
+            get { return _pokemonAccounts ?? (_pokemonAccounts = new ObservableRangeCollection<PokemonAccount>()); }
+            set { SetProperty(ref _pokemonAccounts, value); }
+        }
+
+        private bool _isPokemonAccountsExpand;
+        public bool IsPokemonAccountsExpand
+        {
+            get { return _isPokemonAccountsExpand; }
+            set { SetProperty(ref _isPokemonAccountsExpand, value); }
+        }
+
         public DelegateCommand<string> NavigateCommand { get; set; }
+        public DelegateCommand<PokemonAccount> SelectAccountCommand { get; set; }
+        public DelegateCommand TogglePokemonAccountsCommand { get; set; }
+
+
         public LeftMenuViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
             NavigateCommand = new DelegateCommand<string>(Navigate);
+            SelectAccountCommand = new DelegateCommand<PokemonAccount>(ExecuteSelectAccountCommand);
+            TogglePokemonAccountsCommand = new DelegateCommand(() => IsPokemonAccountsExpand = !IsPokemonAccountsExpand);
         }
 
         private void Navigate(string name)
@@ -92,14 +113,38 @@ namespace EWiki.XF.ViewModels
             }
         }
 
+        private async Task LoadPokemonAccountsAsync()
+        {
+            PokemonAccounts.AddRange(new List<PokemonAccount>
+            {
+                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
+                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
+                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
+                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
+                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"}
+            });
+        }
+
+        private void ExecuteSelectAccountCommand(PokemonAccount selectedAccount)
+        {
+            foreach (var pokeAcc in PokemonAccounts)
+            {
+                pokeAcc.IsSelected = false;
+            }
+
+            selectedAccount.IsSelected = true;
+        }
+
         public override void OnNavigatedFrom(NavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+
+            await LoadPokemonAccountsAsync();
         }
     }
 }
