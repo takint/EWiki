@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using EWiki.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using System;
+using System.Threading.Tasks;
 
 namespace EWiki.Api
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IHostingEnvironment env)
         {
@@ -63,6 +64,7 @@ namespace EWiki.Api
             services.AddSingleton<IPokedexRepository, PokedexRepository>();
             services.AddSingleton<IRevisionRepository, RevisionRepository>();
             services.AddSingleton<IWikiImageRepository, WikiImageRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +72,8 @@ namespace EWiki.Api
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            ConfigureAuth(app);
 
             if (env.IsDevelopment())
             {
@@ -91,7 +95,7 @@ namespace EWiki.Api
                              .Database.Migrate();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
@@ -112,6 +116,9 @@ namespace EWiki.Api
 
             // For more details: https://docs.asp.net/en/latest/security/cors.html
             app.UseCors("AllowEwikiBDOrigin");
+
+            // Initialize data
+            app.SeedData().Wait();
         }
     }
 }
