@@ -8,6 +8,11 @@
                 'articlesHeader': 'Article Management',
                 'articlesSubheader': 'Articles',
 
+                'category': 'Category',
+                'categoriesList': 'Category List',
+                'categoriesHeader': 'Category Management',
+                'categoriesSubheader': 'Categories',
+
                 'homeLinkText': 'Dashboard'
             };
             return strings[key] || key;
