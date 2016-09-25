@@ -1,0 +1,6 @@
+﻿/**
+ * Login - service
+ */
+function LoginService() {
+
+}
