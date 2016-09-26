@@ -39,6 +39,7 @@
     <Compile Include="Converters\VerifiedConverter.cs" />
     <Compile Include="Converters\IVConverter.cs" />
     <Compile Include="Converters\ItemVisibilityEventArgstemConverter.cs" />
+    <Compile Include="ExtendedControls\AdMobView.cs" />
     <Compile Include="ExtendedControls\CarouselViewIndicator.cs" />
     <Compile Include="ExtendedControls\ExtendedCarouselView.xaml.cs">
       <DependentUpon>ExtendedCarouselView.xaml</DependentUpon>

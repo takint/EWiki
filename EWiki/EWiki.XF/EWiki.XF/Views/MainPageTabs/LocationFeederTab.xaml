@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:templates="clr-namespace:EWiki.XF.Views.Templates;assembly=EWiki.XF"
+             xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.LocationFeederTab"
              x:Name="ParentPage"
              BackgroundColor="#eceff4">
   <StackLayout>
+    <extendedControls:AdMobView HeightRequest="100" />
     <ActivityIndicator x:Name="ActivityIndicator" IsRunning="True" Margin="0,30,0,0"/>
     <Label x:Name="Message" HorizontalOptions="CenterAndExpand" FontSize="14" TextColor="#FF4081" Text="Retrieving Pokemons..."/>
     <ListView x:Name="SniperInfoListView" CachingStrategy="RecycleElement"
