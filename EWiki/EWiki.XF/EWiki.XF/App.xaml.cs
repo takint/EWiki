@@ -8,6 +8,7 @@ using Microsoft.Practices.Unity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EWiki.XF
 {
     public partial class App : PrismApplication

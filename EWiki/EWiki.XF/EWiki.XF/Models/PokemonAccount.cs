@@ -9,17 +9,48 @@ namespace EWiki.XF.Models
 {
     public class PokemonAccount : BindableBase
     {
-        public string Username { get; set; }
+        public Guid Id { get; set; }
 
-        public string Password { get; set; }
+        private string _username;
+        public string Username
+        {
+            get { return _username; }
+            set { SetProperty(ref _username, value); }
+        }
 
-        public string Avatar { get; set; }
+        private string _password;
+        public string Password
+        {
+            get { return _password; }
+            set { SetProperty(ref _password, value); }
+        }
+
+        private string _avatar;
+        public string Avatar
+        {
+            get { return _avatar; }
+            set { SetProperty(ref _avatar, value); }
+        }
 
         private bool _isSelected;
         public bool IsSelected
         {
             get { return _isSelected; }
             set { SetProperty(ref _isSelected, value); }
+        }
+
+        private string _longtitude;
+        public string Longtitude
+        {
+            get { return _longtitude; }
+            set { SetProperty(ref _longtitude, value); }
+        }
+
+        private string _latitude;
+        public string Latitude
+        {
+            get { return _latitude; }
+            set { SetProperty(ref _latitude, value); }
         }
     }
 }

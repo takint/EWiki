@@ -1,60 +1,78 @@
-﻿namespace EWiki.XF.ViewModels
+﻿using System.Threading.Tasks;
+using Acr.UserDialogs;
+using EWiki.XF.Models;
+using Prism.Commands;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
+
+namespace EWiki.XF.ViewModels
 {
     public class PokemonGoAccountPopupViewModel : BaseViewModel
     {
-        private string _username;
+        public PokemonAccount Account { get; set; }
 
-        public string UserName
+        public bool IsEdit { get; set; }
+
+        public DelegateCommand CancelCommand { get; set; }
+        public DelegateCommand DeleteCommand { get; set; }
+        public DelegateCommand AddCommand { get; set; }
+        public DelegateCommand UpdateCommand { get; set; }
+
+
+        public PokemonGoAccountPopupViewModel()
         {
-            get { return _username; }
-            set
+            CancelCommand = DelegateCommand.FromAsyncHandler(ExecuteCancelCommand);
+            DeleteCommand = DelegateCommand.FromAsyncHandler(ExecuteDeleteCommand);
+            AddCommand = DelegateCommand.FromAsyncHandler(ExecuteAddCommand);
+            UpdateCommand = DelegateCommand.FromAsyncHandler(ExecuteUpdateCommand);
+        }
+
+        private async Task ExecuteDeleteCommand()
+        {
+            MessagingCenter.Send(Account, "DeletePokemonAccount");
+            await PopupNavigation.PopAsync();
+        }
+
+        private async Task ExecuteAddCommand()
+        {
+            var validateResult = await ValidateAsync();
+            if (validateResult)
             {
-                SetProperty(ref _username, value);
-                App.PokemonGoAccount =
-                    $"{UserName}:{Password}:{Latitude}:{Longitude}";
+                MessagingCenter.Send(Account, "AddPokemonAccount");
+                await PopupNavigation.PopAsync();
             }
         }
 
-        private string _password;
-
-        public string Password
+        private async Task ExecuteUpdateCommand()
         {
-            get { return _password; }
-            set
+            var validateResult = await ValidateAsync();
+            if (validateResult)
             {
-                SetProperty(ref _password, value);
-
-                App.PokemonGoAccount =
-                    $"{UserName}:{Password}:{Latitude}:{Longitude}";
+                MessagingCenter.Send(Account, "UpdatePokemonAccount");
+                await PopupNavigation.PopAsync();
             }
         }
 
-        private string _latitude = "40.76887944936599";
-
-        public string Latitude
+        private async Task ExecuteCancelCommand()
         {
-            get { return _latitude; }
-            set
-            {
-                SetProperty(ref _latitude, value);
-
-                App.PokemonGoAccount =
-                    $"{UserName}:{Password}:{Latitude}:{Longitude}";
-            }
+            await PopupNavigation.PopAsync();
         }
 
-        private string _longitude = "-73.97816622302156";
-
-        public string Longitude
+        private async Task<bool> ValidateAsync()
         {
-            get { return _longitude; }
-            set
+            if (string.IsNullOrEmpty(Account.Username))
             {
-                SetProperty(ref _longitude, value);
-
-                App.PokemonGoAccount =
-                    $"{UserName}:{Password}:{Latitude}:{Longitude}";
+                await UserDialogs.Instance.AlertAsync("Please enter your Pokemon Go username", "", "OK");
+                return false;
             }
+
+            if (string.IsNullOrEmpty(Account.Password))
+            {
+                await UserDialogs.Instance.AlertAsync("Please enter your Pokemon Go password", "", "OK");
+                return false;
+            }
+
+            return true;
         }
     }
 }

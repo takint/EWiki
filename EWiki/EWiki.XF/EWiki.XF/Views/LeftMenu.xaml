@@ -7,6 +7,7 @@
                   xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                   xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
                   xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
+                  xmlns:behaviors="clr-namespace:EWiki.XF.Behaviors;assembly=EWiki.XF"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="EWiki.XF.Views.LeftMenu"
                   x:Name="Page">
@@ -53,16 +54,16 @@
                           <transformations:CircleTransformation />
                         </ffimageloading:CachedImage.Transformations>
                         <ffimageloading:CachedImage.GestureRecognizers>
-                          <TapGestureRecognizer Command="{Binding BindingContext.SelectAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
+                          <TapGestureRecognizer Command="{Binding BindingContext.SelectPokemonAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
                         </ffimageloading:CachedImage.GestureRecognizers>
                       </ffimageloading:CachedImage>
                     </DataTemplate>
                   </extendedControls:ExtendedScrollView.ItemTemplate>
                 </extendedControls:ExtendedScrollView>
 
-                <iconize:IconImage Icon="{Binding IsPokemonAccountsExpand, Converter={x:Static converters:ExpandCollapseIconConverter.Instance}}" IconColor="White" WidthRequest="30" HeightRequest="30" Margin="0,0,0,0">
+                <iconize:IconImage Icon="md-add" IconColor="White" WidthRequest="30" HeightRequest="30">
                   <iconize:IconImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TogglePokemonAccountsCommand}"/>
+                    <TapGestureRecognizer Command="{Binding AddPokemonAccountCommand}"/>
                   </iconize:IconImage.GestureRecognizers>
                 </iconize:IconImage>
               </StackLayout>
@@ -71,24 +72,46 @@
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-          <ListView x:Name="LeftMenuListView" ItemsSource="{Binding MenuItems}"
-                    ItemSelected="LeftMenu_OnItemSelected">
+          <ListView ItemsSource="{Binding PokemonAccounts}">
+            <ListView.Behaviors>
+              <behaviors:ListViewBehavior AllowSelectItem="False" ItemTapCommand="{Binding BindingContext.EditPokemonAccountCommand, Source={x:Reference Page}}"/>
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
               <DataTemplate>
                 <ViewCell Height="100">
                   <StackLayout Orientation="Vertical" Padding="5,0,0,0">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent"
-                                 VerticalOptions="FillAndExpand">
-                      <iconize:IconLabel Text="{Binding Icon}" TextColor="#212121" FontSize="16"
-                                         VerticalOptions="Center" Margin="5,0,5,0" />
-                      <Label Text="{Binding Text}" TextColor="#212121" FontSize="16"
-                             VerticalOptions="Center" />
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" VerticalOptions="FillAndExpand">
+                      <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
+                        <ffimageloading:CachedImage.Transformations>
+                          <transformations:CircleTransformation />
+                        </ffimageloading:CachedImage.Transformations>
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding BindingContext.SelectAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                      </ffimageloading:CachedImage>
+
+                      <Label Text="{Binding Username}" TextColor="#212121" FontSize="16" VerticalOptions="Center" />
                     </StackLayout>
                   </StackLayout>
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>
           </ListView>
+
+          <!--<ListView x:Name="LeftMenuListView" ItemsSource="{Binding MenuItems}"
+                    ItemSelected="LeftMenu_OnItemSelected"
+                    IsVisible="{Binding IsPokemonAccountsExpand, Converter={x:Static converters:RevertBooleanConverter.Instance}}">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell Height="100">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                      <iconize:IconLabel Text="{Binding Icon}" TextColor="#212121" FontSize="16" VerticalOptions="Center" Margin="5,0,5,0" />
+                      <Label Text="{Binding Text}" TextColor="#212121" FontSize="16" VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>-->
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100">

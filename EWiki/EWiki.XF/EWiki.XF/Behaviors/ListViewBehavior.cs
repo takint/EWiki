@@ -9,6 +9,9 @@ namespace EWiki.XF.Behaviors
         public static readonly BindableProperty CommandProperty =
             BindableProperty.Create("Command", typeof(ICommand), typeof(ListViewBehavior), null);
 
+        public static readonly BindableProperty ItemTapCommandProperty =
+            BindableProperty.Create("ItemTapCommand", typeof(ICommand), typeof(ListViewBehavior), null);
+
         public static readonly BindableProperty InputConverterProperty =
             BindableProperty.Create("Converter", typeof(IValueConverter), typeof(ListViewBehavior), null);
 
@@ -21,6 +24,12 @@ namespace EWiki.XF.Behaviors
         {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
+        }
+
+        public ICommand ItemTapCommand
+        {
+            get { return (ICommand)GetValue(ItemTapCommandProperty); }
+            set { SetValue(ItemTapCommandProperty, value); }
         }
 
         public IValueConverter Converter
@@ -82,6 +91,12 @@ namespace EWiki.XF.Behaviors
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var lv = ((ListView)sender);
+
+            if (ItemTapCommand.CanExecute(e.Item))
+            {
+                ItemTapCommand.Execute(e.Item);
+            }
+
             if (!AllowSelectItem)
             {
                 lv.SelectedItem = null;

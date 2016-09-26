@@ -4,16 +4,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Acr.Settings;
 using EWiki.XF.Models;
 using EWiki.XF.Utilities;
+using EWiki.XF.Views.Popups;
 using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
 
 namespace EWiki.XF.ViewModels
 {
     public class LeftMenuViewModel : BaseViewModel
     {
-        INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
+        private readonly IPageDialogService _pageDialogService;
+
         public ObservableCollection<LeftMenuItem> MenuItems
         {
             get
@@ -64,24 +71,59 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _pokemonAccounts, value); }
         }
 
-        private bool _isPokemonAccountsExpand;
-        public bool IsPokemonAccountsExpand
-        {
-            get { return _isPokemonAccountsExpand; }
-            set { SetProperty(ref _isPokemonAccountsExpand, value); }
-        }
-
         public DelegateCommand<string> NavigateCommand { get; set; }
-        public DelegateCommand<PokemonAccount> SelectAccountCommand { get; set; }
-        public DelegateCommand TogglePokemonAccountsCommand { get; set; }
+        public DelegateCommand<PokemonAccount> SelectPokemonAccountCommand { get; set; }
+        public DelegateCommand AddPokemonAccountCommand { get; set; }
+        public DelegateCommand<PokemonAccount> EditPokemonAccountCommand { get; set; }
 
-
-        public LeftMenuViewModel(INavigationService navigationService)
+        public LeftMenuViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
+            _pageDialogService = pageDialogService;
             NavigateCommand = new DelegateCommand<string>(Navigate);
-            SelectAccountCommand = new DelegateCommand<PokemonAccount>(ExecuteSelectAccountCommand);
-            TogglePokemonAccountsCommand = new DelegateCommand(() => IsPokemonAccountsExpand = !IsPokemonAccountsExpand);
+            SelectPokemonAccountCommand = new DelegateCommand<PokemonAccount>(ExecuteSelectPokemonAccountCommand);
+            AddPokemonAccountCommand = DelegateCommand.FromAsyncHandler(ExecuteAddPokemonAccountCommand);
+            EditPokemonAccountCommand = new DelegateCommand<PokemonAccount>(async account => await ExecuteEditPokemonAccountCommand(account));
+
+            MessagingCenter.Subscribe<PokemonAccount>(this, "DeletePokemonAccount", account =>
+            {
+                var accountToDelete = PokemonAccounts.FirstOrDefault(x => x.Id == account.Id);
+                if (accountToDelete != null)
+                {
+                    PokemonAccounts.Remove(accountToDelete);
+
+                    if (accountToDelete.IsSelected && PokemonAccounts.Any())
+                        PokemonAccounts.First().IsSelected = true;
+                }
+
+                // Store to local storage
+                Settings.Local.Set("PokemonAccounts", PokemonAccounts.ToList());
+            });
+
+            MessagingCenter.Subscribe<PokemonAccount>(this, "AddPokemonAccount", account =>
+            {
+                account.IsSelected = true;
+                PokemonAccounts.Add(account);
+
+                // Store to local storage
+                Settings.Local.Set("PokemonAccounts", PokemonAccounts.ToList());
+            });
+
+            MessagingCenter.Subscribe<PokemonAccount>(this, "UpdatePokemonAccount", account =>
+            {
+                var accountToUpdate = PokemonAccounts.FirstOrDefault(x => x.Id == account.Id);
+                if (accountToUpdate != null)
+                {
+                    accountToUpdate.Username = account.Username;
+                    accountToUpdate.Password = account.Password;
+                    accountToUpdate.Avatar = account.Avatar;
+                    accountToUpdate.Longtitude = account.Longtitude;
+                    accountToUpdate.Latitude = account.Latitude;
+                }
+
+                // Store to local storage
+                Settings.Local.Set("PokemonAccounts", PokemonAccounts.ToList());
+            });
         }
 
         private void Navigate(string name)
@@ -115,17 +157,12 @@ namespace EWiki.XF.ViewModels
 
         private async Task LoadPokemonAccountsAsync()
         {
-            PokemonAccounts.AddRange(new List<PokemonAccount>
-            {
-                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
-                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
-                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
-                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"},
-                new PokemonAccount { Username = "abcdef", Avatar = "no_avatar"}
-            });
+            var pokemonAccounts = Settings.Local.Get<List<PokemonAccount>>("PokemonAccounts");
+            if(pokemonAccounts != null)
+                PokemonAccounts.AddRange(pokemonAccounts);
         }
 
-        private void ExecuteSelectAccountCommand(PokemonAccount selectedAccount)
+        private void ExecuteSelectPokemonAccountCommand(PokemonAccount selectedAccount)
         {
             foreach (var pokeAcc in PokemonAccounts)
             {
@@ -133,6 +170,48 @@ namespace EWiki.XF.ViewModels
             }
 
             selectedAccount.IsSelected = true;
+        }
+
+        private async Task ExecuteAddPokemonAccountCommand()
+        {
+            if (PokemonAccounts.Count == 5)
+            {
+                await _pageDialogService.DisplayAlertAsync("", "You have setup maximum 5 Pokemon accounts!", "OK");
+                return;
+            }
+
+            var pokemonGoAccountPopup = new PokemonGoAccountPopup
+            {
+                BindingContext = new PokemonGoAccountPopupViewModel
+                {
+                    Account = new PokemonAccount { Id = Guid.NewGuid(), Avatar = "no_avatar" },
+                    IsEdit = false
+                }
+            };
+
+            await PopupNavigation.PushAsync(pokemonGoAccountPopup);
+        }
+
+        private async Task ExecuteEditPokemonAccountCommand(PokemonAccount selectedAccount)
+        {
+            var pokemonGoAccountPopup = new PokemonGoAccountPopup
+            {
+                BindingContext = new PokemonGoAccountPopupViewModel
+                {
+                    Account = new PokemonAccount
+                    {
+                        Id = selectedAccount.Id,
+                        Username = selectedAccount.Username,
+                        Password = selectedAccount.Password,
+                        Latitude = selectedAccount.Latitude,
+                        Longtitude = selectedAccount.Longtitude,
+                        Avatar = selectedAccount.Avatar
+                    },
+                    IsEdit = true
+                }
+            };
+
+            await PopupNavigation.PushAsync(pokemonGoAccountPopup);
         }
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
