@@ -21,6 +21,7 @@ namespace EWiki.XF.Droid.Renderers
                 ad.AdUnitId = "ca-app-pub-4803348967644542/1089645319";
 
                 var requestbuilder = new Android.Gms.Ads.AdRequest.Builder();
+                requestbuilder.AddTestDevice("436A149F16B727C80E8B2AF27762682E");
                 ad.LoadAd(requestbuilder.Build());
 
                 SetNativeControl(ad);
