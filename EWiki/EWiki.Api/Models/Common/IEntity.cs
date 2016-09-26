@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace EWiki.Api.Models
+﻿namespace EWiki.Api.Models
 {
-    public interface IEntity
+    public interface IEntity : IGenericEntity<int>
     {
-        int Id { get; set; }
     }
 }

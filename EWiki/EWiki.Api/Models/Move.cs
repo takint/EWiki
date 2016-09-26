@@ -16,19 +16,24 @@ namespace EWiki.Api.Models
         public float DPS { get; set; }
         public float WithSTAB { get; set; }
         public float CritChange { get; set; }
+
+        [NotMapped]
         public float Bars
         {
             get
             {
-                return 100 / Math.Abs(Energy);
+                float energy = Energy != 0 ? Energy : 1;
+                return 100f / Math.Abs(energy);
             }
         }
 
+        [NotMapped]
         public float BarLength
         {
             get
             {
-                return 1 / Bars;
+                float bars = Bars != 0 ? Bars : 1;
+                return 1f / bars;
             }
         }
 

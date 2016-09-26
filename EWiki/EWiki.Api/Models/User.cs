@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EWiki.Api.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IGenericEntity<string>
     {
+
     }
 }

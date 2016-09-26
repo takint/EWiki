@@ -121,6 +121,8 @@ namespace EWiki.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CatImageId");
+
                     b.Property<int?>("CatPages");
 
                     b.Property<string>("CatTitle");
@@ -138,6 +140,8 @@ namespace EWiki.Api.Migrations
                     b.Property<string>("UpdatedUserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatImageId");
 
                     b.HasIndex("CreatedUserId");
 
@@ -495,6 +499,8 @@ namespace EWiki.Api.Migrations
 
                     b.Property<string>("CreatedUserId");
 
+                    b.Property<int?>("FeatureImageId");
+
                     b.Property<bool>("IsNewPage");
 
                     b.Property<bool>("IsRedirect");
@@ -516,6 +522,8 @@ namespace EWiki.Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedUserId");
+
+                    b.HasIndex("FeatureImageId");
 
                     b.HasIndex("TagId");
 
@@ -1329,6 +1337,10 @@ namespace EWiki.Api.Migrations
 
             modelBuilder.Entity("EWiki.Api.Models.Category", b =>
                 {
+                    b.HasOne("EWiki.Api.Models.WikiImage", "CatImage")
+                        .WithMany()
+                        .HasForeignKey("CatImageId");
+
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
@@ -1349,7 +1361,7 @@ namespace EWiki.Api.Migrations
                         .HasForeignKey("CreatedUserId");
 
                     b.HasOne("EWiki.Api.Models.Character", "EvolveFrom")
-                        .WithMany("EvolveInto")
+                        .WithMany()
                         .HasForeignKey("EvolveFromId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
@@ -1484,6 +1496,10 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("EWiki.Api.Models.WikiImage", "FeaturesImage")
+                        .WithMany()
+                        .HasForeignKey("FeatureImageId");
 
                     b.HasOne("EWiki.Api.Models.Tag")
                         .WithMany("Pages")

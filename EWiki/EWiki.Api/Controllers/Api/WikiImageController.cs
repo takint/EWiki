@@ -26,7 +26,11 @@ namespace EWiki.Api.Controllers
         public async Task<IActionResult> List(int skip = 0, int take = 10)
         {
             IEnumerable<WikiImage> imageData = await imageRepository.GetAllAsync();
-            imageData = imageData.Skip(skip).Take(take);
+
+            imageData = imageData
+                        .OrderBy(img => img.ImageName)
+                        .Skip(skip)
+                        .Take(take);
 
             return Json(imageData);
         }
