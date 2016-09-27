@@ -23,7 +23,7 @@ namespace EWiki.XF.Service
 
         internal static WebApiClient Instance
         {
-            get { return _instance ?? (_instance = new WebApiClient("[Base API uri here]")); }
+            get { return _instance ?? (_instance = new WebApiClient(AppSettings.WEB_API_URL)); }
         }
 
         internal async Task<T> GetAsync<T>(string action, string authToken = null, Dictionary<string, object> parameters = null)
@@ -33,13 +33,15 @@ namespace EWiki.XF.Service
                 var url = BuildActionUri(action, parameters);
 
                 var httpResponse = await httpClient.GetAsync(url);
-                httpResponse.EnsureSuccessStatusCode();
-                string responeJson = await httpResponse.Content.ReadAsStringAsync();
-                if (responeJson != "null")
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
+
+                if (responseStr != "null")
                 {
                     try
                     {
-                        return JsonConvert.DeserializeObject<T>(responeJson);
+                        return JsonConvert.DeserializeObject<T>(responseStr);
                     }
                     catch (Exception ex)
                     {
@@ -56,40 +58,62 @@ namespace EWiki.XF.Service
 
         }
 
-        //internal async Task PutAsync<T>(string action, T data, string authToken = null)
-        //{
-        //    using (var httpClient = GetHttpClient(authToken))
-        //    {
-        //        var url = BuildActionUri(action);
-        //        var httpResponse = await httpClient.PutAsJsonAsync(url, data);
-        //        httpResponse.EnsureSuccessStatusCode();
-        //    }
-        //}
+        internal async Task PutAsync<T>(string action, T data, string authToken = null)
+        {
+            using (var httpClient = GetHttpClient(authToken))
+            {
+                var url = BuildActionUri(action);
+                var httpResponse = await httpClient.PutAsJsonAsync(url, data);
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
+            }
+        }
 
-        //internal async Task PostAsync<T>(string action, T data, string authToken = null)
-        //{
-        //    using (var httpClient = GetHttpClient(authToken))
-        //    {
-        //        var url = BuildActionUri(action);
-        //        var httpResponse = await httpClient.PostAsJsonAsync(url, data);
-        //        httpResponse.EnsureSuccessStatusCode();
-        //    }
-        //}
+        internal async Task PostAsync<T>(string action, T data, string authToken = null)
+        {
+            using (var httpClient = GetHttpClient(authToken))
+            {
+                var url = BuildActionUri(action);
+                var httpResponse = await httpClient.PostAsJsonAsync(url, data);
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
+            }
+        }
 
-        //internal async Task<TResult> PostReturnValueAsync<TResult, T>(string action, T data, string authToken = null)
-        //{
-        //    using (var httpClient = GetHttpClient(authToken))
-        //    {
-        //        var url = BuildActionUri(action);
-        //        var httpResponse = await httpClient.PostAsJsonAsync(url, data);
-        //        httpResponse.EnsureSuccessStatusCode();
+        internal async Task<TResult> PostReturnValueAsync<TResult, T>(string action, T data, string authToken = null)
+        {
+            using (var httpClient = GetHttpClient(authToken))
+            {
+                var url = BuildActionUri(action);
+                var httpResponse = await httpClient.PostAsJsonAsync(url, data);
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
 
-        //        string responseJson = await httpResponse.Content.ReadAsStringAsync();
-        //        if (responseJson != "null")
-        //            return JsonConvert.DeserializeObject<TResult>(responseJson);
-        //        return default(TResult);
-        //    }
-        //}
+                if (responseStr != "null")
+                    return JsonConvert.DeserializeObject<TResult>(responseStr);
+                return default(TResult);
+            }
+        }
+
+        internal async Task<TResult> PostReturnValueAsync<TResult>(string action, List<KeyValuePair<string, string>> data, string authToken = null)
+        {
+            using (var httpClient = GetHttpClient(authToken))
+            {
+                var url = BuildActionUri(action);
+                var httpContent = new FormUrlEncodedContent(data);
+                var httpResponse = await httpClient.PostAsync(url, httpContent);
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
+
+                if (responseStr != "null")
+                    return JsonConvert.DeserializeObject<TResult>(responseStr);
+                return default(TResult);
+            }
+        }
 
         internal async Task<Stream> DownloadAsync(string action, string authToken = null)
         {
@@ -98,10 +122,12 @@ namespace EWiki.XF.Service
                 using (var httpClient = GetHttpClient(authToken))
                 {
                     var url = BuildActionUri(action);
-                    var response = await httpClient.GetAsync(url);
-                    response.EnsureSuccessStatusCode();
+                    var httpResponse = await httpClient.GetAsync(url);
+                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                    if (!httpResponse.IsSuccessStatusCode)
+                        throw new Exception(responseStr);
 
-                    var stream = await response.Content.ReadAsStreamAsync();
+                    var stream = await httpResponse.Content.ReadAsStreamAsync();
                     return stream;
                 }
             }
@@ -127,10 +153,11 @@ namespace EWiki.XF.Service
 
                 requestContent.Add(imageContent, Path.GetFileNameWithoutExtension(fileName), fileName);
                 var httpResponse = await httpClient.PostAsync(url, requestContent);
-                httpResponse.EnsureSuccessStatusCode();
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
 
-                string responseJson = await httpResponse.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<TResult>(responseJson);
+                return JsonConvert.DeserializeObject<TResult>(responseStr);
             }
         }
 
@@ -145,10 +172,11 @@ namespace EWiki.XF.Service
 
                 requestContent.Add(imageContent, Path.GetFileNameWithoutExtension(fileName), fileName);
                 var httpResponse = await httpClient.PostAsync(url, requestContent);
-                httpResponse.EnsureSuccessStatusCode();
-
-                string responseJson = await httpResponse.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<TResult>(responseJson);
+                var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                if (!httpResponse.IsSuccessStatusCode)
+                    throw new Exception(responseStr);
+                
+                return JsonConvert.DeserializeObject<TResult>(responseStr);
             }
         }
 

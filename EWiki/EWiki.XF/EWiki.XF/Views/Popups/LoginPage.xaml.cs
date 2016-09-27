@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace EWiki.XF.Views.Popups
 {
-    public partial class RegisterPage : PopupPage
+    public partial class LoginPage : PopupPage
     {
-        public RegisterPage()
+        public LoginPage()
         {
             InitializeComponent();
         }

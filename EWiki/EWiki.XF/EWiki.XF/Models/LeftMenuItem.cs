@@ -1,4 +1,7 @@
-﻿namespace EWiki.XF.Models
+﻿using System;
+using System.Threading.Tasks;
+
+namespace EWiki.XF.Models
 {
     public class LeftMenuItem
     {
@@ -11,6 +14,7 @@
         public string Command { get; set; }
         public CommandType CommandType { get; set; }
         public bool IsActived { get; set; }
+        public Func<Task> Action { get; set; }
     }
 
     public enum CommandType

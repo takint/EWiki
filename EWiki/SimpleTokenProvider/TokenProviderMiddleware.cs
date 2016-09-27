@@ -97,12 +97,14 @@ namespace SimpleTokenProvider
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             var idClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+            var emailClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
             var response = new
             {
-                access_token = encodedJwt,
-                expires_in = (int)_options.Expiration.TotalSeconds,
-                userName = identity.Name,
-                userId = idClaim != null ? idClaim.Value : null
+                AccessToken = encodedJwt,
+                ExpiresIn = DateTime.UtcNow.AddSeconds((int)_options.Expiration.TotalSeconds),
+                Username = identity.Name,
+                UserId = idClaim != null ? idClaim.Value : null,
+                Email = emailClaim != null ? emailClaim.Value : null,
             };
 
             // Serialize and return the response

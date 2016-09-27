@@ -32,18 +32,19 @@
                                           HeightRequest="75"
                                           HorizontalOptions="StartAndExpand"
                                           VerticalOptions="EndAndExpand"
-                                          Margin="10,0,0,20">
+                                          Margin="10,0,0,20"
+                                          IsVisible="{Binding IsLoggedIn}">
               <ffimageloading:CachedImage.Transformations>
                 <transformations:CircleTransformation />
               </ffimageloading:CachedImage.Transformations>
             </ffimageloading:CachedImage>
 
-            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0">
-              <Label Text="Troy Lee Go" FontSize="16" FontAttributes="Bold" TextColor="White" />
-              <Label Text="troylee@gmail.com" FontSize="16" TextColor="White" />
+            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
+              <Label Text="{Binding Username}" FontSize="16" FontAttributes="Bold" TextColor="White" />
+              <Label Text="{Binding Email}" FontSize="16" TextColor="White" />
             </StackLayout>
 
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0">
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
               <Label Text="Pokemon Go Accounts" FontSize="16" FontAttributes="Bold" TextColor="White" />
               <StackLayout Orientation="Horizontal">
                 <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
@@ -72,13 +73,13 @@
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-          <ListView ItemsSource="{Binding PokemonAccounts}">
+          <ListView ItemsSource="{Binding PokemonAccounts}" IsVisible="{Binding IsLoggedIn}">
             <ListView.Behaviors>
-              <behaviors:ListViewBehavior AllowSelectItem="False" ItemTapCommand="{Binding BindingContext.EditPokemonAccountCommand, Source={x:Reference Page}}"/>
+              <behaviors:ListViewBehavior AllowSelectItem="False" ItemTapCommand="{Binding EditPokemonAccountCommand}"/>
             </ListView.Behaviors>
             <ListView.ItemTemplate>
               <DataTemplate>
-                <ViewCell Height="100">
+                <ViewCell>
                   <StackLayout Orientation="Vertical" Padding="5,0,0,0">
                     <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" VerticalOptions="FillAndExpand">
                       <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
@@ -101,11 +102,13 @@
 
         <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100">
           <ListView x:Name="AccountMenuListView" ItemsSource="{Binding AccountItems}"
-                    SeparatorVisibility="None" VerticalOptions="End"
-                    ItemSelected="AccountMenu_OnItemSelected">
+                    SeparatorVisibility="None" VerticalOptions="End">
+            <ListView.Behaviors>
+              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding AccountItemTapCommand}"/>
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
               <DataTemplate>
-                <ViewCell Height="100">
+                <ViewCell>
                   <StackLayout Orientation="Vertical" Padding="5,0,0,0">
                     <StackLayout Orientation="Horizontal" BackgroundColor="Transparent"
                                  VerticalOptions="FillAndExpand">

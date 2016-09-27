@@ -40,6 +40,7 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<SnipePokemonPopup>();
             Container.RegisterType<IPokemonService, PokemonService>();
             Container.RegisterType<INewsService, NewsService>();
+            Container.RegisterType<IAccountService, AccountService>();
         }
 
         protected override void OnStart()

@@ -20,7 +20,7 @@ namespace EWiki.Api.Controllers
 
         [HttpPost("Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(UserDto model)
+        public async Task<IActionResult> Register([FromBody]UserDto model)
         {
             if (model == null)
             {
@@ -31,6 +31,8 @@ namespace EWiki.Api.Controllers
             {
                 User user = new User { UserName = model.UserName, Email = model.Email };
                 IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                    return Ok();
 
                 AddErrors(result);
             }

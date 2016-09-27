@@ -18,19 +18,19 @@
     </Grid.RowDefinitions>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="0" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="UserName" TextColor="White" Text="{Binding Account.Username}" HorizontalOptions="StartAndExpand"/>
+      <Entry Placeholder="Username" TextColor="White" Text="{Binding Account.Username}" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="1" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Account.Password}" HorizontalOptions="StartAndExpand" />
+      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Account.Password}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="2" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="CurrentLatitude" TextColor="White" Text="{Binding Account.Latitude}" HorizontalOptions="StartAndExpand" />
+      <Entry Placeholder="Current Latitude" TextColor="White" Text="{Binding Account.Latitude}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="3" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="CurrentLongitude" TextColor="White" Text="{Binding Account.Longitude}" HorizontalOptions="StartAndExpand" />
+      <Entry Placeholder="Current Longitude" TextColor="White" Text="{Binding Account.Longitude}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" Grid.Row="4" Padding="10,0,10,0">
       <Grid IsVisible="{Binding IsEdit}" HorizontalOptions="FillAndExpand">

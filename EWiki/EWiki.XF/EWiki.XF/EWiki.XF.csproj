@@ -65,10 +65,13 @@
     <Compile Include="Models\PokemonAccount.cs" />
     <Compile Include="Models\SniperInfo.cs" />
     <Compile Include="Services\ISniperService.cs" />
+    <Compile Include="Utilities\LocalDataStorage.cs" />
     <Compile Include="Utilities\ObservableRangeCollection.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\PokemonGoAccountPopupViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPageViewModel.cs" />
     <Compile Include="ViewModels\SnipePokemonPopupViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\LocationFeederTabViewModel.cs" />
@@ -100,6 +103,9 @@
     </Compile>
     <Compile Include="Views\PokemonInfoPage.xaml.cs">
       <DependentUpon>PokemonInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Popups\PokemonGoAccountPopup.xaml.cs">
       <DependentUpon>PokemonGoAccountPopup.xaml</DependentUpon>
@@ -378,6 +384,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Popups\RegisterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Popups\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
