@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -33,8 +34,10 @@ namespace EWiki.XF.Droid
             Plugin.Iconize.Iconize.With(new MaterialModule());
             Plugin.Iconize.Iconize.With(new LinearModule());
             IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
-
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            UserDialogs.Init(this);
 
             CarouselViewRenderer.Init();
 
