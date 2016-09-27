@@ -25,7 +25,7 @@ namespace EWiki.XF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var iv = System.Convert.ToDecimal(value); 
-            return iv > 0 ? Color.FromHex("FF4081") : Color.FromHex("212121");
+            return iv > 0 ? Color.FromHex("FF5252") : Color.FromHex("212121");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

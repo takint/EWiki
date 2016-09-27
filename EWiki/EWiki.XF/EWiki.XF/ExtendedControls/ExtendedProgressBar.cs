@@ -7,7 +7,7 @@ namespace EWiki.XF.ExtendedControls
         #region Bindable Properties
 
         public static BindableProperty ProgressColorProperty = BindableProperty.Create("ProgressColor",
-            typeof(Color), typeof(ExtendedProgressBar), Color.FromHex("#FF4081"), BindingMode.TwoWay);
+            typeof(Color), typeof(ExtendedProgressBar), Color.FromHex("#FF5252"), BindingMode.TwoWay);
 
         #endregion
 

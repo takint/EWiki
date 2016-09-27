@@ -720,6 +720,12 @@
     <AndroidResource Include="Resources\drawable\No_Wigglytuff.png" />
     <AndroidResource Include="Resources\drawable\No_Zapdos.png" />
     <AndroidResource Include="Resources\drawable\No_Zubat.png" />
+    <AndroidResource Include="Resources\drawable\stardust.png" />
+    <AndroidResource Include="Resources\drawable\round_button.png" />
+    <AndroidResource Include="Resources\drawable\button.png" />
+    <AndroidResource Include="Resources\drawable\line.png" />
+    <AndroidResource Include="Resources\drawable\powered_background.png" />
+    <AndroidResource Include="Resources\drawable\rating_background.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">

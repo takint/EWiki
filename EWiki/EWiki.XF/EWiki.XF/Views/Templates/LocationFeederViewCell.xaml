@@ -47,7 +47,7 @@
                        VerticalOptions="CenterAndExpand">
           <iconize:IconButton Text="md-person-pin-circle" WidthRequest="50" BackgroundColor="#009688" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding OpenMapCommand}"
                  VerticalOptions="Center" /> 
-          <iconize:IconButton Text="md-my-location" WidthRequest="50" BackgroundColor="#FF4081" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding SnipCommand}"
+          <iconize:IconButton Text="md-my-location" WidthRequest="50" BackgroundColor="#FF5252" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding SnipCommand}"
                  VerticalOptions="Center" />
         </StackLayout>
     </Grid>

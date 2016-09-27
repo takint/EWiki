@@ -26,7 +26,7 @@ namespace EWiki.XF.Service
         {
             try
             {
-                var response = await client.GetStringAsync("http://192.168.1.9:2675/api/pokedex");
+                var response = await client.GetStringAsync("http://esquare.io/api/pokedex");
                 var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
                 return pokemons;
             }

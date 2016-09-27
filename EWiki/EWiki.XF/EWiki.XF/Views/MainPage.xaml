@@ -9,6 +9,6 @@
              Title="Location Feeder">
   <views:LocationFeederTab Title="Location Feeder" Icon="lnr-map-marker"/>
   <views:PokedexTab Title="Pokedex" Icon="pokedex"/>
-  <ContentPage Title="IV Calculator" Icon="iv_percentage"/>
+  <views:IVCalculatorTab Title="IV Calculator" Icon="iv_percentage"/>
   <views:NewsTab Title="News + Gags" Icon="lnr-magic-wand"/>
 </rerenders:BottomTabbedPage>
