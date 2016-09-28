@@ -34,12 +34,12 @@
           <Entry Text="{Binding HP}" WidthRequest="50" FontSize="18" TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="#e8f0e1" Padding="-1,-1,20,-1">
-          <AbsoluteLayout HorizontalOptions="Start">
+          <AbsoluteLayout HeightRequest="50" HorizontalOptions="Start">
             <ffimageloading:CachedImage Source="powered_background.png" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                  AbsoluteLayout.LayoutFlags="All"/>
             <Label Text="POWERED" FontSize="16" TextColor="White" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
                                         AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0,0,30,0"/>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="1, 0"
+            <AbsoluteLayout HeightRequest="50" AbsoluteLayout.LayoutBounds="1, 0"
                      AbsoluteLayout.LayoutFlags="PositionProportional">
               <ffimageloading:CachedImage Source="round_button.png" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                  AbsoluteLayout.LayoutFlags="All"/>
@@ -47,11 +47,11 @@
                                         AbsoluteLayout.LayoutFlags="PositionProportional"/>
             </AbsoluteLayout>
           </AbsoluteLayout>
-          <ffimageloading:CachedImage Source="stardust.png" HeightRequest="20"/>
+          <ffimageloading:CachedImage Source="stardust.png" HeightRequest="30"/>
           <Entry Text="{Binding Stardust}" WidthRequest="50" FontSize="18" TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
         <AbsoluteLayout HorizontalOptions="Center" HeightRequest="50" WidthRequest="184" Margin="0,20,0,0">
-            <ffimageloading:CachedImage Source="rating_background.png" BackgroundColor="Green" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            <ffimageloading:CachedImage Source="button_green.png" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                  AbsoluteLayout.LayoutFlags="All"/>
             <Label Text="VERY STRONG" FontSize="16" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
                                         AbsoluteLayout.LayoutFlags="PositionProportional"/>
@@ -77,13 +77,13 @@
                      Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
               <Label Text="+7.56% FROM AVG" FontSize="8" TextColor="#45686E" Grid.Row="3"
                      Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-              <Label Text="91.3%" FontSize="18" TextColor="Green" Grid.Row="0"
+              <Label Text="91.3%" FontSize="18" TextColor="#00ff38" Grid.Row="0"
                      Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-              <Label Text="CP RATING (IV)" FontSize="12" TextColor="Green" Grid.Row="1"
+              <Label Text="CP RATING (IV)" FontSize="12" TextColor="#00ff38" Grid.Row="1"
                      Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-              <Label Text="All Statistics" FontSize="12" TextColor="Green" Grid.Row="2"
+              <Label Text="All Statistics" FontSize="12" TextColor="#00ff38" Grid.Row="2"
                      Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-              <Label Text="+7.56% FROM AVG" FontSize="10" TextColor="Green" Grid.Row="3"
+              <Label Text="+7.56% FROM AVG" FontSize="10" TextColor="#00ff38" Grid.Row="3"
                      Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
                 <Label Text="91.3%" FontSize="16" TextColor="#45686E" Grid.Row="0"
                      Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />

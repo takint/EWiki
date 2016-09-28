@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="EWiki.XF.Views.Popups.LoginPage">
+  <Grid BackgroundColor="#009688" Margin="5" Padding="10" VerticalOptions="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="0" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Placeholder="Username" TextColor="White" Text="{Binding Username}" HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="1" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Password}" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="10,0,10,0">
+      <Grid HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Text="Cancel" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="Teal" Command="{Binding LoginCommand}"/>
+      </Grid>
+    </StackLayout>
+  </Grid>
+</pages:PopupPage>

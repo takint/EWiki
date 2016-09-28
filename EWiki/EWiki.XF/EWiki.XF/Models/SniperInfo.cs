@@ -107,16 +107,19 @@ namespace EWiki.XF.Models
             var pokemonGoAccount = App.PokemonGoAccount;
             if (pokemonGoAccount == null || pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
             {
-                var pokemonGoAccountPopup = new PokemonGoAccountPopup()
-                {
-                    BindingContext = new PokemonGoAccountPopupViewModel()
-                    {
-                        Latitude = "40.76887944936599",
-                        Longitude = "-73.97816622302156"
-                    }
-                };
-                await PopupNavigation.PushAsync(pokemonGoAccountPopup);
-                return;
+                //var pokemonGoAccountPopup = new PokemonGoAccountPopup()
+                //{
+                //    BindingContext = new PokemonGoAccountPopupViewModel()
+                //    {
+                //        Account = new PokemonAccount
+                //        {
+                //            Latitude = "40.76887944936599",
+                //            Longitude = "-73.97816622302156"
+                //        }
+                //    }
+                //};
+                //await PopupNavigation.PushAsync(pokemonGoAccountPopup);
+                //return;
             }
 
             var snipePokemonPopup = new SnipePokemonPopup()

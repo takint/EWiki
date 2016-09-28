@@ -86,7 +86,17 @@ namespace EWiki.XF.ExtendedControls
                     }
                     if (args.OldItems != null)
                     {
-                        // not supported
+                        foreach (var oldItem in args.OldItems)
+                        {
+                            foreach (var element in _imageStack.Children)
+                            {
+                                if (element.BindingContext == oldItem)
+                                {
+                                    _imageStack.Children.Remove(element);
+                                    break;
+                                }
+                            }
+                        }
                     }
                 };
             }

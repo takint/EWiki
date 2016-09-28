@@ -11,15 +11,5 @@ namespace EWiki.XF.Views
         }
 
         public bool IsPresentedAfterNavigation => Device.Idiom != TargetIdiom.Phone;
-
-        private void LeftMenu_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void AccountMenu_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
