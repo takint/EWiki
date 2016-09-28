@@ -108,7 +108,9 @@ namespace EWiki.XF.ViewModels
                     PokemonAccounts.Remove(accountToDelete);
 
                     if (accountToDelete.IsSelected && PokemonAccounts.Any())
-                        PokemonAccounts.First().IsSelected = true;
+                    {
+                        ExecuteSelectPokemonAccountCommand(PokemonAccounts.First());
+                    }
                 }
 
                 // Store to local storage
@@ -117,13 +119,8 @@ namespace EWiki.XF.ViewModels
 
             MessagingCenter.Subscribe<PokemonAccount>(this, "AddPokemonAccount", account =>
             {
-                foreach (var pokeAcc in PokemonAccounts)
-                {
-                    pokeAcc.IsSelected = false;
-                }
-
-                account.IsSelected = true;
                 PokemonAccounts.Add(account);
+                ExecuteSelectPokemonAccountCommand(account);
 
                 // Store to local storage
                 LocalDataStorage.SavePokemonAccounts(Username, PokemonAccounts.ToList());
@@ -137,7 +134,7 @@ namespace EWiki.XF.ViewModels
                     accountToUpdate.Username = account.Username;
                     accountToUpdate.Password = account.Password;
                     accountToUpdate.Avatar = account.Avatar;
-                    accountToUpdate.Longtitude = account.Longtitude;
+                    accountToUpdate.Longitude = account.Longitude;
                     accountToUpdate.Latitude = account.Latitude;
                 }
 
@@ -199,13 +196,14 @@ namespace EWiki.XF.ViewModels
             }
 
             selectedAccount.IsSelected = true;
+            App.PokemonGoAccount = $"{selectedAccount.Username}:{selectedAccount.Password}:{selectedAccount.Latitude}:{selectedAccount.Longitude}";
         }
 
         private async Task ExecuteAddPokemonAccountCommand()
         {
-            if (PokemonAccounts.Count == 5)
+            if (PokemonAccounts.Count == 2)
             {
-                await _pageDialogService.DisplayAlertAsync("", "You have setup maximum 5 Pokemon accounts!", "OK");
+                await _pageDialogService.DisplayAlertAsync("", "You have setup maximum 2 Pokemon accounts!", "OK");
                 return;
             }
 
@@ -233,7 +231,7 @@ namespace EWiki.XF.ViewModels
                         Username = selectedAccount.Username,
                         Password = selectedAccount.Password,
                         Latitude = selectedAccount.Latitude,
-                        Longtitude = selectedAccount.Longtitude,
+                        Longitude = selectedAccount.Longitude,
                         Avatar = selectedAccount.Avatar
                     },
                     IsEdit = true

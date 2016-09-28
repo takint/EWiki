@@ -39,11 +39,11 @@ namespace EWiki.XF.Models
             set { SetProperty(ref _isSelected, value); }
         }
 
-        private string _longtitude;
-        public string Longtitude
+        private string _longitude;
+        public string Longitude
         {
-            get { return _longtitude; }
-            set { SetProperty(ref _longtitude, value); }
+            get { return _longitude; }
+            set { SetProperty(ref _longitude, value); }
         }
 
         private string _latitude;

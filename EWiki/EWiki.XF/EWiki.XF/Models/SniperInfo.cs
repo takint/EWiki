@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using EWiki.XF.Models.Enum;
 using EWiki.XF.Services;
+using EWiki.XF.Utilities;
 using EWiki.XF.ViewModels;
 using EWiki.XF.Views.Popups;
 using Prism.Commands;
@@ -104,34 +107,87 @@ namespace EWiki.XF.Models
 
         public async Task ExecuteSnipCommand()
         {
-            var pokemonGoAccount = App.PokemonGoAccount;
-            if (pokemonGoAccount == null || pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
+            var authData = LocalDataStorage.GetAuthData();
+            if (authData == null)
             {
-                //var pokemonGoAccountPopup = new PokemonGoAccountPopup()
-                //{
-                //    BindingContext = new PokemonGoAccountPopupViewModel()
-                //    {
-                //        Account = new PokemonAccount
-                //        {
-                //            Latitude = "40.76887944936599",
-                //            Longitude = "-73.97816622302156"
-                //        }
-                //    }
-                //};
-                //await PopupNavigation.PushAsync(pokemonGoAccountPopup);
-                //return;
-            }
-
-            var snipePokemonPopup = new SnipePokemonPopup()
-            {
-                BindingContext = new SnipePokemonPopupViewModel()
+                var loginPage = new LoginPage
                 {
-                    PokemonId = Id,
-                    Latitude = Latitude,
-                    Longitude = Longitude
+                    BindingContext = new LoginPageViewModel()
+                };
+
+                await PopupNavigation.PushAsync(loginPage);
+            }
+            else
+            {
+                var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(authData.Username);
+                if (pokemonAccounts == null || pokemonAccounts.Count == 0)                {
+                    var pokemonGoAccountPopup = new PokemonGoAccountPopup
+                    {
+                        BindingContext = new PokemonGoAccountPopupViewModel
+                        {
+                            Account = new PokemonAccount { Id = Guid.NewGuid(), Avatar = "no_avatar" },
+                            IsEdit = false
+                        }
+                    };
+
+                    await PopupNavigation.PushAsync(pokemonGoAccountPopup);
                 }
-            };
-            await PopupNavigation.PushAsync(snipePokemonPopup);
+                else
+                {
+
+                    var pokemonGoAccount = App.PokemonGoAccount;
+                    if (pokemonGoAccount == null || pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
+                    {
+                        await UserDialogs.Instance.AlertAsync("Your selected Pokemon Account missing some info. Please update...");
+                        var selectedAccount = pokemonAccounts.FirstOrDefault(p => p.Username == pokemonGoAccount?.Split(':')[0]);
+                        if (selectedAccount != null)
+                        {
+                            var pokemonGoAccountPopup = new PokemonGoAccountPopup
+                            {
+                                BindingContext = new PokemonGoAccountPopupViewModel
+                                {
+                                    Account = new PokemonAccount
+                                    {
+                                        Id = selectedAccount.Id,
+                                        Username = selectedAccount.Username,
+                                        Password = selectedAccount.Password,
+                                        Latitude = selectedAccount.Latitude,
+                                        Longitude = selectedAccount.Longitude,
+                                        Avatar = selectedAccount.Avatar
+                                    },
+                                    IsEdit = true
+                                }
+                            };
+
+                            await PopupNavigation.PushAsync(pokemonGoAccountPopup);
+                        }
+                        else
+                        {
+                            var pokemonGoAccountPopup = new PokemonGoAccountPopup
+                            {
+                                BindingContext = new PokemonGoAccountPopupViewModel
+                                {
+                                    Account = new PokemonAccount { Id = Guid.NewGuid(), Avatar = "no_avatar" },
+                                    IsEdit = false
+                                }
+                            };
+
+                            await PopupNavigation.PushAsync(pokemonGoAccountPopup);
+                        }
+                    }
+
+                    var snipePokemonPopup = new SnipePokemonPopup()
+                    {
+                        BindingContext = new SnipePokemonPopupViewModel()
+                        {
+                            PokemonId = Id,
+                            Latitude = Latitude,
+                            Longitude = Longitude
+                        }
+                    };
+                    await PopupNavigation.PushAsync(snipePokemonPopup);
+                }
+            }
         }
 
         public void ExecuteOpenMapCommand()

@@ -9,7 +9,7 @@ namespace EWiki.XF.Service
     public class AppSettings
     {
 #if DEBUG
-        public const string WEB_API_URL = "http://192.168.11.2:2675/api/";
+        public const string WEB_API_URL = "http://192.168.0.100:2675/api/";
 #else
         public const string WebApiUrl = "";
 #endif

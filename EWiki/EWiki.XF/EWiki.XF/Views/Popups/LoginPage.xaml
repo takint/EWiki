@@ -8,17 +8,19 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
       <RowDefinition Height="50"/>
     </Grid.RowDefinitions>
-    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="0" Padding="10,0,10,0">
+    <Label Text="Login" TextColor="White" FontSize="22" Grid.Row="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10"/>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="1" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
       <Entry Placeholder="Username" TextColor="White" Text="{Binding Username}" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
-    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="1" Padding="10,0,10,0">
+    <StackLayout Orientation="Horizontal" BackgroundColor="#7F000000" Grid.Row="2" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
       <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Password}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
-    <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="10,0,10,0">
+    <StackLayout Orientation="Horizontal" Grid.Row="3" Padding="10,0,10,0">
       <Grid HorizontalOptions="FillAndExpand">
         <Grid.ColumnDefinitions>
           <ColumnDefinition/>
