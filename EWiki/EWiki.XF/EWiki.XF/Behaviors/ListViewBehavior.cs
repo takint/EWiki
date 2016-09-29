@@ -90,6 +90,11 @@ namespace EWiki.XF.Behaviors
 
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
+            if (ItemTapCommand == null)
+            {
+                return;
+            }
+
             var lv = ((ListView)sender);
 
             if (ItemTapCommand.CanExecute(e.Item))

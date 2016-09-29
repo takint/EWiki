@@ -31,7 +31,7 @@ namespace EWiki.XF.Models
                 return $"{number}{(int)Id}";
             }
         }
-        public string Avatar => $"No_{Name}";
+        public string Avatar => $"http://res.cloudinary.com/ewiki-io/image/upload/v1475134451/Pokemons/Avatars/{Number}{Name}.png";
         public ulong EncounterId { get; set; }
         public DateTime ExpirationTimestamp { get; set; }
 

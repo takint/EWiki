@@ -3,6 +3,6 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="EWiki.XF.Views.Templates.PokemonViewCell">
   <ContentView.Content>
-    <ffimageloading:CachedImage Source="{Binding Avatar}" DownsampleHeight="50" DownsampleWidth="50"/>
+    <ffimageloading:CachedImage Source="{Binding Avatar50x50}" DownsampleHeight="50" DownsampleWidth="50"/>
   </ContentView.Content>
 </ContentView>
