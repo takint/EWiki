@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+                 xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
+             x:Class="EWiki.XF.Views.Popups.IVCalculateDetailsPopup">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#7F000000" Margin="5" Padding="0,10,0,10">
+      <ListView CachingStrategy="RecycleElement"
+              BackgroundColor="Transparent"
+              ItemsSource="{Binding Details}"
+              HasUnevenRows="true"
+              Margin="5"
+              SeparatorVisibility="None"
+              HorizontalOptions="FillAndExpand">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid RowSpacing="0" Margin="0,5,0,5">
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Label Text="{Binding Level}" FontSize="18" TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}" Grid.Row="0"
+                     Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="Level" FontSize="12" TextColor="White" Grid.Row="1"
+                     Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="{Binding Attack}" FontSize="18" TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}" Grid.Row="0"
+                     Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="Attack" FontSize="12" TextColor="White" Grid.Row="1"
+                     Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="{Binding Defense}" FontSize="18" TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}" Grid.Row="0"
+                     Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="Defense" FontSize="12" TextColor="White" Grid.Row="1"
+                     Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding Stamina}" FontSize="18" TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}" Grid.Row="0"
+                     Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="Stamina" FontSize="12" TextColor="White" Grid.Row="1"
+                     Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding IV, StringFormat='{0}%'}" FontSize="18" TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}" Grid.Row="0"
+                     Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center" />
+              <Label Text="IV" FontSize="12" TextColor="White" Grid.Row="1"
+                     Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</pages:PopupPage>

@@ -767,6 +767,7 @@
     <AndroidResource Include="Resources\drawable\button_orange.png" />
     <AndroidResource Include="Resources\drawable\button_red.png" />
     <AndroidResource Include="Resources\drawable\button_yellow.png" />
+    <AndroidResource Include="Resources\drawable\button_light_green.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">

@@ -37,9 +37,13 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="AppSettings.cs" />
+    <Compile Include="IVCalculator\Calculator.cs" />
     <Compile Include="Models\AuthData.cs" />
+    <Compile Include="Models\LevelData.cs" />
     <Compile Include="Models\NewsSM.cs" />
+    <Compile Include="Models\Enum\PokemonId.cs" />
     <Compile Include="Models\PokemonSM.cs" />
+    <Compile Include="Models\CalculateResult.cs" />
     <Compile Include="Models\TypeSM.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="PokemonService.cs" />
@@ -96,6 +100,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

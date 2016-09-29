@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:views="clr-namespace:EWiki.XF.Views.Templates;assembly=EWiki.XF"
+             x:Class="EWiki.XF.Views.Popups.PokemonSelectorPopup">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#7F000000" Margin="5" Padding="0,10,0,10">
+  <controls:FlowListView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+			FlowItemsSource="{Binding Pokemons}" SeparatorVisibility="None" HasUnevenRows="false"
+			FlowItemTappedCommand="{Binding PokemonTappedCommand}" FlowLastTappedItem="{Binding SelectedPokemon}">
+    <controls:FlowListView.FlowColumnsTemplates>
+      <controls:FlowColumnSimpleTemplateSelector ViewType="{x:Type views:PokemonViewCell}"/>
+      <controls:FlowColumnSimpleTemplateSelector ViewType="{x:Type views:PokemonViewCell}"/>
+      <controls:FlowColumnSimpleTemplateSelector ViewType="{x:Type views:PokemonViewCell}"/>
+      <controls:FlowColumnSimpleTemplateSelector ViewType="{x:Type views:PokemonViewCell}"/>
+      <controls:FlowColumnSimpleTemplateSelector ViewType="{x:Type views:PokemonViewCell}"/>
+    </controls:FlowListView.FlowColumnsTemplates>
+  </controls:FlowListView>
+    </StackLayout>
+</pages:PopupPage>
