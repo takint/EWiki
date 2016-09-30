@@ -99,33 +99,7 @@
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>
-          </ListView>
-
-          <!--<ListView ItemsSource="{Binding PokemonAccounts}" IsVisible="{Binding IsLoggedIn}">
-            <ListView.Behaviors>
-              <behaviors:ListViewBehavior AllowSelectItem="False" ItemTapCommand="{Binding EditPokemonAccountCommand}"/>
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <StackLayout Orientation="Vertical" Padding="5,0,0,0">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" VerticalOptions="FillAndExpand">
-                      <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
-                        <ffimageloading:CachedImage.Transformations>
-                          <transformations:CircleTransformation />
-                        </ffimageloading:CachedImage.Transformations>
-                        <ffimageloading:CachedImage.GestureRecognizers>
-                          <TapGestureRecognizer Command="{Binding BindingContext.SelectAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
-                        </ffimageloading:CachedImage.GestureRecognizers>
-                      </ffimageloading:CachedImage>
-
-                      <Label Text="{Binding Username}" TextColor="#212121" FontSize="16" VerticalOptions="Center" />
-                    </StackLayout>
-                  </StackLayout>
-                </ViewCell>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-          </ListView>-->
+          </ListView>          
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100" IsVisible="{Binding IsLoggedIn}">
