@@ -10,6 +10,7 @@ using EWiki.XF.Models;
 using EWiki.XF.Service;
 using EWiki.XF.Service.Models;
 using EWiki.XF.Utilities;
+using EWiki.XF.Views;
 using EWiki.XF.Views.Popups;
 using Prism.Commands;
 using Prism.Navigation;
@@ -43,15 +44,28 @@ namespace EWiki.XF.ViewModels
         public bool IsLoggedIn
         {
             get { return _isLoggedIn; }
-            set { SetProperty(ref _isLoggedIn, value); }
+            set
+            {
+                SetProperty(ref _isLoggedIn, value);
+
+                if (value)
+                {
+                    var authData = LocalDataStorage.GetAuthData();
+                    Username = authData.Username;
+                    Email = authData.Email;
+                }
+            }
         }
 
-        private ObservableCollection<LeftMenuItem> _accountItems;
-        public ObservableCollection<LeftMenuItem> AccountItems
+        public List<LeftMenuItem> AccountItems { get; set; }
+
+        public List<LeftMenuItem> TabItems { get; set; } = new List<LeftMenuItem>
         {
-            get { return _accountItems; }
-            set { SetProperty(ref _accountItems, value); }
-        }
+            new LeftMenuItem { Icon = "lnr-map-marker", Text = "Location Feeder", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(LocationFeederTab)}" },
+            new LeftMenuItem { Icon = "pokedex", Text = "Pokedex", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(PokedexTab)}"  },
+            new LeftMenuItem { Icon = "iv_percentage", Text = "IV Calculator", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(IVCalculatorTab)}"  },
+            new LeftMenuItem { Icon = "lnr-magic-wand", Text = "News + Gags", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(NewsTab)}"  }
+        };
 
         private ObservableRangeCollection<PokemonAccount> _pokemonAccounts;
         public ObservableRangeCollection<PokemonAccount> PokemonAccounts
@@ -65,6 +79,10 @@ namespace EWiki.XF.ViewModels
         public DelegateCommand AddPokemonAccountCommand { get; set; }
         public DelegateCommand<PokemonAccount> EditPokemonAccountCommand { get; set; }
         public DelegateCommand<LeftMenuItem> AccountItemTapCommand { get; set; }
+        public DelegateCommand<LeftMenuItem> TabItemTapCommand { get; set; }
+        public DelegateCommand RegisterCommand { get; set; }
+        public DelegateCommand LoginCommand { get; set; }
+
 
         public LeftMenuViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IAccountService accountService)
         {
@@ -75,7 +93,7 @@ namespace EWiki.XF.ViewModels
             // Setup account items
             var authData = LocalDataStorage.GetAuthData();
             IsLoggedIn = authData != null;
-            BuildAccountItems(IsLoggedIn);
+            BuildAccountItems();
 
             // Setup commands
             NavigateCommand = new DelegateCommand<string>(Navigate);
@@ -83,6 +101,9 @@ namespace EWiki.XF.ViewModels
             AddPokemonAccountCommand = DelegateCommand.FromAsyncHandler(ExecuteAddPokemonAccountCommand);
             EditPokemonAccountCommand = new DelegateCommand<PokemonAccount>(async account => await ExecuteEditPokemonAccountCommand(account));
             AccountItemTapCommand = new DelegateCommand<LeftMenuItem>(async item => await item.Action());
+            TabItemTapCommand = new DelegateCommand<LeftMenuItem>(ExecuteTabItemTapCommand);
+            RegisterCommand = DelegateCommand.FromAsyncHandler(ExecuteRegisterCommand);
+            LoginCommand = DelegateCommand.FromAsyncHandler(ExecuteLoginCommand);
 
             // Subscribe to pokemon accounts events
             MessagingCenter.Subscribe<PokemonAccount>(this, "DeletePokemonAccount", account =>
@@ -144,22 +165,32 @@ namespace EWiki.XF.ViewModels
             });
         }
 
+        private async Task ExecuteLoginCommand()
+        {
+            var loginPage = new LoginPage
+            {
+                BindingContext = new LoginPageViewModel()
+            };
+
+            await PopupNavigation.PushAsync(loginPage);
+        }
+
+        private async Task ExecuteRegisterCommand()
+        {
+            var registerPage = new RegisterPage
+            {
+                BindingContext = new RegisterPageViewModel()
+            };
+
+            await PopupNavigation.PushAsync(registerPage);
+        }
+
         private void Navigate(string name)
         {
             _navigationService.NavigateAsync(name);
         }
 
-        public void LeftMenuItemSelectedHandler(LeftMenuItem menuItem)
-        {
-            ItemSelectedHandler(menuItem);
-        }
-
-        public void AccountMenuItemSelectedHandler(LeftMenuItem menuItem)
-        {
-            ItemSelectedHandler(menuItem);
-        }
-
-        private void ItemSelectedHandler(LeftMenuItem menuItem)
+        private void ExecuteTabItemTapCommand(LeftMenuItem menuItem)
         {
             if (menuItem == null) return;
             switch (menuItem.CommandType)
@@ -226,48 +257,25 @@ namespace EWiki.XF.ViewModels
             await PopupNavigation.PushAsync(pokemonGoAccountPopup);
         }
 
-        private void BuildAccountItems(bool isLoggedIn)
+        private void BuildAccountItems()
         {
-            if (isLoggedIn)
+            AccountItems = new List<LeftMenuItem>
             {
-                AccountItems = new ObservableCollection<LeftMenuItem>
+                new LeftMenuItem()
                 {
-                    new LeftMenuItem()
-                    {
-                        Icon = "lnr-user",
-                        Text = "Account",
-                        IsActived = true,
-                        Action = DoMenuItemAccountAction
-                    },
-                    new LeftMenuItem()
-                    {
-                        Icon = "lnr-power-switch",
-                        Text = "Logout",
-                        IsActived = true,
-                        Action = DoMenuItemLogoutAction
-                    }
-                };
-            }
-            else
-            {
-                AccountItems = new ObservableCollection<LeftMenuItem>
+                    Icon = "lnr-user",
+                    Text = "Account",
+                    IsActived = true,
+                    Action = DoMenuItemAccountAction
+                },
+                new LeftMenuItem()
                 {
-                    new LeftMenuItem()
-                    {
-                        Icon = "lnr-user",
-                        Text = "Register",
-                        IsActived = true,
-                        Action = DoMenuItemRegisterAction
-                    },
-                    new LeftMenuItem()
-                    {
-                        Icon = "lnr-power-switch",
-                        Text = "Login",
-                        IsActived = true,
-                        Action = DoMenuItemLoginAction
-                    }
-                };
-            }
+                    Icon = "lnr-power-switch",
+                    Text = "Logout",
+                    IsActived = true,
+                    Action = DoMenuItemLogoutAction
+                }
+            };
         }
 
         private async Task DoMenuItemAccountAction()
@@ -280,8 +288,6 @@ namespace EWiki.XF.ViewModels
             LocalDataStorage.SaveAuthData(null);
             IsLoggedIn = false;
 
-            BuildAccountItems(false);
-
             // need to trick like this to make the ExtendedScrollView collection changed event works
             var temp = PokemonAccounts.ToList();
             foreach (var account in temp)
@@ -290,35 +296,16 @@ namespace EWiki.XF.ViewModels
             }
         }
 
-        private async Task DoMenuItemRegisterAction()
-        {
-            var registerPage = new RegisterPage
-            {
-                BindingContext = new RegisterPageViewModel()
-            };
-
-            await PopupNavigation.PushAsync(registerPage);
-        }
-
-        private async Task DoMenuItemLoginAction()
-        {
-            var loginPage = new LoginPage
-            {
-                BindingContext = new LoginPageViewModel()
-            };
-
-            await PopupNavigation.PushAsync(loginPage);
-        }
-
         private void DoLoginSuccessful(AuthData authData)
         {
             LocalDataStorage.SaveAuthData(authData);
             IsLoggedIn = true;
 
-            BuildAccountItems(true);
-            Username = authData.Username;
-            Email = authData.Email;
+            LoadPokemonAccounts();
+        }
 
+        private void LoadPokemonAccounts()
+        {
             var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(Username);
             if (pokemonAccounts != null)
                 PokemonAccounts.AddRange(pokemonAccounts);
@@ -329,9 +316,14 @@ namespace EWiki.XF.ViewModels
             base.OnNavigatedFrom(parameters);
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+
+            if (IsLoggedIn)
+            {
+                LoadPokemonAccounts();
+            }
         }
     }
 }

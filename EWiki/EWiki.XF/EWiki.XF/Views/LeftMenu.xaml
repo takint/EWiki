@@ -15,36 +15,33 @@
     <ContentPage Title="Default">
       <StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="200">
-          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Black">
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Teal">
             <Grid.RowDefinitions>
-              <RowDefinition Height="3*" />
               <RowDefinition Height="2*" />
+              <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto" />
-              <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
 
-            <ffimageloading:CachedImage Source="left_profile_background" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"></ffimageloading:CachedImage>
+            <!--<ffimageloading:CachedImage Source="left_profile_background" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2"></ffimageloading:CachedImage>-->
 
-            <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="no_avatar"
+            <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+              <ffimageloading:CachedImage Source="no_avatar"
                                           WidthRequest="75"
                                           HeightRequest="75"
-                                          HorizontalOptions="StartAndExpand"
-                                          VerticalOptions="EndAndExpand"
-                                          Margin="10,0,0,20"
-                                          IsVisible="{Binding IsLoggedIn}">
-              <ffimageloading:CachedImage.Transformations>
-                <transformations:CircleTransformation />
-              </ffimageloading:CachedImage.Transformations>
-            </ffimageloading:CachedImage>
+                                          HorizontalOptions="CenterAndExpand"
+                                          VerticalOptions="EndAndExpand">
+                <ffimageloading:CachedImage.Transformations>
+                  <transformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+              </ffimageloading:CachedImage>
 
-            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
-              <Label Text="{Binding Username}" FontSize="16" FontAttributes="Bold" TextColor="White" />
-              <Label Text="{Binding Email}" FontSize="16" TextColor="White" />
+              <StackLayout Orientation="Horizontal" IsVisible="{Binding IsLoggedIn}">
+                <Label Text="{Binding Username}" FontSize="16" FontAttributes="Bold" TextColor="White" />
+                <Label Text="|" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Email}" FontSize="16" TextColor="White" />
+              </StackLayout>
             </StackLayout>
 
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
+            <StackLayout Grid.Row="1" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
               <Label Text="Pokemon Go Accounts" FontSize="16" FontAttributes="Bold" TextColor="White" />
               <StackLayout Orientation="Horizontal">
                 <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
@@ -69,11 +66,42 @@
                 </iconize:IconImage>
               </StackLayout>
             </StackLayout>
+
+            <Grid Grid.Row="1" Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+
+              <Button Grid.Column="0" Text="Register" BackgroundColor="White" TextColor="Teal" Command="{Binding RegisterCommand}"/>
+              <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="Teal" Command="{Binding LoginCommand}"/>
+            </Grid>
           </Grid>
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-          <ListView ItemsSource="{Binding PokemonAccounts}" IsVisible="{Binding IsLoggedIn}">
+          <ListView ItemsSource="{Binding TabItems}" SeparatorVisibility="None" VerticalOptions="End">
+            <ListView.Behaviors>
+              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding TabItemTapCommand}"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <StackLayout Orientation="Vertical" Padding="5,0,0,0">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent"
+                                 VerticalOptions="FillAndExpand">
+                      <iconize:IconLabel Text="{Binding Icon}" TextColor="#212121" FontSize="16"
+                                         VerticalOptions="Center" Margin="5,0,5,0" />
+                      <Label Text="{Binding Text}" TextColor="#212121" FontSize="16"
+                             VerticalOptions="Center" />
+                    </StackLayout>
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+
+          <!--<ListView ItemsSource="{Binding PokemonAccounts}" IsVisible="{Binding IsLoggedIn}">
             <ListView.Behaviors>
               <behaviors:ListViewBehavior AllowSelectItem="False" ItemTapCommand="{Binding EditPokemonAccountCommand}"/>
             </ListView.Behaviors>
@@ -97,10 +125,10 @@
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>
-          </ListView>
+          </ListView>-->
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100">
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100" IsVisible="{Binding IsLoggedIn}">
           <ListView x:Name="AccountMenuListView" ItemsSource="{Binding AccountItems}"
                     SeparatorVisibility="None" VerticalOptions="End">
             <ListView.Behaviors>
