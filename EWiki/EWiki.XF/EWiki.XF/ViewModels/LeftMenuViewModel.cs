@@ -43,23 +43,7 @@ namespace EWiki.XF.ViewModels
         public bool IsLoggedIn
         {
             get { return _isLoggedIn; }
-            set
-            {
-                SetProperty(ref _isLoggedIn, value);
-                BuildAccountItems(value);
-
-                if (value)
-                {
-                    var authData = Settings.Local.Get<AuthData>("AuthData");
-                    Username = authData.Username;
-                    Email = authData.Email;
-
-                    PokemonAccounts.Clear();
-                    var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(Username);
-                    if (pokemonAccounts != null)
-                        PokemonAccounts.AddRange(pokemonAccounts);
-                }
-            }
+            set { SetProperty(ref _isLoggedIn, value); }
         }
 
         private ObservableCollection<LeftMenuItem> _accountItems;
@@ -91,6 +75,7 @@ namespace EWiki.XF.ViewModels
             // Setup account items
             var authData = LocalDataStorage.GetAuthData();
             IsLoggedIn = authData != null;
+            BuildAccountItems(IsLoggedIn);
 
             // Setup commands
             NavigateCommand = new DelegateCommand<string>(Navigate);
@@ -294,6 +279,15 @@ namespace EWiki.XF.ViewModels
         {
             LocalDataStorage.SaveAuthData(null);
             IsLoggedIn = false;
+
+            BuildAccountItems(false);
+
+            // need to trick like this to make the ExtendedScrollView collection changed event works
+            var temp = PokemonAccounts.ToList();
+            foreach (var account in temp)
+            {
+                PokemonAccounts.Remove(account);
+            }
         }
 
         private async Task DoMenuItemRegisterAction()
@@ -320,6 +314,14 @@ namespace EWiki.XF.ViewModels
         {
             LocalDataStorage.SaveAuthData(authData);
             IsLoggedIn = true;
+
+            BuildAccountItems(true);
+            Username = authData.Username;
+            Email = authData.Email;
+
+            var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(Username);
+            if (pokemonAccounts != null)
+                PokemonAccounts.AddRange(pokemonAccounts);
         }
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
