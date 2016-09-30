@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EWiki.Api.Dto.Enum;
 
 namespace EWiki.Api.Utility
 {
@@ -46,8 +47,8 @@ namespace EWiki.Api.Utility
                 CritChange = moveEfo.CritChange,
                 Bars = moveEfo.Bars,
                 BarLength = moveEfo.BarLength,
-                MoveCategory = MapCategoryDto(moveEfo.MoveCategory),
-                //Type = MapCategoryDto(moveEfo.Type),
+                MoveCategory = moveEfo.MoveCategory.CatTitle,
+                Type = moveEfo.Type.CatTitle,
 
                 CreatedUserId = moveEfo.CreatedUserId,
                 CreatedUser = moveEfo.CreatedUser,
@@ -86,8 +87,8 @@ namespace EWiki.Api.Utility
                 Id = pokemonEfo.Id,
 
                 Types = pokemonEfo.Types.Where(t => t.Type != null)
-                                .Select(t => MapCategoryDto(t.Type))
-                                .ToList(),
+                                .Select(t => t.Type.CatTitle)
+                                .ToArray(),
                 SpecialMoves = pokemonEfo.SpecialMoves.Where(nm => nm.PokeSpecialMove != null)
                                 .Select(sm => MapMoveDto(sm.PokeSpecialMove))
                                 .ToList(),
@@ -97,7 +98,7 @@ namespace EWiki.Api.Utility
                 Locations = pokemonEfo.Locations.Where(l => l.PokeLocation != null)
                                 .Select(l => MapLocationDto(l.PokeLocation))
                                 .ToList(),
-
+                PokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), pokemonEfo.Name),
                 Name = pokemonEfo.Name,
                 Slug = pokemonEfo.Slug,
                 Number = pokemonEfo.Number,

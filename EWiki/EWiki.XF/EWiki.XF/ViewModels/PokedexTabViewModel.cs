@@ -8,8 +8,10 @@ using AutoMapper;
 using EWiki.XF.Models;
 using EWiki.XF.Service;
 using EWiki.XF.Service.Requests.Pokemon;
+using EWiki.XF.Views;
 using Prism.Commands;
 using Prism.Navigation;
+using Rg.Plugins.Popup.Services;
 
 namespace EWiki.XF.ViewModels
 {
@@ -51,7 +53,7 @@ namespace EWiki.XF.ViewModels
 
         public bool CanExecuteLoadMoreCommand(Pokemon item)
         {
-            return IsNotBusy && _pokemons.Count > _totalPokemons;
+            return IsNotBusy && _pokemons.Count < _totalPokemons;
         }
 
         public async Task ExecuteLoadMoreCommand(Pokemon item)
@@ -76,7 +78,7 @@ namespace EWiki.XF.ViewModels
             var isEven = _pokemons.LastOrDefault() != null && _pokemons.LastOrDefault().IsEven;
             foreach (var pokemonSM in newPokemons)
             {
-                if (_pokemons.All(p => (int)p.Id != (int)pokemonSM.Id))
+                if (_pokemons.All(p => (int)p.PokemonId != (int)pokemonSM.PokemonId))
                 {
                     var pokemon = Mapper.Map<Pokemon>(pokemonSM);
                     isEven = !isEven;
@@ -86,9 +88,17 @@ namespace EWiki.XF.ViewModels
             }
         }
 
-        public void PokedexItemSelectedHandler(Pokemon pokemon)
+        public async void PokedexItemSelectedHandler(Pokemon pokemon)
         {
-            _navigationService.NavigateAsync($"LeftMenu/Navigation/PokemonInfoPage?PokemonId={pokemon.Id}", animated: false);
+            var troy = new PokemonInfoPage()
+            {
+                BindingContext = new PokemonInfoPageViewModel()
+                {
+                    Pokemons = Pokemons
+                }
+            };
+
+            await PopupNavigation.PushAsync(troy);
         }
     }
 }

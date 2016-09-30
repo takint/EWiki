@@ -1,16 +1,14 @@
 ﻿using EWiki.XF.Views.PokemonInfoElements;
+using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Views
 {
-    public partial class PokemonInfoPage : CarouselPage
+    public partial class PokemonInfoPage : PopupPage
     {
         public PokemonInfoPage()
         {
             InitializeComponent();
-            Children.Add(new PokemonInfoElement() {Title = "Le"});
-            Children.Add(new PokemonInfoElement() { Title = "Cao" });
-            Children.Add(new PokemonInfoElement() { Title = "Tri" });
         }
     }
 }

@@ -18,7 +18,9 @@ namespace EWiki.Api.DataAccess
                                                 .Include(c => c.Types).ThenInclude(t => t.Type)
                                                 .Include(c => c.Locations).ThenInclude(l => l.PokeLocation)
                                                 .Include(c => c.NormalMoves).ThenInclude(nm => nm.PokeMove).ThenInclude(m => m.MoveCategory)
-                                                .Include(c => c.SpecialMoves).ThenInclude(sm => sm.PokeSpecialMove).ThenInclude(m => m.MoveCategory);
+                                                .Include(c => c.NormalMoves).ThenInclude(nm => nm.PokeMove).ThenInclude(m => m.Type)
+                                                .Include(c => c.SpecialMoves).ThenInclude(sm => sm.PokeSpecialMove).ThenInclude(m => m.MoveCategory)
+                                                .Include(c => c.SpecialMoves).ThenInclude(sm => sm.PokeSpecialMove).ThenInclude(m => m.Type);
 
             return await query.ToListAsync();
         }
