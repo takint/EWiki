@@ -4,6 +4,7 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
           xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
           prism:ViewModelLocator.AutowireViewModel="True"
           x:Class="EWiki.XF.Views.Templates.PokedexViewCell">
     <Grid RowSpacing="0" Margin="0,10,0,0" BackgroundColor="#FAFAFA">
@@ -33,21 +34,30 @@
         <Label Text="{Binding Species}" FontSize="12" TextColor="#45686E" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
                Grid.ColumnSpan="2"
                VerticalOptions="Center" />
-        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0,0"
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0,0" HorizontalOptions="FillAndExpand"
                      VerticalOptions="CenterAndExpand">
-            <Label Text="{Binding MaxCP}" FontSize="22" TextColor="#FF5252" FontAttributes="Bold" Margin="0,0,0,1"
-                   VerticalOptions="Center" />
-            <Label Text="MaxCP" FontSize="12" FontAttributes="Bold" TextColor="#FF5252" Margin="-5,2,0,0"
-                   VerticalOptions="Center" />
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <StackLayout Orientation="Horizontal" Grid.Column="0">
+            <Label Text="{Binding MaxCP}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center" TextColor="#FF5252" />
+            <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center" TextColor="#FF5252" />
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" Grid.Column="1">
             <ffimageloading:CachedImage Source="Candy.png" Margin="5,2,0,0"
                                         VerticalOptions="Center" HeightRequest="16" />
             <Label Text="{Binding Candy}" FontSize="12" TextColor="#45686E" FontAttributes="Bold" Margin="0,2,0,0"
                    VerticalOptions="Center" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Margin="5,0,0,5" Grid.Row="3" Grid.Column="1"
+          </StackLayout>
+        </Grid>
+      <extendedControls:HorizontalListView ItemsSource="{Binding Types}" Margin="5,0,0,5" Grid.Row="3" Grid.Column="1"
                      Grid.ColumnSpan="2">
-            <ffimageloading:CachedImage Source="Grass.png" HeightRequest="22"/>
-            <ffimageloading:CachedImage Source="Poison.png" HeightRequest="22"/>
-        </StackLayout>
+        <extendedControls:HorizontalListView.ItemTemplate>
+          <DataTemplate>
+            <ffimageloading:CachedImage Source="{Binding CatTitle}" HeightRequest="22"/>
+          </DataTemplate>
+        </extendedControls:HorizontalListView.ItemTemplate>
+      </extendedControls:HorizontalListView>
     </Grid>
 </ViewCell>

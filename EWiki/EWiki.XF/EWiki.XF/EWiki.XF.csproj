@@ -52,6 +52,12 @@
     <Compile Include="ExtendedControls\ExtendedLabel.cs" />
     <Compile Include="ExtendedControls\ExtendedProgressBar.cs" />
     <Compile Include="ExtendedControls\ExtendedScrollView.cs" />
+    <Compile Include="ExtendedControls\BindableGrid.xaml.cs">
+      <DependentUpon>BindableGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendedControls\VerticalListView.xaml.cs">
+      <DependentUpon>VerticalListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExtendedControls\HorizontalListView.xaml.cs">
       <DependentUpon>HorizontalListView.xaml</DependentUpon>
     </Compile>
@@ -74,6 +80,7 @@
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
     <Compile Include="ViewModels\IVCalculatorTabViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\PokemonInfoPageViewModel.cs" />
     <Compile Include="ViewModels\PokemonGoAccountPopupViewModel.cs" />
     <Compile Include="ViewModels\RegisterPageViewModel.cs" />
     <Compile Include="ViewModels\PokemonSelectorPopupViewModel.cs" />
@@ -112,8 +119,8 @@
     <Compile Include="Views\PokemonInfoPage.xaml.cs">
       <DependentUpon>PokemonInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Popups\PokemonSelectorPopup - Copy.xaml.cs">
-      <DependentUpon>PokemonSelectorPopup - Copy.xaml</DependentUpon>
+    <Compile Include="Views\Popups\PokemonSelectorPopup.xaml.cs">
+      <DependentUpon>PokemonSelectorPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Popups\IVCalculateDetailsPopup.xaml.cs">
       <DependentUpon>IVCalculateDetailsPopup.xaml</DependentUpon>
@@ -434,7 +441,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Popups\PokemonSelectorPopup - Copy.xaml">
+    <EmbeddedResource Include="Views\Popups\PokemonSelectorPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExtendedControls\VerticalListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExtendedControls\BindableGrid.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

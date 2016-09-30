@@ -37,7 +37,7 @@ namespace EWiki.XF.ViewModels
                 }
                 Pokemons.Add(new PokemonSM()
                 {
-                    Id = pokemonId
+                    PokemonId = pokemonId
                 });
             }
         }

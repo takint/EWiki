@@ -37,7 +37,7 @@ namespace EWiki.Api.Controllers
         public async Task<IActionResult> GetPokemon(string name)
         {
             Character pokemon = (await pokedexRepository.FindByAsync(p => p.Name == name)).FirstOrDefault();
-            return Json(pokemon);
+            return Json(DtoMapper.MapPokedexDto(pokemon));
         }
 
         [HttpGet("Search")]

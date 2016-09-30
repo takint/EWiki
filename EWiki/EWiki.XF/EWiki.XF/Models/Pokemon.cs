@@ -1,24 +1,29 @@
-﻿using EWiki.XF.Service.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using EWiki.XF.Models.Enum;
+using EWiki.XF.Service.Models;
+using Prism.Mvvm;
 
 namespace EWiki.XF.Models
 {
-    public class Pokemon
+    public class Pokemon : BindableBase
     {
-        public PokemonId Id { get; set; }
+        public PokemonId PokemonId { get; set; }
         public string Name { get; set; }
         public string Avatar { get; set; }
         public string Description { get; set; }
-        public float MaxCP { get; set; }
+        public double MaxCP { get; set; }
         public string Number { get; set; }
         public string Species { get; set; }
         public int? Candy { get; set; }
-        public List<TypeSM> Types { get; set; }
+        public ObservableCollection<TypeSM> Types { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Stamina { get; set; }
+        public double Weight { get; set; }
+        public double Height { get; set; }
         public bool IsEven { get; set; }
+        public ObservableCollection<MoveSM> NormalMoves { get; set; }
+        public ObservableCollection<MoveSM> SpecialMoves { get; set; }
     }
 }

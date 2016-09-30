@@ -30,7 +30,11 @@ namespace EWiki.XF.Mappers
 
             protected override void Configure()
             {
-                CreateMap<PokemonSM, Pokemon>().ForMember(p => p.Avatar, o => o.MapFrom(p => $"No_{p.Name}"));
+                CreateMap<PokemonSM, Pokemon>()
+                    .ForMember(p => p.Types, o => o.MapFrom(
+                        p => p.Types.Select(t => new TypeSM() {
+                            CatTitle = $"http://res.cloudinary.com/ewiki-io/image/upload/c_scale,h_100/v1475135097/Pokemons/Types/vi/{t}.png"
+                        })));
             }
         }
 

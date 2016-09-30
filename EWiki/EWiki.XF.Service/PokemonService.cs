@@ -26,1057 +26,1057 @@ namespace EWiki.XF.Service
         {
             new PokemonSM()
             {
-                Id = PokemonId.Bulbasaur,
+                PokemonId = PokemonId.Bulbasaur,
                 Attack = 126,
                 Defense = 126,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Ivysaur,
+                PokemonId = PokemonId.Ivysaur,
                 Attack = 156,
                 Defense = 158,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Venusaur,
+                PokemonId = PokemonId.Venusaur,
                 Attack = 198,
                 Defense = 200,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Charmander,
+                PokemonId = PokemonId.Charmander,
                 Attack = 128,
                 Defense = 108,
                 Stamina = 78,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Charmeleon,
+                PokemonId = PokemonId.Charmeleon,
                 Attack = 160,
                 Defense = 140,
                 Stamina = 116,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Charizard,
+                PokemonId = PokemonId.Charizard,
                 Attack = 212,
                 Defense = 182,
                 Stamina = 156,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Squirtle,
+                PokemonId = PokemonId.Squirtle,
                 Attack = 112,
                 Defense = 142,
                 Stamina = 88,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Wartortle,
+                PokemonId = PokemonId.Wartortle,
                 Attack = 144,
                 Defense = 176,
                 Stamina = 118,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Blastoise,
+                PokemonId = PokemonId.Blastoise,
                 Attack = 186,
                 Defense = 222,
                 Stamina = 158,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Caterpie,
+                PokemonId = PokemonId.Caterpie,
                 Attack = 62,
                 Defense = 66,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Metapod,
+                PokemonId = PokemonId.Metapod,
                 Attack = 56,
                 Defense = 86,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Butterfree,
+                PokemonId = PokemonId.Butterfree,
                 Attack = 144,
                 Defense = 144,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Weedle,
+                PokemonId = PokemonId.Weedle,
                 Attack = 68,
                 Defense = 64,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kakuna,
+                PokemonId = PokemonId.Kakuna,
                 Attack = 62,
                 Defense = 82,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Beedrill,
+                PokemonId = PokemonId.Beedrill,
                 Attack = 144,
                 Defense = 130,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Pidgey,
+                PokemonId = PokemonId.Pidgey,
                 Attack = 94,
                 Defense = 90,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Pidgeotto,
+                PokemonId = PokemonId.Pidgeotto,
                 Attack = 126,
                 Defense = 122,
                 Stamina = 126,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Pidgeot,
+                PokemonId = PokemonId.Pidgeot,
                 Attack = 170,
                 Defense = 166,
                 Stamina = 166,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Rattata,
+                PokemonId = PokemonId.Rattata,
                 Attack = 92,
                 Defense = 86,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Raticate,
+                PokemonId = PokemonId.Raticate,
                 Attack = 146,
                 Defense = 150,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Spearow,
+                PokemonId = PokemonId.Spearow,
                 Attack = 102,
                 Defense = 78,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Fearow,
+                PokemonId = PokemonId.Fearow,
                 Attack = 168,
                 Defense = 146,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Ekans,
+                PokemonId = PokemonId.Ekans,
                 Attack = 112,
                 Defense = 112,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Arbok,
+                PokemonId = PokemonId.Arbok,
                 Attack = 166,
                 Defense = 166,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Pikachu,
+                PokemonId = PokemonId.Pikachu,
                 Attack = 124,
                 Defense = 108,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Raichu,
+                PokemonId = PokemonId.Raichu,
                 Attack = 200,
                 Defense = 154,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Sandshrew,
+                PokemonId = PokemonId.Sandshrew,
                 Attack = 90,
                 Defense = 114,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Sandslash,
+                PokemonId = PokemonId.Sandslash,
                 Attack = 150,
                 Defense = 172,
                 Stamina = 150,
             },
             new PokemonSM()
             {
-                Id = PokemonId.NidoranFemale,
+                PokemonId = PokemonId.NidoranFemale,
                 Attack = 100,
                 Defense = 104,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Nidorina,
+                PokemonId = PokemonId.Nidorina,
                 Attack = 132,
                 Defense = 136,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Nidoqueen,
+                PokemonId = PokemonId.Nidoqueen,
                 Attack = 184,
                 Defense = 190,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.NidoranMale,
+                PokemonId = PokemonId.NidoranMale,
                 Attack = 110,
                 Defense = 94,
                 Stamina = 92,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Nidorino,
+                PokemonId = PokemonId.Nidorino,
                 Attack = 142,
                 Defense = 128,
                 Stamina = 122,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Nidoking,
+                PokemonId = PokemonId.Nidoking,
                 Attack = 204,
                 Defense = 170,
                 Stamina = 162,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Clefairy,
+                PokemonId = PokemonId.Clefairy,
                 Attack = 116,
                 Defense = 124,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Clefable,
+                PokemonId = PokemonId.Clefable,
                 Attack = 178,
                 Defense = 178,
                 Stamina = 190,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Vulpix,
+                PokemonId = PokemonId.Vulpix,
                 Attack = 106,
                 Defense = 118,
                 Stamina = 76,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Ninetales,
+                PokemonId = PokemonId.Ninetales,
                 Attack = 176,
                 Defense = 194,
                 Stamina = 146,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Jigglypuff,
+                PokemonId = PokemonId.Jigglypuff,
                 Attack = 98,
                 Defense = 54,
                 Stamina = 230,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Wigglytuff,
+                PokemonId = PokemonId.Wigglytuff,
                 Attack = 168,
                 Defense = 108,
                 Stamina = 280,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Zubat,
+                PokemonId = PokemonId.Zubat,
                 Attack = 88,
                 Defense = 90,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Golbat,
+                PokemonId = PokemonId.Golbat,
                 Attack = 164,
                 Defense = 164,
                 Stamina = 150,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Oddish,
+                PokemonId = PokemonId.Oddish,
                 Attack = 134,
                 Defense = 130,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Gloom,
+                PokemonId = PokemonId.Gloom,
                 Attack = 162,
                 Defense = 158,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Vileplume,
+                PokemonId = PokemonId.Vileplume,
                 Attack = 202,
                 Defense = 190,
                 Stamina = 150,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Paras,
+                PokemonId = PokemonId.Paras,
                 Attack = 122,
                 Defense = 120,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Parasect,
+                PokemonId = PokemonId.Parasect,
                 Attack = 162,
                 Defense = 170,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Venonat,
+                PokemonId = PokemonId.Venonat,
                 Attack = 108,
                 Defense = 118,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Venomoth,
+                PokemonId = PokemonId.Venomoth,
                 Attack = 172,
                 Defense = 154,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Diglett,
+                PokemonId = PokemonId.Diglett,
                 Attack = 108,
                 Defense = 86,
                 Stamina = 20,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dugtrio,
+                PokemonId = PokemonId.Dugtrio,
                 Attack = 148,
                 Defense = 140,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Meowth,
+                PokemonId = PokemonId.Meowth,
                 Attack = 104,
                 Defense = 94,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Persian,
+                PokemonId = PokemonId.Persian,
                 Attack = 156,
                 Defense = 146,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Psyduck,
+                PokemonId = PokemonId.Psyduck,
                 Attack = 132,
                 Defense = 112,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Golduck,
+                PokemonId = PokemonId.Golduck,
                 Attack = 194,
                 Defense = 176,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Mankey,
+                PokemonId = PokemonId.Mankey,
                 Attack = 122,
                 Defense = 96,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Primeape,
+                PokemonId = PokemonId.Primeape,
                 Attack = 178,
                 Defense = 150,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Growlithe,
+                PokemonId = PokemonId.Growlithe,
                 Attack = 156,
                 Defense = 110,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Arcanine,
+                PokemonId = PokemonId.Arcanine,
                 Attack = 230,
                 Defense = 180,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Poliwag,
+                PokemonId = PokemonId.Poliwag,
                 Attack = 108,
                 Defense = 98,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Poliwhirl,
+                PokemonId = PokemonId.Poliwhirl,
                 Attack = 132,
                 Defense = 132,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Poliwrath,
+                PokemonId = PokemonId.Poliwrath,
                 Attack = 180,
                 Defense = 202,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Abra,
+                PokemonId = PokemonId.Abra,
                 Attack = 110,
                 Defense = 76,
                 Stamina = 50,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kadabra,
+                PokemonId = PokemonId.Kadabra,
                 Attack = 150,
                 Defense = 112,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Alakazam,
+                PokemonId = PokemonId.Alakazam,
                 Attack = 186,
                 Defense = 152,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Machop,
+                PokemonId = PokemonId.Machop,
                 Attack = 118,
                 Defense = 96,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Machoke,
+                PokemonId = PokemonId.Machoke,
                 Attack = 154,
                 Defense = 144,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Machamp,
+                PokemonId = PokemonId.Machamp,
                 Attack = 198,
                 Defense = 180,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Bellsprout,
+                PokemonId = PokemonId.Bellsprout,
                 Attack = 158,
                 Defense = 78,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Weepinbell,
+                PokemonId = PokemonId.Weepinbell,
                 Attack = 190,
                 Defense = 110,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Victreebel,
+                PokemonId = PokemonId.Victreebel,
                 Attack = 222,
                 Defense = 152,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Tentacool,
+                PokemonId = PokemonId.Tentacool,
                 Attack = 106,
                 Defense = 136,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Tentacruel,
+                PokemonId = PokemonId.Tentacruel,
                 Attack = 170,
                 Defense = 196,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Geodude,
+                PokemonId = PokemonId.Geodude,
                 Attack = 106,
                 Defense = 118,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Graveler,
+                PokemonId = PokemonId.Graveler,
                 Attack = 142,
                 Defense = 156,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Golem,
+                PokemonId = PokemonId.Golem,
                 Attack = 176,
                 Defense = 198,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Ponyta,
+                PokemonId = PokemonId.Ponyta,
                 Attack = 168,
                 Defense = 138,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Rapidash,
+                PokemonId = PokemonId.Rapidash,
                 Attack = 200,
                 Defense = 170,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Slowpoke,
+                PokemonId = PokemonId.Slowpoke,
                 Attack = 110,
                 Defense = 110,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Slowbro,
+                PokemonId = PokemonId.Slowbro,
                 Attack = 184,
                 Defense = 198,
                 Stamina = 190,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Magnemite,
+                PokemonId = PokemonId.Magnemite,
                 Attack = 128,
                 Defense = 138,
                 Stamina = 50,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Magneton,
+                PokemonId = PokemonId.Magneton,
                 Attack = 186,
                 Defense = 180,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Farfetchd,
+                PokemonId = PokemonId.Farfetchd,
                 Attack = 138,
                 Defense = 132,
                 Stamina = 104,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Doduo,
+                PokemonId = PokemonId.Doduo,
                 Attack = 126,
                 Defense = 96,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dodrio,
+                PokemonId = PokemonId.Dodrio,
                 Attack = 182,
                 Defense = 150,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Seel,
+                PokemonId = PokemonId.Seel,
                 Attack = 104,
                 Defense = 138,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dewgong,
+                PokemonId = PokemonId.Dewgong,
                 Attack = 156,
                 Defense = 192,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Grimer,
+                PokemonId = PokemonId.Grimer,
                 Attack = 124,
                 Defense = 110,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Muk,
+                PokemonId = PokemonId.Muk,
                 Attack = 180,
                 Defense = 188,
                 Stamina = 210,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Shellder,
+                PokemonId = PokemonId.Shellder,
                 Attack = 120,
                 Defense = 112,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Cloyster,
+                PokemonId = PokemonId.Cloyster,
                 Attack = 196,
                 Defense = 196,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Gastly,
+                PokemonId = PokemonId.Gastly,
                 Attack = 136,
                 Defense = 82,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Haunter,
+                PokemonId = PokemonId.Haunter,
                 Attack = 172,
                 Defense = 118,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Gengar,
+                PokemonId = PokemonId.Gengar,
                 Attack = 204,
                 Defense = 156,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Onix,
+                PokemonId = PokemonId.Onix,
                 Attack = 90,
                 Defense = 186,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Drowzee,
+                PokemonId = PokemonId.Drowzee,
                 Attack = 104,
                 Defense = 140,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Hypno,
+                PokemonId = PokemonId.Hypno,
                 Attack = 162,
                 Defense = 196,
                 Stamina = 170,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Krabby,
+                PokemonId = PokemonId.Krabby,
                 Attack = 116,
                 Defense = 110,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kingler,
+                PokemonId = PokemonId.Kingler,
                 Attack = 178,
                 Defense = 168,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Voltorb,
+                PokemonId = PokemonId.Voltorb,
                 Attack = 102,
                 Defense = 124,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Electrode,
+                PokemonId = PokemonId.Electrode,
                 Attack = 150,
                 Defense = 174,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Exeggcute,
+                PokemonId = PokemonId.Exeggcute,
                 Attack = 110,
                 Defense = 132,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Exeggutor,
+                PokemonId = PokemonId.Exeggutor,
                 Attack = 232,
                 Defense = 164,
                 Stamina = 190,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Cubone,
+                PokemonId = PokemonId.Cubone,
                 Attack = 102,
                 Defense = 150,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Marowak,
+                PokemonId = PokemonId.Marowak,
                 Attack = 140,
                 Defense = 202,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Hitmonlee,
+                PokemonId = PokemonId.Hitmonlee,
                 Attack = 148,
                 Defense = 172,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Hitmonchan,
+                PokemonId = PokemonId.Hitmonchan,
                 Attack = 138,
                 Defense = 204,
                 Stamina = 100,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Lickitung,
+                PokemonId = PokemonId.Lickitung,
                 Attack = 126,
                 Defense = 160,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Koffing,
+                PokemonId = PokemonId.Koffing,
                 Attack = 136,
                 Defense = 142,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Weezing,
+                PokemonId = PokemonId.Weezing,
                 Attack = 190,
                 Defense = 198,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Rhyhorn,
+                PokemonId = PokemonId.Rhyhorn,
                 Attack = 110,
                 Defense = 116,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Rhydon,
+                PokemonId = PokemonId.Rhydon,
                 Attack = 166,
                 Defense = 160,
                 Stamina = 210,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Chansey,
+                PokemonId = PokemonId.Chansey,
                 Attack = 40,
                 Defense = 60,
                 Stamina = 500,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Tangela,
+                PokemonId = PokemonId.Tangela,
                 Attack = 164,
                 Defense = 152,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kangaskhan,
+                PokemonId = PokemonId.Kangaskhan,
                 Attack = 142,
                 Defense = 178,
                 Stamina = 210,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Horsea,
+                PokemonId = PokemonId.Horsea,
                 Attack = 122,
                 Defense = 100,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Seadra,
+                PokemonId = PokemonId.Seadra,
                 Attack = 176,
                 Defense = 150,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Goldeen,
+                PokemonId = PokemonId.Goldeen,
                 Attack = 112,
                 Defense = 126,
                 Stamina = 90,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Seaking,
+                PokemonId = PokemonId.Seaking,
                 Attack = 172,
                 Defense = 160,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Staryu,
+                PokemonId = PokemonId.Staryu,
                 Attack = 130,
                 Defense = 128,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Starmie,
+                PokemonId = PokemonId.Starmie,
                 Attack = 194,
                 Defense = 192,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.MrMime,
+                PokemonId = PokemonId.MrMime,
                 Attack = 154,
                 Defense = 196,
                 Stamina = 80,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Scyther,
+                PokemonId = PokemonId.Scyther,
                 Attack = 176,
                 Defense = 180,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Jynx,
+                PokemonId = PokemonId.Jynx,
                 Attack = 172,
                 Defense = 134,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Electabuzz,
+                PokemonId = PokemonId.Electabuzz,
                 Attack = 198,
                 Defense = 160,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Magmar,
+                PokemonId = PokemonId.Magmar,
                 Attack = 214,
                 Defense = 158,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Pinsir,
+                PokemonId = PokemonId.Pinsir,
                 Attack = 184,
                 Defense = 186,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Tauros,
+                PokemonId = PokemonId.Tauros,
                 Attack = 148,
                 Defense = 184,
                 Stamina = 150,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Magikarp,
+                PokemonId = PokemonId.Magikarp,
                 Attack = 42,
                 Defense = 84,
                 Stamina = 40,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Gyarados,
+                PokemonId = PokemonId.Gyarados,
                 Attack = 192,
                 Defense = 196,
                 Stamina = 190,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Lapras,
+                PokemonId = PokemonId.Lapras,
                 Attack = 186,
                 Defense = 190,
                 Stamina = 260,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Ditto,
+                PokemonId = PokemonId.Ditto,
                 Attack = 110,
                 Defense = 110,
                 Stamina = 96,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Eevee,
+                PokemonId = PokemonId.Eevee,
                 Attack = 114,
                 Defense = 128,
                 Stamina = 110,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Vaporeon,
+                PokemonId = PokemonId.Vaporeon,
                 Attack = 186,
                 Defense = 168,
                 Stamina = 260,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Jolteon,
+                PokemonId = PokemonId.Jolteon,
                 Attack = 192,
                 Defense = 174,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Flareon,
+                PokemonId = PokemonId.Flareon,
                 Attack = 238,
                 Defense = 178,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Porygon,
+                PokemonId = PokemonId.Porygon,
                 Attack = 156,
                 Defense = 158,
                 Stamina = 130,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Omanyte,
+                PokemonId = PokemonId.Omanyte,
                 Attack = 132,
                 Defense = 160,
                 Stamina = 70,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Omastar,
+                PokemonId = PokemonId.Omastar,
                 Attack = 180,
                 Defense = 202,
                 Stamina = 140,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kabuto,
+                PokemonId = PokemonId.Kabuto,
                 Attack = 148,
                 Defense = 142,
                 Stamina = 60,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Kabutops,
+                PokemonId = PokemonId.Kabutops,
                 Attack = 190,
                 Defense = 190,
                 Stamina = 120,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Aerodactyl,
+                PokemonId = PokemonId.Aerodactyl,
                 Attack = 182,
                 Defense = 162,
                 Stamina = 160,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Snorlax,
+                PokemonId = PokemonId.Snorlax,
                 Attack = 180,
                 Defense = 180,
                 Stamina = 320,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Articuno,
+                PokemonId = PokemonId.Articuno,
                 Attack = 198,
                 Defense = 242,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Zapdos,
+                PokemonId = PokemonId.Zapdos,
                 Attack = 232,
                 Defense = 194,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Moltres,
+                PokemonId = PokemonId.Moltres,
                 Attack = 242,
                 Defense = 194,
                 Stamina = 180,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dratini,
+                PokemonId = PokemonId.Dratini,
                 Attack = 128,
                 Defense = 110,
                 Stamina = 82,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dragonair,
+                PokemonId = PokemonId.Dragonair,
                 Attack = 170,
                 Defense = 152,
                 Stamina = 122,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Dragonite,
+                PokemonId = PokemonId.Dragonite,
                 Attack = 250,
                 Defense = 212,
                 Stamina = 182,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Mewtwo,
+                PokemonId = PokemonId.Mewtwo,
                 Attack = 284,
                 Defense = 202,
                 Stamina = 212,
             },
             new PokemonSM()
             {
-                Id = PokemonId.Mew,
+                PokemonId = PokemonId.Mew,
                 Attack = 220,
                 Defense = 220,
                 Stamina = 200,
@@ -1091,28 +1091,25 @@ namespace EWiki.XF.Service
         {
             try
             {
-                var response = await client.GetStringAsync("http://esquare.io/api/pokedex");
+                var response = await client.GetStringAsync($"{AppSettings.WEB_API_URL}pokedex?skip={rq.Skip}");
                 var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
                 return pokemons;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                var response =
-                    "[{\"name\":\"Bulbasaur\",\"slug\":\"bulbasaur\",\"number\":\"#001\",\"species\":\"Pokémon Hạt Giống\",\"weight\":6.9,\"height\":0.7,\"stamina\":90,\"attack\":126,\"defense\":126,\"candy\":25,\"cpGain\":13.8,\"maxCP\":1071.0,\"description\":\"Trên lưng của Bulbasaur có một hạt giống có thể nở nhờ ánh sáng nên nó thường ngủ trưa dưới ánh mặt trời. \",\"evolveIntos\":\"#002\",\"evolveFrom\":null,\"locations\":null,\"normalMoves\":null,\"specialMoves\":null,\"evolveInto\":[{\"name\":\"Ivysaur\",\"slug\":\"ivysaur\",\"number\":\"#002\",\"species\":\"Pokémon Hạt Giống\",\"weight\":13.0,\"height\":1.0,\"stamina\":120,\"attack\":156,\"defense\":158,\"candy\":100,\"cpGain\":21.6,\"maxCP\":1632.0,\"description\":\"Sau khi tiến hoá từ Bulbasaur, hạt giống trên lưng trở thành nụ hoa. Vì vậy nó dành nhiều hơn thời gian dưới ánh mặt trời để tiến hoá.\",\"evolveIntos\":\"#003\"}]}]";
-                var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
-                return pokemons;
+                return new List<PokemonSM>();
             }
         }
 
         public CalculateResult IVCalculate(PokemonId pokemonId, int cp, int hp, int stardust, bool powered)
         {
-            var pokemon = LocalPokemons.FirstOrDefault(p => p.Id == pokemonId);
+            var pokemon = LocalPokemons.FirstOrDefault(p => p.PokemonId == pokemonId);
             return Calculator.Calculate(pokemon, cp, hp, stardust, powered);
         }
 
         public async Task<int> GetPokemonsCount()
         {
-            return 100;
+            return 151;
         }
     }
 }

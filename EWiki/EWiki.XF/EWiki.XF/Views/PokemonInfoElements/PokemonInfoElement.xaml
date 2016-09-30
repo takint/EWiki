@@ -7,35 +7,37 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.PokemonInfoElements.PokemonInfoElement"
              BackgroundImage="pokemon_info_background">
-  <!--<AbsoluteLayout Padding="10,0,10,0">
-    <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" Margin="0,200,0,0">
-      <Label Text="Troy" />
-    </StackLayout>
-    <ffimageloading:CachedImage Source="p002.png" 
-                                AbsoluteLayout.LayoutFlags="PositionProportional"
-    AbsoluteLayout.LayoutBounds="0.5,150,150,150" Margin="0,0,0,0"/>
-  </AbsoluteLayout>-->
-  <ScrollView Padding="10,170,10,0">
-    <RelativeLayout BackgroundColor="White">
-      <RelativeLayout WidthRequest="290" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=-160}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-145}">
-        <Label Text="MaxCP" FontSize="12" FontAttributes="Bold" TextColor="#FAFAFA" HorizontalTextAlignment="Start"
-               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=10}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-290}" />
-        <Label Text="1520" FontSize="22" TextColor="#FAFAFA" FontAttributes="Bold" HorizontalTextAlignment="Start"
-               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=0}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-250}" />
-        <Label Text="Evolve" FontSize="12" FontAttributes="Bold" TextColor="#FAFAFA" HorizontalTextAlignment="Start"
-               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=10}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}" />
-        <Label Text="100" FontSize="16" TextColor="#FAFAFA" FontAttributes="Bold" Margin="0,2,0,0" HorizontalTextAlignment="End"
-               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=3}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-30}" />
-        <ffimageloading:CachedImage Source="Candy.png" WidthRequest="25"
-               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=5}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"/>
-      </RelativeLayout>
-      <ffimageloading:CachedImage Source="arch.png" HeightRequest="150" WidthRequest="290" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -145}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=-130}" />
-      <ffimageloading:CachedImage Source="No_Bulbasaur.png" HeightRequest="120" WidthRequest="120" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -60}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=-100}" />      
-      <Label Text="Ivysaur" FontSize="24" TextColor="#45686E"
-          HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=10}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-      <Label Text="Pokemon Hat Giong" FontSize="14" TextColor="#45686E"
-          HorizontalTextAlignment="Center" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=40}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-      <Grid RowSpacing="0" ColumnSpacing="0" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=70}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+  <AbsoluteLayout>
+    <ContentView BackgroundColor="White" Margin="10,140,10,0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                        AbsoluteLayout.LayoutFlags="All"></ContentView>
+  <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Spacing="0">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Horizontal" Grid.Column="0">
+            <Label Text="1290" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center" TextColor="#FF5252" />
+            <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center" TextColor="#FF5252" />
+          </StackLayout>
+        
+        <StackLayout Orientation="Horizontal" Grid.Column="1">
+          <Label Text="Evolve" FontSize="12" FontAttributes="Bold" TextColor="#45686E" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+          <ffimageloading:CachedImage Source="Candy.png" WidthRequest="25" />
+          <Label Text="100" FontSize="16" TextColor="#45686E" FontAttributes="Bold" Margin="0,2,0,0" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+        </StackLayout>
+      </Grid>
+      <AbsoluteLayout HeightRequest="125">
+        <ffimageloading:CachedImage Source="arch.png" HeightRequest="125" WidthRequest="290" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        <ffimageloading:CachedImage Source="No_Bulbasaur.png" HeightRequest="120" WidthRequest="120" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0,20,0,0"/>
+      </AbsoluteLayout>      
+      <Label Text="Ivysaur" FontSize="24" TextColor="#45686E" HorizontalTextAlignment="Center" />
+      <Label Text="Pokemon Hat Giong" FontSize="14" TextColor="#45686E" HorizontalTextAlignment="Center" />
+      <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -60,7 +62,7 @@
         <Label Text="Height" FontSize="12" TextColor="#45686E" Grid.Row="1"
                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
       </Grid>
-      <Grid RowSpacing="0" ColumnSpacing="0" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=130}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+      <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -87,6 +89,6 @@
       <Label Text="51" FontSize="14" TextColor="#45686E" Grid.Row="2"
                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
       </Grid>
-    </RelativeLayout>
-  </ScrollView>
+  </StackLayout>
+  </AbsoluteLayout>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿namespace EWiki.Api
+﻿using EWiki.Api.Dto.Enum;
+
+namespace EWiki.Api
 {
     public class MoveDto : BaseDto
     {
@@ -12,7 +14,7 @@
         public float Bars { get; set; }
         public float BarLength{ get; set; }
 
-        public CategoryDto Type { get; set; }
-        public CategoryDto MoveCategory { get; set; }
+        public string Type { get; set; }
+        public string MoveCategory { get; set; }
     }
 }

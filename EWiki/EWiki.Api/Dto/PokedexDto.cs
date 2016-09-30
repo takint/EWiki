@@ -1,11 +1,13 @@
 ﻿using EWiki.Api.Models;
 using System;
 using System.Collections.Generic;
+using EWiki.Api.Dto.Enum;
 
 namespace EWiki.Api
 {
     public class PokedexDto : BaseDto
     {
+        public PokemonId PokemonId { get; set; }
         public string Name { get; set; }
         public string Slug { get; set; }
         public string Number { get; set; }
@@ -27,6 +29,6 @@ namespace EWiki.Api
         public ICollection<LocationDto> Locations { get; set; }
         public ICollection<MoveDto> NormalMoves { get; set; }
         public ICollection<MoveDto> SpecialMoves { get; set; }
-        public ICollection<CategoryDto> Types { get; set; }
+        public string[] Types { get; set; }
     }
 }

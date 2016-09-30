@@ -149,13 +149,19 @@ namespace EWiki.XF.ViewModels
         public IVCalculatorTabViewModel(IPokemonService pokemonService)
         {
             _pokemonService = pokemonService;
-            Avatar = "No_Bulbasaur";
-            PokemonId = PokemonId.Bulbasaur;
-            Name = PokemonId.ToString();
+
+            var defaultPokemon = new PokemonSM()
+            {
+                PokemonId = PokemonId.Bulbasaur
+            };
+
+            Avatar = defaultPokemon.Avatar;
+            PokemonId = defaultPokemon.PokemonId;
+            Name = defaultPokemon.Name;
 
             MessagingCenter.Subscribe<PokemonSelectorPopupViewModel, PokemonSM>(this, "SelectedPokemonMessage", (sender, selectedPokemon) =>
             {
-                PokemonId = selectedPokemon.Id;
+                PokemonId = selectedPokemon.PokemonId;
                 Avatar = selectedPokemon.Avatar;
                 Name = selectedPokemon.Name;
             });
