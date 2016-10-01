@@ -46,21 +46,42 @@
                 <Label Text="{Binding Email}" FontSize="16" TextColor="White" />
               </StackLayout>
 
-              <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">             
-                <Button Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
-                <Button Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
+              <Grid Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition/>
+                  <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
+                <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
+              </Grid>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" IsVisible="{Binding IsLoggedIn}">
+              <Label Text="Pokemon Go Accounts" FontSize="12" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
+                  <extendedControls:ExtendedScrollView.ItemTemplate>
+                    <DataTemplate>
+                      <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
+                        <ffimageloading:CachedImage.Transformations>
+                          <transformations:CircleTransformation />
+                        </ffimageloading:CachedImage.Transformations>
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding BindingContext.SelectPokemonAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                      </ffimageloading:CachedImage>
+                    </DataTemplate>
+                  </extendedControls:ExtendedScrollView.ItemTemplate>
+                </extendedControls:ExtendedScrollView>
+
+                <iconize:IconImage Icon="md-add" IconColor="White" WidthRequest="30" HeightRequest="30">
+                  <iconize:IconImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddPokemonAccountCommand}"/>
+                  </iconize:IconImage.GestureRecognizers>
+                </iconize:IconImage>
               </StackLayout>
             </StackLayout>
-            
-            <Grid Grid.Row="1" Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-              </Grid.ColumnDefinitions>
-
-              <Button Grid.Column="0" Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
-              <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
-            </Grid>
           </Grid>
         </StackLayout>
 

@@ -10,5 +10,5 @@
   <views:LocationFeederTab Title="Location Sharing" Icon="lnr-map-marker"/>
   <views:PokedexTab Title="Pokedex" Icon="pokedex"/>
   <views:IVCalculatorTab Title="IV Calculator" Icon="iv_percentage"/>
-  <views:ProfilePage Title="News and Gags" Icon="lnr-magic-wand"/>
+  <views:NewsTab Title="News and Gags" Icon="lnr-magic-wand"/>
 </rerenders:BottomTabbedPage>
