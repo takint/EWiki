@@ -13,20 +13,26 @@
                   x:Name="Page">
   <MasterDetailPage.Master>
     <ContentPage Title="Default">
-      <StackLayout>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="200">
-          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Teal">
+      <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="1.5*" />
+          <RowDefinition Height="3*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ffimageloading:CachedImage Source="background" Grid.Row="0" Grid.RowSpan="3" Aspect="Fill" HorizontalOptions="FillAndExpand"></ffimageloading:CachedImage>
+        <StackLayout Orientation="Horizontal" Grid.Row="0" Padding="0,20,0,0">
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions>
-              <RowDefinition Height="2*" />
-              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!--<ffimageloading:CachedImage Source="left_profile_background" Aspect="AspectFill" Grid.Row="0" Grid.RowSpan="2"></ffimageloading:CachedImage>-->
 
-            <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-              <ffimageloading:CachedImage Source="no_avatar"
-                                          WidthRequest="75"
-                                          HeightRequest="75"
+            <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
+              <ffimageloading:CachedImage Source="circle_logo"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
                                           HorizontalOptions="CenterAndExpand"
                                           VerticalOptions="EndAndExpand">
                 <ffimageloading:CachedImage.Transformations>
@@ -39,93 +45,76 @@
                 <Label Text="|" FontSize="16" FontAttributes="Bold" TextColor="White"/>
                 <Label Text="{Binding Email}" FontSize="16" TextColor="White" />
               </StackLayout>
-            </StackLayout>
 
-            <StackLayout Grid.Row="1" Margin="10,0,0,0" IsVisible="{Binding IsLoggedIn}">
-              <Label Text="Pokemon Go Accounts" FontSize="16" FontAttributes="Bold" TextColor="White" />
-              <StackLayout Orientation="Horizontal">
-                <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
-                  <extendedControls:ExtendedScrollView.ItemTemplate>
-                    <DataTemplate>
-                      <ffimageloading:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
-                        <ffimageloading:CachedImage.Transformations>
-                          <transformations:CircleTransformation />
-                        </ffimageloading:CachedImage.Transformations>
-                        <ffimageloading:CachedImage.GestureRecognizers>
-                          <TapGestureRecognizer Command="{Binding BindingContext.SelectPokemonAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
-                        </ffimageloading:CachedImage.GestureRecognizers>
-                      </ffimageloading:CachedImage>
-                    </DataTemplate>
-                  </extendedControls:ExtendedScrollView.ItemTemplate>
-                </extendedControls:ExtendedScrollView>
-
-                <iconize:IconImage Icon="md-add" IconColor="White" WidthRequest="30" HeightRequest="30">
-                  <iconize:IconImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddPokemonAccountCommand}"/>
-                  </iconize:IconImage.GestureRecognizers>
-                </iconize:IconImage>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">             
+                <Button Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
+                <Button Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
               </StackLayout>
             </StackLayout>
-
+            
             <Grid Grid.Row="1" Margin="10" IsVisible="{Binding IsLoggedIn, Converter={x:Static converters:RevertBooleanConverter.Instance}}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
               </Grid.ColumnDefinitions>
 
-              <Button Grid.Column="0" Text="Register" BackgroundColor="White" TextColor="Teal" Command="{Binding RegisterCommand}"/>
-              <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="Teal" Command="{Binding LoginCommand}"/>
+              <Button Grid.Column="0" Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
+              <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
             </Grid>
           </Grid>
         </StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand">
-          <ListView ItemsSource="{Binding TabItems}" SeparatorVisibility="None" VerticalOptions="End">
+        <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="0,20,20,0">
+          <ListView ItemsSource="{Binding LeftMenuItems}" SeparatorVisibility="Default" SeparatorColor="#26FFFFFF" VerticalOptions="Center">
             <ListView.Behaviors>
-              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding TabItemTapCommand}"/>
+              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding LeftMenuTabItemTapCommand}"/>
             </ListView.Behaviors>
             <ListView.ItemTemplate>
               <DataTemplate>
                 <ViewCell>
-                  <StackLayout Orientation="Vertical" Padding="5,0,0,0">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent"
-                                 VerticalOptions="FillAndExpand">
-                      <iconize:IconLabel Text="{Binding Icon}" TextColor="#212121" FontSize="16"
-                                         VerticalOptions="Center" Margin="5,0,5,0" />
-                      <Label Text="{Binding Text}" TextColor="#212121" FontSize="16"
-                             VerticalOptions="Center" />
-                    </StackLayout>
-                  </StackLayout>
-                </ViewCell>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-          </ListView>          
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal" VerticalOptions="End" HeightRequest="100" IsVisible="{Binding IsLoggedIn}">
-          <ListView x:Name="AccountMenuListView" ItemsSource="{Binding AccountItems}"
-                    SeparatorVisibility="None" VerticalOptions="End">
-            <ListView.Behaviors>
-              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding AccountItemTapCommand}"/>
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <StackLayout Orientation="Vertical" Padding="5,0,0,0">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent"
-                                 VerticalOptions="FillAndExpand">
-                      <iconize:IconLabel Text="{Binding Icon}" TextColor="#212121" FontSize="16"
-                                         VerticalOptions="Center" Margin="5,0,5,0" />
-                      <Label Text="{Binding Text}" TextColor="#212121" FontSize="16"
-                             VerticalOptions="Center" />
-                    </StackLayout>
-                  </StackLayout>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="50"/>
+                      <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <iconize:IconLabel Grid.Column="0" Text="{Binding Icon}" TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center" Margin="5,0,5,0" IsVisible="{Binding IsImageIcon, Converter={x:Static converters:RevertBooleanConverter.Instance}}"/>
+                    <ffimageloading:CachedImage Grid.Column="0" Source="{Binding Icon}" HeightRequest="16" VerticalOptions="Center" Margin="5,0,5,0" IsVisible="{Binding IsImageIcon}" HorizontalOptions="CenterAndExpand"/>
+                    <Label Grid.Column="1" Text="{Binding Text}" TextColor="White" FontSize="16"
+                           VerticalOptions="Center" />
+                  </Grid>
                 </ViewCell>
               </DataTemplate>
             </ListView.ItemTemplate>
           </ListView>
         </StackLayout>
-      </StackLayout>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" IsVisible="{Binding IsLoggedIn}" Grid.Row="2">
+          <ListView x:Name="AccountMenuListView" ItemsSource="{Binding AccountItems}"
+                    SeparatorVisibility="None" VerticalOptions="End">
+            <ListView.Behaviors>
+              <behaviors:ListViewBehavior AllowSelectItem ="False" ItemTapCommand="{Binding LeftMenuTabItemTapCommand}"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="50"/>
+                      <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <iconize:IconLabel Grid.Column="0" Text="{Binding Icon}" TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center" Margin="5,0,5,0" IsVisible="{Binding IsImageIcon, Converter={x:Static converters:RevertBooleanConverter.Instance}}"/>
+                    <ffimageloading:CachedImage Grid.Column="0" Source="{Binding Icon}" HeightRequest="16" VerticalOptions="Center" Margin="5,0,5,0" IsVisible="{Binding IsImageIcon}" HorizontalOptions="CenterAndExpand"/>
+                    <Label Grid.Column="1" Text="{Binding Text}" TextColor="White" FontSize="16"
+                           VerticalOptions="Center" />
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </Grid>
     </ContentPage>
   </MasterDetailPage.Master>
 </MasterDetailPage>

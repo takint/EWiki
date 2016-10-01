@@ -59,12 +59,12 @@ namespace EWiki.XF.ViewModels
 
         public List<LeftMenuItem> AccountItems { get; set; }
 
-        public List<LeftMenuItem> TabItems { get; set; } = new List<LeftMenuItem>
+        public List<LeftMenuItem> LeftMenuItems { get; set; } = new List<LeftMenuItem>
         {
             new LeftMenuItem { Icon = "lnr-map-marker", Text = "Location Feeder", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(LocationFeederTab)}" },
-            new LeftMenuItem { Icon = "pokedex", Text = "Pokedex", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(PokedexTab)}"  },
-            new LeftMenuItem { Icon = "iv_percentage", Text = "IV Calculator", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(IVCalculatorTab)}"  },
-            new LeftMenuItem { Icon = "lnr-magic-wand", Text = "Profile", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(ProfilePage)}"  }
+            new LeftMenuItem { Icon = "pokedex", IsImageIcon = true, Text = "Pokedex", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(PokedexTab)}"  },
+            new LeftMenuItem { Icon = "iv_percentage", IsImageIcon = true, Text = "IV Calculator", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(IVCalculatorTab)}"  },
+            new LeftMenuItem { Icon = "lnr-magic-wand", Text = "News & Gags", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(NewsTab)}"  }
         };
 
         private ObservableRangeCollection<PokemonAccount> _pokemonAccounts;
@@ -78,7 +78,7 @@ namespace EWiki.XF.ViewModels
         public DelegateCommand<PokemonAccount> SelectPokemonAccountCommand { get; set; }
         public DelegateCommand AddPokemonAccountCommand { get; set; }     
         public DelegateCommand<LeftMenuItem> AccountItemTapCommand { get; set; }
-        public DelegateCommand<LeftMenuItem> TabItemTapCommand { get; set; }
+        public DelegateCommand<LeftMenuItem> LeftMenuTabItemTapCommand { get; set; }
         public DelegateCommand RegisterCommand { get; set; }
         public DelegateCommand LoginCommand { get; set; }
 
@@ -99,7 +99,7 @@ namespace EWiki.XF.ViewModels
             SelectPokemonAccountCommand = new DelegateCommand<PokemonAccount>(ExecuteSelectPokemonAccountCommand);
             AddPokemonAccountCommand = DelegateCommand.FromAsyncHandler(ExecuteAddPokemonAccountCommand);
             AccountItemTapCommand = new DelegateCommand<LeftMenuItem>(async item => await item.Action());
-            TabItemTapCommand = new DelegateCommand<LeftMenuItem>(ExecuteTabItemTapCommand);
+            LeftMenuTabItemTapCommand = new DelegateCommand<LeftMenuItem>(ExecuteLeftMenuTabItemTapCommand);
             RegisterCommand = DelegateCommand.FromAsyncHandler(ExecuteRegisterCommand);
             LoginCommand = DelegateCommand.FromAsyncHandler(ExecuteLoginCommand);
 
@@ -188,7 +188,7 @@ namespace EWiki.XF.ViewModels
             _navigationService.NavigateAsync(name);
         }
 
-        private void ExecuteTabItemTapCommand(LeftMenuItem menuItem)
+        private void ExecuteLeftMenuTabItemTapCommand(LeftMenuItem menuItem)
         {
             if (menuItem == null) return;
             switch (menuItem.CommandType)
@@ -198,6 +198,9 @@ namespace EWiki.XF.ViewModels
                     {
                         _navigationService.NavigateAsync(menuItem.Command);
                     }
+                    break;
+                    case CommandType.Action:
+                    menuItem.Action();
                     break;
             }
         }
@@ -240,23 +243,20 @@ namespace EWiki.XF.ViewModels
                 new LeftMenuItem()
                 {
                     Icon = "lnr-user",
-                    Text = "Account",
+                    Text = "Profile",
                     IsActived = true,
-                    Action = DoMenuItemAccountAction
+                    CommandType = CommandType.Navigation,
+                    Command = $"{nameof(Navigation)}/{nameof(ProfilePage)}"
                 },
                 new LeftMenuItem()
                 {
                     Icon = "lnr-power-switch",
                     Text = "Logout",
                     IsActived = true,
+                    CommandType = CommandType.Action,
                     Action = DoMenuItemLogoutAction
                 }
             };
-        }
-
-        private async Task DoMenuItemAccountAction()
-        {
-            return;
         }
 
         private async Task DoMenuItemLogoutAction()

@@ -11,6 +11,7 @@ namespace EWiki.XF.Models
         }
         public string Text { get; set; }
         public string Icon { get; set; }
+        public bool IsImageIcon { get; set; }
         public string Command { get; set; }
         public CommandType CommandType { get; set; }
         public bool IsActived { get; set; }
@@ -19,6 +20,6 @@ namespace EWiki.XF.Models
 
     public enum CommandType
     {
-        Navigation, Popup
+        Navigation, Popup, Action
     }
 }
