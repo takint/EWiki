@@ -1,0 +1,6 @@
+﻿/**
+ * Category - service
+ */
+function CategoryService() {
+
+}
