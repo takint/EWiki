@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Acr.Settings;
 using Acr.UserDialogs;
 using EWiki.XF.Models;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using EWiki.XF.Service.Models;
 using EWiki.XF.Utilities;
@@ -243,7 +244,7 @@ namespace EWiki.XF.ViewModels
                 new LeftMenuItem()
                 {
                     Icon = "lnr-user",
-                    Text = "Profile",
+                    Text = Resource.Profile,
                     IsActived = true,
                     CommandType = CommandType.Navigation,
                     Command = $"{nameof(Navigation)}/{nameof(ProfilePage)}"
@@ -251,7 +252,7 @@ namespace EWiki.XF.ViewModels
                 new LeftMenuItem()
                 {
                     Icon = "lnr-power-switch",
-                    Text = "Logout",
+                    Text = Resource.Logout,
                     IsActived = true,
                     CommandType = CommandType.Action,
                     Action = DoMenuItemLogoutAction

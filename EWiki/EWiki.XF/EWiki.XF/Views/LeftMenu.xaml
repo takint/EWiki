@@ -8,6 +8,7 @@
                   xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
                   xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
                   xmlns:behaviors="clr-namespace:EWiki.XF.Behaviors;assembly=EWiki.XF"
+                  xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="EWiki.XF.Views.LeftMenu"
                   x:Name="Page">
@@ -52,13 +53,13 @@
                   <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Text="Register" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
-                <Button Grid.Column="1" Text="Login" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
+                <Button Grid.Column="0" Text="{utilities:StringResource Register}" BackgroundColor="#FF5252" TextColor="White" Command="{Binding RegisterCommand}"/>
+                <Button Grid.Column="1" Text="{utilities:StringResource Login}" BackgroundColor="White" TextColor="#FF5252" Command="{Binding LoginCommand}"/>
               </Grid>
             </StackLayout>
 
             <StackLayout Grid.Row="1" IsVisible="{Binding IsLoggedIn}">
-              <Label Text="Pokemon Go Accounts" FontSize="12" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+              <Label Text="{utilities:StringResource PokemonGoAccounts}" FontSize="12" TextColor="White" HorizontalOptions="CenterAndExpand"/>
               <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
                   <extendedControls:ExtendedScrollView.ItemTemplate>

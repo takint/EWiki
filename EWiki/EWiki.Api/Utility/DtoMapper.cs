@@ -79,7 +79,7 @@ namespace EWiki.Api.Utility
             };
         }
 
-        public static PokedexDto MapPokedexDto(Character pokemonEfo)
+        public static PokedexDto MapPokedexDto(Character pokemonEfo, IEnumerable<Character> pokemons = null)
         {
             pokemonEfo = pokemonEfo ?? new Character();
 
@@ -123,6 +123,12 @@ namespace EWiki.Api.Utility
                 UpdatedUser = pokemonEfo.UpdatedUser,
                 UpdatedDate = pokemonEfo.UpdatedDate ?? new DateTime()
             };
+
+            var evolveFrom = pokemons?.FirstOrDefault(p => p.Id == dto.EvolveFromId);
+            if (evolveFrom != null)
+            {
+                dto.EvolveFrom = evolveFrom.Number;
+            }
 
             return dto;
         }

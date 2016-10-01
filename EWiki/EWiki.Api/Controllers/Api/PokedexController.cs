@@ -28,7 +28,7 @@ namespace EWiki.Api.Controllers
                 .Skip(skip)
                 .Take(take);
 
-            List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p)).ToList();
+            List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p, result)).ToList();
 
             return Json(responeData);
         }

@@ -23,6 +23,7 @@ namespace EWiki.Api
         public string Description { get; set; }
         public string EvolveIntos { get; set; }
         public int EvolveFromId { get; set; }
+        public string EvolveFrom { get; set; }
 
         public WikiImage Avatar { get; set; }
 

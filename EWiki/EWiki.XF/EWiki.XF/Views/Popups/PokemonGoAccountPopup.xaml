@@ -9,6 +9,7 @@
                  xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
                  xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                  xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                 xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
                  x:Class="EWiki.XF.Views.Popups.PokemonGoAccountPopup">
   <Grid BackgroundColor="#009688" Margin="5" Padding="10" VerticalOptions="Center">
     <Grid.RowDefinitions>
@@ -29,7 +30,7 @@
           <transformations:CircleTransformation />
         </forms:CachedImage.Transformations>
       </forms:CachedImage>
-      <Label Text="Pokemon Go Account" TextColor="White" FontSize="22" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10"/>
+      <Label Text="{utilities:StringResource PokemonGoAccounts}" TextColor="White" FontSize="22" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="1" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
@@ -55,9 +56,9 @@
           <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Text="Cancel" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
-        <Button Grid.Column="1" Text="Delete" BackgroundColor="White" TextColor="Teal" Command="{Binding DeleteCommand}"/>
-        <Button Grid.Column="2" Text="Update" BackgroundColor="White" TextColor="Teal" Command="{Binding UpdateCommand}"/>
+        <Button Grid.Column="0" Text="{utilities:StringResource Cancel}" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1" Text="{utilities:StringResource Delete}" BackgroundColor="White" TextColor="Teal" Command="{Binding DeleteCommand}"/>
+        <Button Grid.Column="2" Text="{utilities:StringResource Update}" BackgroundColor="White" TextColor="Teal" Command="{Binding UpdateCommand}"/>
       </Grid>
 
       <Grid IsVisible="{Binding IsEdit, Converter={x:Static converters:RevertBooleanConverter.Instance}}" HorizontalOptions="FillAndExpand">
@@ -66,8 +67,8 @@
           <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Text="Cancel" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
-        <Button Grid.Column="1" Text="Add" BackgroundColor="White" TextColor="Teal" Command="{Binding AddCommand}"/>
+        <Button Grid.Column="0" Text="{utilities:StringResource Cancel}" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1" Text="{utilities:StringResource Add}" BackgroundColor="White" TextColor="Teal" Command="{Binding AddCommand}"/>
       </Grid>
     </StackLayout>
   </Grid>
