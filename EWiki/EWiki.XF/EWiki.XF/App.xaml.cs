@@ -32,9 +32,12 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<LeftMenu>();
             Container.RegisterTypeForNavigation<Navigation>();
             Container.RegisterTypeForNavigation<MainPage>();
+            Container.RegisterTypeForNavigation<LocationFeederTab>();
             Container.RegisterTypeForNavigation<PokedexTab>();
+            Container.RegisterTypeForNavigation<IVCalculatorTab>();
             Container.RegisterTypeForNavigation<NewsTab>();
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
+            Container.RegisterTypeForNavigation<ProfilePage>();
             Container.RegisterTypeForNavigation<NewsCategoryPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterTypeForNavigation<SnipePokemonPopup>();
