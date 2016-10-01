@@ -5,6 +5,7 @@ using EWiki.XF.Models;
 using EWiki.XF.Services;
 using EWiki.XF.ViewModels;
 using Newtonsoft.Json;
+using Plugin.Geolocator;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
@@ -17,8 +18,18 @@ namespace EWiki.XF.Views.Popups
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+
+            var position = await locator.GetPositionAsync(10000);
+            var pokemonGoAccountPopupViewModel = BindingContext as PokemonGoAccountPopupViewModel;
+            if (pokemonGoAccountPopupViewModel != null)
+            {
+                pokemonGoAccountPopupViewModel.Account.Latitude = position.Latitude;
+                pokemonGoAccountPopupViewModel.Account.Longitude = position.Longitude;
+            }
             base.OnAppearing();
         }
 

@@ -14,7 +14,9 @@ using EWiki.XF.Droid.Utils.IconizeModules;
 using FormsPlugin.Iconize.Droid;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Plugin.CurrentActivity;
 using Plugin.Iconize.Fonts;
+using Plugin.Permissions;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Droid
@@ -34,7 +36,8 @@ namespace EWiki.XF.Droid
             Plugin.Iconize.Iconize.With(new MaterialModule());
             Plugin.Iconize.Iconize.With(new LinearModule());
             IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
-            
+            CrossCurrentActivity.Current.Activity = this;
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             UserDialogs.Init(this);
@@ -48,6 +51,11 @@ namespace EWiki.XF.Droid
 
             StartLocationFeeder();
             SetupBackgroundServices();
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         private void StartLocationFeeder()
