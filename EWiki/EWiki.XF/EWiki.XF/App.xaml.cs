@@ -68,6 +68,8 @@ namespace EWiki.XF
 
             var startLocationFeederBackgroundServiceMessage = new StartPokeFeederBackgroundServiceMessage();
             MessagingCenter.Send(startLocationFeederBackgroundServiceMessage, "StartPokeFeederBackgroundServiceMessage");
+
+            MessagingCenter.Send(this, "StartDownloadImages");
         }
     }
 }

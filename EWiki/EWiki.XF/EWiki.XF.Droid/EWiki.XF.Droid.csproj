@@ -339,6 +339,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundServices\DownloadImagesBackgroundService.cs" />
     <Compile Include="BackgroundServices\PokeFeederBackgroundService.cs" />
     <Compile Include="LocationFeeder\Common\ChannelInfo.cs" />
     <Compile Include="LocationFeeder\Common\ChannelParser.cs" />
