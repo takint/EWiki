@@ -483,6 +483,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\round_button.png" />
     <AndroidResource Include="Resources\drawable-hdpi\powered_background.png" />
     <AndroidResource Include="Resources\drawable-hdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable\logo_full_white.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">

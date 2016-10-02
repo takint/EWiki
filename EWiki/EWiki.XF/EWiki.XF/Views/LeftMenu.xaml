@@ -76,7 +76,7 @@
                   </extendedControls:ExtendedScrollView.ItemTemplate>
                 </extendedControls:ExtendedScrollView>
 
-                <iconize:IconImage Icon="md-add" IconColor="White" WidthRequest="30" HeightRequest="30">
+                <iconize:IconImage Icon="md-add" IconColor="#FF5252" WidthRequest="30" HeightRequest="30">
                   <iconize:IconImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AddPokemonAccountCommand}"/>
                   </iconize:IconImage.GestureRecognizers>
