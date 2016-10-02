@@ -382,6 +382,7 @@
     <Compile Include="Services\LocalizationProvider.cs" />
     <Compile Include="Services\SnipeRq.cs" />
     <Compile Include="Services\SniperService.cs" />
+    <Compile Include="SplashActivity.cs" />
     <Compile Include="Utils\IconizeModules\Collections\LinearCollection.cs" />
     <Compile Include="Utils\IconizeModules\LinearModule.cs" />
     <Compile Include="Utils\Typeface\TypefaceUtil.cs" />
@@ -471,6 +472,17 @@
     <AndroidResource Include="Resources\drawable\button_yellow.png" />
     <AndroidResource Include="Resources\drawable\button_light_green.png" />
     <AndroidResource Include="Resources\drawable\circle_logo.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <AndroidResource Include="Resources\drawable\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo_full.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">
