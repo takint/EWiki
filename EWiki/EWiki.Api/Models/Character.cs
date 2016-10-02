@@ -31,11 +31,16 @@ namespace EWiki.Api.Models
         public ICollection<Character> EvolveFromPokemons { get; set; }
         public string EvolveFroms { get; set; }
 
+        [NotMapped]
+        public ICollection<Page> InfoContents { get; set; }
+        public int InfoContentId { get; set; }
+
         [ForeignKey("EvolveFromId")]
         public Character EvolveFrom { get; set; }
 
         [ForeignKey("AvatarImageId")]
         public virtual WikiImage Avatar { get; set; }
+
         // Location get from location data based on type
         public virtual ICollection<PokemonLocation> Locations { get; set; }
         public virtual ICollection<PokemonMove> NormalMoves { get; set; }

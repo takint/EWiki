@@ -16,7 +16,7 @@ namespace EWiki.Api.DataAccess
         {
             IQueryable<Page> query = Queryable().Include(p => p.PageLangs)
                                                 .Include(p => p.PageMetas)
-                                                .Include(p => p.Revisions).ThenInclude(r => r.Content);
+                                                .Include(p => p.CurrentContent);
 
             return await query.ToListAsync();
         }

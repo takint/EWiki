@@ -16,54 +16,6 @@ namespace EWiki.Api.Migrations
                 .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EWiki.Api.Models.Archive", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ArchiveComment");
-
-                    b.Property<int?>("ArchiveLength");
-
-                    b.Property<int?>("ArchivePageId");
-
-                    b.Property<int?>("ArchiveParentId");
-
-                    b.Property<string>("BelongToUserId");
-
-                    b.Property<int?>("ContentId");
-
-                    b.Property<string>("ContentText");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<int>("NameSpace");
-
-                    b.Property<int?>("ReversionId");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BelongToUserId");
-
-                    b.HasIndex("ContentId");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.ToTable("Archives");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.BlockedIp", b =>
                 {
                     b.Property<int>("Id")
@@ -179,6 +131,8 @@ namespace EWiki.Api.Migrations
 
                     b.Property<float?>("Height");
 
+                    b.Property<int?>("InfoContentId");
+
                     b.Property<float?>("MaxCP");
 
                     b.Property<string>("Name");
@@ -204,6 +158,8 @@ namespace EWiki.Api.Migrations
                     b.HasIndex("CreatedUserId");
 
                     b.HasIndex("EvolveFromId");
+
+                    b.HasIndex("InfoContentId");
 
                     b.HasIndex("UpdatedUserId");
 
@@ -334,54 +290,6 @@ namespace EWiki.Api.Migrations
                     b.ToTable("CharacterSectionGroups");
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.FileArchive", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ArchiveName");
-
-                    b.Property<int>("BitDepth");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<string>("DeletedReason");
-
-                    b.Property<string>("FileDescription");
-
-                    b.Property<string>("FileMediaType");
-
-                    b.Property<string>("FileMime");
-
-                    b.Property<int>("FileSize");
-
-                    b.Property<string>("FileSource");
-
-                    b.Property<int>("Height");
-
-                    b.Property<string>("Name");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.Property<string>("UploadedUserId");
-
-                    b.Property<int>("Width");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.HasIndex("UploadedUserId");
-
-                    b.ToTable("FileArchives");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.InfoValue", b =>
                 {
                     b.Property<int>("Id")
@@ -495,7 +403,9 @@ namespace EWiki.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ContentLanguage");
+                    b.Property<string>("ContentLanguage");
+
+                    b.Property<int>("ContentObjectId");
 
                     b.Property<DateTime>("CreatedDate");
 
@@ -505,13 +415,7 @@ namespace EWiki.Api.Migrations
 
                     b.Property<bool>("IsNewPage");
 
-                    b.Property<bool>("IsRedirect");
-
-                    b.Property<int>("NameSpace");
-
                     b.Property<int?>("NewestContent");
-
-                    b.Property<decimal>("PageLength");
 
                     b.Property<int?>("TagId");
 
@@ -526,6 +430,8 @@ namespace EWiki.Api.Migrations
                     b.HasIndex("CreatedUserId");
 
                     b.HasIndex("FeatureImageId");
+
+                    b.HasIndex("NewestContent");
 
                     b.HasIndex("TagId");
 
@@ -716,94 +622,6 @@ namespace EWiki.Api.Migrations
                     b.ToTable("Type");
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.ProtectedTitle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<int>("NameSpace");
-
-                    b.Property<decimal>("ProtectExpiry");
-
-                    b.Property<string>("ProtectReason");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.Property<int?>("UserId");
-
-                    b.Property<string>("UserProtectedId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.HasIndex("UserProtectedId");
-
-                    b.ToTable("ProtectedTitles");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.RecentChange", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ChangeComment");
-
-                    b.Property<string>("ChangeFromIpAddress");
-
-                    b.Property<decimal?>("ChangeNewLength");
-
-                    b.Property<decimal?>("ChangeOldLength");
-
-                    b.Property<int>("ChangeType");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<bool>("IsCreateNew");
-
-                    b.Property<bool>("IsDeletedAction");
-
-                    b.Property<int>("NameSpace");
-
-                    b.Property<int?>("PageId");
-
-                    b.Property<string>("PageTitle");
-
-                    b.Property<int?>("RevisionId");
-
-                    b.Property<int?>("RevisionParentId");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserMakeChangeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.HasIndex("UserMakeChangeId");
-
-                    b.ToTable("RecentChanges");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.Reference", b =>
                 {
                     b.Property<int>("Id")
@@ -836,84 +654,6 @@ namespace EWiki.Api.Migrations
                     b.HasIndex("UpdatedUserId");
 
                     b.ToTable("References");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.Revision", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BelongToUserId");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<int>("PageContentId");
-
-                    b.Property<int>("PageId");
-
-                    b.Property<int?>("RevParentId");
-
-                    b.Property<string>("RevisionComment");
-
-                    b.Property<bool>("RevivsionIsDeleted");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BelongToUserId");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("PageContentId");
-
-                    b.HasIndex("PageId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.ToTable("Revisions");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.Site", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<string>("SiteConfig");
-
-                    b.Property<string>("SiteDomain");
-
-                    b.Property<string>("SiteGroup");
-
-                    b.Property<string>("SiteKey");
-
-                    b.Property<string>("SiteLanguage");
-
-                    b.Property<string>("SiteProtocol");
-
-                    b.Property<string>("SiteSource");
-
-                    b.Property<string>("SiteType");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.ToTable("Sites");
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.Tag", b =>
@@ -1014,38 +754,6 @@ namespace EWiki.Api.Migrations
                     b.HasIndex("UserSeenId");
 
                     b.ToTable("UserNewtalks");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.WatchList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<int>("NameSpace");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("WatchTitle");
-
-                    b.Property<string>("WatchedUserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.HasIndex("WatchedUserId");
-
-                    b.ToTable("WatchLists");
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.WikiImage", b =>
@@ -1295,25 +1003,6 @@ namespace EWiki.Api.Migrations
                     b.HasDiscriminator().HasValue("User");
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.Archive", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "BelongToUser")
-                        .WithMany()
-                        .HasForeignKey("BelongToUserId");
-
-                    b.HasOne("EWiki.Api.Models.PageContent", "Content")
-                        .WithMany()
-                        .HasForeignKey("ContentId");
-
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.BlockedIp", b =>
                 {
                     b.HasOne("EWiki.Api.Models.User", "BlockByUser")
@@ -1365,6 +1054,10 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.Character", "EvolveFrom")
                         .WithMany()
                         .HasForeignKey("EvolveFromId");
+
+                    b.HasOne("EWiki.Api.Models.Page")
+                        .WithMany("InfoContents")
+                        .HasForeignKey("InfoContentId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
@@ -1429,21 +1122,6 @@ namespace EWiki.Api.Migrations
                         .HasForeignKey("UpdatedUserId");
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.FileArchive", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UploadedUser")
-                        .WithMany()
-                        .HasForeignKey("UploadedUserId");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.InfoValue", b =>
                 {
                     b.HasOne("EWiki.Api.Models.CharacterInfo")
@@ -1502,6 +1180,10 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.WikiImage", "FeaturesImage")
                         .WithMany()
                         .HasForeignKey("FeatureImageId");
+
+                    b.HasOne("EWiki.Api.Models.PageContent", "CurrentContent")
+                        .WithMany()
+                        .HasForeignKey("NewestContent");
 
                     b.HasOne("EWiki.Api.Models.Tag")
                         .WithMany("Pages")
@@ -1622,73 +1304,7 @@ namespace EWiki.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.ProtectedTitle", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UserProtected")
-                        .WithMany()
-                        .HasForeignKey("UserProtectedId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.RecentChange", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UserMakeChange")
-                        .WithMany()
-                        .HasForeignKey("UserMakeChangeId");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.Reference", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.Revision", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "BelongToUser")
-                        .WithMany()
-                        .HasForeignKey("BelongToUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.PageContent", "Content")
-                        .WithMany()
-                        .HasForeignKey("PageContentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EWiki.Api.Models.Page")
-                        .WithMany("Revisions")
-                        .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.Site", b =>
                 {
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
@@ -1738,21 +1354,6 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.User", "UserSeen")
                         .WithMany()
                         .HasForeignKey("UserSeenId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.WatchList", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "WatchedUser")
-                        .WithMany()
-                        .HasForeignKey("WatchedUserId");
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.WikiImage", b =>

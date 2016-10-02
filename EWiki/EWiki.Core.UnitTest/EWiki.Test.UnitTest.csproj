@@ -107,18 +107,6 @@
     <Compile Include="Character.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CharacterInfo.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterInfoGroup.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterSection.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterSectionGroup.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataAccessTest.cs" />
     <Compile Include="EWikiDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -134,9 +122,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EWikiDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="InfoValue.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Location.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
@@ -156,23 +141,8 @@
     <Compile Include="PageMeta.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="PageRestriction.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtectedTitle.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RecentChanx.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Reference.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Revision.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Site.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Tag.cs">
@@ -182,9 +152,6 @@
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="UserNewtalk.cs">
-      <DependentUpon>EWikiDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WatchList.cs">
       <DependentUpon>EWikiDB.tt</DependentUpon>
     </Compile>
     <Compile Include="WikiImage.cs">

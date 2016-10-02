@@ -26,28 +26,17 @@ namespace EWiki.UnitTest
         }
     
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<CharacterInfoGroup> CharacterInfoGroups { get; set; }
-        public virtual DbSet<CharacterInfo> CharacterInfos { get; set; }
         public virtual DbSet<Character> Characters { get; set; }
-        public virtual DbSet<CharacterSectionGroup> CharacterSectionGroups { get; set; }
-        public virtual DbSet<CharacterSection> CharacterSections { get; set; }
-        public virtual DbSet<InfoValue> InfoValues { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Move> Moves { get; set; }
         public virtual DbSet<PageContent> PageContents { get; set; }
         public virtual DbSet<PageLang> PageLangs { get; set; }
         public virtual DbSet<PageMeta> PageMetas { get; set; }
-        public virtual DbSet<PageRestriction> PageRestrictions { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
-        public virtual DbSet<ProtectedTitle> ProtectedTitles { get; set; }
-        public virtual DbSet<RecentChanx> RecentChanges { get; set; }
         public virtual DbSet<Reference> References { get; set; }
-        public virtual DbSet<Revision> Revisions { get; set; }
-        public virtual DbSet<Site> Sites { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<UserMeta> UserMetas { get; set; }
         public virtual DbSet<UserNewtalk> UserNewtalks { get; set; }
-        public virtual DbSet<WatchList> WatchLists { get; set; }
         public virtual DbSet<WikiImage> WikiImages { get; set; }
         public virtual DbSet<WikiVideo> WikiVideos { get; set; }
     }

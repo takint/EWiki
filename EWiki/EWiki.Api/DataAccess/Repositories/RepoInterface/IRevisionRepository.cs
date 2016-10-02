@@ -1,7 +1,0 @@
-﻿using EWiki.Api.Models;
-
-namespace EWiki.Api.DataAccess
-{
-    public interface IRevisionRepository : IRepository<Revision>
-    { }
-}
