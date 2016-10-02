@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using EWiki.Api.Models;
 using System.Linq;
 using Aspose.Cells;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 
 namespace EWiki.UnitTest
 {
@@ -19,12 +21,35 @@ namespace EWiki.UnitTest
             //ImportMoves();
             //ImportLocation();
             //ImportPokedex();
+            //UpdateWikiImage();
         }
 
         [TestInitialize]
         public void Initial()
         {
             _dbContext = new EWikiEntities();
+        }
+
+        private void UpdateWikiImage()
+        {
+            Account myAcc = new Account("", "", "");
+            Cloudinary api = new Cloudinary(myAcc);
+            ListResourcesParams param = new ListResourcesParams();
+            param.MaxResults = 500;
+            ListResourcesResult data = api.ListResources(param);
+            List<Resource> res = data.Resources.Where(r => r.PublicId.Contains("Pokemons/Avatars")).ToList();
+
+            foreach (Resource r in res)
+            {
+                WikiImage img = _dbContext.WikiImages.Where(i => r.PublicId.Contains(i.ImageName)).DefaultIfEmpty(null).SingleOrDefault();
+
+                if (img != null)
+                {
+                    img.ImageUrl = r.Uri.AbsoluteUri;
+                }
+            }
+
+            _dbContext.SaveChanges();
         }
 
         private void ImportPokedex()
