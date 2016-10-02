@@ -102,21 +102,21 @@
                   <Label Text="Stamina" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                        ProgressColor="#FF5252" Progress="0.5" Grid.Row="0"
+                                                        ProgressColor="#FF5252" Progress="{Binding StaminaBarLength}" Grid.Row="0"
                                                         Grid.Column="1" />
                   <Label Text="{Binding Stamina}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
                   <Label Text="Attack" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                        ProgressColor="#FF5252" Progress="0.2" Grid.Row="1"
+                                                        ProgressColor="#FF5252" Progress="{Binding AttackBarLength}" Grid.Row="1"
                                                         Grid.Column="1" />
                   <Label Text="{Binding Attack}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
                   <Label Text="Defense" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                        ProgressColor="#FF5252" Progress="0.7" Grid.Row="2"
+                                                        ProgressColor="#FF5252" Progress="{Binding DefenseBarLength}" Grid.Row="2"
                                                         Grid.Column="1" />
                   <Label Text="{Binding Defense}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
