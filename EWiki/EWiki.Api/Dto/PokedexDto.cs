@@ -22,6 +22,7 @@ namespace EWiki.Api
         public string Description { get; set; }
         public string EvolveFrom { get; set; }
         public string EvolveFromAvatar { get; set; }
+        public int PageObjectId { get; set; }
 
         // For pokemon Evolve To only map necessary info
         public string EvolveIntoNumbers { get; set; }

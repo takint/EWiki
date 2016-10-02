@@ -53,7 +53,6 @@ namespace EWiki.Api
             // Add application services.
             services.AddSingleton<IDbFactory, DbFactory>();
 
-            services.AddSingleton<IArchiveRepository, ArchiveRepository>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
             services.AddSingleton<ILocationRepository, LocationRepository>();
             services.AddSingleton<IMoveRepository, MoveRepository>();
@@ -62,7 +61,6 @@ namespace EWiki.Api
             services.AddSingleton<IPageLangRepository, PageLangRepository>();
             services.AddSingleton<IPageMetaRepository, PageMetaRepository>();
             services.AddSingleton<IPokedexRepository, PokedexRepository>();
-            services.AddSingleton<IRevisionRepository, RevisionRepository>();
             services.AddSingleton<IWikiImageRepository, WikiImageRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
         }

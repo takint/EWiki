@@ -17,36 +17,32 @@ namespace EWiki.UnitTest
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Page()
         {
+            this.Characters = new HashSet<Character>();
             this.PageLangs = new HashSet<PageLang>();
             this.PageMetas = new HashSet<PageMeta>();
-            this.PageRestrictions = new HashSet<PageRestriction>();
-            this.Revisions = new HashSet<Revision>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> ContentLanguage { get; set; }
+        public string ContentLanguage { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedUserId { get; set; }
         public bool IsNewPage { get; set; }
-        public bool IsRedirect { get; set; }
-        public int NameSpace { get; set; }
-        public Nullable<int> NewestContent { get; set; }
-        public decimal PageLength { get; set; }
         public Nullable<int> TagId { get; set; }
         public string Title { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
         public Nullable<int> FeatureImageId { get; set; }
+        public Nullable<int> NewestContent { get; set; }
+        public int ContentObjectId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Character> Characters { get; set; }
+        public virtual PageContent PageContent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageLang> PageLangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageMeta> PageMetas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PageRestriction> PageRestrictions { get; set; }
         public virtual Tag Tag { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Revision> Revisions { get; set; }
         public virtual WikiImage WikiImage { get; set; }
     }
 }

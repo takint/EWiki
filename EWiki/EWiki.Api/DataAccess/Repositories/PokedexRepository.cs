@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using EWiki.Api.Utility;
 
 namespace EWiki.Api.DataAccess
 {
@@ -13,7 +14,7 @@ namespace EWiki.Api.DataAccess
             : base(dbFactory)
         { }
 
-        public async Task<IEnumerable<Character>> GetAllWithAllIncludeAsync(int skip = 0, int take = 10)
+        public async Task<IEnumerable<Character>> GetAllWithAllIncludeAsync(int skip, int take)
         {
             IQueryable<Character> query = Queryable().Include(c => c.Avatar)
                                                 .Include(c => c.Types).ThenInclude(t => t.Type)

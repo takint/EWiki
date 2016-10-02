@@ -22,12 +22,39 @@ namespace EWiki.UnitTest
             //ImportLocation();
             //ImportPokedex();
             //UpdateWikiImage();
+            //UpdateDataMultiLang();
         }
 
         [TestInitialize]
         public void Initial()
         {
             _dbContext = new EWikiEntities();
+        }
+
+        private void UpdateDataMultiLang()
+        {
+            LoadOptions loadOptions = new LoadOptions(LoadFormat.Xlsx);
+            Workbook csvPokedexPokedex = new Workbook("..//PokemonGo - Pokedex.xlsx", loadOptions);
+
+            if (csvPokedexPokedex != null)
+            {
+                List<Character> pokemons = _dbContext.Characters.ToList();
+
+                int sheetIndex = csvPokedexPokedex.Worksheets.ActiveSheetIndex;
+                int rows = csvPokedexPokedex.Worksheets[sheetIndex].Cells.MaxDataRow;
+                Cells pokemonData = csvPokedexPokedex.Worksheets[sheetIndex].Cells;
+
+                for (int row = 1; row <= rows; row++)
+                {
+                    Character pokemon = pokemons.SingleOrDefault(c => c.Number.Contains(pokemonData.GetCell(row, 0).StringValue));
+
+                    pokemon.Description = pokemonData.GetCell(row, 18) != null ? pokemonData.GetCell(row, 18).StringValue : string.Empty;
+                    pokemon.Species = pokemonData.GetCell(row, 17).StringValue;
+                    pokemon.UpdatedDate = DateTime.Now;
+                }
+
+                _dbContext.SaveChanges();
+            }
         }
 
         private void UpdateWikiImage()

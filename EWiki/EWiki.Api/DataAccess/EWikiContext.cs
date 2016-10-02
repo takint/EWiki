@@ -9,7 +9,6 @@ namespace EWiki.Api.DataAccess
 {
     public class EWikiContext : IdentityDbContext
     {
-        public DbSet<Archive> Archives { get; set; }
         public DbSet<BlockedIp> BlockedIps { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Character> Characters { get; set; }
@@ -17,7 +16,6 @@ namespace EWiki.Api.DataAccess
         public DbSet<CharacterInfoGroup> CharacterInfoGroups { get; set; }
         public DbSet<CharacterSection> CharacterSections { get; set; }
         public DbSet<CharacterSectionGroup> CharacterSectionGroups { get; set; }
-        public DbSet<FileArchive> FileArchives { get; set; }
         public DbSet<InfoValue> InfoValues { get; set; }
         // For pokedex
         public DbSet<Location> Locations { get; set; }
@@ -29,15 +27,10 @@ namespace EWiki.Api.DataAccess
         public DbSet<PageLang> PageLangs { get; set; }
         public DbSet<PageMeta> PageMetas { get; set; }
         public DbSet<PageRestriction> PageRestrictions { get; set; }
-        public DbSet<ProtectedTitle> ProtectedTitles { get; set; }
-        public DbSet<RecentChange> RecentChanges { get; set; }
         public DbSet<Reference> References { get; set; }
-        public DbSet<Revision> Revisions { get; set; }
-        public DbSet<Site> Sites { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<UserMeta> UserMetas { get; set; }
         public DbSet<UserNewtalk> UserNewtalks { get; set; }
-        public DbSet<WatchList> WatchLists { get; set; }
         public DbSet<WikiImage> WikiImages { get; set; }
         public DbSet<WikiVideo> WikiVideos { get; set; }
 
