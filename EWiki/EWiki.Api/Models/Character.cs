@@ -22,10 +22,18 @@ namespace EWiki.Api.Models
         public float? CPGain { get; set; }
         public float? MaxCP { get; set; }
         public string Description { get; set; }
+
+        [NotMapped]
+        public ICollection<Character> EvolveIntoPokemons { get; set; }
         public string EvolveIntos { get; set; }
 
+        [NotMapped]
+        public ICollection<Character> EvolveFromPokemons { get; set; }
+        public string EvolveFroms { get; set; }
+
         [ForeignKey("EvolveFromId")]
-        public virtual Character EvolveFrom { get; set; }
+        public Character EvolveFrom { get; set; }
+
         [ForeignKey("AvatarImageId")]
         public virtual WikiImage Avatar { get; set; }
         // Location get from location data based on type

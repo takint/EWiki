@@ -45,6 +45,7 @@ namespace EWiki.UnitTest
         public float Weight { get; set; }
         public string EvolveIntos { get; set; }
         public Nullable<int> AvatarImageId { get; set; }
+        public string EvolveFroms { get; set; }
     
         public virtual WikiImage WikiImage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

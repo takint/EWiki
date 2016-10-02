@@ -36,6 +36,7 @@ namespace EWiki.UnitTest
         public string Title { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedUserId { get; set; }
+        public Nullable<int> FeatureImageId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageLang> PageLangs { get; set; }
@@ -46,5 +47,6 @@ namespace EWiki.UnitTest
         public virtual Tag Tag { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Revision> Revisions { get; set; }
+        public virtual WikiImage WikiImage { get; set; }
     }
 }
