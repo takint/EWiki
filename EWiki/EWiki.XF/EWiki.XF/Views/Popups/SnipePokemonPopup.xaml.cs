@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EWiki.XF.Models;
 using EWiki.XF.Services;
+using EWiki.XF.Utilities;
 using EWiki.XF.ViewModels;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
@@ -37,8 +38,9 @@ namespace EWiki.XF.Views.Popups
                         ColorName = "White"
                     });
 
+                    var pokemonAccount = LocalDataStorage.GetActivePokemonAccount();
                     var service = DependencyService.Get<ISniperService>();
-                    await service.Snipe(context.PokemonId, context.Latitude, context.Longitude, App.PokemonGoAccount);
+                    await service.Snipe(context.PokemonId, context.Latitude, context.Longitude, pokemonAccount);
 
                     MessagingCenter.Subscribe<SniperMessage>(this, "Sniper", message =>
                     {

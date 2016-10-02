@@ -48,6 +48,17 @@ namespace EWiki.XF.Utilities
             return null;
         }
 
+        public static void SaveActivePokemonAccount(PokemonAccount account)
+        {
+            Settings.Local.Set("ActivePokemonAccount", account);
+        }
+
+        public static PokemonAccount GetActivePokemonAccount()
+        {
+            var account = Settings.Local.Get<PokemonAccount>("ActivePokemonAccount");
+            return account;
+        }
+
         public static void SaveAuthData(AuthData authData)
         {
             Settings.Local.Set("AuthData", authData);
