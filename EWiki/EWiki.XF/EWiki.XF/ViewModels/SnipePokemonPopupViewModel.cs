@@ -50,7 +50,7 @@ namespace EWiki.XF.ViewModels
             }
         }
 
-        public string Avatar => $"No_{Name}";
+        public string Avatar => $"http://res.cloudinary.com/ewiki-io/image/upload/v1475134451/Pokemons/Avatars/{Number}{Name}.png";
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
         {

@@ -18,12 +18,18 @@ namespace EWiki.XF.Models
         public int? Candy { get; set; }
         public ObservableCollection<TypeSM> Types { get; set; }
         public int Attack { get; set; }
+        public double AttackBarLength => Attack/284f;
         public int Defense { get; set; }
+        public double DefenseBarLength => Defense/242f;
         public int Stamina { get; set; }
+        public double StaminaBarLength => Stamina/500f;
         public double Weight { get; set; }
         public double Height { get; set; }
         public bool IsEven { get; set; }
         public ObservableCollection<MoveSM> NormalMoves { get; set; }
         public ObservableCollection<MoveSM> SpecialMoves { get; set; }
+        public string Locations { get; set; }
+        public ObservableCollection<string> EvolveIntoAvatars { get; set; }
+        public string EvolveFromAvatar { get; set; }
     }
 }

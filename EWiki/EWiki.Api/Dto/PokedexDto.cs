@@ -20,6 +20,8 @@ namespace EWiki.Api
         public float CPGain { get; set; }
         public float MaxCP { get; set; }
         public string Description { get; set; }
+        public string EvolveFrom { get; set; }
+        public string EvolveFromAvatar { get; set; }
 
         // For pokemon Evolve To only map necessary info
         public string EvolveIntoNumbers { get; set; }

@@ -53,7 +53,7 @@ namespace EWiki.XF.ViewModels
 
         public bool CanExecuteLoadMoreCommand(Pokemon item)
         {
-            return IsNotBusy && _pokemons.Count < _totalPokemons;
+            return IsNotBusy && _pokemons.Count < _totalPokemons && _pokemons.LastOrDefault().PokemonId == item.PokemonId;
         }
 
         public async Task ExecuteLoadMoreCommand(Pokemon item)
@@ -90,15 +90,17 @@ namespace EWiki.XF.ViewModels
 
         public async void PokedexItemSelectedHandler(Pokemon pokemon)
         {
-            var troy = new PokemonInfoPage()
+            var selectedPosition = Pokemons.IndexOf(pokemon);
+            var pokemonInfoPage = new PokemonInfoPage()
             {
                 BindingContext = new PokemonInfoPageViewModel()
                 {
-                    Pokemons = Pokemons
+                    Pokemons = Pokemons,
+                    SelectedPokemonPosition = selectedPosition
                 }
             };
 
-            await PopupNavigation.PushAsync(troy);
+            await PopupNavigation.PushAsync(pokemonInfoPage);
         }
     }
 }

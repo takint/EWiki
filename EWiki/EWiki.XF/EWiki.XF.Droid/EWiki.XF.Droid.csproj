@@ -114,23 +114,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.7\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.7\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.8\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Forms.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.7\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.1.8\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.7\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.1.8\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading.Transformations, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.7\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.1.8\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FormsPlugin.Iconize, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
@@ -160,6 +160,18 @@
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Plugin.Iconize, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Iconize.1.0.10\lib\MonoAndroid10\Plugin.Iconize.dll</HintPath>
       <Private>True</Private>
@@ -170,6 +182,14 @@
     </Reference>
     <Reference Include="Plugin.Iconize.Material.Droid, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Iconize.Material.1.0.10\lib\MonoAndroid10\Plugin.Iconize.Material.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Permissions, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.Permissions.1.1.7\lib\MonoAndroid10\Plugin.Permissions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Permissions.Abstractions, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.Permissions.1.1.7\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
@@ -359,8 +379,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackgroundServices\LocationFeederBackgroundService.cs" />
     <Compile Include="Services\BaseRq.cs" />
+    <Compile Include="Services\LocalizationProvider.cs" />
     <Compile Include="Services\SnipeRq.cs" />
     <Compile Include="Services\SniperService.cs" />
+    <Compile Include="SplashActivity.cs" />
     <Compile Include="Utils\IconizeModules\Collections\LinearCollection.cs" />
     <Compile Include="Utils\IconizeModules\LinearModule.cs" />
     <Compile Include="Utils\Typeface\TypefaceUtil.cs" />
@@ -401,6 +423,7 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\background.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
@@ -417,7 +440,6 @@
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\menu\menu.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
-    <AndroidResource Include="Resources\drawable\background.png" />
     <AndroidResource Include="Resources\drawable\no_avatar.png" />
     <AndroidResource Include="Resources\drawable\pokedex.png" />
     <AndroidResource Include="Resources\drawable\iv_percentage.png" />
@@ -449,6 +471,19 @@
     <AndroidResource Include="Resources\drawable\button_red.png" />
     <AndroidResource Include="Resources\drawable\button_yellow.png" />
     <AndroidResource Include="Resources\drawable\button_light_green.png" />
+    <AndroidResource Include="Resources\drawable\circle_logo.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <AndroidResource Include="Resources\drawable\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_button.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\powered_background.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo_full.png" />
+    <AndroidResource Include="Resources\drawable\logo_full_white.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EWiki.XF\EWiki.XF.csproj">

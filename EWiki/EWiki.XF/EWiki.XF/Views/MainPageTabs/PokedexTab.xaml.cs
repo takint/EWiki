@@ -9,6 +9,15 @@ namespace EWiki.XF.Views
         public PokedexTab()
         {
             InitializeComponent();
+            PokedexListView.ItemAppearing += (sender, args) =>
+            {
+                if (ActivityIndicator.IsVisible)
+                {
+                    ActivityIndicator.IsRunning = false;
+                    ActivityIndicator.IsVisible = false;
+                    Message.IsVisible = false;
+                }
+            };
         }
 
         private void PokedexList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

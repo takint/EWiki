@@ -1,6 +1,0 @@
-﻿/**
- * Login - service
- */
-function LoginService() {
-
-}

@@ -77,7 +77,7 @@ namespace EWiki.Api.Utility
             };
         }
 
-        public static PokedexDto MapPokedexDto(Character pokemonEfo)
+        public static PokedexDto MapPokedexDto(Character pokemonEfo, IEnumerable<Character> pokemons = null)
         {
             pokemonEfo = pokemonEfo ?? new Character();
 
@@ -132,6 +132,14 @@ namespace EWiki.Api.Utility
                 UpdatedUser = pokemonEfo.UpdatedUser,
                 UpdatedDate = pokemonEfo.UpdatedDate ?? new DateTime()
             };
+
+            var evolveFrom = pokemons?.FirstOrDefault(p => p.Id == dto.EvolveFromId);
+            if (evolveFrom != null)
+            {
+                dto.EvolveFrom = evolveFrom.Number;
+                dto.EvolveFromAvatar = $"{evolveFrom.Number.Replace("#", "").Trim()}{evolveFrom.Name}";
+            }
+            dto.EvolveIntoAvatars = pokemons?.Where(p => dto.EvolveIntos.Contains(p.Number)).Select(p => $"{p.Number.Replace("#", "").Trim()}{p.Name}").ToArray();
 
             return dto;
         }

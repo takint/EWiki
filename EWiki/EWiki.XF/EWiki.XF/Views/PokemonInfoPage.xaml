@@ -7,187 +7,216 @@
                  xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                  xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+                 xmlns:cvc="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="EWiki.XF.Views.PokemonInfoPage">
-    <forms:CarouselView ItemsSource="{Binding Pokemons}" VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-        <forms:CarouselView.ItemTemplate>
-            <DataTemplate>
-                <AbsoluteLayout>
-                    <ffimageloading:CachedImage Source="pokemon_info_background" Aspect="AspectFill"
-                                                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                                                AbsoluteLayout.LayoutFlags="All" />
-                    <ContentView BackgroundColor="White" Margin="10,140,10,0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                                 AbsoluteLayout.LayoutFlags="All" />
-                    <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                                 AbsoluteLayout.LayoutFlags="All"
-                                 Spacing="0">
-                        <Grid Margin="0,10,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Orientation="Horizontal" Grid.Column="0" HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding MaxCP}" FontAttributes="Bold" FontSize="22"
-                                       VerticalTextAlignment="Center" TextColor="#FF5252" />
-                                <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center"
-                                       TextColor="#FF5252" />
-                            </StackLayout>
+  <forms:CarouselView ItemsSource="{Binding Pokemons}" Position="{Binding SelectedPokemonPosition}" VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand">
+    <forms:CarouselView.ItemTemplate>
+      <DataTemplate>
+          <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ffimageloading:CachedImage Source="pokemon_info_background" Aspect="AspectFill"
+                                        Grid.Row="0" />
+            <ScrollView Grid.Row="0">
+              <StackLayout Spacing="0" Margin="10,140,10,0" BackgroundColor="White" Padding="0,-140,0,0">
+              <extendedControls:AdMobView HeightRequest="50" />
+                <Grid Margin="0,10,0,0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <StackLayout Orientation="Horizontal" Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding MaxCP}" FontAttributes="Bold" FontSize="22"
+                           VerticalTextAlignment="Center" TextColor="#FF5252" />
+                    <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center"
+                           TextColor="#FF5252" />
+                  </StackLayout>
 
-                            <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="CenterAndExpand">
-                                <Label Text="Evolve" FontSize="12" FontAttributes="Bold" TextColor="#45686E"
-                                       HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
-                                <ffimageloading:CachedImage Source="Candy.png" WidthRequest="25" />
-                                <Label Text="{Binding Candy}" FontSize="16" TextColor="#45686E" FontAttributes="Bold"
-                                       Margin="0,2,0,0" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </Grid>
-                        <AbsoluteLayout HeightRequest="125">
-                            <ffimageloading:CachedImage Source="arch.png" HeightRequest="125" WidthRequest="290"
-                                                        AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                                                        AbsoluteLayout.LayoutFlags="PositionProportional" />
-                            <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="120"
-                                                        WidthRequest="120"
-                                                        AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                                                        AbsoluteLayout.LayoutFlags="PositionProportional"
-                                                        Margin="0,20,0,0" />
-                        </AbsoluteLayout>
-                        <Label Text="{Binding Name}" FontSize="24" TextColor="#45686E" HorizontalTextAlignment="Center" />
-                        <Label Text="{Binding Species}" FontSize="14" TextColor="#45686E"
-                               HorizontalTextAlignment="Center" />
-                        <Grid RowSpacing="0" ColumnSpacing="0" Margin="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.25*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="1.25*" />
-                            </Grid.ColumnDefinitions>
-                            <extendedControls:HorizontalListView ItemsSource="{Binding Types}" Margin="5,0,0,5"
-                                                                 Grid.Row="0" Grid.Column="1"
-                                                                 HorizontalOptions="Center">
-                                <extendedControls:HorizontalListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ffimageloading:CachedImage Source="{Binding CatTitle}" HeightRequest="22" />
-                                    </DataTemplate>
-                                </extendedControls:HorizontalListView.ItemTemplate>
-                            </extendedControls:HorizontalListView>
-                            <Label Text="Type" FontSize="12" TextColor="#45686E" Grid.Row="1"
-                                   Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                            <Label Text="{Binding Weight, StringFormat='{0} kg'}" FontSize="18" TextColor="#45686E"
-                                   Grid.Row="0"
-                                   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                            <Label Text="Weight" FontSize="12" TextColor="#45686E" Grid.Row="1"
-                                   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                            <Label Text="{Binding Height, StringFormat='{0} m'}" FontSize="18" TextColor="#45686E"
-                                   Grid.Row="0"
-                                   Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                            <Label Text="Height" FontSize="12" TextColor="#45686E" Grid.Row="1"
-                                   Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                        </Grid>
-                        <Grid RowSpacing="0" ColumnSpacing="0" Padding="30,0,30,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Stamina" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                            <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                                  ProgressColor="#FF5252" Progress="0.5" Grid.Row="0"
-                                                                  Grid.Column="1" />
-                            <Label Text="{Binding Stamina}" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                   Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                            <Label Text="Attack" FontSize="14" TextColor="#45686E" Grid.Row="1"
-                                   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                            <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                                  ProgressColor="#FF5252" Progress="0.2" Grid.Row="1"
-                                                                  Grid.Column="1" />
-                            <Label Text="{Binding Attack}" FontSize="14" TextColor="#45686E" Grid.Row="1"
-                                   Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                            <Label Text="Defense" FontSize="14" TextColor="#45686E" Grid.Row="2"
-                                   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                            <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
-                                                                  ProgressColor="#FF5252" Progress="0.7" Grid.Row="2"
-                                                                  Grid.Column="1" />
-                            <Label Text="{Binding Defense}" FontSize="14" TextColor="#45686E" Grid.Row="2"
-                                   Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                        </Grid>
-                        <extendedControls:VerticalListView ItemsSource="{Binding NormalMoves}" Padding="30,20,30,0"
-                                                           HorizontalOptions="Center">
-                            <extendedControls:VerticalListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="4*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Name}" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                                        <Label Text="{Binding Type}" FontSize="14" TextColor="#757575" Grid.Row="1"
-                                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                                        <Label Text="{Binding MoveCategory}" FontSize="14" TextColor="#45686E"
-                                               Grid.Row="0"
-                                               Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                                        <Label Text="{Binding Power}" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                               Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                                    </Grid>
-                                </DataTemplate>
-                            </extendedControls:VerticalListView.ItemTemplate>
-                        </extendedControls:VerticalListView>
-                        <extendedControls:VerticalListView ItemsSource="{Binding SpecialMoves}" Padding="30,20,30,0"
-                                                           HorizontalOptions="Center">
-                            <extendedControls:VerticalListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="4*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Name}" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                                        <Label Text="{Binding Type}" FontSize="14" TextColor="#757575" Grid.Row="1"
-                                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
-                                        <Label Text="{Binding MoveCategory}" FontSize="14" TextColor="#45686E"
-                                               Grid.Row="0"
-                                               Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                                        <extendedControls:BindableGrid ItemsSource="{Binding BarCollection}"
-                                                                             Grid.Row="1" Grid.Column="1"
-                                                                             HorizontalOptions="FillAndExpand">
-                                            <extendedControls:BindableGrid.ItemTemplate>
-                                                <DataTemplate>
-                                                    <extendedControls:ExtendedProgressBar
-                                                        HorizontalOptions="FillAndExpand"
-                                                        ProgressColor="Teal" Progress="1" />
-                                                </DataTemplate>
-                                            </extendedControls:BindableGrid.ItemTemplate>
-                                        </extendedControls:BindableGrid>
-                                        <Label Text="{Binding Power}" FontSize="14" TextColor="#45686E" Grid.Row="0"
-                                               Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                                    </Grid>
-                                </DataTemplate>
-                            </extendedControls:VerticalListView.ItemTemplate>
-                        </extendedControls:VerticalListView>
-                    </StackLayout>
+                  <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Evolve" FontSize="12" FontAttributes="Bold" TextColor="#45686E"
+                           HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    <ffimageloading:CachedImage Source="Candy.png" WidthRequest="25" />
+                    <Label Text="{Binding Candy}" FontSize="16" TextColor="#45686E" FontAttributes="Bold"
+                           Margin="0,2,0,0" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+                  </StackLayout>
+                </Grid>
+                <AbsoluteLayout HeightRequest="125">
+                  <ffimageloading:CachedImage Source="arch.png" HeightRequest="125" WidthRequest="290"
+                                              AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                                              AbsoluteLayout.LayoutFlags="PositionProportional" />
+                  <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="120"
+                                              WidthRequest="120"
+                                              AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                                              AbsoluteLayout.LayoutFlags="PositionProportional"
+                                              Margin="0,20,0,0" />
                 </AbsoluteLayout>
-            </DataTemplate>
-        </forms:CarouselView.ItemTemplate>
-    </forms:CarouselView>
+                <Label Text="{Binding Name}" FontSize="24" TextColor="#45686E" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding Species}" FontSize="14" TextColor="#45686E"
+                       HorizontalTextAlignment="Center" />
+                <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,20,20,10">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.25*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1.25*" />
+                  </Grid.ColumnDefinitions>
+                  <extendedControls:HorizontalListView ItemsSource="{Binding Types}" Margin="5,0,0,5"
+                                                       Grid.Row="0" Grid.Column="1"
+                                                       HorizontalOptions="Center">
+                    <extendedControls:HorizontalListView.ItemTemplate>
+                      <DataTemplate>
+                        <ffimageloading:CachedImage Source="{Binding CatTitle}" HeightRequest="22" />
+                      </DataTemplate>
+                    </extendedControls:HorizontalListView.ItemTemplate>
+                  </extendedControls:HorizontalListView>
+                  <Label Text="Type" FontSize="12" TextColor="#757575" Grid.Row="1"
+                         Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+                  <Label Text="{Binding Weight, StringFormat='{0} kg'}" FontAttributes="Bold" FontSize="18" TextColor="#45686E"
+                         Grid.Row="0"
+                         Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
+                  <Label Text="Weight" FontSize="12" TextColor="#757575" Grid.Row="1"
+                         Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
+                  <Label Text="{Binding Height, StringFormat='{0} m'}" FontAttributes="Bold" FontSize="18" TextColor="#45686E"
+                         Grid.Row="0"
+                         Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                  <Label Text="Height" FontSize="12" TextColor="#757575" Grid.Row="1"
+                         Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Grid>
+                <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
+                <Grid Padding="30,10,30,10">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <Label Text="Stamina" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                         Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                  <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
+                                                        ProgressColor="#FF5252" Progress="{Binding StaminaBarLength}" Grid.Row="0"
+                                                        Grid.Column="1" />
+                  <Label Text="{Binding Stamina}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                         Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
+                  <Label Text="Attack" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
+                         Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                  <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
+                                                        ProgressColor="#FF5252" Progress="{Binding AttackBarLength}" Grid.Row="1"
+                                                        Grid.Column="1" />
+                  <Label Text="{Binding Attack}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
+                         Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
+                  <Label Text="Defense" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
+                         Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                  <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
+                                                        ProgressColor="#FF5252" Progress="{Binding DefenseBarLength}" Grid.Row="2"
+                                                        Grid.Column="1" />
+                  <Label Text="{Binding Defense}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
+                         Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
+                </Grid>
+                <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
+                <extendedControls:VerticalListView ItemsSource="{Binding NormalMoves}" Padding="30,10,30,10"
+                                                   HorizontalOptions="Center">
+                  <extendedControls:VerticalListView.ItemTemplate>
+                    <DataTemplate>
+                      <Grid>
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="Auto" />
+                          <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="2*" />
+                          <ColumnDefinition Width="4*" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding Type}" FontSize="12" TextColor="#757575" Grid.Row="1"
+                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding MoveCategory}" FontSize="12" TextColor="#45686E"
+                               Grid.Row="0"
+                               Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="{Binding Power}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                               Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
+                      </Grid>
+                    </DataTemplate>
+                  </extendedControls:VerticalListView.ItemTemplate>
+                </extendedControls:VerticalListView>
+                <extendedControls:VerticalListView ItemsSource="{Binding SpecialMoves}" Padding="30,10,30,10"
+                                                   HorizontalOptions="Center">
+                  <extendedControls:VerticalListView.ItemTemplate>
+                    <DataTemplate>
+                      <Grid>
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="Auto" />
+                          <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="2*" />
+                          <ColumnDefinition Width="4*" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding Type}" FontSize="12" TextColor="#757575" Grid.Row="1"
+                               Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding MoveCategory}" FontSize="12" TextColor="#45686E"
+                               Grid.Row="0"
+                               Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <extendedControls:BindableGrid ItemsSource="{Binding BarCollection}"
+                                                             Grid.Row="1" Grid.Column="1"
+                                                             HorizontalOptions="FillAndExpand">
+                          <extendedControls:BindableGrid.ItemTemplate>
+                            <DataTemplate>
+                              <extendedControls:ExtendedProgressBar
+                                  HorizontalOptions="FillAndExpand"
+                                  ProgressColor="Teal" Progress="1" />
+                            </DataTemplate>
+                          </extendedControls:BindableGrid.ItemTemplate>
+                        </extendedControls:BindableGrid>
+                        <Label Text="{Binding Power}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                               Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
+                      </Grid>
+                    </DataTemplate>
+                  </extendedControls:VerticalListView.ItemTemplate>
+                </extendedControls:VerticalListView>
+                <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
+                <StackLayout Padding="30,10,30,10">
+                  <Label Text="{Binding Name, StringFormat='Who is {0}?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <Label Text="{Binding Description}" TextColor="#45686E" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
+                <StackLayout Padding="30,10,30,10">
+                  <Label Text="{Binding Name, StringFormat='Where is {0}?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <Label Text="{Binding Locations}" TextColor="#45686E" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
+                <StackLayout Padding="30,10,30,20">
+                  <Label Text="{Binding Name, StringFormat='How is {0} evolve?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <ffimageloading:CachedImage Source="{Binding EvolveFromAvatar}" HeightRequest="50"/>
+                    <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="65"/>
+                    <extendedControls:VerticalListView ItemsSource="{Binding EvolveIntoAvatars}">
+                      <extendedControls:VerticalListView.ItemTemplate>
+                        <DataTemplate>
+                          <ffimageloading:CachedImage Source="{Binding .}" HeightRequest="80"/>
+                        </DataTemplate>
+                      </extendedControls:VerticalListView.ItemTemplate>
+                    </extendedControls:VerticalListView>
+                  </StackLayout>
+                </StackLayout>
+              </StackLayout>
+            </ScrollView>
+          </Grid>
+      </DataTemplate>
+    </forms:CarouselView.ItemTemplate>
+  </forms:CarouselView>
 </pages:PopupPage>
