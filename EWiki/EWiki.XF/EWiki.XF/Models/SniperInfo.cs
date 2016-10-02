@@ -135,12 +135,11 @@ namespace EWiki.XF.Models
                 else
                 {
 
-                    var pokemonGoAccount = App.PokemonGoAccount;
-                    if (pokemonGoAccount == null || pokemonGoAccount.Split(':').Length < 4 || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[0]) || string.IsNullOrEmpty(pokemonGoAccount.Split(':')[1]))
+                    var pokemonGoAccount = LocalDataStorage.GetActivePokemonAccount();
+                    if (pokemonGoAccount == null || string.IsNullOrEmpty(pokemonGoAccount.Username) || string.IsNullOrEmpty(pokemonGoAccount.Password))
                     {
                         await UserDialogs.Instance.AlertAsync("Your selected Pokemon Account missing some info. Please update...");
-                        var selectedAccount = pokemonAccounts.FirstOrDefault(p => p.Username == pokemonGoAccount?.Split(':')[0]);
-                        if (selectedAccount != null)
+                        if (pokemonGoAccount != null)
                         {
                             var pokemonGoAccountPopup = new PokemonGoAccountPopup
                             {
@@ -148,12 +147,12 @@ namespace EWiki.XF.Models
                                 {
                                     Account = new PokemonAccount
                                     {
-                                        Id = selectedAccount.Id,
-                                        Username = selectedAccount.Username,
-                                        Password = selectedAccount.Password,
-                                        Latitude = selectedAccount.Latitude,
-                                        Longitude = selectedAccount.Longitude,
-                                        Avatar = selectedAccount.Avatar
+                                        Id = pokemonGoAccount.Id,
+                                        Username = pokemonGoAccount.Username,
+                                        Password = pokemonGoAccount.Password,
+                                        Latitude = pokemonGoAccount.Latitude,
+                                        Longitude = pokemonGoAccount.Longitude,
+                                        Avatar = pokemonGoAccount.Avatar
                                     },
                                     IsEdit = true
                                 }

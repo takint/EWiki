@@ -77,7 +77,7 @@ namespace EWiki.XF.ViewModels
 
         public DelegateCommand<string> NavigateCommand { get; set; }
         public DelegateCommand<PokemonAccount> SelectPokemonAccountCommand { get; set; }
-        public DelegateCommand AddPokemonAccountCommand { get; set; }     
+        public DelegateCommand AddPokemonAccountCommand { get; set; }
         public DelegateCommand<LeftMenuItem> AccountItemTapCommand { get; set; }
         public DelegateCommand<LeftMenuItem> LeftMenuTabItemTapCommand { get; set; }
         public DelegateCommand RegisterCommand { get; set; }
@@ -200,7 +200,7 @@ namespace EWiki.XF.ViewModels
                         _navigationService.NavigateAsync(menuItem.Command);
                     }
                     break;
-                    case CommandType.Action:
+                case CommandType.Action:
                     menuItem.Action();
                     break;
             }
@@ -214,7 +214,7 @@ namespace EWiki.XF.ViewModels
             }
 
             selectedAccount.IsSelected = true;
-            App.PokemonGoAccount = $"{selectedAccount.Username}:{selectedAccount.Password}:{selectedAccount.Latitude}:{selectedAccount.Longitude}";
+            LocalDataStorage.SaveActivePokemonAccount(selectedAccount);
         }
 
         private async Task ExecuteAddPokemonAccountCommand()
@@ -235,7 +235,7 @@ namespace EWiki.XF.ViewModels
             };
 
             await PopupNavigation.PushAsync(pokemonGoAccountPopup);
-        }       
+        }
 
         private void BuildAccountItems()
         {
@@ -284,8 +284,22 @@ namespace EWiki.XF.ViewModels
         private void LoadPokemonAccounts()
         {
             var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(Username);
-            if (pokemonAccounts != null)
-                PokemonAccounts.AddRange(pokemonAccounts);
+            if (pokemonAccounts == null || !pokemonAccounts.Any())
+                return;
+
+            var activePokemonAccount = LocalDataStorage.GetActivePokemonAccount();
+            PokemonAccount selectedPokemonAccount;
+            if (activePokemonAccount == null || pokemonAccounts.All(x => x.Id != activePokemonAccount.Id))
+            {
+                selectedPokemonAccount = pokemonAccounts.First();
+            }
+            else
+            {
+                selectedPokemonAccount = pokemonAccounts.Single(x => x.Id == activePokemonAccount.Id);
+            }
+
+            PokemonAccounts.AddRange(pokemonAccounts);
+            ExecuteSelectPokemonAccountCommand(selectedPokemonAccount);
         }
 
         public override void OnNavigatedFrom(NavigationParameters parameters)

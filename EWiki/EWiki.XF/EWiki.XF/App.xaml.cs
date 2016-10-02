@@ -20,8 +20,6 @@ namespace EWiki.XF
 
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
-        public static string PokemonGoAccount { get; set; }
-
         protected override void OnInitialized()
         {
             AutoMapperConfiguration.Configure();

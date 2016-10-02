@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Android.Content;
 using Android.Widget;
 using EWiki.XF.Droid.Services;
+using EWiki.XF.Models;
 using EWiki.XF.Models.Enum;
 using EWiki.XF.Services;
 using Newtonsoft.Json;
@@ -39,7 +40,7 @@ namespace EWiki.XF.Droid.Services
             };
             client.Open();
         }
-        public async Task Snipe(PokemonId pokemonId, double latitude, double longitude, string pokemonGoAccount)
+        public async Task Snipe(PokemonId pokemonId, double latitude, double longitude, PokemonAccount account)
         {
             var running = true;
             while (running)
@@ -52,10 +53,10 @@ namespace EWiki.XF.Droid.Services
                         PokemonId = pokemonId,
                         Latitude = latitude,
                         Longitude = longitude,
-                        UserName = pokemonGoAccount.Split(':')[0],
-                        Password = pokemonGoAccount.Split(':')[1],
-                        DefaultLatitude = double.Parse(pokemonGoAccount.Split(':')[2]),
-                        DefaultLongitude = double.Parse(pokemonGoAccount.Split(':')[3])
+                        UserName = account.Username,
+                        Password = account.Password,
+                        DefaultLatitude = account.Latitude,
+                        DefaultLongitude = account.Longitude
                     };
                     client.Send(JsonConvert.SerializeObject(snipeRq));
                     running = false;
