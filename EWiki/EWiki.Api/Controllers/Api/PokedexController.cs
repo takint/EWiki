@@ -22,12 +22,7 @@ namespace EWiki.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(int skip = 0, int take = 10)
         {
-            IEnumerable<Character> result = await pokedexRepository.GetAllWithAllIncludeAsync();
-
-            result = result.OrderBy(r => r.Number)
-                .Skip(skip)
-                .Take(take);
-
+            IEnumerable<Character> result = await pokedexRepository.GetAllWithAllIncludeAsync(skip, take);
             List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p)).ToList();
 
             return Json(responeData);

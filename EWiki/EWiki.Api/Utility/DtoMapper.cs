@@ -1,8 +1,6 @@
 ﻿using EWiki.Api.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EWiki.Api.Dto.Enum;
 
 namespace EWiki.Api.Utility
@@ -85,6 +83,7 @@ namespace EWiki.Api.Utility
 
             PokedexDto dto = new PokedexDto(){
                 Id = pokemonEfo.Id,
+                PokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), pokemonEfo.Name),
 
                 Types = pokemonEfo.Types.Where(t => t.Type != null)
                                 .Select(t => t.Type.CatTitle)
@@ -98,7 +97,7 @@ namespace EWiki.Api.Utility
                 Locations = pokemonEfo.Locations.Where(l => l.PokeLocation != null)
                                 .Select(l => MapLocationDto(l.PokeLocation))
                                 .ToList(),
-                PokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), pokemonEfo.Name),
+
                 Name = pokemonEfo.Name,
                 Slug = pokemonEfo.Slug,
                 Number = pokemonEfo.Number,
@@ -112,9 +111,19 @@ namespace EWiki.Api.Utility
                 CPGain = pokemonEfo.CPGain.Value,
                 MaxCP = pokemonEfo.MaxCP.Value,
                 Description = pokemonEfo.Description,
-                EvolveIntos = pokemonEfo.EvolveIntos,
                 Avatar = pokemonEfo.Avatar,
-                EvolveFromId = pokemonEfo.EvolveFrom != null ? pokemonEfo.EvolveFrom.Id : 0,
+
+                EvolveIntoNumbers = pokemonEfo.EvolveIntos,
+                EvolveIntos = pokemonEfo.EvolveIntoPokemons == null ? null :
+                                        pokemonEfo.EvolveIntoPokemons
+                                        .Select(p => MapPokemonEvolveDto(p))
+                                        .ToList(),
+
+                EvolveFromNumbers = pokemonEfo.EvolveFroms,
+                EvolveFroms = pokemonEfo.EvolveFromPokemons == null ? null :
+                                        pokemonEfo.EvolveFromPokemons
+                                        .Select(p => MapPokemonEvolveDto(p))
+                                        .ToList(),
 
                 CreatedUserId = pokemonEfo.CreatedUserId,
                 CreatedUser = pokemonEfo.CreatedUser,
@@ -125,6 +134,19 @@ namespace EWiki.Api.Utility
             };
 
             return dto;
+        }
+
+        public static PokemonEvolveDto MapPokemonEvolveDto(Character pokemonEfo)
+        {
+            return pokemonEfo == null ? null :
+                new PokemonEvolveDto()
+                {
+                    EvolveId = pokemonEfo.Id,
+                    EvolveName = pokemonEfo.Name,
+                    EvolveDescription = pokemonEfo.Description,
+                    EvolveNumber = pokemonEfo.Number,
+                    EvolveAvatar = pokemonEfo.Avatar != null ? pokemonEfo.Avatar.ImageUrl : string.Empty
+                };
         }
     }
 }

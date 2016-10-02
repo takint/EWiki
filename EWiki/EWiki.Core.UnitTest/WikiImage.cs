@@ -18,6 +18,8 @@ namespace EWiki.UnitTest
         public WikiImage()
         {
             this.Characters = new HashSet<Character>();
+            this.Categories = new HashSet<Category>();
+            this.Pages = new HashSet<Page>();
         }
     
         public int Id { get; set; }
@@ -37,5 +39,9 @@ namespace EWiki.UnitTest
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Character> Characters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Category> Categories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Page> Pages { get; set; }
     }
 }

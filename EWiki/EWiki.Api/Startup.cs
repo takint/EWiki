@@ -116,9 +116,6 @@ namespace EWiki.Api
 
             // For more details: https://docs.asp.net/en/latest/security/cors.html
             app.UseCors("AllowEwikiBDOrigin");
-
-            // Initialize data
-            app.SeedData().Wait();
         }
     }
 }

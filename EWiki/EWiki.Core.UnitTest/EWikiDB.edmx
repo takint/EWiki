@@ -18,6 +18,7 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
           <Property Name="CatTitleVI" Type="nvarchar(max)" />
+          <Property Name="CatImageId" Type="int" />
         </EntityType>
         <EntityType Name="CharacterInfoGroups">
           <Key>
@@ -70,6 +71,7 @@
           <Property Name="Weight" Type="real" Nullable="false" />
           <Property Name="EvolveIntos" Type="nvarchar(max)" />
           <Property Name="AvatarImageId" Type="int" />
+          <Property Name="EvolveFroms" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="CharacterSectionGroups">
           <Key>
@@ -218,6 +220,7 @@
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
+          <Property Name="FeatureImageId" Type="int" />
         </EntityType>
         <EntityType Name="PokemonLocation">
           <Key>
@@ -436,6 +439,18 @@
           <Property Name="Url" Type="nvarchar(max)" />
           <Property Name="VideoType" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Categories_WikiImages_CatImageId">
+          <End Role="WikiImages" Type="Self.WikiImages" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="CatImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
           <End Role="CharacterInfoGroups" Type="Self.CharacterInfoGroups" Multiplicity="0..1" />
           <End Role="CharacterInfos" Type="Self.CharacterInfos" Multiplicity="*" />
@@ -585,6 +600,18 @@
             </Principal>
             <Dependent Role="Pages">
               <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pages_WikiImages_FeatureImageId">
+          <End Role="WikiImages" Type="Self.WikiImages" Multiplicity="0..1" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="FeatureImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -758,6 +785,10 @@
           <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WikiImages" EntityType="Self.WikiImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WikiVideos" EntityType="Self.WikiVideos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Categories_WikiImages_CatImageId" Association="Self.FK_Categories_WikiImages_CatImageId">
+            <End Role="WikiImages" EntitySet="WikiImages" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
           <AssociationSet Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" Association="Self.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
             <End Role="CharacterInfoGroups" EntitySet="CharacterInfoGroups" />
             <End Role="CharacterInfos" EntitySet="CharacterInfos" />
@@ -804,6 +835,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Pages_Tags_TagId" Association="Self.FK_Pages_Tags_TagId">
             <End Role="Tags" EntitySet="Tags" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pages_WikiImages_FeatureImageId" Association="Self.FK_Pages_WikiImages_FeatureImageId">
+            <End Role="WikiImages" EntitySet="WikiImages" />
             <End Role="Pages" EntitySet="Pages" />
           </AssociationSet>
           <AssociationSet Name="FK_PokemonLocation_Characters_CharacterId" Association="Self.FK_PokemonLocation_Characters_CharacterId">
@@ -949,6 +984,14 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Character" EntitySet="Characters" />
           </AssociationSet>
+          <AssociationSet Name="FK_Categories_WikiImages_CatImageId" Association="EWikiModel.FK_Categories_WikiImages_CatImageId">
+            <End Role="WikiImage" EntitySet="WikiImages" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pages_WikiImages_FeatureImageId" Association="EWikiModel.FK_Pages_WikiImages_FeatureImageId">
+            <End Role="WikiImage" EntitySet="WikiImages" />
+            <End Role="Page" EntitySet="Pages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -967,6 +1010,8 @@
           <NavigationProperty Name="Moves" Relationship="EWikiModel.FK_Moves_Categories_MoveCategoryId" FromRole="Category" ToRole="Move" />
           <NavigationProperty Name="Moves1" Relationship="EWikiModel.FK_Moves_Categories_MoveType" FromRole="Category" ToRole="Move" />
           <NavigationProperty Name="Characters" Relationship="EWikiModel.Type" FromRole="Category" ToRole="Character" />
+          <Property Name="CatImageId" Type="Int32" />
+          <NavigationProperty Name="WikiImage" Relationship="EWikiModel.FK_Categories_WikiImages_CatImageId" FromRole="Category" ToRole="WikiImage" />
         </EntityType>
         <EntityType Name="CharacterInfoGroup">
           <Key>
@@ -1028,6 +1073,7 @@
           <NavigationProperty Name="Moves" Relationship="EWikiModel.PokemonMove" FromRole="Character" ToRole="Move" />
           <NavigationProperty Name="Moves1" Relationship="EWikiModel.PokemonSpecialMove" FromRole="Character" ToRole="Move" />
           <NavigationProperty Name="Categories" Relationship="EWikiModel.Type" FromRole="Character" ToRole="Category" />
+          <Property Name="EvolveFroms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CharacterSectionGroup">
           <Key>
@@ -1195,6 +1241,8 @@
           <NavigationProperty Name="PageRestrictions" Relationship="EWikiModel.FK_PageRestrictions_Pages_PageId" FromRole="Page" ToRole="PageRestriction" />
           <NavigationProperty Name="Tag" Relationship="EWikiModel.FK_Pages_Tags_TagId" FromRole="Page" ToRole="Tag" />
           <NavigationProperty Name="Revisions" Relationship="EWikiModel.FK_Revisions_Pages_PageId" FromRole="Page" ToRole="Revision" />
+          <Property Name="FeatureImageId" Type="Int32" />
+          <NavigationProperty Name="WikiImage" Relationship="EWikiModel.FK_Pages_WikiImages_FeatureImageId" FromRole="Page" ToRole="WikiImage" />
         </EntityType>
         <EntityType Name="ProtectedTitle">
           <Key>
@@ -1367,6 +1415,8 @@
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Characters" Relationship="EWikiModel.FK_Characters_WikiImages_AvatarImageId" FromRole="WikiImage" ToRole="Character" />
+          <NavigationProperty Name="Categories" Relationship="EWikiModel.FK_Categories_WikiImages_CatImageId" FromRole="WikiImage" ToRole="Category" />
+          <NavigationProperty Name="Pages" Relationship="EWikiModel.FK_Pages_WikiImages_FeatureImageId" FromRole="WikiImage" ToRole="Page" />
         </EntityType>
         <EntityType Name="WikiVideo">
           <Key>
@@ -1581,6 +1631,30 @@
           <End Type="EWikiModel.Category" Role="Category" Multiplicity="*" />
           <End Type="EWikiModel.Character" Role="Character" Multiplicity="*" />
         </Association>
+        <Association Name="FK_Categories_WikiImages_CatImageId">
+          <End Type="EWikiModel.WikiImage" Role="WikiImage" Multiplicity="0..1" />
+          <End Type="EWikiModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="CatImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pages_WikiImages_FeatureImageId">
+          <End Type="EWikiModel.WikiImage" Role="WikiImage" Multiplicity="0..1" />
+          <End Type="EWikiModel.Page" Role="Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="FeatureImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1590,6 +1664,7 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="EWikiModel.Category">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CatImageId" ColumnName="CatImageId" />
                 <ScalarProperty Name="CatTitleVI" ColumnName="CatTitleVI" />
                 <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
@@ -1633,6 +1708,7 @@
           <EntitySetMapping Name="Characters">
             <EntityTypeMapping TypeName="EWikiModel.Character">
               <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="EvolveFroms" ColumnName="EvolveFroms" />
                 <ScalarProperty Name="AvatarImageId" ColumnName="AvatarImageId" />
                 <ScalarProperty Name="EvolveIntos" ColumnName="EvolveIntos" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
@@ -1799,6 +1875,7 @@
           <EntitySetMapping Name="Pages">
             <EntityTypeMapping TypeName="EWikiModel.Page">
               <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="FeatureImageId" ColumnName="FeatureImageId" />
                 <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

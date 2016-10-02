@@ -48,6 +48,8 @@
         <AssociationConnector Association="EWikiModel.PokemonMove" />
         <AssociationConnector Association="EWikiModel.PokemonSpecialMove" />
         <AssociationConnector Association="EWikiModel.Type" />
+        <AssociationConnector Association="EWikiModel.FK_Categories_WikiImages_CatImageId" />
+        <AssociationConnector Association="EWikiModel.FK_Pages_WikiImages_FeatureImageId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
