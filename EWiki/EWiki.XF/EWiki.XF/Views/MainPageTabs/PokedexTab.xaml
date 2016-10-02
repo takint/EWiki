@@ -5,6 +5,8 @@
              xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
              xmlns:behaviors="clr-namespace:EWiki.XF.Behaviors;assembly=EWiki.XF"
              xmlns:templates="clr-namespace:EWiki.XF.Views.Templates;assembly=EWiki.XF"
+             xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+             xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.PokedexTab"
              Icon="pokedex"
@@ -16,6 +18,9 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
+    <StackLayout>
+    <ActivityIndicator x:Name="ActivityIndicator" IsRunning="True" Margin="0,30,0,0"/>
+      <Label x:Name="Message" HorizontalOptions="CenterAndExpand" FontSize="14" TextColor="#FF5252" Text="{utilities:StringResource RetrievingPokemons}"/>
     <ListView x:Name="PokedexListView"
               CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
@@ -40,5 +45,7 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
+    <extendedControls:AdMobView HeightRequest="50" />
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>

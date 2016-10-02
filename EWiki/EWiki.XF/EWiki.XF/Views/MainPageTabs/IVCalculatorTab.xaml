@@ -59,7 +59,7 @@
           <controls:CheckBox Checked="{Binding Powered}" WidthRequest="50" FontSize="18" TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
       </Grid>
-
+      <extendedControls:AdMobView HeightRequest="50" />
       <StackLayout Spacing="0" Margin="20,10,20,0" Padding="0,10,0,10" BackgroundColor="#7F000000">
         <AbsoluteLayout HorizontalOptions="Center" HeightRequest="50" WidthRequest="184">
             <ffimageloading:CachedImage Source="{Binding Grade, Converter={x:Static converters:GradeBackgroundConverter.Instance}}" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"

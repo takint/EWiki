@@ -5,9 +5,11 @@
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             prism:ViewModelLocator.AutowireViewModel="True"
                  xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
-             x:Class="EWiki.XF.Views.Popups.IVCalculateDetailsPopup">
+                 xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+                 x:Class="EWiki.XF.Views.Popups.IVCalculateDetailsPopup">
   <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#7F000000" Margin="5" Padding="0,10,0,10">
-      <ListView CachingStrategy="RecycleElement"
+    <extendedControls:AdMobView HeightRequest="50" />
+    <ListView CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Details}"
               HasUnevenRows="true"

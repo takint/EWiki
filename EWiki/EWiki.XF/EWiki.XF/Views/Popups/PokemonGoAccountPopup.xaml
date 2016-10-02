@@ -67,8 +67,8 @@
           <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Text="{utilities:StringResource Cancel}" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
-        <Button Grid.Column="1" Text="{utilities:StringResource Add}" BackgroundColor="White" TextColor="Teal" Command="{Binding AddCommand}"/>
+        <Button Grid.Column="0" Text="{utilities:StringResource Cancel}" BackgroundColor="White" TextColor="#FF5252" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1" Text="{utilities:StringResource Add}" BackgroundColor="#FF5252" TextColor="White" Command="{Binding AddCommand}"/>
       </Grid>
     </StackLayout>
   </Grid>
