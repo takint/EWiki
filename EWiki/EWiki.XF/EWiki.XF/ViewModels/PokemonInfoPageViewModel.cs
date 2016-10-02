@@ -21,6 +21,14 @@ namespace EWiki.XF.ViewModels
         {
             get { return _pokemons; }
             set { SetProperty(ref _pokemons, value); }
-        }   
+        }
+
+        private int _selectedPokemonPosition;
+
+        public int SelectedPokemonPosition
+        {
+            get { return _selectedPokemonPosition; }
+            set { SetProperty(ref _selectedPokemonPosition, value); }
+        }
     }
 }

@@ -41,8 +41,8 @@
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
           <StackLayout Orientation="Horizontal" Grid.Column="0">
-            <Label Text="{Binding MaxCP}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center" TextColor="#FF5252" />
-            <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center" TextColor="#FF5252" />
+            <Label Text="{Binding MaxCP}" FontAttributes="Bold" FontSize="22" VerticalOptions="CenterAndExpand" TextColor="#FF5252" />
+            <Label Text="MaxCP" FontAttributes="Bold" FontSize="12" VerticalOptions="CenterAndExpand" TextColor="#FF5252" />
           </StackLayout>
           <StackLayout Orientation="Horizontal" Grid.Column="1">
             <ffimageloading:CachedImage Source="Candy.png" Margin="5,2,0,0"
