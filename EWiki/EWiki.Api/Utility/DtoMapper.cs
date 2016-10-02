@@ -128,7 +128,9 @@ namespace EWiki.Api.Utility
             if (evolveFrom != null)
             {
                 dto.EvolveFrom = evolveFrom.Number;
+                dto.EvolveFromAvatar = $"{evolveFrom.Number.Replace("#", "").Trim()}{evolveFrom.Name}";
             }
+            dto.EvolveIntoAvatars = pokemons?.Where(p => dto.EvolveIntos.Contains(p.Number)).Select(p => $"{p.Number.Replace("#", "").Trim()}{p.Name}").ToArray();
 
             return dto;
         }
