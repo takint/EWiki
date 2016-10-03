@@ -2,7 +2,9 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="EWiki.XF.ExtendedControls.VerticalListView">
-  <StackLayout x:Name="StackItems" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+  <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+    <StackLayout x:Name="StackItems" Orientation="Vertical" HorizontalOptions="FillAndExpand">
 
-  </StackLayout>
+    </StackLayout>
+  </ScrollView>
 </ContentView>

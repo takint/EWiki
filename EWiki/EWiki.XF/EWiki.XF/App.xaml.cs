@@ -5,7 +5,6 @@ using EWiki.XF.Service;
 using EWiki.XF.Services;
 using Prism.Unity;
 using EWiki.XF.Views;
-using EWiki.XF.Views.PokemonInfoElements;
 using EWiki.XF.Views.Popups;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
@@ -43,7 +42,6 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
             Container.RegisterTypeForNavigation<ProfilePage>();
             Container.RegisterTypeForNavigation<NewsCategoryPage>();
-            Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterTypeForNavigation<SnipePokemonPopup>();
             Container.RegisterType<IPokemonService, PokemonService>();
             Container.RegisterType<INewsService, NewsService>();
