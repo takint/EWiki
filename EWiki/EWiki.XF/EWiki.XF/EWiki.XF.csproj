@@ -94,9 +94,9 @@
     <Compile Include="ViewModels\LeftMenuViewModel.cs" />
     <Compile Include="ViewModels\IVCalculatorTabViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
-    <Compile Include="ViewModels\PokemonInfoPageViewModel.cs" />
+    <Compile Include="ViewModels\PokemonGoAccountManagementPopupViewModel.cs" />
     <Compile Include="ViewModels\PokemonGoAccountPopupViewModel.cs" />
-    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PokemonInfoPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterPageViewModel.cs" />
     <Compile Include="ViewModels\PokemonSelectorPopupViewModel.cs" />
     <Compile Include="ViewModels\SnipePokemonPopupViewModel.cs" />
@@ -122,9 +122,6 @@
     <Compile Include="Views\MainPageTabs\PokedexTab.xaml.cs">
       <DependentUpon>PokedexTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPageTabs\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Navigation.xaml.cs">
       <DependentUpon>Navigation.xaml</DependentUpon>
     </Compile>
@@ -137,6 +134,12 @@
     <Compile Include="Views\PokemonInfoPage.xaml.cs">
       <DependentUpon>PokemonInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Popups\PokemonGoAccountManagementPopup.xaml.cs">
+      <DependentUpon>PokemonGoAccountManagementPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Popups\PokemonGoAccountPopup.xaml.cs">
+      <DependentUpon>PokemonGoAccountPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Popups\PokemonSelectorPopup.xaml.cs">
       <DependentUpon>PokemonSelectorPopup.xaml</DependentUpon>
     </Compile>
@@ -145,9 +148,6 @@
     </Compile>
     <Compile Include="Views\Popups\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Popups\PokemonGoAccountPopup.xaml.cs">
-      <DependentUpon>PokemonGoAccountPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Popups\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -415,12 +415,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Popups\PokemonGoAccountPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\MainPageTabs\NewsTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -493,7 +487,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MainPageTabs\ProfilePage.xaml">
+    <EmbeddedResource Include="Views\Popups\PokemonGoAccountManagementPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Popups\PokemonGoAccountPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

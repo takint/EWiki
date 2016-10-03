@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using EWiki.XF.Models;
-using EWiki.XF.Services;
 using EWiki.XF.ViewModels;
-using Newtonsoft.Json;
 using Plugin.Geolocator;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;

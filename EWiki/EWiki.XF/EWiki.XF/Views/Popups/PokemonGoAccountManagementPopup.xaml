@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+             xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
+             x:Class="EWiki.XF.Views.Popups.PokemonGoAccountManagementPopup"
+             x:Name="Page">
+  <Grid BackgroundColor="#009688" Margin="5" Padding="10" VerticalOptions="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+    <StackLayout Grid.Row="0">
+      <forms:CachedImage Source="circle_logo"
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="EndAndExpand">
+        <forms:CachedImage.Transformations>
+          <transformations:CircleTransformation />
+        </forms:CachedImage.Transformations>
+      </forms:CachedImage>
+      <Label Text="{utilities:StringResource PokemonGoAccounts}" TextColor="White" FontSize="22" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10"/>
+    </StackLayout>
+
+    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+      <extendedControls:ExtendedScrollView ItemsSource="{Binding PokemonAccounts}">
+        <extendedControls:ExtendedScrollView.ItemTemplate>
+          <DataTemplate>
+            <forms:CachedImage Source="{Binding Avatar}" WidthRequest="30" HeightRequest="30" Opacity="{Binding IsSelected, Converter={x:Static converters:IsSelectedOpacityConverter.Instance}}">
+              <forms:CachedImage.Transformations>
+                <transformations:CircleTransformation />
+              </forms:CachedImage.Transformations>
+              <forms:CachedImage.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BindingContext.SelectPokemonAccountCommand, Source={x:Reference Page}}" CommandParameter="{Binding}"/>
+              </forms:CachedImage.GestureRecognizers>
+            </forms:CachedImage>
+          </DataTemplate>
+        </extendedControls:ExtendedScrollView.ItemTemplate>
+      </extendedControls:ExtendedScrollView>
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="2" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Placeholder="Username" TextColor="White" Text="{Binding SelectedAccount.Username}" HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="3" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding SelectedAccount.Password}" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="4" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Keyboard="Numeric" Placeholder="Current Latitude" TextColor="White" Text="{Binding SelectedAccount.Latitude}" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="5" Padding="10,0,10,0">
+      <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+      <Entry Keyboard="Numeric" Placeholder="Current Longitude" TextColor="White" Text="{Binding SelectedAccount.Longitude}" HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="6" Padding="10,0,10,0">
+      <Grid HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Text="{utilities:StringResource Cancel}" BackgroundColor="White" TextColor="Teal" Command="{Binding CancelCommand}"/>
+        <Button Grid.Column="1" Text="{utilities:StringResource Delete}" BackgroundColor="#FF5252" TextColor="White" Command="{Binding DeleteCommand}"/>
+        <Button Grid.Column="2" Text="{utilities:StringResource Update}" BackgroundColor="White" TextColor="#FF5252" Command="{Binding UpdateCommand}"/>
+      </Grid>
+    </StackLayout>
+  </Grid>
+</pages:PopupPage>

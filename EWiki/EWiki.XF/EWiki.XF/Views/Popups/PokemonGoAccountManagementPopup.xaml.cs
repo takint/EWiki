@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EWiki.XF.ViewModels;
+using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
-namespace EWiki.XF.Views
+namespace EWiki.XF.Views.Popups
 {
-    public partial class ProfilePage : ContentPage
+    public partial class PokemonGoAccountManagementPopup : PopupPage
     {
-        public ProfilePage()
+        public PokemonGoAccountManagementPopup()
         {
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
-            ((ProfilePageViewModel)BindingContext).LoadPokemonAccounts();
+            ((PokemonGoAccountManagementPopupViewModel)BindingContext).LoadPokemonAccounts();
         }
     }
 }

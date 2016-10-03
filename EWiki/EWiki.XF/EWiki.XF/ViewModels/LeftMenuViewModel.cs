@@ -244,10 +244,24 @@ namespace EWiki.XF.ViewModels
                 new LeftMenuItem()
                 {
                     Icon = "lnr-user",
-                    Text = Resource.Profile,
+                    Text = Resource.PokemonGoAccounts,
                     IsActived = true,
-                    CommandType = CommandType.Navigation,
-                    Command = $"{nameof(Navigation)}/{nameof(ProfilePage)}"
+                    CommandType = CommandType.Action,
+                    Action = async () =>
+                    {
+                        if (!PokemonAccounts.Any())
+                        {
+                            await _pageDialogService.DisplayAlertAsync("", "You have not add any Pokemon Go Account yet!", "OK");
+                            return;
+                        }
+
+                        var pokemonGoAccountPopup = new PokemonGoAccountManagementPopup
+                        {
+                            BindingContext = new PokemonGoAccountManagementPopupViewModel()
+                        };
+
+                        await PopupNavigation.PushAsync(pokemonGoAccountPopup);
+                    }
                 },
                 new LeftMenuItem()
                 {

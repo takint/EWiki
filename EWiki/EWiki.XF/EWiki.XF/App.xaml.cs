@@ -41,7 +41,6 @@ namespace EWiki.XF
             Container.RegisterTypeForNavigation<IVCalculatorTab>();
             Container.RegisterTypeForNavigation<NewsTab>();
             Container.RegisterTypeForNavigation<PokemonInfoPage>();
-            Container.RegisterTypeForNavigation<ProfilePage>();
             Container.RegisterTypeForNavigation<NewsCategoryPage>();
             Container.RegisterTypeForNavigation<PokemonInfoElement>();
             Container.RegisterTypeForNavigation<SnipePokemonPopup>();
