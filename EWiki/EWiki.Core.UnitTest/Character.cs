@@ -17,7 +17,6 @@ namespace EWiki.UnitTest
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Character()
         {
-            this.CharacterSections = new HashSet<CharacterSection>();
             this.Locations = new HashSet<Location>();
             this.Moves = new HashSet<Move>();
             this.Moves1 = new HashSet<Move>();
@@ -45,10 +44,11 @@ namespace EWiki.UnitTest
         public float Weight { get; set; }
         public string EvolveIntos { get; set; }
         public Nullable<int> AvatarImageId { get; set; }
+        public string EvolveFroms { get; set; }
+        public Nullable<int> InfoContentId { get; set; }
     
+        public virtual Page Page { get; set; }
         public virtual WikiImage WikiImage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CharacterSection> CharacterSections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Location> Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

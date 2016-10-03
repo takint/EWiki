@@ -82,6 +82,18 @@ namespace EWiki.XF.Droid
                 var intent = new Intent(this, typeof(PokeFeederBackgroundService));
                 StopService(intent);
             });
+
+            MessagingCenter.Subscribe<App>(this, "StartDownloadImages", sender =>
+            {
+                var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
+                StartService(intent);
+            });
+
+            MessagingCenter.Subscribe<App>(this, "StopDownloadImages", sender =>
+            {
+                var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
+                StopService(intent);
+            });
         }
     }
 

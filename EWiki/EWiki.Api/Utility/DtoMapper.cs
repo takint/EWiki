@@ -1,9 +1,8 @@
 ﻿using EWiki.Api.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EWiki.Api.Dto.Enum;
+using System.Collections.Generic;
 
 namespace EWiki.Api.Utility
 {
@@ -85,6 +84,7 @@ namespace EWiki.Api.Utility
 
             PokedexDto dto = new PokedexDto(){
                 Id = pokemonEfo.Id,
+                PokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), pokemonEfo.Name),
 
                 Types = pokemonEfo.Types.Where(t => t.Type != null)
                                 .Select(t => t.Type.CatTitle)
@@ -98,7 +98,7 @@ namespace EWiki.Api.Utility
                 Locations = pokemonEfo.Locations.Where(l => l.PokeLocation != null)
                                 .Select(l => MapLocationDto(l.PokeLocation))
                                 .ToList(),
-                PokemonId = (PokemonId)Enum.Parse(typeof(PokemonId), pokemonEfo.Name),
+
                 Name = pokemonEfo.Name,
                 Slug = pokemonEfo.Slug,
                 Number = pokemonEfo.Number,
@@ -112,9 +112,21 @@ namespace EWiki.Api.Utility
                 CPGain = pokemonEfo.CPGain.Value,
                 MaxCP = pokemonEfo.MaxCP.Value,
                 Description = pokemonEfo.Description,
-                EvolveIntos = pokemonEfo.EvolveIntos,
                 Avatar = pokemonEfo.Avatar,
-                EvolveFromId = pokemonEfo.EvolveFrom != null ? pokemonEfo.EvolveFrom.Id : 0,
+
+                EvolveIntoNumbers = pokemonEfo.EvolveIntos,
+                EvolveIntos = pokemonEfo.EvolveIntoPokemons == null ? null :
+                                        pokemonEfo.EvolveIntoPokemons
+                                        .Select(p => MapPokemonEvolveDto(p))
+                                        .ToList(),
+
+                EvolveFromNumbers = pokemonEfo.EvolveFroms,
+                EvolveFroms = pokemonEfo.EvolveFromPokemons == null ? null :
+                                        pokemonEfo.EvolveFromPokemons
+                                        .Select(p => MapPokemonEvolveDto(p))
+                                        .ToList(),
+
+                PageObjectId = pokemonEfo.InfoContentId,
 
                 CreatedUserId = pokemonEfo.CreatedUserId,
                 CreatedUser = pokemonEfo.CreatedUser,
@@ -124,15 +136,31 @@ namespace EWiki.Api.Utility
                 UpdatedDate = pokemonEfo.UpdatedDate ?? new DateTime()
             };
 
-            var evolveFrom = pokemons?.FirstOrDefault(p => p.Id == dto.EvolveFromId);
-            if (evolveFrom != null)
+            if (pokemonEfo.InfoContents != null)
             {
-                dto.EvolveFrom = evolveFrom.Number;
-                dto.EvolveFromAvatar = $"{evolveFrom.Number.Replace("#", "").Trim()}{evolveFrom.Name}";
+                dto.Description = pokemonEfo.InfoContents.Where(c => c.CurrentContent.ContentFlags == LanguageFlag.DESCRIPTION)
+                                                .SingleOrDefault().CurrentContent.ContentText;
+                dto.Species = pokemonEfo.InfoContents.Where(c => c.CurrentContent.ContentFlags == LanguageFlag.SPECIES)
+                                                .SingleOrDefault().CurrentContent.ContentText;
             }
-            dto.EvolveIntoAvatars = pokemons?.Where(p => dto.EvolveIntos.Contains(p.Number)).Select(p => $"{p.Number.Replace("#", "").Trim()}{p.Name}").ToArray();
 
             return dto;
+        }
+
+        public static PokemonEvolveDto MapPokemonEvolveDto(Character pokemonEfo)
+        {
+            return pokemonEfo == null ? null :
+                new PokemonEvolveDto()
+                {
+                    EvolveId = pokemonEfo.Id,
+                    EvolveName = pokemonEfo.Name,
+                    EvolveDescription = pokemonEfo.InfoContents == null ? pokemonEfo.Description : 
+                                                                            pokemonEfo.InfoContents
+                                                                            .Where(c => c.CurrentContent.ContentFlags == LanguageFlag.DESCRIPTION)
+                                                                            .SingleOrDefault().CurrentContent.ContentText,
+                    EvolveNumber = pokemonEfo.Number,
+                    EvolveAvatar = pokemonEfo.Avatar != null ? pokemonEfo.Avatar.ImageUrl : string.Empty
+                };
         }
     }
 }

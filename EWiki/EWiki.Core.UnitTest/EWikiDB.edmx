@@ -18,32 +18,7 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
           <Property Name="CatTitleVI" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="CharacterInfoGroups">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
-        <EntityType Name="CharacterInfos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CharacterInfoGroupId" Type="int" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="IsMain" Type="bit" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
+          <Property Name="CatImageId" Type="int" />
         </EntityType>
         <EntityType Name="Characters">
           <Key>
@@ -70,50 +45,8 @@
           <Property Name="Weight" Type="real" Nullable="false" />
           <Property Name="EvolveIntos" Type="nvarchar(max)" />
           <Property Name="AvatarImageId" Type="int" />
-        </EntityType>
-        <EntityType Name="CharacterSectionGroups">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
-        <EntityType Name="CharacterSections">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CharacterId" Type="int" Nullable="false" />
-          <Property Name="CharacterSectionGroupId" Type="int" Nullable="false" />
-          <Property Name="Content" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-          <Property Name="Slug" Type="nvarchar(max)" />
-          <Property Name="Title" Type="nvarchar(max)" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
-        <EntityType Name="InfoValues">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CharacterInfoId" Type="int" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="LinkTo" Type="int" Nullable="false" />
-          <Property Name="LinkToId" Type="int" Nullable="false" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="UrlFormat" Type="nvarchar(max)" />
+          <Property Name="EvolveFroms" Type="nvarchar(max)" />
+          <Property Name="InfoContentId" Type="int" />
         </EntityType>
         <EntityType Name="Locations">
           <Key>
@@ -185,39 +118,22 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
         </EntityType>
-        <EntityType Name="PageRestrictions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="IsCascade" Type="bit" Nullable="false" />
-          <Property Name="PageRestrictedId" Type="int" Nullable="false" />
-          <Property Name="ResLevel" Type="int" Nullable="false" />
-          <Property Name="ResType" Type="int" Nullable="false" />
-          <Property Name="ResctrictionExpiry" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="PageId" Type="int" />
-        </EntityType>
         <EntityType Name="Pages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContentLanguage" Type="int" />
+          <Property Name="ContentLanguage" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
           <Property Name="IsNewPage" Type="bit" Nullable="false" />
-          <Property Name="IsRedirect" Type="bit" Nullable="false" />
-          <Property Name="NameSpace" Type="int" Nullable="false" />
-          <Property Name="NewestContent" Type="int" />
-          <Property Name="PageLength" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TagId" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
+          <Property Name="FeatureImageId" Type="int" />
+          <Property Name="NewestContent" Type="int" />
+          <Property Name="ContentObjectId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PokemonLocation">
           <Key>
@@ -243,46 +159,6 @@
           <Property Name="CharacterId" Type="int" Nullable="false" />
           <Property Name="MoveId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProtectedTitles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="NameSpace" Type="int" Nullable="false" />
-          <Property Name="ProtectExpiry" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="ProtectReason" Type="nvarchar(max)" />
-          <Property Name="Title" Type="nvarchar(max)" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="UserId" Type="int" />
-          <Property Name="UserProtectedId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
-        <EntityType Name="RecentChanges">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChangeComment" Type="nvarchar(max)" />
-          <Property Name="ChangeFromIpAddress" Type="nvarchar(max)" />
-          <Property Name="ChangeNewLength" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="ChangeOldLength" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="ChangeType" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="IsCreateNew" Type="bit" Nullable="false" />
-          <Property Name="IsDeletedAction" Type="bit" Nullable="false" />
-          <Property Name="NameSpace" Type="int" Nullable="false" />
-          <Property Name="PageId" Type="int" />
-          <Property Name="PageTitle" Type="nvarchar(max)" />
-          <Property Name="RevisionId" Type="int" />
-          <Property Name="RevisionParentId" Type="int" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="UserMakeChangeId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
         <EntityType Name="References">
           <Key>
             <PropertyRef Name="Id" />
@@ -298,40 +174,6 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
           <Property Name="UrlFormat" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Revisions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BelongToUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="PageContentId" Type="int" Nullable="false" />
-          <Property Name="PageId" Type="int" Nullable="false" />
-          <Property Name="RevParentId" Type="int" />
-          <Property Name="RevisionComment" Type="nvarchar(max)" />
-          <Property Name="RevivsionIsDeleted" Type="bit" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
-        <EntityType Name="Sites">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="SiteConfig" Type="nvarchar(max)" />
-          <Property Name="SiteDomain" Type="nvarchar(max)" />
-          <Property Name="SiteGroup" Type="nvarchar(max)" />
-          <Property Name="SiteKey" Type="nvarchar(max)" />
-          <Property Name="SiteLanguage" Type="nvarchar(max)" />
-          <Property Name="SiteProtocol" Type="nvarchar(max)" />
-          <Property Name="SiteSource" Type="nvarchar(max)" />
-          <Property Name="SiteType" Type="nvarchar(max)" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
         </EntityType>
         <EntityType Name="Tags">
           <Key>
@@ -386,20 +228,6 @@
           <Property Name="UserLastSeen" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="UserSeenId" Type="nvarchar" MaxLength="450" />
         </EntityType>
-        <EntityType Name="WatchLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="CreatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="NameSpace" Type="int" Nullable="false" />
-          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
-          <Property Name="UpdatedUserId" Type="nvarchar" MaxLength="450" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="WatchTitle" Type="nvarchar(max)" />
-          <Property Name="WatchedUserId" Type="nvarchar" MaxLength="450" />
-        </EntityType>
         <EntityType Name="WikiImages">
           <Key>
             <PropertyRef Name="Id" />
@@ -436,15 +264,27 @@
           <Property Name="Url" Type="nvarchar(max)" />
           <Property Name="VideoType" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
-          <End Role="CharacterInfoGroups" Type="Self.CharacterInfoGroups" Multiplicity="0..1" />
-          <End Role="CharacterInfos" Type="Self.CharacterInfos" Multiplicity="*" />
+        <Association Name="FK_Categories_WikiImages_CatImageId">
+          <End Role="WikiImages" Type="Self.WikiImages" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CharacterInfoGroups">
+            <Principal Role="WikiImages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CharacterInfos">
-              <PropertyRef Name="CharacterInfoGroupId" />
+            <Dependent Role="Categories">
+              <PropertyRef Name="CatImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Characters_Pages_InfoContentId">
+          <End Role="Pages" Type="Self.Pages" Multiplicity="0..1" />
+          <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="InfoContentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -457,46 +297,6 @@
             </Principal>
             <Dependent Role="Characters">
               <PropertyRef Name="AvatarImageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CharacterSections_Characters_CharacterId">
-          <End Role="Characters" Type="Self.Characters" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CharacterSections" Type="Self.CharacterSections" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Characters">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CharacterSections">
-              <PropertyRef Name="CharacterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId">
-          <End Role="CharacterSectionGroups" Type="Self.CharacterSectionGroups" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CharacterSections" Type="Self.CharacterSections" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CharacterSectionGroups">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CharacterSections">
-              <PropertyRef Name="CharacterSectionGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InfoValues_CharacterInfos_CharacterInfoId">
-          <End Role="CharacterInfos" Type="Self.CharacterInfos" Multiplicity="0..1" />
-          <End Role="InfoValues" Type="Self.InfoValues" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CharacterInfos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="InfoValues">
-              <PropertyRef Name="CharacterInfoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -564,15 +364,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PageRestrictions_Pages_PageId">
-          <End Role="Pages" Type="Self.Pages" Multiplicity="0..1" />
-          <End Role="PageRestrictions" Type="Self.PageRestrictions" Multiplicity="*" />
+        <Association Name="FK_Pages_PageContents_NewestContent">
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="0..1" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pages">
+            <Principal Role="PageContents">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageRestrictions">
-              <PropertyRef Name="PageId" />
+            <Dependent Role="Pages">
+              <PropertyRef Name="NewestContent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -585,6 +385,18 @@
             </Principal>
             <Dependent Role="Pages">
               <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pages_WikiImages_FeatureImageId">
+          <End Role="WikiImages" Type="Self.WikiImages" Multiplicity="0..1" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="FeatureImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -672,34 +484,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Revisions_PageContents_PageContentId">
-          <End Role="PageContents" Type="Self.PageContents" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Revisions" Type="Self.Revisions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PageContents">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Revisions">
-              <PropertyRef Name="PageContentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Revisions_Pages_PageId">
-          <End Role="Pages" Type="Self.Pages" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Revisions" Type="Self.Revisions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pages">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Revisions">
-              <PropertyRef Name="PageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Type_Categories_TypeId">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -730,53 +514,34 @@
         </Association>
         <EntityContainer Name="EWikiModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CharacterInfoGroups" EntityType="Self.CharacterInfoGroups" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CharacterInfos" EntityType="Self.CharacterInfos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CharacterSectionGroups" EntityType="Self.CharacterSectionGroups" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CharacterSections" EntityType="Self.CharacterSections" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InfoValues" EntityType="Self.InfoValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Moves" EntityType="Self.Moves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageContents" EntityType="Self.PageContents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageLangs" EntityType="Self.PageLangs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageMetas" EntityType="Self.PageMetas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PageRestrictions" EntityType="Self.PageRestrictions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PokemonLocation" EntityType="Self.PokemonLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PokemonMove" EntityType="Self.PokemonMove" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PokemonSpecialMove" EntityType="Self.PokemonSpecialMove" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProtectedTitles" EntityType="Self.ProtectedTitles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RecentChanges" EntityType="Self.RecentChanges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="References" EntityType="Self.References" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Revisions" EntityType="Self.Revisions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sites" EntityType="Self.Sites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMetas" EntityType="Self.UserMetas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserNewtalks" EntityType="Self.UserNewtalks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WikiImages" EntityType="Self.WikiImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WikiVideos" EntityType="Self.WikiVideos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" Association="Self.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
-            <End Role="CharacterInfoGroups" EntitySet="CharacterInfoGroups" />
-            <End Role="CharacterInfos" EntitySet="CharacterInfos" />
+          <AssociationSet Name="FK_Categories_WikiImages_CatImageId" Association="Self.FK_Categories_WikiImages_CatImageId">
+            <End Role="WikiImages" EntitySet="WikiImages" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Characters_Pages_InfoContentId" Association="Self.FK_Characters_Pages_InfoContentId">
+            <End Role="Pages" EntitySet="Pages" />
+            <End Role="Characters" EntitySet="Characters" />
           </AssociationSet>
           <AssociationSet Name="FK_Characters_WikiImages_AvatarImageId" Association="Self.FK_Characters_WikiImages_AvatarImageId">
             <End Role="WikiImages" EntitySet="WikiImages" />
             <End Role="Characters" EntitySet="Characters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CharacterSections_Characters_CharacterId" Association="Self.FK_CharacterSections_Characters_CharacterId">
-            <End Role="Characters" EntitySet="Characters" />
-            <End Role="CharacterSections" EntitySet="CharacterSections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" Association="Self.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId">
-            <End Role="CharacterSectionGroups" EntitySet="CharacterSectionGroups" />
-            <End Role="CharacterSections" EntitySet="CharacterSections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InfoValues_CharacterInfos_CharacterInfoId" Association="Self.FK_InfoValues_CharacterInfos_CharacterInfoId">
-            <End Role="CharacterInfos" EntitySet="CharacterInfos" />
-            <End Role="InfoValues" EntitySet="InfoValues" />
           </AssociationSet>
           <AssociationSet Name="FK_Locations_Categories_LocationType" Association="Self.FK_Locations_Categories_LocationType">
             <End Role="Categories" EntitySet="Categories" />
@@ -798,12 +563,16 @@
             <End Role="Pages" EntitySet="Pages" />
             <End Role="PageMetas" EntitySet="PageMetas" />
           </AssociationSet>
-          <AssociationSet Name="FK_PageRestrictions_Pages_PageId" Association="Self.FK_PageRestrictions_Pages_PageId">
+          <AssociationSet Name="FK_Pages_PageContents_NewestContent" Association="Self.FK_Pages_PageContents_NewestContent">
+            <End Role="PageContents" EntitySet="PageContents" />
             <End Role="Pages" EntitySet="Pages" />
-            <End Role="PageRestrictions" EntitySet="PageRestrictions" />
           </AssociationSet>
           <AssociationSet Name="FK_Pages_Tags_TagId" Association="Self.FK_Pages_Tags_TagId">
             <End Role="Tags" EntitySet="Tags" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pages_WikiImages_FeatureImageId" Association="Self.FK_Pages_WikiImages_FeatureImageId">
+            <End Role="WikiImages" EntitySet="WikiImages" />
             <End Role="Pages" EntitySet="Pages" />
           </AssociationSet>
           <AssociationSet Name="FK_PokemonLocation_Characters_CharacterId" Association="Self.FK_PokemonLocation_Characters_CharacterId">
@@ -830,14 +599,6 @@
             <End Role="Moves" EntitySet="Moves" />
             <End Role="PokemonSpecialMove" EntitySet="PokemonSpecialMove" />
           </AssociationSet>
-          <AssociationSet Name="FK_Revisions_PageContents_PageContentId" Association="Self.FK_Revisions_PageContents_PageContentId">
-            <End Role="PageContents" EntitySet="PageContents" />
-            <End Role="Revisions" EntitySet="Revisions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Revisions_Pages_PageId" Association="Self.FK_Revisions_Pages_PageId">
-            <End Role="Pages" EntitySet="Pages" />
-            <End Role="Revisions" EntitySet="Revisions" />
-          </AssociationSet>
           <AssociationSet Name="FK_Type_Categories_TypeId" Association="Self.FK_Type_Categories_TypeId">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Type" EntitySet="Type" />
@@ -853,30 +614,23 @@
       <Schema Namespace="EWikiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EWikiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="EWikiModel.Category" />
-          <EntitySet Name="CharacterInfoGroups" EntityType="EWikiModel.CharacterInfoGroup" />
-          <EntitySet Name="CharacterInfos" EntityType="EWikiModel.CharacterInfo" />
           <EntitySet Name="Characters" EntityType="EWikiModel.Character" />
-          <EntitySet Name="CharacterSectionGroups" EntityType="EWikiModel.CharacterSectionGroup" />
-          <EntitySet Name="CharacterSections" EntityType="EWikiModel.CharacterSection" />
-          <EntitySet Name="InfoValues" EntityType="EWikiModel.InfoValue" />
           <EntitySet Name="Locations" EntityType="EWikiModel.Location" />
           <EntitySet Name="Moves" EntityType="EWikiModel.Move" />
           <EntitySet Name="PageContents" EntityType="EWikiModel.PageContent" />
           <EntitySet Name="PageLangs" EntityType="EWikiModel.PageLang" />
           <EntitySet Name="PageMetas" EntityType="EWikiModel.PageMeta" />
-          <EntitySet Name="PageRestrictions" EntityType="EWikiModel.PageRestriction" />
           <EntitySet Name="Pages" EntityType="EWikiModel.Page" />
-          <EntitySet Name="ProtectedTitles" EntityType="EWikiModel.ProtectedTitle" />
-          <EntitySet Name="RecentChanges" EntityType="EWikiModel.RecentChanx" />
           <EntitySet Name="References" EntityType="EWikiModel.Reference" />
-          <EntitySet Name="Revisions" EntityType="EWikiModel.Revision" />
-          <EntitySet Name="Sites" EntityType="EWikiModel.Site" />
           <EntitySet Name="Tags" EntityType="EWikiModel.Tag" />
           <EntitySet Name="UserMetas" EntityType="EWikiModel.UserMeta" />
           <EntitySet Name="UserNewtalks" EntityType="EWikiModel.UserNewtalk" />
-          <EntitySet Name="WatchLists" EntityType="EWikiModel.WatchList" />
           <EntitySet Name="WikiImages" EntityType="EWikiModel.WikiImage" />
           <EntitySet Name="WikiVideos" EntityType="EWikiModel.WikiVideo" />
+          <AssociationSet Name="FK_Categories_WikiImages_CatImageId" Association="EWikiModel.FK_Categories_WikiImages_CatImageId">
+            <End Role="WikiImage" EntitySet="WikiImages" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
           <AssociationSet Name="FK_Locations_Categories_LocationType" Association="EWikiModel.FK_Locations_Categories_LocationType">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Location" EntitySet="Locations" />
@@ -889,29 +643,17 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Move" EntitySet="Moves" />
           </AssociationSet>
-          <AssociationSet Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" Association="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
-            <End Role="CharacterInfoGroup" EntitySet="CharacterInfoGroups" />
-            <End Role="CharacterInfo" EntitySet="CharacterInfos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InfoValues_CharacterInfos_CharacterInfoId" Association="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId">
-            <End Role="CharacterInfo" EntitySet="CharacterInfos" />
-            <End Role="InfoValue" EntitySet="InfoValues" />
+          <AssociationSet Name="FK_Characters_Pages_InfoContentId" Association="EWikiModel.FK_Characters_Pages_InfoContentId">
+            <End Role="Page" EntitySet="Pages" />
+            <End Role="Character" EntitySet="Characters" />
           </AssociationSet>
           <AssociationSet Name="FK_Characters_WikiImages_AvatarImageId" Association="EWikiModel.FK_Characters_WikiImages_AvatarImageId">
             <End Role="WikiImage" EntitySet="WikiImages" />
             <End Role="Character" EntitySet="Characters" />
           </AssociationSet>
-          <AssociationSet Name="FK_CharacterSections_Characters_CharacterId" Association="EWikiModel.FK_CharacterSections_Characters_CharacterId">
-            <End Role="Character" EntitySet="Characters" />
-            <End Role="CharacterSection" EntitySet="CharacterSections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" Association="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId">
-            <End Role="CharacterSectionGroup" EntitySet="CharacterSectionGroups" />
-            <End Role="CharacterSection" EntitySet="CharacterSections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Revisions_PageContents_PageContentId" Association="EWikiModel.FK_Revisions_PageContents_PageContentId">
+          <AssociationSet Name="FK_Pages_PageContents_NewestContent" Association="EWikiModel.FK_Pages_PageContents_NewestContent">
             <End Role="PageContent" EntitySet="PageContents" />
-            <End Role="Revision" EntitySet="Revisions" />
+            <End Role="Page" EntitySet="Pages" />
           </AssociationSet>
           <AssociationSet Name="FK_PageLangs_Pages_PageId" Association="EWikiModel.FK_PageLangs_Pages_PageId">
             <End Role="Page" EntitySet="Pages" />
@@ -921,17 +663,13 @@
             <End Role="Page" EntitySet="Pages" />
             <End Role="PageMeta" EntitySet="PageMetas" />
           </AssociationSet>
-          <AssociationSet Name="FK_PageRestrictions_Pages_PageId" Association="EWikiModel.FK_PageRestrictions_Pages_PageId">
-            <End Role="Page" EntitySet="Pages" />
-            <End Role="PageRestriction" EntitySet="PageRestrictions" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pages_Tags_TagId" Association="EWikiModel.FK_Pages_Tags_TagId">
             <End Role="Tag" EntitySet="Tags" />
             <End Role="Page" EntitySet="Pages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Revisions_Pages_PageId" Association="EWikiModel.FK_Revisions_Pages_PageId">
+          <AssociationSet Name="FK_Pages_WikiImages_FeatureImageId" Association="EWikiModel.FK_Pages_WikiImages_FeatureImageId">
+            <End Role="WikiImage" EntitySet="WikiImages" />
             <End Role="Page" EntitySet="Pages" />
-            <End Role="Revision" EntitySet="Revisions" />
           </AssociationSet>
           <AssociationSet Name="PokemonLocation" Association="EWikiModel.PokemonLocation">
             <End Role="Character" EntitySet="Characters" />
@@ -963,39 +701,12 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="CatTitleVI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CatImageId" Type="Int32" />
+          <NavigationProperty Name="WikiImage" Relationship="EWikiModel.FK_Categories_WikiImages_CatImageId" FromRole="Category" ToRole="WikiImage" />
           <NavigationProperty Name="Locations" Relationship="EWikiModel.FK_Locations_Categories_LocationType" FromRole="Category" ToRole="Location" />
           <NavigationProperty Name="Moves" Relationship="EWikiModel.FK_Moves_Categories_MoveCategoryId" FromRole="Category" ToRole="Move" />
           <NavigationProperty Name="Moves1" Relationship="EWikiModel.FK_Moves_Categories_MoveType" FromRole="Category" ToRole="Move" />
           <NavigationProperty Name="Characters" Relationship="EWikiModel.Type" FromRole="Category" ToRole="Character" />
-        </EntityType>
-        <EntityType Name="CharacterInfoGroup">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CharacterInfos" Relationship="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" FromRole="CharacterInfoGroup" ToRole="CharacterInfo" />
-        </EntityType>
-        <EntityType Name="CharacterInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CharacterInfoGroupId" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="IsMain" Type="Boolean" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CharacterInfoGroup" Relationship="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" FromRole="CharacterInfo" ToRole="CharacterInfoGroup" />
-          <NavigationProperty Name="InfoValues" Relationship="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId" FromRole="CharacterInfo" ToRole="InfoValue" />
         </EntityType>
         <EntityType Name="Character">
           <Key>
@@ -1022,60 +733,14 @@
           <Property Name="Weight" Type="Single" Nullable="false" />
           <Property Name="EvolveIntos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AvatarImageId" Type="Int32" />
+          <Property Name="EvolveFroms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InfoContentId" Type="Int32" />
+          <NavigationProperty Name="Page" Relationship="EWikiModel.FK_Characters_Pages_InfoContentId" FromRole="Character" ToRole="Page" />
           <NavigationProperty Name="WikiImage" Relationship="EWikiModel.FK_Characters_WikiImages_AvatarImageId" FromRole="Character" ToRole="WikiImage" />
-          <NavigationProperty Name="CharacterSections" Relationship="EWikiModel.FK_CharacterSections_Characters_CharacterId" FromRole="Character" ToRole="CharacterSection" />
           <NavigationProperty Name="Locations" Relationship="EWikiModel.PokemonLocation" FromRole="Character" ToRole="Location" />
           <NavigationProperty Name="Moves" Relationship="EWikiModel.PokemonMove" FromRole="Character" ToRole="Move" />
           <NavigationProperty Name="Moves1" Relationship="EWikiModel.PokemonSpecialMove" FromRole="Character" ToRole="Move" />
           <NavigationProperty Name="Categories" Relationship="EWikiModel.Type" FromRole="Character" ToRole="Category" />
-        </EntityType>
-        <EntityType Name="CharacterSectionGroup">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CharacterSections" Relationship="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" FromRole="CharacterSectionGroup" ToRole="CharacterSection" />
-        </EntityType>
-        <EntityType Name="CharacterSection">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CharacterId" Type="Int32" Nullable="false" />
-          <Property Name="CharacterSectionGroupId" Type="Int32" Nullable="false" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <Property Name="Slug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Character" Relationship="EWikiModel.FK_CharacterSections_Characters_CharacterId" FromRole="CharacterSection" ToRole="Character" />
-          <NavigationProperty Name="CharacterSectionGroup" Relationship="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" FromRole="CharacterSection" ToRole="CharacterSectionGroup" />
-        </EntityType>
-        <EntityType Name="InfoValue">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CharacterInfoId" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="LinkTo" Type="Int32" Nullable="false" />
-          <Property Name="LinkToId" Type="Int32" Nullable="false" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="UrlFormat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CharacterInfo" Relationship="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId" FromRole="InfoValue" ToRole="CharacterInfo" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -1126,7 +791,7 @@
           <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Revisions" Relationship="EWikiModel.FK_Revisions_PageContents_PageContentId" FromRole="PageContent" ToRole="Revision" />
+          <NavigationProperty Name="Pages" Relationship="EWikiModel.FK_Pages_PageContents_NewestContent" FromRole="PageContent" ToRole="Page" />
         </EntityType>
         <EntityType Name="PageLang">
           <Key>
@@ -1156,85 +821,28 @@
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Page" Relationship="EWikiModel.FK_PageMetas_Pages_PageId" FromRole="PageMeta" ToRole="Page" />
         </EntityType>
-        <EntityType Name="PageRestriction">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="IsCascade" Type="Boolean" Nullable="false" />
-          <Property Name="PageRestrictedId" Type="Int32" Nullable="false" />
-          <Property Name="ResLevel" Type="Int32" Nullable="false" />
-          <Property Name="ResType" Type="Int32" Nullable="false" />
-          <Property Name="ResctrictionExpiry" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="PageId" Type="Int32" />
-          <NavigationProperty Name="Page" Relationship="EWikiModel.FK_PageRestrictions_Pages_PageId" FromRole="PageRestriction" ToRole="Page" />
-        </EntityType>
         <EntityType Name="Page">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContentLanguage" Type="Int32" />
+          <Property Name="ContentLanguage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="IsNewPage" Type="Boolean" Nullable="false" />
-          <Property Name="IsRedirect" Type="Boolean" Nullable="false" />
-          <Property Name="NameSpace" Type="Int32" Nullable="false" />
-          <Property Name="NewestContent" Type="Int32" />
-          <Property Name="PageLength" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="TagId" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="FeatureImageId" Type="Int32" />
+          <Property Name="NewestContent" Type="Int32" />
+          <Property Name="ContentObjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Characters" Relationship="EWikiModel.FK_Characters_Pages_InfoContentId" FromRole="Page" ToRole="Character" />
+          <NavigationProperty Name="PageContent" Relationship="EWikiModel.FK_Pages_PageContents_NewestContent" FromRole="Page" ToRole="PageContent" />
           <NavigationProperty Name="PageLangs" Relationship="EWikiModel.FK_PageLangs_Pages_PageId" FromRole="Page" ToRole="PageLang" />
           <NavigationProperty Name="PageMetas" Relationship="EWikiModel.FK_PageMetas_Pages_PageId" FromRole="Page" ToRole="PageMeta" />
-          <NavigationProperty Name="PageRestrictions" Relationship="EWikiModel.FK_PageRestrictions_Pages_PageId" FromRole="Page" ToRole="PageRestriction" />
           <NavigationProperty Name="Tag" Relationship="EWikiModel.FK_Pages_Tags_TagId" FromRole="Page" ToRole="Tag" />
-          <NavigationProperty Name="Revisions" Relationship="EWikiModel.FK_Revisions_Pages_PageId" FromRole="Page" ToRole="Revision" />
-        </EntityType>
-        <EntityType Name="ProtectedTitle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="NameSpace" Type="Int32" Nullable="false" />
-          <Property Name="ProtectExpiry" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="ProtectReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="UserProtectedId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RecentChanx">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChangeComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ChangeFromIpAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ChangeNewLength" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ChangeOldLength" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ChangeType" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="IsCreateNew" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeletedAction" Type="Boolean" Nullable="false" />
-          <Property Name="NameSpace" Type="Int32" Nullable="false" />
-          <Property Name="PageId" Type="Int32" />
-          <Property Name="PageTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RevisionId" Type="Int32" />
-          <Property Name="RevisionParentId" Type="Int32" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="UserMakeChangeId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WikiImage" Relationship="EWikiModel.FK_Pages_WikiImages_FeatureImageId" FromRole="Page" ToRole="WikiImage" />
         </EntityType>
         <EntityType Name="Reference">
           <Key>
@@ -1251,42 +859,6 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="UrlFormat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Revision">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BelongToUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="PageContentId" Type="Int32" Nullable="false" />
-          <Property Name="PageId" Type="Int32" Nullable="false" />
-          <Property Name="RevParentId" Type="Int32" />
-          <Property Name="RevisionComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RevivsionIsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PageContent" Relationship="EWikiModel.FK_Revisions_PageContents_PageContentId" FromRole="Revision" ToRole="PageContent" />
-          <NavigationProperty Name="Page" Relationship="EWikiModel.FK_Revisions_Pages_PageId" FromRole="Revision" ToRole="Page" />
-        </EntityType>
-        <EntityType Name="Site">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="SiteConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteDomain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteLanguage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteProtocol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -1334,20 +906,6 @@
           <Property Name="UserLastSeen" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="UserSeenId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="WatchList">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="NameSpace" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="WatchTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="WatchedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="WikiImage">
           <Key>
             <PropertyRef Name="Id" />
@@ -1366,7 +924,9 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedUserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categories" Relationship="EWikiModel.FK_Categories_WikiImages_CatImageId" FromRole="WikiImage" ToRole="Category" />
           <NavigationProperty Name="Characters" Relationship="EWikiModel.FK_Characters_WikiImages_AvatarImageId" FromRole="WikiImage" ToRole="Character" />
+          <NavigationProperty Name="Pages" Relationship="EWikiModel.FK_Pages_WikiImages_FeatureImageId" FromRole="WikiImage" ToRole="Page" />
         </EntityType>
         <EntityType Name="WikiVideo">
           <Key>
@@ -1385,6 +945,18 @@
           <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VideoType" Type="Int32" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Categories_WikiImages_CatImageId">
+          <End Type="EWikiModel.WikiImage" Role="WikiImage" Multiplicity="0..1" />
+          <End Type="EWikiModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WikiImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="CatImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Locations_Categories_LocationType">
           <End Type="EWikiModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="EWikiModel.Location" Role="Location" Multiplicity="*" />
@@ -1421,27 +993,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId">
-          <End Type="EWikiModel.CharacterInfoGroup" Role="CharacterInfoGroup" Multiplicity="0..1" />
-          <End Type="EWikiModel.CharacterInfo" Role="CharacterInfo" Multiplicity="*" />
+        <Association Name="FK_Characters_Pages_InfoContentId">
+          <End Type="EWikiModel.Page" Role="Page" Multiplicity="0..1" />
+          <End Type="EWikiModel.Character" Role="Character" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CharacterInfoGroup">
+            <Principal Role="Page">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CharacterInfo">
-              <PropertyRef Name="CharacterInfoGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InfoValues_CharacterInfos_CharacterInfoId">
-          <End Type="EWikiModel.CharacterInfo" Role="CharacterInfo" Multiplicity="0..1" />
-          <End Type="EWikiModel.InfoValue" Role="InfoValue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CharacterInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="InfoValue">
-              <PropertyRef Name="CharacterInfoId" />
+            <Dependent Role="Character">
+              <PropertyRef Name="InfoContentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1457,45 +1017,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CharacterSections_Characters_CharacterId">
-          <End Type="EWikiModel.Character" Role="Character" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="EWikiModel.CharacterSection" Role="CharacterSection" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Character">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CharacterSection">
-              <PropertyRef Name="CharacterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId">
-          <End Type="EWikiModel.CharacterSectionGroup" Role="CharacterSectionGroup" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="EWikiModel.CharacterSection" Role="CharacterSection" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CharacterSectionGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CharacterSection">
-              <PropertyRef Name="CharacterSectionGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Revisions_PageContents_PageContentId">
-          <End Type="EWikiModel.PageContent" Role="PageContent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="EWikiModel.Revision" Role="Revision" Multiplicity="*" />
+        <Association Name="FK_Pages_PageContents_NewestContent">
+          <End Type="EWikiModel.PageContent" Role="PageContent" Multiplicity="0..1" />
+          <End Type="EWikiModel.Page" Role="Page" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PageContent">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Revision">
-              <PropertyRef Name="PageContentId" />
+            <Dependent Role="Page">
+              <PropertyRef Name="NewestContent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1527,18 +1057,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PageRestrictions_Pages_PageId">
-          <End Type="EWikiModel.Page" Role="Page" Multiplicity="0..1" />
-          <End Type="EWikiModel.PageRestriction" Role="PageRestriction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Page">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PageRestriction">
-              <PropertyRef Name="PageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pages_Tags_TagId">
           <End Type="EWikiModel.Tag" Role="Tag" Multiplicity="0..1" />
           <End Type="EWikiModel.Page" Role="Page" Multiplicity="*" />
@@ -1551,17 +1069,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Revisions_Pages_PageId">
-          <End Type="EWikiModel.Page" Role="Page" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="EWikiModel.Revision" Role="Revision" Multiplicity="*" />
+        <Association Name="FK_Pages_WikiImages_FeatureImageId">
+          <End Type="EWikiModel.WikiImage" Role="WikiImage" Multiplicity="0..1" />
+          <End Type="EWikiModel.Page" Role="Page" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Page">
+            <Principal Role="WikiImage">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Revision">
-              <PropertyRef Name="PageId" />
+            <Dependent Role="Page">
+              <PropertyRef Name="FeatureImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1590,6 +1106,7 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="EWikiModel.Category">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CatImageId" ColumnName="CatImageId" />
                 <ScalarProperty Name="CatTitleVI" ColumnName="CatTitleVI" />
                 <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
@@ -1602,37 +1119,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CharacterInfoGroups">
-            <EntityTypeMapping TypeName="EWikiModel.CharacterInfoGroup">
-              <MappingFragment StoreEntitySet="CharacterInfoGroups">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CharacterInfos">
-            <EntityTypeMapping TypeName="EWikiModel.CharacterInfo">
-              <MappingFragment StoreEntitySet="CharacterInfos">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CharacterInfoGroupId" ColumnName="CharacterInfoGroupId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Characters">
             <EntityTypeMapping TypeName="EWikiModel.Character">
               <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="InfoContentId" ColumnName="InfoContentId" />
+                <ScalarProperty Name="EvolveFroms" ColumnName="EvolveFroms" />
                 <ScalarProperty Name="AvatarImageId" ColumnName="AvatarImageId" />
                 <ScalarProperty Name="EvolveIntos" ColumnName="EvolveIntos" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
@@ -1653,53 +1144,6 @@
                 <ScalarProperty Name="Candy" ColumnName="Candy" />
                 <ScalarProperty Name="CPGain" ColumnName="CPGain" />
                 <ScalarProperty Name="Attack" ColumnName="Attack" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CharacterSectionGroups">
-            <EntityTypeMapping TypeName="EWikiModel.CharacterSectionGroup">
-              <MappingFragment StoreEntitySet="CharacterSectionGroups">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CharacterSections">
-            <EntityTypeMapping TypeName="EWikiModel.CharacterSection">
-              <MappingFragment StoreEntitySet="CharacterSections">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Slug" ColumnName="Slug" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="CharacterSectionGroupId" ColumnName="CharacterSectionGroupId" />
-                <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InfoValues">
-            <EntityTypeMapping TypeName="EWikiModel.InfoValue">
-              <MappingFragment StoreEntitySet="InfoValues">
-                <ScalarProperty Name="UrlFormat" ColumnName="UrlFormat" />
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="LinkToId" ColumnName="LinkToId" />
-                <ScalarProperty Name="LinkTo" ColumnName="LinkTo" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CharacterInfoId" ColumnName="CharacterInfoId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1779,80 +1223,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PageRestrictions">
-            <EntityTypeMapping TypeName="EWikiModel.PageRestriction">
-              <MappingFragment StoreEntitySet="PageRestrictions">
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="ResctrictionExpiry" ColumnName="ResctrictionExpiry" />
-                <ScalarProperty Name="ResType" ColumnName="ResType" />
-                <ScalarProperty Name="ResLevel" ColumnName="ResLevel" />
-                <ScalarProperty Name="PageRestrictedId" ColumnName="PageRestrictedId" />
-                <ScalarProperty Name="IsCascade" ColumnName="IsCascade" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Pages">
             <EntityTypeMapping TypeName="EWikiModel.Page">
               <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="ContentObjectId" ColumnName="ContentObjectId" />
+                <ScalarProperty Name="NewestContent" ColumnName="NewestContent" />
+                <ScalarProperty Name="FeatureImageId" ColumnName="FeatureImageId" />
                 <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="PageLength" ColumnName="PageLength" />
-                <ScalarProperty Name="NewestContent" ColumnName="NewestContent" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-                <ScalarProperty Name="IsRedirect" ColumnName="IsRedirect" />
                 <ScalarProperty Name="IsNewPage" ColumnName="IsNewPage" />
                 <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ContentLanguage" ColumnName="ContentLanguage" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProtectedTitles">
-            <EntityTypeMapping TypeName="EWikiModel.ProtectedTitle">
-              <MappingFragment StoreEntitySet="ProtectedTitles">
-                <ScalarProperty Name="UserProtectedId" ColumnName="UserProtectedId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ProtectReason" ColumnName="ProtectReason" />
-                <ScalarProperty Name="ProtectExpiry" ColumnName="ProtectExpiry" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RecentChanges">
-            <EntityTypeMapping TypeName="EWikiModel.RecentChanx">
-              <MappingFragment StoreEntitySet="RecentChanges">
-                <ScalarProperty Name="UserMakeChangeId" ColumnName="UserMakeChangeId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="RevisionParentId" ColumnName="RevisionParentId" />
-                <ScalarProperty Name="RevisionId" ColumnName="RevisionId" />
-                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
-                <ScalarProperty Name="IsDeletedAction" ColumnName="IsDeletedAction" />
-                <ScalarProperty Name="IsCreateNew" ColumnName="IsCreateNew" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
-                <ScalarProperty Name="ChangeOldLength" ColumnName="ChangeOldLength" />
-                <ScalarProperty Name="ChangeNewLength" ColumnName="ChangeNewLength" />
-                <ScalarProperty Name="ChangeFromIpAddress" ColumnName="ChangeFromIpAddress" />
-                <ScalarProperty Name="ChangeComment" ColumnName="ChangeComment" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1868,42 +1252,6 @@
                 <ScalarProperty Name="LinkToId" ColumnName="LinkToId" />
                 <ScalarProperty Name="LinkTo" ColumnName="LinkTo" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Revisions">
-            <EntityTypeMapping TypeName="EWikiModel.Revision">
-              <MappingFragment StoreEntitySet="Revisions">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="RevivsionIsDeleted" ColumnName="RevivsionIsDeleted" />
-                <ScalarProperty Name="RevisionComment" ColumnName="RevisionComment" />
-                <ScalarProperty Name="RevParentId" ColumnName="RevParentId" />
-                <ScalarProperty Name="PageId" ColumnName="PageId" />
-                <ScalarProperty Name="PageContentId" ColumnName="PageContentId" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="BelongToUserId" ColumnName="BelongToUserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sites">
-            <EntityTypeMapping TypeName="EWikiModel.Site">
-              <MappingFragment StoreEntitySet="Sites">
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
-                <ScalarProperty Name="SiteSource" ColumnName="SiteSource" />
-                <ScalarProperty Name="SiteProtocol" ColumnName="SiteProtocol" />
-                <ScalarProperty Name="SiteLanguage" ColumnName="SiteLanguage" />
-                <ScalarProperty Name="SiteKey" ColumnName="SiteKey" />
-                <ScalarProperty Name="SiteGroup" ColumnName="SiteGroup" />
-                <ScalarProperty Name="SiteDomain" ColumnName="SiteDomain" />
-                <ScalarProperty Name="SiteConfig" ColumnName="SiteConfig" />
                 <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1952,21 +1300,6 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WatchLists">
-            <EntityTypeMapping TypeName="EWikiModel.WatchList">
-              <MappingFragment StoreEntitySet="WatchLists">
-                <ScalarProperty Name="WatchedUserId" ColumnName="WatchedUserId" />
-                <ScalarProperty Name="WatchTitle" ColumnName="WatchTitle" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="NameSpace" ColumnName="NameSpace" />
                 <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

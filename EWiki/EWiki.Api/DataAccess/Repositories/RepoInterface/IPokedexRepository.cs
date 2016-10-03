@@ -6,6 +6,7 @@ namespace EWiki.Api.DataAccess
 {
     public interface IPokedexRepository : IRepository<Character>
     {
-        Task<IEnumerable<Character>> GetAllWithAllIncludeAsync();
+        Task<IEnumerable<Character>> GetAllWithAllIncludeAsync(int skip, int take);
+        Task<Character> GetPokemonByNumber(string number);
     }
 }

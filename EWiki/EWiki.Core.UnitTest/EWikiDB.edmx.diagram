@@ -5,45 +5,31 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="022538774a5e442e99eddd6ae61690c3" Name="Diagram1">
-        <EntityTypeShape EntityType="EWikiModel.Category" Width="1.5" PointX="0.75" PointY="7.375" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterInfoGroup" Width="1.5" PointX="11.75" PointY="1.25" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterInfo" Width="1.5" PointX="14" PointY="1" />
-        <EntityTypeShape EntityType="EWikiModel.Character" Width="1.5" PointX="6" PointY="6" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterSectionGroup" Width="1.5" PointX="9" PointY="2.875" />
-        <EntityTypeShape EntityType="EWikiModel.CharacterSection" Width="1.5" PointX="11.25" PointY="7.25" />
-        <EntityTypeShape EntityType="EWikiModel.InfoValue" Width="1.5" PointX="16.25" PointY="1" />
-        <EntityTypeShape EntityType="EWikiModel.Location" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="EWikiModel.Move" Width="1.5" PointX="8.25" PointY="6.875" />
-        <EntityTypeShape EntityType="EWikiModel.PageContent" Width="1.5" PointX="14" PointY="20.625" />
-        <EntityTypeShape EntityType="EWikiModel.PageLang" Width="1.5" PointX="13.25" PointY="27.5" />
-        <EntityTypeShape EntityType="EWikiModel.PageMeta" Width="1.5" PointX="13.25" PointY="24" />
-        <EntityTypeShape EntityType="EWikiModel.PageRestriction" Width="1.5" PointX="13.25" PointY="15.75" />
-        <EntityTypeShape EntityType="EWikiModel.Page" Width="1.5" PointX="11" PointY="18.625" />
-        <EntityTypeShape EntityType="EWikiModel.ProtectedTitle" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EWikiModel.RecentChanx" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="EWikiModel.Reference" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EWikiModel.Revision" Width="1.5" PointX="16.25" PointY="19.125" />
-        <EntityTypeShape EntityType="EWikiModel.Site" Width="1.5" PointX="2.75" PointY="11.75" />
-        <EntityTypeShape EntityType="EWikiModel.Tag" Width="1.5" PointX="8.75" PointY="19.125" />
-        <EntityTypeShape EntityType="EWikiModel.UserMeta" Width="1.5" PointX="8.75" PointY="12.75" />
-        <EntityTypeShape EntityType="EWikiModel.UserNewtalk" Width="1.5" PointX="4.75" PointY="13.75" />
-        <EntityTypeShape EntityType="EWikiModel.WatchList" Width="1.5" PointX="13.75" PointY="5.75" />
-        <EntityTypeShape EntityType="EWikiModel.WikiImage" Width="1.5" PointX="3.75" PointY="2.25" />
-        <EntityTypeShape EntityType="EWikiModel.WikiVideo" Width="1.5" PointX="13.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EWikiModel.Category" Width="1.5" PointX="3" PointY="18.25" />
+        <EntityTypeShape EntityType="EWikiModel.Character" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="EWikiModel.Location" Width="1.5" PointX="7.5" PointY="16.25" />
+        <EntityTypeShape EntityType="EWikiModel.Move" Width="1.5" PointX="10.5" PointY="15.5" />
+        <EntityTypeShape EntityType="EWikiModel.PageContent" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EWikiModel.PageLang" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="EWikiModel.PageMeta" Width="1.5" PointX="5.25" PointY="21.625" />
+        <EntityTypeShape EntityType="EWikiModel.Page" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="EWikiModel.Reference" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.Tag" Width="1.5" PointX="0.75" PointY="16.125" />
+        <EntityTypeShape EntityType="EWikiModel.UserMeta" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.UserNewtalk" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EWikiModel.WikiImage" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="EWikiModel.WikiVideo" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="EWikiModel.FK_Categories_WikiImages_CatImageId" />
         <AssociationConnector Association="EWikiModel.FK_Locations_Categories_LocationType" />
         <AssociationConnector Association="EWikiModel.FK_Moves_Categories_MoveCategoryId" />
         <AssociationConnector Association="EWikiModel.FK_Moves_Categories_MoveType" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterInfos_CharacterInfoGroups_CharacterInfoGroupId" />
-        <AssociationConnector Association="EWikiModel.FK_InfoValues_CharacterInfos_CharacterInfoId" />
+        <AssociationConnector Association="EWikiModel.FK_Characters_Pages_InfoContentId" />
         <AssociationConnector Association="EWikiModel.FK_Characters_WikiImages_AvatarImageId" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterSections_Characters_CharacterId" />
-        <AssociationConnector Association="EWikiModel.FK_CharacterSections_CharacterSectionGroups_CharacterSectionGroupId" />
-        <AssociationConnector Association="EWikiModel.FK_Revisions_PageContents_PageContentId" />
+        <AssociationConnector Association="EWikiModel.FK_Pages_PageContents_NewestContent" />
         <AssociationConnector Association="EWikiModel.FK_PageLangs_Pages_PageId" />
         <AssociationConnector Association="EWikiModel.FK_PageMetas_Pages_PageId" />
-        <AssociationConnector Association="EWikiModel.FK_PageRestrictions_Pages_PageId" />
         <AssociationConnector Association="EWikiModel.FK_Pages_Tags_TagId" />
-        <AssociationConnector Association="EWikiModel.FK_Revisions_Pages_PageId" />
+        <AssociationConnector Association="EWikiModel.FK_Pages_WikiImages_FeatureImageId" />
         <AssociationConnector Association="EWikiModel.PokemonLocation" />
         <AssociationConnector Association="EWikiModel.PokemonMove" />
         <AssociationConnector Association="EWikiModel.PokemonSpecialMove" />

@@ -13,22 +13,31 @@ namespace EWiki.Api.Controllers
     public class PokedexController : Controller
     {
         private readonly IPokedexRepository pokedexRepository;
+        private readonly IPageRepository pageRepository;
 
-        public PokedexController(IPokedexRepository repo)
+        public PokedexController(IPokedexRepository pokedexRepo, IPageRepository pageRepo)
         {
-            pokedexRepository = repo;
+            pokedexRepository = pokedexRepo;
+            pageRepository = pageRepo;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(int skip = 0, int take = 10)
+        public async Task<IActionResult> Get(int skip = 0, int take = 10, string lang = "en")
         {
-            IEnumerable<Character> result = await pokedexRepository.GetAllWithAllIncludeAsync();
+            IEnumerable<Character> result = await pokedexRepository.GetAllWithAllIncludeAsync(skip, take);
 
-            result = result.OrderBy(r => r.Number)
-                .Skip(skip)
-                .Take(take);
+            if (lang != Language.ENGLISH)
+            {
+                foreach (Character c in result)
+                {
+                    c.InfoContents = await pageRepository.Queryable()
+                        .Include(p => p.CurrentContent)
+                        .Where(p => p.ContentObjectId == c.InfoContentId && p.ContentLanguage == lang)
+                        .ToListAsync();
+                }
+            }
 
-            List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p, result)).ToList();
+            List<PokedexDto> responeData = result.Select(p => DtoMapper.MapPokedexDto(p)).ToList();
 
             return Json(responeData);
         }
