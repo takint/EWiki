@@ -28,11 +28,11 @@
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="1" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="Username" TextColor="White" Text="{Binding Username}" HorizontalOptions="FillAndExpand"/>
+      <Entry Placeholder="{utilities:StringResource Username}" TextColor="White" Text="{Binding Username}" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="2" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Password}" HorizontalOptions="FillAndExpand" />
+      <Entry Placeholder="{utilities:StringResource Password}" TextColor="White" IsPassword="True" Text="{Binding Password}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" Grid.Row="3" Padding="10,0,10,0">
       <Grid HorizontalOptions="FillAndExpand">

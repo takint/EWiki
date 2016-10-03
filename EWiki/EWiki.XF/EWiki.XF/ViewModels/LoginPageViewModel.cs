@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using EWiki.XF.Service.Models;
 using Prism.Commands;
@@ -36,7 +37,7 @@ namespace EWiki.XF.ViewModels
 
                 try
                 {
-                    UserDialogs.Instance.ShowLoading("Logging in ...");
+                    UserDialogs.Instance.ShowLoading(Resource.LoggingIn);
                     var result = await accountService.LoginAsync(Username, Password);
                     UserDialogs.Instance.HideLoading();
                     
@@ -46,7 +47,7 @@ namespace EWiki.XF.ViewModels
                 catch (Exception ex)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await UserDialogs.Instance.AlertAsync(ex.Message, "Error", "Retry");
+                    await UserDialogs.Instance.AlertAsync(ex.Message, Resource.ErrorTitle, Resource.Retry);
                 }
             }
         }
@@ -60,14 +61,14 @@ namespace EWiki.XF.ViewModels
         {
             if (string.IsNullOrEmpty(Username))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter username", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterUsername, "", Resource.OK);
                 return false;
             }
 
 
             if (string.IsNullOrEmpty(Password))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter password", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterPassword, "", Resource.OK);
                 return false;
             }
 

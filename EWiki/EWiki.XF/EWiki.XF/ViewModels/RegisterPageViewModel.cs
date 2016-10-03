@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using Prism.Commands;
 using Rg.Plugins.Popup.Services;
@@ -37,7 +38,7 @@ namespace EWiki.XF.ViewModels
 
                 try
                 {
-                    UserDialogs.Instance.ShowLoading("Registering ...");
+                    UserDialogs.Instance.ShowLoading(Resource.Registering);
                     await accountService.RegisterAsync(Username, Email, Password);
                     UserDialogs.Instance.HideLoading();
                     
@@ -47,7 +48,7 @@ namespace EWiki.XF.ViewModels
                 catch (Exception ex)
                 {
                     UserDialogs.Instance.HideLoading();
-                    await UserDialogs.Instance.AlertAsync(ex.Message, "Error", "Retry");
+                    await UserDialogs.Instance.AlertAsync(ex.Message, Resource.ErrorTitle, Resource.Retry);
                 }
             }
         }
@@ -61,25 +62,25 @@ namespace EWiki.XF.ViewModels
         {
             if (string.IsNullOrEmpty(Username))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter username", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterUsername, "", Resource.OK);
                 return false;
             }
 
             if (string.IsNullOrEmpty(Email))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter email", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterEmail, "", Resource.OK);
                 return false;
             }
 
             if (string.IsNullOrEmpty(Password))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter password", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterPassword, "", Resource.OK);
                 return false;
             }
 
             if (Password != ConfirmPassword)
             {
-                await UserDialogs.Instance.AlertAsync("Confirm password does not match", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.ConfirmPasswordNotMatch, "", Resource.OK);
                 return false;
             }
 

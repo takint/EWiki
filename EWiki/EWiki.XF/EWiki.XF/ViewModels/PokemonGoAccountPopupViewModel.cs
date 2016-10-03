@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EWiki.XF.Models;
+using EWiki.XF.Resources;
 using Prism.Commands;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -62,13 +63,13 @@ namespace EWiki.XF.ViewModels
         {
             if (string.IsNullOrEmpty(Account.Username))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter your Pokemon Go username", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterUsername, "", Resource.OK);
                 return false;
             }
 
             if (string.IsNullOrEmpty(Account.Password))
             {
-                await UserDialogs.Instance.AlertAsync("Please enter your Pokemon Go password", "", "OK");
+                await UserDialogs.Instance.AlertAsync(Resource.EnterPassword, "", Resource.OK);
                 return false;
             }
 

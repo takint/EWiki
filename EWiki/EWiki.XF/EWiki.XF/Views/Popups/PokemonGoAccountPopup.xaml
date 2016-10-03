@@ -33,19 +33,19 @@
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="1" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-user" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="Username" TextColor="White" Text="{Binding Account.Username}" HorizontalOptions="FillAndExpand"/>
+      <Entry Placeholder="{utilities:StringResource Username}" TextColor="White" Text="{Binding Account.Username}" HorizontalOptions="FillAndExpand"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="2" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-lock" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Placeholder="Password" TextColor="White" IsPassword="True" Text="{Binding Account.Password}" HorizontalOptions="FillAndExpand" />
+      <Entry Placeholder="{utilities:StringResource Password}" TextColor="White" IsPassword="True" Text="{Binding Account.Password}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="3" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Keyboard="Numeric" Placeholder="Current Latitude" TextColor="White" Text="{Binding Account.Latitude}" HorizontalOptions="FillAndExpand" />
+      <Entry Keyboard="Numeric" Placeholder="{utilities:StringResource Latitude}" TextColor="White" Text="{Binding Account.Latitude}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" BackgroundColor="#40FFFFFF" Grid.Row="4" Padding="10,0,10,0">
       <iconize:IconLabel Text="lnr-location" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
-      <Entry Keyboard="Numeric" Placeholder="Current Longitude" TextColor="White" Text="{Binding Account.Longitude}" HorizontalOptions="FillAndExpand" />
+      <Entry Keyboard="Numeric" Placeholder="{utilities:StringResource Longitude}" TextColor="White" Text="{Binding Account.Longitude}" HorizontalOptions="FillAndExpand" />
     </StackLayout>
     <StackLayout Orientation="Horizontal" Grid.Row="5" Padding="10,0,10,0">
       <Grid IsVisible="{Binding IsEdit}" HorizontalOptions="FillAndExpand">

@@ -4,11 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:rerenders="clr-namespace:EWiki.XF.Views.Rerenders;assembly=EWiki.XF"
              xmlns:views="clr-namespace:EWiki.XF.Views;assembly=EWiki.XF"
+             xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.MainPage"
              Title="Location Feeder">
-  <views:LocationFeederTab Title="Location Sharing" Icon="lnr-map-marker"/>
-  <views:PokedexTab Title="Pokedex" Icon="pokedex"/>
-  <views:IVCalculatorTab Title="IV Calculator" Icon="iv_percentage"/>
-  <views:NewsTab Title="News and Gags" Icon="lnr-magic-wand"/>
+  <views:LocationFeederTab Title="{utilities:StringResource LocationSharingTitle}" Icon="lnr-map-marker"/>
+  <views:PokedexTab Title="{utilities:StringResource PokedexTitle}" Icon="pokedex"/>
+  <views:IVCalculatorTab Title="{utilities:StringResource IVCalculatorTitle}" Icon="iv_percentage"/>
+  <views:NewsTab Title="{utilities:StringResource NewsAndGagsTitle}" Icon="lnr-magic-wand"/>
 </rerenders:BottomTabbedPage>

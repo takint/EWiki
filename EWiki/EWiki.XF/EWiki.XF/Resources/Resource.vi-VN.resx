@@ -123,14 +123,68 @@
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Xác nhận mật khẩu</value>
+  </data>
+  <data name="ConfirmPasswordNotMatch" xml:space="preserve">
+    <value>Mật khẩu không khớp</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Vui lòng nhập email</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu</value>
+  </data>
+  <data name="EnterUsername" xml:space="preserve">
+    <value>Vui lòng nhập tài khoản</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Thông báo lỗi</value>
+  </data>
+  <data name="IVCalculatorTitle" xml:space="preserve">
+    <value>IV Calculator</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Vĩ độ</value>
+  </data>
+  <data name="LocationSharingTitle" xml:space="preserve">
+    <value>Chia sẻ vị trí</value>
+  </data>
+  <data name="LoggingIn" xml:space="preserve">
+    <value>Đăng nhập ...</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Đăng xuất</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Kinh độ</value>
+  </data>
+  <data name="MaximumPokemonAccountsSetup" xml:space="preserve">
+    <value>Bạn đã sử dụng tối đa {0} tài khoản Pokemon Go</value>
+  </data>
+  <data name="NewsAndGagsTitle" xml:space="preserve">
+    <value>Tin tức vui</value>
+  </data>
+  <data name="NoPokemonAccountsSetup" xml:space="preserve">
+    <value>Bạn chưa cài đặt tài khoản Pokemon Go.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="PokedexTitle" xml:space="preserve">
+    <value>Pokedex</value>
   </data>
   <data name="PokemonGoAccounts" xml:space="preserve">
     <value>Tài khoản Pokemon Go</value>
@@ -141,10 +195,19 @@
   <data name="Register" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
+  <data name="Registering" xml:space="preserve">
+    <value>Đăng ký ...</value>
+  </data>
   <data name="RetrievingPokemons" xml:space="preserve">
     <value>Load dữ liệu pokemon ...</value>
   </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Thử lại</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Cập nhật</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Tên đăng nhập</value>
   </data>
 </root>

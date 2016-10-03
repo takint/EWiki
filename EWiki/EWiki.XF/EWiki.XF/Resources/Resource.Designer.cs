@@ -80,11 +80,110 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        internal static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm password does not match.
+        /// </summary>
+        internal static string ConfirmPasswordNotMatch {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter email.
+        /// </summary>
+        internal static string EnterEmail {
+            get {
+                return ResourceManager.GetString("EnterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter password.
+        /// </summary>
+        internal static string EnterPassword {
+            get {
+                return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter username.
+        /// </summary>
+        internal static string EnterUsername {
+            get {
+                return ResourceManager.GetString("EnterUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IV Calculator.
+        /// </summary>
+        internal static string IVCalculatorTitle {
+            get {
+                return ResourceManager.GetString("IVCalculatorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latitude.
+        /// </summary>
+        internal static string Latitude {
+            get {
+                return ResourceManager.GetString("Latitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location Sharing.
+        /// </summary>
+        internal static string LocationSharingTitle {
+            get {
+                return ResourceManager.GetString("LocationSharingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loggin in ....
+        /// </summary>
+        internal static string LoggingIn {
+            get {
+                return ResourceManager.GetString("LoggingIn", resourceCulture);
             }
         }
         
@@ -103,6 +202,69 @@ namespace EWiki.XF.Resources {
         internal static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude.
+        /// </summary>
+        internal static string Longitude {
+            get {
+                return ResourceManager.GetString("Longitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have setup maximum {0} Pokemon accounts!.
+        /// </summary>
+        internal static string MaximumPokemonAccountsSetup {
+            get {
+                return ResourceManager.GetString("MaximumPokemonAccountsSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News and Gags.
+        /// </summary>
+        internal static string NewsAndGagsTitle {
+            get {
+                return ResourceManager.GetString("NewsAndGagsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have not add any Pokemon Go Account yet!.
+        /// </summary>
+        internal static string NoPokemonAccountsSetup {
+            get {
+                return ResourceManager.GetString("NoPokemonAccountsSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pokedex.
+        /// </summary>
+        internal static string PokedexTitle {
+            get {
+                return ResourceManager.GetString("PokedexTitle", resourceCulture);
             }
         }
         
@@ -134,6 +296,15 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registering ....
+        /// </summary>
+        internal static string Registering {
+            get {
+                return ResourceManager.GetString("Registering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retrieving Pokemons ....
         /// </summary>
         internal static string RetrievingPokemons {
@@ -143,11 +314,29 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        internal static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         internal static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string Username {
+            get {
+                return ResourceManager.GetString("Username", resourceCulture);
             }
         }
     }

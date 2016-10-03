@@ -123,14 +123,68 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="ConfirmPasswordNotMatch" xml:space="preserve">
+    <value>Confirm password does not match</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Please enter email</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Please enter password</value>
+  </data>
+  <data name="EnterUsername" xml:space="preserve">
+    <value>Please enter username</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IVCalculatorTitle" xml:space="preserve">
+    <value>IV Calculator</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LocationSharingTitle" xml:space="preserve">
+    <value>Location Sharing</value>
+  </data>
+  <data name="LoggingIn" xml:space="preserve">
+    <value>Loggin in ...</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="MaximumPokemonAccountsSetup" xml:space="preserve">
+    <value>You have setup maximum {0} Pokemon accounts!</value>
+  </data>
+  <data name="NewsAndGagsTitle" xml:space="preserve">
+    <value>News and Gags</value>
+  </data>
+  <data name="NoPokemonAccountsSetup" xml:space="preserve">
+    <value>You have not add any Pokemon Go Account yet!</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PokedexTitle" xml:space="preserve">
+    <value>Pokedex</value>
   </data>
   <data name="PokemonGoAccounts" xml:space="preserve">
     <value>Pokemon Go Accounts</value>
@@ -141,10 +195,19 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="Registering" xml:space="preserve">
+    <value>Registering ...</value>
+  </data>
   <data name="RetrievingPokemons" xml:space="preserve">
     <value>Retrieving Pokemons ...</value>
   </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

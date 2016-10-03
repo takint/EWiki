@@ -221,7 +221,7 @@ namespace EWiki.XF.ViewModels
         {
             if (PokemonAccounts.Count == 2)
             {
-                await _pageDialogService.DisplayAlertAsync("", "You have setup maximum 2 Pokemon accounts!", "OK");
+                await _pageDialogService.DisplayAlertAsync("", string.Format(Resource.MaximumPokemonAccountsSetup, 2), Resource.OK);
                 return;
             }
 
@@ -251,7 +251,7 @@ namespace EWiki.XF.ViewModels
                     {
                         if (!PokemonAccounts.Any())
                         {
-                            await _pageDialogService.DisplayAlertAsync("", "You have not add any Pokemon Go Account yet!", "OK");
+                            await _pageDialogService.DisplayAlertAsync("", Resource.NoPokemonAccountsSetup, Resource.OK);
                             return;
                         }
 
