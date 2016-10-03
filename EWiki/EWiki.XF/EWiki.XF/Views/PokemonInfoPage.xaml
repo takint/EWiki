@@ -7,7 +7,6 @@
                  xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                  xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
-                 xmlns:cvc="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="EWiki.XF.Views.PokemonInfoPage">
   <forms:CarouselView ItemsSource="{Binding Pokemons}" Position="{Binding SelectedPokemonPosition}" VerticalOptions="FillAndExpand"
@@ -21,7 +20,7 @@
             <ffimageloading:CachedImage Source="pokemon_info_background" Aspect="AspectFill"
                                         Grid.Row="0" />
             <ScrollView Grid.Row="0">
-              <StackLayout Spacing="0" Margin="10,140,10,0" BackgroundColor="White" Padding="0,-140,0,0">
+              <StackLayout Spacing="0" Margin="10,190,10,0" BackgroundColor="White" Padding="0,-190,0,0">
               <extendedControls:AdMobView HeightRequest="50" />
                 <Grid Margin="0,10,0,0">
                   <Grid.ColumnDefinitions>

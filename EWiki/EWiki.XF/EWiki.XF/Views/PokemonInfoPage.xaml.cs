@@ -1,7 +1,4 @@
-﻿using EWiki.XF.Models;
-using EWiki.XF.Views.PokemonInfoElements;
-using Rg.Plugins.Popup.Pages;
-using Xamarin.Forms;
+﻿using Rg.Plugins.Popup.Pages;
 
 namespace EWiki.XF.Views
 {

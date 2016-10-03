@@ -128,9 +128,6 @@
     <Compile Include="Views\NewsCategoryPage.xaml.cs">
       <DependentUpon>NewsCategoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PokemonInfoElements\PokemonInfoElement.xaml.cs">
-      <DependentUpon>PokemonInfoElement.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PokemonInfoPage.xaml.cs">
       <DependentUpon>PokemonInfoPage.xaml</DependentUpon>
     </Compile>
@@ -386,12 +383,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\PokemonInfoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\PokemonInfoElements\PokemonInfoElement.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
