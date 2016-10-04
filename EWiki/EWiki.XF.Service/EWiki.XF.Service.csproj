@@ -46,6 +46,7 @@
     <Compile Include="Models\PokemonSM.cs" />
     <Compile Include="Models\CalculateResult.cs" />
     <Compile Include="Models\MoveSM.cs" />
+    <Compile Include="Models\EvolveSM.cs" />
     <Compile Include="Models\TypeSM.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="PokemonService.cs" />

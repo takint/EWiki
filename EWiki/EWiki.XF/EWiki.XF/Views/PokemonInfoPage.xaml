@@ -15,13 +15,14 @@
       <DataTemplate>
           <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <ffimageloading:CachedImage Source="pokemon_info_background" Aspect="AspectFill"
-                                        Grid.Row="0" />
-            <ScrollView Grid.Row="0">
-              <StackLayout Spacing="0" Margin="10,190,10,0" BackgroundColor="White" Padding="0,-190,0,0">
-              <extendedControls:AdMobView HeightRequest="50" />
+                                        Grid.Row="0" Grid.RowSpan="2"/>
+            <extendedControls:AdMobView HeightRequest="50" Grid.Row="0"/>
+            <ScrollView Grid.Row="1">
+              <StackLayout Spacing="0" Margin="10,120,10,0" BackgroundColor="White" Padding="0,-120,0,0">
                 <Grid Margin="0,10,0,0">
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -201,15 +202,33 @@
                 <StackLayout Padding="30,10,30,20">
                   <Label Text="{Binding Name, StringFormat='How is {0} evolve?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
                   <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <ffimageloading:CachedImage Source="{Binding EvolveFromAvatar}" HeightRequest="50"/>
-                    <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="65"/>
-                    <extendedControls:VerticalListView ItemsSource="{Binding EvolveIntoAvatars}">
-                      <extendedControls:VerticalListView.ItemTemplate>
+                    <extendedControls:HorizontalListView ItemsSource="{Binding EvolveFroms}">
+                      <extendedControls:HorizontalListView.ItemTemplate>
                         <DataTemplate>
-                          <ffimageloading:CachedImage Source="{Binding .}" HeightRequest="80"/>
+                          <extendedControls:VerticalListView ItemsSource="{Binding EvolveInfos}">
+                            <extendedControls:VerticalListView.ItemTemplate>
+                              <DataTemplate>
+                                <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="50"/>
+                              </DataTemplate>
+                            </extendedControls:VerticalListView.ItemTemplate>
+                          </extendedControls:VerticalListView>
                         </DataTemplate>
-                      </extendedControls:VerticalListView.ItemTemplate>
-                    </extendedControls:VerticalListView>
+                      </extendedControls:HorizontalListView.ItemTemplate>
+                    </extendedControls:HorizontalListView>
+                    <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="65"/>
+                    <extendedControls:HorizontalListView ItemsSource="{Binding EvolveIntos}">
+                      <extendedControls:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                          <extendedControls:VerticalListView ItemsSource="{Binding EvolveInfos}">
+                            <extendedControls:VerticalListView.ItemTemplate>
+                              <DataTemplate>
+                                <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="80"/>
+                              </DataTemplate>
+                            </extendedControls:VerticalListView.ItemTemplate>
+                          </extendedControls:VerticalListView>
+                        </DataTemplate>
+                      </extendedControls:HorizontalListView.ItemTemplate>
+                    </extendedControls:HorizontalListView>
                   </StackLayout>
                 </StackLayout>
               </StackLayout>

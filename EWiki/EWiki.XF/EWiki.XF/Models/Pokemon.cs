@@ -29,7 +29,7 @@ namespace EWiki.XF.Models
         public ObservableCollection<MoveSM> NormalMoves { get; set; }
         public ObservableCollection<MoveSM> SpecialMoves { get; set; }
         public string Locations { get; set; }
-        public ObservableCollection<string> EvolveIntoAvatars { get; set; }
-        public string EvolveFromAvatar { get; set; }
+        public ObservableCollection<EvolveSM> EvolveIntos { get; set; }
+        public ObservableCollection<EvolveSM> EvolveFroms { get; set; }
     }
 }

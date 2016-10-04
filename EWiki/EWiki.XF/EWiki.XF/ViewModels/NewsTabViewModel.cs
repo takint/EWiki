@@ -59,17 +59,17 @@ namespace EWiki.XF.ViewModels
         private readonly INewsService _newsService;
         private readonly INavigationService _navigationService;
 
-        private ObservableRangeCollection<NewsGroup> _newsGroups;
-        public ObservableRangeCollection<NewsGroup> NewsGroups
+        private ObservableCollection<NewsGroup> _newsGroups;
+        public ObservableCollection<NewsGroup> NewsGroups
         {
-            get { return _newsGroups ?? (_newsGroups = new ObservableRangeCollection<NewsGroup>()); }
+            get { return _newsGroups ?? (_newsGroups = new ObservableCollection<NewsGroup>()); }
             set { SetProperty(ref _newsGroups, value); }
         }
 
-        private ObservableRangeCollection<News> _featuredNewsList;
-        public ObservableRangeCollection<News> FeaturedNewsList
+        private ObservableCollection<News> _featuredNewsList;
+        public ObservableCollection<News> FeaturedNewsList
         {
-            get { return _featuredNewsList ?? (_featuredNewsList = new ObservableRangeCollection<News>()); }
+            get { return _featuredNewsList ?? (_featuredNewsList = new ObservableCollection<News>()); }
             set { SetProperty(ref _featuredNewsList, value); }
         }
 
@@ -95,7 +95,10 @@ namespace EWiki.XF.ViewModels
             if (FeaturedNewsList.Any())
                 return;
 
-            FeaturedNewsList.AddRange(_dummyData);
+            foreach (var news in _dummyData)
+            {
+                FeaturedNewsList.Add(news);
+            }
 
             var temp = _dummyData.Concat(_dummyData).Concat(_dummyData).ToList();
             foreach (var category in temp.Select(x => x.Category).Distinct())

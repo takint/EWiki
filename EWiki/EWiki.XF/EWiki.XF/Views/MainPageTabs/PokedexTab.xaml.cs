@@ -1,5 +1,8 @@
-﻿using EWiki.XF.Models;
+﻿using System.Linq;
+using System.Reactive.Disposables;
+using EWiki.XF.Models;
 using EWiki.XF.ViewModels;
+using EWiki.XF.Views.Rerenders;
 using Xamarin.Forms;
 
 namespace EWiki.XF.Views
@@ -32,7 +35,7 @@ namespace EWiki.XF.Views
         protected override async void OnAppearing()
         {
             var context = BindingContext as PokedexTabViewModel;
-            if (context != null) await context.LoadPokemons(0);
+            if (context != null && !context.Pokemons.Any()) await context.LoadPokemons(0);
             base.OnAppearing();
         }
     }

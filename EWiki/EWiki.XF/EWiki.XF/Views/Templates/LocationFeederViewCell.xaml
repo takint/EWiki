@@ -8,7 +8,7 @@
           xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
           prism:ViewModelLocator.AutowireViewModel="True"
           x:Class="EWiki.XF.Views.Templates.LocationFeederViewCell">
-    <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10" BackgroundColor="#FAFAFA">
+    <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="5" BackgroundColor="#FAFAFA">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="20" />

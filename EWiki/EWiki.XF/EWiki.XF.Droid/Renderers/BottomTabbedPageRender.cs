@@ -13,6 +13,7 @@ using Android.Text.Style;
 using Android.Views;
 using Android.Widget;
 using EWiki.XF.Droid.Renderers;
+using EWiki.XF.Views.Rerenders;
 using FormsPlugin.Iconize.Droid;
 using Plugin.Iconize.Droid;
 using Plugin.Iconize.Droid.Controls;
@@ -20,7 +21,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 
-[assembly: ExportRenderer(typeof(TabbedPage), typeof(BottomTabbedPageRender))]
+[assembly: ExportRenderer(typeof(BottomTabbedPage), typeof(BottomTabbedPageRender))]
 namespace EWiki.XF.Droid.Renderers
 {
     public class BottomTabbedPageRender : TabbedPageRenderer
@@ -54,22 +55,22 @@ namespace EWiki.XF.Droid.Renderers
             this.tabLayout = (TabLayout) this.GetChildAt(1);
         }
 
-        protected override void OnLayout(bool changed, int l, int t, int r, int b)
-        {
+        //protected override void OnLayout(bool changed, int l, int t, int r, int b)
+        //{
 
-            base.OnLayout(changed, l, t, r, b);
+        //    base.OnLayout(changed, l, t, r, b);
 
-            // update layout , let tab on the bottom of the page
-            // formViewPager upon tab.
-            var w = r - 1;
-            var h = b - t;
-            if (w > 0 && h > 0)
-            {
-                int ypos = Math.Min(h, Math.Max(this.tabLayout.MeasuredHeight, this.tabLayout.MinimumHeight));
-                this.formViewPager.Layout(0, -ypos, r, b - ypos);
-                this.tabLayout.Layout(l, h - ypos, r, b);
-            }
-        }
+        //    // update layout , let tab on the bottom of the page
+        //    // formViewPager upon tab.
+        //    var w = r - 1;
+        //    var h = b - t;
+        //    if (w > 0 && h > 0)
+        //    {
+        //        int ypos = Math.Min(h, Math.Max(this.tabLayout.MeasuredHeight, this.tabLayout.MinimumHeight));
+        //        this.formViewPager.Layout(0, -ypos, r, b - ypos);
+        //        this.tabLayout.Layout(l, h - ypos, r, b);
+        //    }
+        //}
 
         private void UpdateTabbedIcons(Context context)
         {
