@@ -82,7 +82,12 @@ namespace EWiki.Api
 
             if (isValidPassowrd)
             {
-                return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { new Claim(ClaimTypes.NameIdentifier, user.Id), new Claim(ClaimTypes.Email, user.Email) }));
+                return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, string.Join("|", user.Roles))
+                }));
             }
 
             // Credentials are invalid, or account doesn't exist

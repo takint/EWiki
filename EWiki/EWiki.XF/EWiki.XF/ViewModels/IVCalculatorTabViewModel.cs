@@ -56,6 +56,14 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _hp, value); }
         }
 
+        private int _trainerLvl;
+
+        public int TrainerLvl
+        {
+            get { return _trainerLvl; }
+            set { SetProperty(ref _trainerLvl, value); }
+        }
+
         private int _stardust;
 
         public int Stardust
@@ -198,7 +206,7 @@ namespace EWiki.XF.ViewModels
         {
             _calculated = false;
 
-            var calculateResult = _pokemonService.IVCalculate(PokemonId, CP, HP, Stardust, Powered);
+            var calculateResult = _pokemonService.IVCalculateByStardust(PokemonId, CP, HP, TrainerLvl, Stardust, Powered);
 
             if (calculateResult == null || calculateResult.Status != Status.Success)
             {

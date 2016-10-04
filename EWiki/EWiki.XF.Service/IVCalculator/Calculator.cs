@@ -9,31 +9,67 @@ namespace EWiki.XF.Service.IVCalculator
 {
     public class Calculator
     {
-        public static CalculateResult Calculate(PokemonSM pokemon, int cp, int hp, int stardust, bool powered = false)
+        public static CalculateResult Calculate(PokemonSM pokemon, int cp, int hp, int trainerLvl, int pokemonLvl = 0, int stardust = 0, bool powered = false)
         {
             // Source: https://github.com/andromedado/pokemon-go-iv-calculator/blob/master/index.js
             // Website to test:
             // https://pokemon.gameinfo.io/en/tools/iv-calculator
             // https://pokeassistant.com/main/ivcalculator
 
+            List<LevelData> potentialLevels = new List<LevelData>();
+            List<HPIV> potentialHPIVs = new List<HPIV>();
+            List<IVDetail> potentialIVs = new List<IVDetail>();
+            IVResult ivResult = new IVResult();
             List<LevelData> levels = new LevelData().GetLevels();
-            List<LevelData> potentialLevels = levels.Where(l => l.Stardust == stardust).ToList();
+
+            if (stardust == 0)
+            {
+                potentialLevels = levels.Where(l => l.Level == pokemonLvl).ToList();
+                if (potentialLevels == null)
+                {
+                    return new CalculateResult()
+                    {
+                        Status = Status.InvalidInput,
+                        Message = "Invalid pokemon's level"
+                    };
+                }
+            }
+            else if (pokemonLvl == 0)
+            {
+                potentialLevels = levels.Where(l => l.Stardust == stardust).ToList();
+                if (potentialLevels == null)
+                {
+                    return new CalculateResult()
+                    {
+                        Status = Status.InvalidInput,
+                        Message = "Invalid stardust number"
+                    };
+                }
+            }
+            else
+            {
+                return new CalculateResult()
+                {
+                    Status = Status.InvalidInput,
+                    Message = "Invalid input"
+                };
+            }
+
+            potentialLevels.RemoveAll(l => l.Level > (trainerLvl + 2));
             if (potentialLevels == null)
             {
                 return new CalculateResult()
                 {
                     Status = Status.InvalidInput,
-                    Message = "Invalid stardust number"
+                    Message = "Invalid trainer's level"
                 };
             }
+
             if (!powered)
             {
                 potentialLevels.RemoveAll(level => level.Level % 1 != 0);
             }
 
-            List<HPIV> potentialHPIVs = new List<HPIV>();
-            List<IVDetail> potentialIVs = new List<IVDetail>();
-            IVResult ivResult = new IVResult();
             foreach (var level in potentialLevels)
             {
                 for (int stamina = 0; stamina <= 15; stamina++)

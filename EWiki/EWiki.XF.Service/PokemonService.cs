@@ -15,7 +15,8 @@ namespace EWiki.XF.Service
     {
         Task<List<PokemonSM>> GetPokemons(GetPokemonsRq rq);
         Task<int> GetPokemonsCount();
-        CalculateResult IVCalculate(PokemonId pokemonId, int cp, int hp, int stardust, bool powered);
+        CalculateResult IVCalculateByStardust(PokemonId pokemonId, int cp, int hp, int trainerLvl, int stardust, bool powered);
+        CalculateResult IVCalculateByPokemonLvl(PokemonId pokemonId, int cp, int hp, int trainerLvl, int pokemonLvl);
     }
 
     public class PokemonService : IPokemonService
@@ -1101,10 +1102,16 @@ namespace EWiki.XF.Service
             }
         }
 
-        public CalculateResult IVCalculate(PokemonId pokemonId, int cp, int hp, int stardust, bool powered)
+        public CalculateResult IVCalculateByStardust(PokemonId pokemonId, int cp, int hp, int trainerLvl, int stardust, bool powered)
         {
             var pokemon = LocalPokemons.FirstOrDefault(p => p.PokemonId == pokemonId);
-            return Calculator.Calculate(pokemon, cp, hp, stardust, powered);
+            return Calculator.Calculate(pokemon, cp, hp, trainerLvl, stardust: stardust, powered: powered);
+        }
+
+        public CalculateResult IVCalculateByPokemonLvl(PokemonId pokemonId, int cp, int hp, int trainerLvl, int pokemonLvl)
+        {
+            var pokemon = LocalPokemons.FirstOrDefault(p => p.PokemonId == pokemonId);
+            return Calculator.Calculate(pokemon, cp, hp, trainerLvl, pokemonLvl: pokemonLvl);
         }
 
         public async Task<int> GetPokemonsCount()
