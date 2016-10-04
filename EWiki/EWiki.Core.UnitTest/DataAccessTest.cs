@@ -23,6 +23,7 @@ namespace EWiki.UnitTest
             //ImportPokedex();
             //UpdateWikiImage();
             //UpdateDataMultiLang();
+            //UpdateLocationMultilang();
         }
 
         [TestInitialize]
@@ -189,6 +190,39 @@ namespace EWiki.UnitTest
                 }
 
                 _dbContext.Moves.AddRange(moves);
+                _dbContext.SaveChanges();
+            }
+        }
+
+
+        private void UpdateLocationMultilang()
+        {
+            LoadOptions loadOptions = new LoadOptions(LoadFormat.Xlsx);
+            Workbook csvPokedexLocations = new Workbook("..//PokemonGo - Pokedex.xlsx", loadOptions);
+
+            if (csvPokedexLocations != null)
+            {
+                List<Location> locations = _dbContext.Locations.Include("Category").ToList();
+                int rows = csvPokedexLocations.Worksheets[2].Cells.MaxDataRow;
+                Cells locationData = csvPokedexLocations.Worksheets[2].Cells;
+
+                for (int row = 1; row <= rows; row++)
+                {
+                    string name = locationData.GetCell(row, 1) != null ? locationData.GetCell(row, 1).StringValue : string.Empty;
+                    Location locate = locations.Where(l => l.Category.CatTitle.Equals(name)).SingleOrDefault();
+
+                    locate.Name = locationData.GetCell(row, 4) != null ? locationData.GetCell(row, 4).StringValue : string.Empty;
+                    locate.Description = locationData.GetCell(row, 5) != null ? locationData.GetCell(row, 5).StringValue : string.Empty;
+                    locate.UpdatedDate = DateTime.Now;
+
+                    //Location location = new Location()
+                    //{
+                    //    Name = locationData.GetCell(row, 2) != null ? locationData.GetCell(row, 2).StringValue : string.Empty,
+                    //    Description = locationData.GetCell(row, 3) != null ? locationData.GetCell(row, 3).StringValue : string.Empty,
+                    //    CreatedDate = DateTime.Now
+                    //};
+                }
+
                 _dbContext.SaveChanges();
             }
         }
