@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.IO;
 
 namespace EWiki.Api.DataAccess
 {
-    public class EWikiContext : IdentityDbContext
+    public class EWikiContext : IdentityDbContext<User, ApplicationRole, string>
     {
         public DbSet<BlockedIp> BlockedIps { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -33,6 +32,7 @@ namespace EWiki.Api.DataAccess
         public DbSet<UserNewtalk> UserNewtalks { get; set; }
         public DbSet<WikiImage> WikiImages { get; set; }
         public DbSet<WikiVideo> WikiVideos { get; set; }
+        public DbSet<RoleSetting> RoleSettings { get; set; }
 
         public virtual int Commit()
         {

@@ -12,6 +12,10 @@ namespace EWiki.Api.DataAccess
         private const string SYSADMIN_ROLE = "SysAdmin";
         private const string STANDARD_USER_ROLE = "StandardUser";
 
+        private const string SILVER_USER_ROLE = "SilverUser";
+        private const string GOLD_USER_ROLE = "GoldUser";
+        private const string PLATINUM_USER_ROLE = "PlatinumUser";
+
         // TODO: Move this code when seed data is implemented in EF 7
 
         /// <summary>
@@ -25,7 +29,7 @@ namespace EWiki.Api.DataAccess
         {
             var db = app.ApplicationServices.GetService(typeof(EWikiContext)) as EWikiContext;
             UserManager<User> userManager = app.ApplicationServices.GetService(typeof(UserManager<User>)) as UserManager<User>;
-            RoleManager<IdentityRole> roleManager = app.ApplicationServices.GetService(typeof(RoleManager<IdentityRole>)) as RoleManager<IdentityRole>;
+            RoleManager<ApplicationRole> roleManager = app.ApplicationServices.GetService(typeof(RoleManager<ApplicationRole>)) as RoleManager<ApplicationRole>;
 
             // Initial credentials
             const string adminEmail = "sysadmin.ewiki@gmail.com";
@@ -34,19 +38,19 @@ namespace EWiki.Api.DataAccess
             const string adminRoleName = SYSADMIN_ROLE;
 
             // Initial roles
-            string[] roles = new[] { STANDARD_USER_ROLE, SYSADMIN_ROLE };
+            string[] roles = new[] { STANDARD_USER_ROLE, SYSADMIN_ROLE, SILVER_USER_ROLE, GOLD_USER_ROLE, PLATINUM_USER_ROLE };
             foreach (string roleName in roles)
             {
-                IdentityRole role = await roleManager.FindByNameAsync(adminRoleName);
+                ApplicationRole role = await roleManager.FindByNameAsync(adminRoleName);
                 if (role == null)
                 {
-                    role = new IdentityRole(roleName);
+                    role = new ApplicationRole(roleName);
                     IdentityResult roleresult = await roleManager.CreateAsync(role);
                 }
             }
 
             // Get Admin role
-            IdentityRole adminRole = await roleManager.FindByNameAsync(adminRoleName);
+            ApplicationRole adminRole = await roleManager.FindByNameAsync(adminRoleName);
 
             User user = await userManager.FindByNameAsync(adminName);
             if (user == null)
