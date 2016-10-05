@@ -34,7 +34,7 @@ namespace EWiki.Api
                 .AddDbContext<EWikiContext>(options =>
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, ApplicationRole>()
                 .AddEntityFrameworkStores<EWikiContext>()
                 .AddDefaultTokenProviders();
 
