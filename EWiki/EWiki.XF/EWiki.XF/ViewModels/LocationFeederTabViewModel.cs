@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using EWiki.XF.Models;
 using EWiki.XF.Models.Enum;
 using EWiki.XF.Service;
+using EWiki.XF.Services;
+using Microsoft.AspNet.SignalR.Client;
 using Prism.Navigation;
 using Xamarin.Forms;
 

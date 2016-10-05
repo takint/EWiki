@@ -1,4 +1,5 @@
 ﻿using System;
+using EWiki.XF.Models.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Xamarin.Forms;
@@ -10,7 +11,7 @@ namespace EWiki.XF.Models
         public string Content { get; set; }
         [JsonProperty("Color")]
         public string ColorName { get; set; }
-
+        public LogLevel LogLevel { get; set; }
         [JsonIgnore]
         public Color Color => ParseColor(ColorName);
         public DateTime CreatedDate { get; set; }

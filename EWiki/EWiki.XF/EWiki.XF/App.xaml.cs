@@ -45,6 +45,7 @@ namespace EWiki.XF
             Container.RegisterType<IPokemonService, PokemonService>();
             Container.RegisterType<INewsService, NewsService>();
             Container.RegisterType<IAccountService, AccountService>();
+            //Container.RegisterType<ISniperHubService, SniperHubService>();
         }
 
         private void SetupCultureInfo()
