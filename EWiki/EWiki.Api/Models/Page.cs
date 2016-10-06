@@ -16,6 +16,9 @@ namespace EWiki.Api.Models
         [ForeignKey("FeatureImageId")]
         public virtual WikiImage FeaturesImage { get; set; }
 
+        [ForeignKey("InfoContentId")]
+        public virtual ICollection<Character> ContentObject { get; set; }
+
         public virtual ICollection<PageRestriction> PageRestrictions { get; set; }
         public virtual ICollection<PageLang> PageLangs { get; set; }
         public virtual ICollection<PageMeta> PageMetas { get; set; }

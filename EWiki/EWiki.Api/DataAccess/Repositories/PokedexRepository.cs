@@ -34,7 +34,7 @@ namespace EWiki.Api.DataAccess
                 // Evolve to pokemon
                 if (!string.IsNullOrEmpty(c.EvolveIntos))
                 {
-                    c.EvolveIntoPokemons = await GetEnvolvePokemon(c.EvolveIntos);
+                    c.EvolveIntoPokemons = (await GetAllEnvolve(c)).Reverse().ToList();
                 }
 
                 // Evolve from pokemon
@@ -45,6 +45,36 @@ namespace EWiki.Api.DataAccess
             }
 
             return result;
+        }
+
+        private async Task<ICollection<ICollection<Character>>> GetAllEnvolve(Character nextEvolved)
+        {
+            string[] evolveNumbers = nextEvolved.EvolveIntos.Split(',');
+            ICollection<Character> evolvePokemons;
+            Character envolvePokemon;
+            ICollection<ICollection<Character>> allEvolved = new List<ICollection<Character>>();
+
+            foreach (string number in evolveNumbers)
+            {
+                evolvePokemons = new List<Character>();
+                envolvePokemon = await GetPokemonByNumber(number);
+                evolvePokemons.Add(envolvePokemon);
+
+                if (string.IsNullOrEmpty(envolvePokemon.EvolveIntos))
+                {
+                    evolvePokemons = await GetEnvolvePokemon(nextEvolved.EvolveIntos);
+                    allEvolved.Add(evolvePokemons);
+                }
+                else
+                {
+                    allEvolved = await GetAllEnvolve(envolvePokemon);
+                    allEvolved.Add(evolvePokemons);
+                }
+
+
+            }
+
+            return allEvolved;
         }
 
         private async Task<ICollection<Character>> GetEnvolvePokemon(string evolveList)
