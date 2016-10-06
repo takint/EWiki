@@ -24,7 +24,7 @@ namespace EWiki.Api.Models
         public string Description { get; set; }
 
         [NotMapped]
-        public ICollection<Character> EvolveIntoPokemons { get; set; }
+        public ICollection<ICollection<Character>> EvolveIntoPokemons { get; set; }
         public string EvolveIntos { get; set; }
 
         [NotMapped]

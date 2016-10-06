@@ -26,7 +26,7 @@ namespace EWiki.Api
 
         // For pokemon Evolve To only map necessary info
         public string EvolveIntoNumbers { get; set; }
-        public ICollection<PokemonEvolveDto> EvolveIntos { get; set; }
+        public ICollection<ICollection<PokemonEvolveDto>> EvolveIntos { get; set; }
 
         // For pokemon Evolve From only map necessary info
         public string EvolveFromNumbers { get; set; }

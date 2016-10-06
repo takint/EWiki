@@ -752,38 +752,6 @@ namespace EWiki.Api.Migrations
                     b.ToTable("UserMetas");
                 });
 
-            modelBuilder.Entity("EWiki.Api.Models.UserNewtalk", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("CreatedUserId");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<string>("UpdatedUserId");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserIp");
-
-                    b.Property<DateTime>("UserLastSeen");
-
-                    b.Property<string>("UserSeenId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
-
-                    b.HasIndex("UserSeenId");
-
-                    b.ToTable("UserNewtalks");
-                });
-
             modelBuilder.Entity("EWiki.Api.Models.WikiImage", b =>
                 {
                     b.Property<int>("Id")
@@ -1098,6 +1066,7 @@ namespace EWiki.Api.Migrations
                         .WithMany()
                         .HasForeignKey("EvolveFromId");
 
+
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
                         .HasForeignKey("UpdatedUserId");
@@ -1393,21 +1362,6 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.User", "UserInUse")
                         .WithMany()
                         .HasForeignKey("UserInUseId");
-                });
-
-            modelBuilder.Entity("EWiki.Api.Models.UserNewtalk", b =>
-                {
-                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.HasOne("EWiki.Api.Models.User", "UserSeen")
-                        .WithMany()
-                        .HasForeignKey("UserSeenId");
                 });
 
             modelBuilder.Entity("EWiki.Api.Models.WikiImage", b =>

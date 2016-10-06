@@ -29,7 +29,6 @@ namespace EWiki.Api.DataAccess
         public DbSet<Reference> References { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<UserMeta> UserMetas { get; set; }
-        public DbSet<UserNewtalk> UserNewtalks { get; set; }
         public DbSet<WikiImage> WikiImages { get; set; }
         public DbSet<WikiVideo> WikiVideos { get; set; }
         public DbSet<RoleSetting> RoleSettings { get; set; }
