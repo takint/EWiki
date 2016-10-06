@@ -98,6 +98,9 @@ namespace SimpleTokenProvider
 
             var idClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
             var emailClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+            var roleClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role);
+            var userDataClaim = identity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.UserData);
+
             var response = new
             {
                 AccessToken = encodedJwt,
@@ -105,6 +108,8 @@ namespace SimpleTokenProvider
                 Username = identity.Name,
                 UserId = idClaim != null ? idClaim.Value : null,
                 Email = emailClaim != null ? emailClaim.Value : null,
+                Role = roleClaim != null ? roleClaim.Value : null,
+                UserData = userDataClaim != null ? userDataClaim.Value : null
             };
 
             // Serialize and return the response

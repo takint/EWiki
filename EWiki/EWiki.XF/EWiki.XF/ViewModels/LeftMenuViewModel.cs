@@ -62,10 +62,10 @@ namespace EWiki.XF.ViewModels
 
         public List<LeftMenuItem> LeftMenuItems { get; set; } = new List<LeftMenuItem>
         {
-            new LeftMenuItem { Icon = "lnr-map-marker", Text = "Location Feeder", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(LocationFeederTab)}" },
-            new LeftMenuItem { Icon = "pokedex", IsImageIcon = true, Text = "Pokedex", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(PokedexTab)}"  },
-            new LeftMenuItem { Icon = "iv_percentage", IsImageIcon = true, Text = "IV Calculator", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(IVCalculatorTab)}"  },
-            new LeftMenuItem { Icon = "lnr-magic-wand", Text = "News & Gags", CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(NewsTab)}"  }
+            new LeftMenuItem { Icon = "lnr-map-marker", Text = Utilities.ResourceHelper.GetString("LocationSharingTitle"), CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(LocationFeederTab)}" },
+            new LeftMenuItem { Icon = "pokedex", IsImageIcon = true, Text = Utilities.ResourceHelper.GetString("PokedexTitle"), CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(PokedexTab)}"  },
+            new LeftMenuItem { Icon = "iv_percentage", IsImageIcon = true, Text = Utilities.ResourceHelper.GetString("IVCalculatorTitle"), CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(IVCalculatorTab)}"  },
+            new LeftMenuItem { Icon = "lnr-magic-wand", Text = Utilities.ResourceHelper.GetString("NewsAndGagsTitle"), CommandType = CommandType.Navigation, Command = $"{nameof(Navigation)}/{nameof(MainPage)}/{nameof(NewsTab)}"  }
         };
 
         private ObservableRangeCollection<PokemonAccount> _pokemonAccounts;

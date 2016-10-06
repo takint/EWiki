@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EWiki.XF.Models.Enum;
+using EWiki.XF.Service;
 using EWiki.XF.Services;
 using EWiki.XF.Utilities;
 using EWiki.XF.ViewModels;

@@ -159,8 +159,6 @@ namespace EWiki.Api.Migrations
 
                     b.HasIndex("EvolveFromId");
 
-                    b.HasIndex("InfoContentId");
-
                     b.HasIndex("UpdatedUserId");
 
                     b.ToTable("Characters");
@@ -656,6 +654,36 @@ namespace EWiki.Api.Migrations
                     b.ToTable("References");
                 });
 
+            modelBuilder.Entity("EWiki.Api.Models.RoleSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("CreatedUserId");
+
+                    b.Property<string>("RoleId");
+
+                    b.Property<string>("SettingName");
+
+                    b.Property<string>("SettingValue");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("UpdatedUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedUserId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UpdatedUserId");
+
+                    b.ToTable("RoleSettings");
+                });
+
             modelBuilder.Entity("EWiki.Api.Models.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -807,6 +835,9 @@ namespace EWiki.Api.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .HasAnnotation("MaxLength", 256);
 
@@ -819,6 +850,8 @@ namespace EWiki.Api.Migrations
                         .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -961,6 +994,16 @@ namespace EWiki.Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EWiki.Api.Models.ApplicationRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole");
+
+
+                    b.ToTable("ApplicationRole");
+
+                    b.HasDiscriminator().HasValue("ApplicationRole");
+                });
+
             modelBuilder.Entity("EWiki.Api.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser");
@@ -1023,10 +1066,6 @@ namespace EWiki.Api.Migrations
                         .WithMany()
                         .HasForeignKey("EvolveFromId");
 
-                    b.HasOne("EWiki.Api.Models.Page")
-                        .WithMany("ContentObject")
-                        .HasForeignKey("InfoContentId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()
@@ -1278,6 +1317,21 @@ namespace EWiki.Api.Migrations
                     b.HasOne("EWiki.Api.Models.User", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedUserId");
+                });
+
+            modelBuilder.Entity("EWiki.Api.Models.RoleSetting", b =>
+                {
+                    b.HasOne("EWiki.Api.Models.User", "CreatedUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedUserId");
+
+                    b.HasOne("EWiki.Api.Models.ApplicationRole", "Role")
+                        .WithMany("RoleSettings")
+                        .HasForeignKey("RoleId");
 
                     b.HasOne("EWiki.Api.Models.User", "UpdatedUser")
                         .WithMany()

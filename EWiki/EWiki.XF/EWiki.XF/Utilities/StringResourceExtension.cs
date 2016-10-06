@@ -15,13 +15,14 @@ namespace EWiki.XF.Utilities
     public class StringResourceExtension : IMarkupExtension
     {
         public string Text { get; set; }
+        public string Params { get; set; }
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
                 return "";
 
-            var value = ResourceHelper.GetString(Text);
+            var value = ResourceHelper.GetString(Text, Params);
             if (value == null)
             {
 #if DEBUG
@@ -31,7 +32,6 @@ namespace EWiki.XF.Utilities
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-
             return value;
         }
     }

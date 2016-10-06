@@ -120,6 +120,24 @@
   <data name="Add" xml:space="preserve">
     <value>Thêm</value>
   </data>
+  <data name="AllStatistics" xml:space="preserve">
+    <value>Tổng thể</value>
+  </data>
+  <data name="Attack" xml:space="preserve">
+    <value>Tấn công</value>
+  </data>
+  <data name="AttackAndDefense" xml:space="preserve">
+    <value>Công &amp; Thủ</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Trung bình</value>
+  </data>
+  <data name="Bad" xml:space="preserve">
+    <value>Yếu</value>
+  </data>
+  <data name="BATTLERATING" xml:space="preserve">
+    <value>ĐIỂM CHIẾN ĐẤU</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
@@ -129,8 +147,17 @@
   <data name="ConfirmPasswordNotMatch" xml:space="preserve">
     <value>Mật khẩu không khớp</value>
   </data>
+  <data name="CPRATING" xml:space="preserve">
+    <value>ĐIỂM CP (IV)</value>
+  </data>
+  <data name="Defense" xml:space="preserve">
+    <value>Phòng thủ</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Chi tiết</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -147,8 +174,29 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Thông báo lỗi</value>
   </data>
+  <data name="Evolve" xml:space="preserve">
+    <value>Tiến hóa</value>
+  </data>
+  <data name="Excellent" xml:space="preserve">
+    <value>Hoàn hảo</value>
+  </data>
+  <data name="FROMAVG" xml:space="preserve">
+    <value>{0}% TRUNG BÌNH</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Khá</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="HowEvolve" xml:space="preserve">
+    <value>{0} tiến hóa như thế nào?</value>
+  </data>
+  <data name="HPRATING" xml:space="preserve">
+    <value>ĐIỂM HP</value>
+  </data>
   <data name="IVCalculatorTitle" xml:space="preserve">
-    <value>IV Calculator</value>
+    <value>Tính điểm IV</value>
   </data>
   <data name="Latitude" xml:space="preserve">
     <value>Vĩ độ</value>
@@ -172,7 +220,7 @@
     <value>Bạn đã sử dụng tối đa {0} tài khoản Pokemon Go</value>
   </data>
   <data name="NewsAndGagsTitle" xml:space="preserve">
-    <value>Tin tức vui</value>
+    <value>Tin tức &amp; Giải trí</value>
   </data>
   <data name="NoPokemonAccountsSetup" xml:space="preserve">
     <value>Bạn chưa cài đặt tài khoản Pokemon Go.</value>
@@ -189,6 +237,9 @@
   <data name="PokemonGoAccounts" xml:space="preserve">
     <value>Tài khoản Pokemon Go</value>
   </data>
+  <data name="Powered" xml:space="preserve">
+    <value>Đã tăng cấp</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Tài khoản</value>
   </data>
@@ -204,10 +255,28 @@
   <data name="Retry" xml:space="preserve">
     <value>Thử lại</value>
   </data>
+  <data name="Stamina" xml:space="preserve">
+    <value>Máu</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Cập nhật</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Tên đăng nhập</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>Mạnh</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Nặng</value>
+  </data>
+  <data name="WhereIs" xml:space="preserve">
+    <value>Có thể tìm {0} ở đâu?</value>
+  </data>
+  <data name="WhoIs" xml:space="preserve">
+    <value>{0} là ai?</value>
   </data>
 </root>

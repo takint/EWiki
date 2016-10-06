@@ -7,7 +7,7 @@
              xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.MainPage"
-             Title="Location Feeder">
+             Title="{utilities:StringResource LocationSharingTitle}">
   <views:LocationFeederTab Title="{utilities:StringResource LocationSharingTitle}" Icon="lnr-map-marker"/>
   <views:PokedexTab Title="{utilities:StringResource PokedexTitle}" Icon="pokedex"/>
   <views:IVCalculatorTab Title="{utilities:StringResource IVCalculatorTitle}" Icon="iv_percentage"/>

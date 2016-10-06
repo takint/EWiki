@@ -3,9 +3,13 @@ using EWiki.Api.Models;
 using EWiki.Api.TokenProvider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using SimpleTokenProvider;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
@@ -75,6 +79,7 @@ namespace EWiki.Api
         private async Task<ClaimsIdentity> GetIdentity(string username, string password, IApplicationBuilder app)
         {
             UserManager<User> userManager = app.ApplicationServices.GetService(typeof(UserManager<User>)) as UserManager<User>;
+            var db = app.ApplicationServices.GetService(typeof(EWikiContext)) as EWikiContext;
 
             // Find user by username
             User user = await userManager.FindByNameAsync(username);
@@ -82,7 +87,34 @@ namespace EWiki.Api
 
             if (isValidPassowrd)
             {
-                return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { new Claim(ClaimTypes.NameIdentifier, user.Id), new Claim(ClaimTypes.Email, user.Email) }));
+                string userData = string.Empty;
+                var dbUser = userManager.Users.Include(x => x.Roles).FirstOrDefault(x => x.Id == user.Id);
+                var firstUserRole = dbUser.Roles.FirstOrDefault();
+
+                if (firstUserRole != null)
+                {
+                    ApplicationRole firstRole = db.Roles.Include(x => x.RoleSettings)
+                        .FirstOrDefault(x => x.Id == firstUserRole.RoleId);
+
+                    // Get user role settings
+                    var userRoleSettings = firstRole.RoleSettings
+                        .ToDictionary(x => x.SettingName, x => x.SettingValue);
+
+                    Dictionary<string, Dictionary<string, string>> userDataDict = new Dictionary<string, Dictionary<string, string>>
+                    {
+                        { "RoleSettings", userRoleSettings }
+                    };
+
+                    userData = JsonConvert.SerializeObject(userDataDict);
+                }
+
+                return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, string.Join("|", user.Roles)),
+                    new Claim(ClaimTypes.UserData, userData)
+                }));
             }
 
             // Credentials are invalid, or account doesn't exist

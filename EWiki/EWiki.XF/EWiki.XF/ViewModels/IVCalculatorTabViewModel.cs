@@ -56,6 +56,14 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _hp, value); }
         }
 
+        private int _trainerLvl;
+
+        public int TrainerLvl
+        {
+            get { return _trainerLvl; }
+            set { SetProperty(ref _trainerLvl, value); }
+        }
+
         private int _stardust;
 
         public int Stardust
@@ -95,6 +103,9 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _cpRatingFromAvg, value); }
         }
 
+        public string CPRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", CPRatingFromAvg.ToString("0.00"));
+
         private double _battleRating;
         public double BattleRating
         {
@@ -109,6 +120,9 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _battleRatingFromAvg, value); }
         }
 
+        public string BattleRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", BattleRatingFromAvg.ToString("0.00"));
+
         private double _hpRating;
         public double HPRating
         {
@@ -122,6 +136,9 @@ namespace EWiki.XF.ViewModels
             get { return _hpRatingFromAvg; }
             set { SetProperty(ref _hpRatingFromAvg, value); }
         }
+
+        public string HPRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", HPRatingFromAvg.ToString("0.00"));
 
         private Grade _grade;
         public Grade Grade
@@ -198,7 +215,7 @@ namespace EWiki.XF.ViewModels
         {
             _calculated = false;
 
-            var calculateResult = _pokemonService.IVCalculate(PokemonId, CP, HP, Stardust, Powered);
+            var calculateResult = _pokemonService.IVCalculateByStardust(PokemonId, CP, HP, TrainerLvl, Stardust, Powered);
 
             if (calculateResult == null || calculateResult.Status != Status.Success)
             {

@@ -10,20 +10,20 @@
              x:Name="ParentPage"
              BackgroundColor="#eceff4">
   <StackLayout>
-    <extendedControls:AdMobView HeightRequest="50" Margin="5"/>
     <ActivityIndicator x:Name="ActivityIndicator" IsRunning="True" Margin="0,30,0,0"/>
     <Label x:Name="Message" HorizontalOptions="CenterAndExpand" FontSize="14" TextColor="#FF5252" Text="{utilities:StringResource RetrievingPokemons}"/>
     <ListView x:Name="SniperInfoListView" CachingStrategy="RecycleElement"
               BackgroundColor="Transparent"
               ItemsSource="{Binding Pokemons}"
               HasUnevenRows="true"
-              Margin="10,0,10,0"
+              Margin="5"
               SeparatorVisibility="None">
       <ListView.ItemTemplate>
         <DataTemplate>
           <templates:LocationFeederViewCell />
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView>
+    </ListView>    
+    <extendedControls:AdMobView HeightRequest="50"/>
   </StackLayout>
 </ContentPage>
