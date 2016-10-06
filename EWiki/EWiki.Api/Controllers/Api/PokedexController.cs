@@ -43,9 +43,23 @@ namespace EWiki.Api.Controllers
         }
 
         [HttpGet("GetPokemon")]
-        public async Task<IActionResult> GetPokemon(string name)
+        public async Task<IActionResult> GetPokemon(int id, string name, string number)
         {
-            Character pokemon = (await pokedexRepository.FindByAsync(p => p.Name == name)).FirstOrDefault();
+            Character pokemon = null;
+
+            if (id != 0)
+            {
+                pokemon = await pokedexRepository.GetSingleAsync(id);
+            }
+            else if (!string.IsNullOrEmpty(name))
+            {
+                pokemon = (await pokedexRepository.FindByAsync(p => p.Name.Contains(name))).SingleOrDefault();
+            }
+            else if (!string.IsNullOrEmpty(number))
+            {
+                pokemon = (await pokedexRepository.FindByAsync(p => p.Number.Contains(number))).SingleOrDefault();
+            }
+            
             return Json(DtoMapper.MapPokedexDto(pokemon));
         }
 

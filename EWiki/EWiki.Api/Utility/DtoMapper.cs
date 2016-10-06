@@ -117,7 +117,7 @@ namespace EWiki.Api.Utility
                 EvolveIntoNumbers = pokemonEfo.EvolveIntos,
                 EvolveIntos = pokemonEfo.EvolveIntoPokemons == null ? null :
                                         pokemonEfo.EvolveIntoPokemons
-                                        .Select(p => MapPokemonEvolveDto(p))
+                                        .Select(p => MapListPokemonEvolveDto(p))
                                         .ToList(),
 
                 EvolveFromNumbers = pokemonEfo.EvolveFroms,
@@ -145,6 +145,11 @@ namespace EWiki.Api.Utility
             }
 
             return dto;
+        }
+
+        public static ICollection<PokemonEvolveDto> MapListPokemonEvolveDto(ICollection<Character> lstPokemonEfo)
+        {
+            return lstPokemonEfo == null ? null : lstPokemonEfo.Select(p => MapPokemonEvolveDto(p)).ToList();
         }
 
         public static PokemonEvolveDto MapPokemonEvolveDto(Character pokemonEfo)
