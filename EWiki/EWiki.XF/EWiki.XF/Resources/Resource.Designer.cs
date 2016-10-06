@@ -314,6 +314,15 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        internal static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location Sharing.
         /// </summary>
         internal static string LocationSharingTitle {
@@ -323,7 +332,7 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loggin in ....
+        ///   Looks up a localized string similar to Logging in ....
         /// </summary>
         internal static string LoggingIn {
             get {

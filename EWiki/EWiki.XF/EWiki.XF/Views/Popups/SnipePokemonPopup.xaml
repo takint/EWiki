@@ -18,7 +18,6 @@
                                   HorizontalOptions="FillAndExpand" />
       <extendedControls:AdMobView Grid.Row="0" HeightRequest="50" />
       <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand">
-        <extendedControls:AdMobView HeightRequest="50" />
         <AbsoluteLayout BackgroundColor="Transparent" HeightRequest="150">
             <ffimageloading:CachedImage Source="target.png" HeightRequest="150" WidthRequest="150"
                                         AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"

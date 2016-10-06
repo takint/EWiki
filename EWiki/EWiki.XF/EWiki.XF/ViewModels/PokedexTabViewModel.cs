@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using AutoMapper;
 using EWiki.XF.Models;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using EWiki.XF.Service.Requests.Pokemon;
 using EWiki.XF.Views;
@@ -88,9 +90,12 @@ namespace EWiki.XF.ViewModels
             }
         }
 
-        public async void PokedexItemSelectedHandler(Pokemon pokemon)
+        public async Task PokedexItemSelectedHandler(Pokemon pokemon)
         {
             var selectedPosition = Pokemons.IndexOf(pokemon);
+
+            UserDialogs.Instance.ShowLoading(Resource.Loading);
+
             var pokemonInfoPage = new PokemonInfoPage()
             {
                 BindingContext = new PokemonInfoPageViewModel()

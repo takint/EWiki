@@ -31,37 +31,44 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.5*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <Label Text="CP" FontSize="14" TextColor="#45686E" HorizontalOptions="Center"
-                               VerticalOptions="CenterAndExpand" />
-                        <Entry Text="{Binding CP}" Keyboard="Numeric" WidthRequest="70" FontSize="22"
-                               TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                      <Label Text="Trainer Level" FontSize="14" TextColor="#45686E" HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand" />
+                      <Entry Text="{Binding TrainerLvl}" Keyboard="Numeric" FontSize="18" WidthRequest="30"
+                             TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <Label Text="HP" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
+                        <Label Text="CP" FontSize="14" TextColor="#45686E" HorizontalOptions="Center"
                                VerticalOptions="CenterAndExpand" />
-                        <Entry Text="{Binding HP}" Keyboard="Numeric" WidthRequest="50" FontSize="18"
+                        <Entry Text="{Binding CP}" Keyboard="Numeric" FontSize="18" WidthRequest="70"
                                TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout Grid.Column="2" Grid.Row="0" Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <ffimageloading:CachedImage Source="stardust.png" HeightRequest="30" />
-                        <Entry Text="{Binding Stardust}" Keyboard="Numeric" WidthRequest="50" FontSize="18"
+                        <Label Text="HP" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand" />
+                        <Entry Text="{Binding HP}" Keyboard="Numeric" FontSize="18" WidthRequest="50"
                                TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </StackLayout>
-                    <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal"
+                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <Label Text="{utilities:StringResource Powered}" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
-                               VerticalOptions="CenterAndExpand" />
-                        <controls:CheckBox Checked="{Binding Powered}" WidthRequest="50" FontSize="18"
-                                           TextColor="#FF5252" HorizontalOptions="Center"
-                                           VerticalOptions="CenterAndExpand" />
+                      <Label Text="{utilities:StringResource Powered}" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand" />
+                      <controls:CheckBox Checked="{Binding Powered}" FontSize="18"
+                                         TextColor="#FF5252" HorizontalOptions="Center"
+                                         VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal"
+                                 HorizontalOptions="CenterAndExpand">
+                        <ffimageloading:CachedImage Source="stardust.png" HeightRequest="30" />
+                        <Entry Text="{Binding Stardust}" Keyboard="Numeric" FontSize="18" WidthRequest="70"
+                               TextColor="#FF5252" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                 </Grid>
                 <extendedControls:AdMobView HeightRequest="50" />

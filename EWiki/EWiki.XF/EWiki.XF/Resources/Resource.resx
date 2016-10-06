@@ -201,11 +201,14 @@
   <data name="Latitude" xml:space="preserve">
     <value>Latitude</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
   <data name="LocationSharingTitle" xml:space="preserve">
     <value>Location Sharing</value>
   </data>
   <data name="LoggingIn" xml:space="preserve">
-    <value>Loggin in ...</value>
+    <value>Logging in ...</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
