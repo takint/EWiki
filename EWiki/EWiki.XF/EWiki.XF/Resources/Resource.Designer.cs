@@ -368,11 +368,29 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have captured maximum normal pokemons today, please wait until tommorow to get more.
+        /// </summary>
+        internal static string MaximumNormalPokemonsCaptured {
+            get {
+                return ResourceManager.GetString("MaximumNormalPokemonsCaptured", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have setup maximum {0} Pokemon accounts!.
         /// </summary>
         internal static string MaximumPokemonAccountsSetup {
             get {
                 return ResourceManager.GetString("MaximumPokemonAccountsSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have captured maximum rare pokemons today, please wait until tommorow to get more.
+        /// </summary>
+        internal static string MaximumRarePokemonsCaptured {
+            get {
+                return ResourceManager.GetString("MaximumRarePokemonsCaptured", resourceCulture);
             }
         }
         

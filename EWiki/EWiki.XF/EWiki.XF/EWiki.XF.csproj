@@ -73,6 +73,7 @@
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\PokemonAccount.cs" />
     <Compile Include="Models\SniperInfo.cs" />
+    <Compile Include="Models\UserPokemonCaptureTracking.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

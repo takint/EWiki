@@ -282,4 +282,10 @@
   <data name="WhoIs" xml:space="preserve">
     <value>{0} là ai?</value>
   </data>
+  <data name="MaximumNormalPokemonsCaptured" xml:space="preserve">
+    <value>Bạn đã sử dụng hết số lần bắt Pokemon thường vào hôm nay, vui lòng bắt tiếp vào ngày mai</value>
+  </data>
+  <data name="MaximumRarePokemonsCaptured" xml:space="preserve">
+    <value>Bạn đã sử dụng hết số lần bắt Pokemon hiếm hôm vào nay, vui lòng bắt tiếp vào ngày mai</value>
+  </data>
 </root>

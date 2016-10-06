@@ -48,6 +48,43 @@ namespace EWiki.XF.Utilities
             return null;
         }
 
+        public static void SavePokemonCaptureTracking(string username, UserPokemonCaptureTracking tracking)
+        {
+            var data = Settings.Local.Get<List<PokemonCaptureTrackingData>>("PokemonCaptureTrackingData");
+            if (data == null)
+            {
+                data = new List<PokemonCaptureTrackingData>
+                {
+                    new PokemonCaptureTrackingData {Username = username, Tracking = tracking}
+                };
+            }
+            else
+            {
+                foreach (var item in data)
+                {
+                    if (item.Username == username)
+                        item.Tracking = tracking;
+                }
+            }
+
+            Settings.Local.Set("PokemonCaptureTrackingData", data);
+        }
+
+        public static UserPokemonCaptureTracking GetPokemonCaptureTracking(string username)
+        {
+            var data = Settings.Local.Get<List<PokemonCaptureTrackingData>>("PokemonCaptureTrackingData");
+            if (data == null)
+                return null;
+
+            foreach (var item in data)
+            {
+                if (item.Username == username)
+                    return item.Tracking;
+            }
+
+            return null;
+        }
+
         public static void SaveActivePokemonAccount(PokemonAccount account)
         {
             Settings.Local.Set("ActivePokemonAccount", account);
@@ -73,6 +110,13 @@ namespace EWiki.XF.Utilities
         {
             public string Username { get; set; }
             public List<PokemonAccount> Accounts { get; set; }
+        }
+
+        class PokemonCaptureTrackingData
+        {
+            public string Username { get; set; }
+
+            public UserPokemonCaptureTracking Tracking { get; set; }
         }
     }
 }
