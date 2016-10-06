@@ -71,6 +71,60 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Statistics.
+        /// </summary>
+        internal static string AllStatistics {
+            get {
+                return ResourceManager.GetString("AllStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attack.
+        /// </summary>
+        internal static string Attack {
+            get {
+                return ResourceManager.GetString("Attack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attack &amp; Defense.
+        /// </summary>
+        internal static string AttackAndDefense {
+            get {
+                return ResourceManager.GetString("AttackAndDefense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average.
+        /// </summary>
+        internal static string Average {
+            get {
+                return ResourceManager.GetString("Average", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad.
+        /// </summary>
+        internal static string Bad {
+            get {
+                return ResourceManager.GetString("Bad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BATTLE RATING.
+        /// </summary>
+        internal static string BATTLERATING {
+            get {
+                return ResourceManager.GetString("BATTLERATING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -98,11 +152,38 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CP RATING (IV).
+        /// </summary>
+        internal static string CPRATING {
+            get {
+                return ResourceManager.GetString("CPRATING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Defense.
+        /// </summary>
+        internal static string Defense {
+            get {
+                return ResourceManager.GetString("Defense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
             }
         }
         
@@ -148,6 +229,69 @@ namespace EWiki.XF.Resources {
         internal static string ErrorTitle {
             get {
                 return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evolve.
+        /// </summary>
+        internal static string Evolve {
+            get {
+                return ResourceManager.GetString("Evolve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excellent.
+        /// </summary>
+        internal static string Excellent {
+            get {
+                return ResourceManager.GetString("Excellent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}% FROM AVG.
+        /// </summary>
+        internal static string FROMAVG {
+            get {
+                return ResourceManager.GetString("FROMAVG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Good.
+        /// </summary>
+        internal static string Good {
+            get {
+                return ResourceManager.GetString("Good", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        internal static string Height {
+            get {
+                return ResourceManager.GetString("Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How {0} Evolve?.
+        /// </summary>
+        internal static string HowEvolve {
+            get {
+                return ResourceManager.GetString("HowEvolve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HP RATING.
+        /// </summary>
+        internal static string HPRATING {
+            get {
+                return ResourceManager.GetString("HPRATING", resourceCulture);
             }
         }
         
@@ -224,7 +368,7 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News and Gags.
+        ///   Looks up a localized string similar to News &amp; Gags.
         /// </summary>
         internal static string NewsAndGagsTitle {
             get {
@@ -278,6 +422,15 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Powered.
+        /// </summary>
+        internal static string Powered {
+            get {
+                return ResourceManager.GetString("Powered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         internal static string Profile {
@@ -323,6 +476,24 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stamina.
+        /// </summary>
+        internal static string Stamina {
+            get {
+                return ResourceManager.GetString("Stamina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         internal static string Update {
@@ -337,6 +508,42 @@ namespace EWiki.XF.Resources {
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VeryGood.
+        /// </summary>
+        internal static string VeryGood {
+            get {
+                return ResourceManager.GetString("VeryGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        internal static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where is {0}?.
+        /// </summary>
+        internal static string WhereIs {
+            get {
+                return ResourceManager.GetString("WhereIs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Who is {0}?.
+        /// </summary>
+        internal static string WhoIs {
+            get {
+                return ResourceManager.GetString("WhoIs", resourceCulture);
             }
         }
     }

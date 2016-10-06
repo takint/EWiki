@@ -10,6 +10,9 @@ namespace EWiki.XF.Models
     {
         public PokemonId PokemonId { get; set; }
         public string Name { get; set; }
+        public string WhoIs => Utilities.ResourceHelper.GetString("WhoIs", Name);
+        public string WhereIs => Utilities.ResourceHelper.GetString("WhereIs", Name);
+        public string HowEvolve => Utilities.ResourceHelper.GetString("HowEvolve", Name);
         public string Avatar { get; set; }
         public string Description { get; set; }
         public double MaxCP { get; set; }

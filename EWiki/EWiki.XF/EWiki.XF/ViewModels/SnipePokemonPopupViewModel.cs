@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using EWiki.XF.Models;
@@ -69,7 +70,7 @@ namespace EWiki.XF.ViewModels
 
         public SnipePokemonPopupViewModel()
         {
-            _connection = new HubConnection("http://192.168.1.12:2702/");
+            _connection = new HubConnection("http://signalr.pokit.mobi/");
             _proxy = _connection.CreateHubProxy("SniperHub");
 
             _proxy.On("GetMessage", (string message) =>
@@ -123,7 +124,8 @@ namespace EWiki.XF.ViewModels
                         UserName = pokemonAccount.Username,
                         Password = pokemonAccount.Password,
                         DefaultLatitude = pokemonAccount.Latitude,
-                        DefaultLongitude = pokemonAccount.Longitude
+                        DefaultLongitude = pokemonAccount.Longitude,
+                        Language = CultureInfo.CurrentCulture.Name
                     }));
                 }, _cts.Token);
             }

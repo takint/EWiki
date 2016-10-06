@@ -7,6 +7,7 @@
                  xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                  xmlns:extendedControls="clr-namespace:EWiki.XF.ExtendedControls;assembly=EWiki.XF"
+                 xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="EWiki.XF.Views.PokemonInfoPage">
   <forms:CarouselView ItemsSource="{Binding Pokemons}" Position="{Binding SelectedPokemonPosition}" VerticalOptions="FillAndExpand"
@@ -36,7 +37,7 @@
                   </StackLayout>
 
                   <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Evolve" FontSize="12" FontAttributes="Bold" TextColor="#45686E"
+                    <Label Text="{utilities:StringResource Evolve}" FontSize="12" FontAttributes="Bold" TextColor="#45686E"
                            HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                     <ffimageloading:CachedImage Source="Candy.png" WidthRequest="25" />
                     <Label Text="{Binding Candy}" FontSize="16" TextColor="#45686E" FontAttributes="Bold"
@@ -75,17 +76,17 @@
                       </DataTemplate>
                     </extendedControls:HorizontalListView.ItemTemplate>
                   </extendedControls:HorizontalListView>
-                  <Label Text="Type" FontSize="12" TextColor="#757575" Grid.Row="1"
+                  <Label Text="{utilities:StringResource Type}" FontSize="12" TextColor="#757575" Grid.Row="1"
                          Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
                   <Label Text="{Binding Weight, StringFormat='{0} kg'}" FontAttributes="Bold" FontSize="18" TextColor="#45686E"
                          Grid.Row="0"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                  <Label Text="Weight" FontSize="12" TextColor="#757575" Grid.Row="1"
+                  <Label Text="{utilities:StringResource Weight}" FontSize="12" TextColor="#757575" Grid.Row="1"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
                   <Label Text="{Binding Height, StringFormat='{0} m'}" FontAttributes="Bold" FontSize="18" TextColor="#45686E"
                          Grid.Row="0"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                  <Label Text="Height" FontSize="12" TextColor="#757575" Grid.Row="1"
+                  <Label Text="{utilities:StringResource Height}" FontSize="12" TextColor="#757575" Grid.Row="1"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Grid>
                 <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
@@ -100,21 +101,21 @@
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                   </Grid.ColumnDefinitions>
-                  <Label Text="Stamina" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
+                  <Label Text="{utilities:StringResource Stamina}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
                                                         ProgressColor="#FF5252" Progress="{Binding StaminaBarLength}" Grid.Row="0"
                                                         Grid.Column="1" />
                   <Label Text="{Binding Stamina}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="0"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                  <Label Text="Attack" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
+                  <Label Text="{utilities:StringResource Attack}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
                                                         ProgressColor="#FF5252" Progress="{Binding AttackBarLength}" Grid.Row="1"
                                                         Grid.Column="1" />
                   <Label Text="{Binding Attack}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="1"
                          Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
-                  <Label Text="Defense" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
+                  <Label Text="{utilities:StringResource Defense}" FontAttributes="Bold" FontSize="14" TextColor="#45686E" Grid.Row="2"
                          Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" />
                   <extendedControls:ExtendedProgressBar HorizontalOptions="FillAndExpand"
                                                         ProgressColor="#FF5252" Progress="{Binding DefenseBarLength}" Grid.Row="2"
@@ -190,17 +191,17 @@
                 </extendedControls:VerticalListView>
                 <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
                 <StackLayout Padding="30,10,30,10">
-                  <Label Text="{Binding Name, StringFormat='Who is {0}?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <Label Text="{Binding WhoIs}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
                   <Label Text="{Binding Description}" TextColor="#45686E" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
                 <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
                 <StackLayout Padding="30,10,30,10">
-                  <Label Text="{Binding Name, StringFormat='Where is {0}?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <Label Text="{Binding WhereIs}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
                   <Label Text="{Binding Locations}" TextColor="#45686E" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
                 <ffimageloading:CachedImage Source="line" Margin="30,10,30,10"/>
                 <StackLayout Padding="30,10,30,20">
-                  <Label Text="{Binding Name, StringFormat='How is {0} evolve?'}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
+                  <Label Text="{Binding HowEvolve}" TextColor="#757575" HorizontalOptions="CenterAndExpand" />
                   <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <extendedControls:HorizontalListView ItemsSource="{Binding EvolveFroms}">
                       <extendedControls:HorizontalListView.ItemTemplate>

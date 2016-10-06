@@ -103,6 +103,9 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _cpRatingFromAvg, value); }
         }
 
+        public string CPRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", CPRatingFromAvg.ToString("0.00"));
+
         private double _battleRating;
         public double BattleRating
         {
@@ -117,6 +120,9 @@ namespace EWiki.XF.ViewModels
             set { SetProperty(ref _battleRatingFromAvg, value); }
         }
 
+        public string BattleRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", BattleRatingFromAvg.ToString("0.00"));
+
         private double _hpRating;
         public double HPRating
         {
@@ -130,6 +136,9 @@ namespace EWiki.XF.ViewModels
             get { return _hpRatingFromAvg; }
             set { SetProperty(ref _hpRatingFromAvg, value); }
         }
+
+        public string HPRatingFromAvgString
+            => Utilities.ResourceHelper.GetString("FROMAVG", HPRatingFromAvg.ToString("0.00"));
 
         private Grade _grade;
         public Grade Grade

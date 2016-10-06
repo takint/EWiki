@@ -8,6 +8,7 @@
              xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
              xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:utilities="clr-namespace:EWiki.XF.Utilities;assembly=EWiki.XF"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="EWiki.XF.Views.IVCalculatorTab"
              BackgroundImage="pokemon_info_background">
@@ -15,7 +16,7 @@
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ffimageloading:CachedImage Source="pokemon_info_background" Aspect="AspectFill"
                                     Grid.Row="0" Grid.RowSpan="2" />
@@ -56,7 +57,7 @@
                     </StackLayout>
                     <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <Label Text="Powered" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
+                        <Label Text="{utilities:StringResource Powered}" FontSize="16" TextColor="#45686E" HorizontalOptions="Center"
                                VerticalOptions="CenterAndExpand" />
                         <controls:CheckBox Checked="{Binding Powered}" WidthRequest="50" FontSize="18"
                                            TextColor="#FF5252" HorizontalOptions="Center"
@@ -91,37 +92,37 @@
                         <Label Text="{Binding BattleRating, StringFormat='{0}%'}" FontSize="16" TextColor="White"
                                Grid.Row="0"
                                Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="BATTLE RATING" FontSize="10" TextColor="White" Grid.Row="1"
+                        <Label Text="{utilities:StringResource BATTLERATING}" FontSize="10" TextColor="White" Grid.Row="1"
                                Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="Attack and Defense" FontSize="10" TextColor="White" Grid.Row="2"
+                        <Label Text="{utilities:StringResource AttackAndDefense}" FontSize="10" TextColor="White" Grid.Row="2"
                                Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="{Binding BattleRatingFromAvg, StringFormat='{0}% FROM AVG'}" FontSize="8"
+                        <Label Text="{Binding BattleRatingFromAvgString}" FontSize="8"
                                TextColor="White" Grid.Row="3"
                                Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
                         <Label Text="{Binding CPRating, StringFormat='{0}%'}" FontSize="18"
                                TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}"
                                Grid.Row="0"
                                Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="CP RATING (IV)" FontSize="12"
+                        <Label Text="{utilities:StringResource CPRATING}" FontSize="12"
                                TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}"
                                Grid.Row="1"
                                Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="All Statistics" FontSize="12"
+                        <Label Text="{utilities:StringResource AllStatistics}" FontSize="12"
                                TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}"
                                Grid.Row="2"
                                Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="{Binding CPRatingFromAvg, StringFormat='{0}% FROM AVG'}" FontSize="10"
+                        <Label Text="{Binding CPRatingFromAvgString}" FontSize="10"
                                TextColor="{Binding Grade, Converter={x:Static converters:GradeColorConverter.Instance}}"
                                Grid.Row="3"
                                Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
                         <Label Text="{Binding HPRating, StringFormat='{0}%'}" FontSize="16" TextColor="White"
                                Grid.Row="0"
                                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="HP RATING" FontSize="10" TextColor="White" Grid.Row="1"
+                        <Label Text="{utilities:StringResource HPRATING}" FontSize="10" TextColor="White" Grid.Row="1"
                                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="Stamina" FontSize="10" TextColor="White" Grid.Row="2"
+                        <Label Text="{utilities:StringResource Stamina}" FontSize="10" TextColor="White" Grid.Row="2"
                                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
-                        <Label Text="{Binding HPRatingFromAvg, StringFormat='{0}% FROM AVG'}" FontSize="8"
+                        <Label Text="{Binding HPRatingFromAvgString}" FontSize="8"
                                TextColor="White" Grid.Row="3"
                                Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
                     </Grid>
@@ -134,7 +135,7 @@
                             <TapGestureRecognizer Command="{Binding OpenIVCalculateDetailsPopupCommand}" />
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
-                    <Label Text="Details" FontSize="14" TextColor="White"
+                    <Label Text="{utilities:StringResource Details}" FontSize="14" TextColor="White"
                            AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
                            AbsoluteLayout.LayoutFlags="PositionProportional" />
                 </AbsoluteLayout>

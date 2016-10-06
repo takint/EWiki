@@ -12,7 +12,7 @@ namespace EWiki.XF.Converters
         {
             var grade = (Grade)value;
 
-            return grade == Grade.VeryGood ? "Very Good!!" : grade == Grade.Excellent ? "Excellent!!!" : grade.ToString();
+            return Utilities.ResourceHelper.GetString(grade.ToString());
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

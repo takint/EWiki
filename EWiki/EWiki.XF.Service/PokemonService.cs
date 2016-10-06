@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using EWiki.XF.Service.Models;
@@ -1092,7 +1093,8 @@ namespace EWiki.XF.Service
         {
             try
             {
-                var response = await client.GetStringAsync($"{AppSettings.WEB_API_URL}pokedex?skip={rq.Skip}");
+                var language = CultureInfo.CurrentCulture.Name.Split('-')[0] == "vi" ? "vi" : "en";
+                var response = await client.GetStringAsync($"{AppSettings.WEB_API_URL}pokedex?skip={rq.Skip}&lang={language}");
                 var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
                 return pokemons;
             }

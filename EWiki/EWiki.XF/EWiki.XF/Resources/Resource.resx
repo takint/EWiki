@@ -120,6 +120,24 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AllStatistics" xml:space="preserve">
+    <value>All Statistics</value>
+  </data>
+  <data name="Attack" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="AttackAndDefense" xml:space="preserve">
+    <value>Attack &amp; Defense</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="Bad" xml:space="preserve">
+    <value>Bad</value>
+  </data>
+  <data name="BATTLERATING" xml:space="preserve">
+    <value>BATTLE RATING</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -129,8 +147,17 @@
   <data name="ConfirmPasswordNotMatch" xml:space="preserve">
     <value>Confirm password does not match</value>
   </data>
+  <data name="CPRATING" xml:space="preserve">
+    <value>CP RATING (IV)</value>
+  </data>
+  <data name="Defense" xml:space="preserve">
+    <value>Defense</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -146,6 +173,27 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="Evolve" xml:space="preserve">
+    <value>Evolve</value>
+  </data>
+  <data name="Excellent" xml:space="preserve">
+    <value>Excellent</value>
+  </data>
+  <data name="FROMAVG" xml:space="preserve">
+    <value>{0}% FROM AVG</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="HowEvolve" xml:space="preserve">
+    <value>How {0} Evolve?</value>
+  </data>
+  <data name="HPRATING" xml:space="preserve">
+    <value>HP RATING</value>
   </data>
   <data name="IVCalculatorTitle" xml:space="preserve">
     <value>IV Calculator</value>
@@ -172,7 +220,7 @@
     <value>You have setup maximum {0} Pokemon accounts!</value>
   </data>
   <data name="NewsAndGagsTitle" xml:space="preserve">
-    <value>News and Gags</value>
+    <value>News &amp; Gags</value>
   </data>
   <data name="NoPokemonAccountsSetup" xml:space="preserve">
     <value>You have not add any Pokemon Go Account yet!</value>
@@ -189,6 +237,9 @@
   <data name="PokemonGoAccounts" xml:space="preserve">
     <value>Pokemon Go Accounts</value>
   </data>
+  <data name="Powered" xml:space="preserve">
+    <value>Powered</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
@@ -204,10 +255,28 @@
   <data name="Retry" xml:space="preserve">
     <value>Retry</value>
   </data>
+  <data name="Stamina" xml:space="preserve">
+    <value>Stamina</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>VeryGood</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="WhereIs" xml:space="preserve">
+    <value>Where is {0}?</value>
+  </data>
+  <data name="WhoIs" xml:space="preserve">
+    <value>Who is {0}?</value>
   </data>
 </root>

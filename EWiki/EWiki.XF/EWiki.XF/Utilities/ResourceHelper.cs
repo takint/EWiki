@@ -23,9 +23,13 @@ namespace EWiki.XF.Utilities
         /// </summary>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public static string GetString(string resourceName)
+        public static string GetString(string resourceName, string param = null)
         {
             var result = _resManager.GetString(resourceName, App.CurrentCulture);
+            if (param != null)
+            {
+                result = result.Replace("{0}", param);
+            }
             return result;
         }
     }
