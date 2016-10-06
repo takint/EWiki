@@ -2356,7 +2356,7 @@ namespace PokemonGo.RocketAPI.Logic
             }
             catch (Exception ex)
             {
-                Logger.Error(StringUtils.GetMessageByLanguage(language, "Error", $"Error: ", new MessageInfos() {ErrorMessage = ex.Source}) + ex.Source, connectionId, hub);
+                Logger.Error(StringUtils.GetMessageByLanguage(language, "Error", $"Error: ", new MessageInfos() {ErrorMessage = ex.Message}) + ex.Message, connectionId, hub);
                 Logger.Error($"{ex}");
             }
         }
