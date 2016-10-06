@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using POGOProtos.Enums;
+using POGOProtos.Inventory.Item;
 
 namespace PokemonGo.RocketAPI
 {
@@ -79,8 +81,6 @@ namespace PokemonGo.RocketAPI
         }
     }
 
-  
-
     public enum LogLevel
 	{
 		None = 0,
@@ -91,4 +91,18 @@ namespace PokemonGo.RocketAPI
         Failed = 5,
         Success = 6
 	}
+
+    public class MessageInfos
+    {
+        public PokemonId PokemonId { get; set; }
+        public int CP { get; set; }
+        public double IV { get; set; }
+        public double Probability { get; set; }
+        public int XP { get; set; }
+        public ItemId ItemId { get; set; }
+        public int BerryCount { get; set; }
+        public string ErrorMessage { get; set; }
+        public string Move1 { get; set; }
+        public string Move2 { get; set; }
+    }
 }

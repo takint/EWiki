@@ -29,6 +29,7 @@
         "../packages/GPSOAuthSharp.0.0.5/lib/GPSOAuthSharp.dll": {},
         "../packages/Google.Protobuf.3.1.0/lib/net45/Google.Protobuf.dll": {},
         "../packages/GoogleMapsApi.0.59.0/lib/net45/GoogleMapsApi.dll": {},
+        "../packages/Humanizer.Core.2.1.0/lib/netstandard1.0/Humanizer.dll": {},
         "../packages/Microsoft.AspNet.SignalR.Core.2.2.1/lib/net45/Microsoft.AspNet.SignalR.Core.dll": {},
         "../packages/Microsoft.AspNet.SignalR.SystemWeb.2.2.1/lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll": {},
         "../packages/Microsoft.AspNet.WebApi.Client.5.2.3/lib/net45/System.Net.Http.Formatting.dll": {},

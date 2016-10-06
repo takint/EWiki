@@ -15,5 +15,6 @@ namespace EWiki.SignalR.Hubs.Models
         public double DefaultLatitude { get; set; }
         public double DefaultLongitude { get; set; }
         public string ConnectionId { get; set; }
+        public string Language { get; set; }
     }
 }

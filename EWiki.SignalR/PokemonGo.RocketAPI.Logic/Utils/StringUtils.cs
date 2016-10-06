@@ -4,6 +4,7 @@ using POGOProtos.Inventory.Item;
 using POGOProtos.Networking.Responses;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -637,6 +638,61 @@ namespace PokemonGo.RocketAPI.Logic.Utils
         public static string ConvertTimeMSinString(ulong timeMS, String format)
         {
             return (new DateTime((long)timeMS * 10000).AddYears(1969).AddDays(-1).ToString(format));
-        }       
+        }
+
+        public static string GetMessageByLanguage(string language, string messageKey, string defaultMessage, MessageInfos messageInfos)
+        {
+            switch (language)
+            {
+                case "vi-VN":
+                    switch (messageKey)
+                    {
+                        case "Connected":
+                            return "Đã kết nối!";
+                        case "LogingIn":
+                            return "Đang đăng nhập...";
+                        case "NoPokemonHere":
+                            return $"Không có {messageInfos.PokemonId} nào ở đây.";
+                        case "IFoundIt":
+                            return $"Thấy rồi! Trở lại vị trí cũ trước khi bắt :p...";
+                        case "PreviouslySkipped":
+                            return "Trước đó đã bỏ qua Pokemon này, mặc kệ nó!";
+                        case "NoPokeballs":
+                            return $"Hết bóng rồi! Sổng mất {messageInfos.PokemonId} CP {messageInfos.CP} IV {messageInfos.IV:0.00}%.";
+                        case "AllBallsOutOfStock":
+                            return "Tất cả bóng đã hết, tạm ngưng bắt cho đến khi thu thập ít nhất 1 bóng.";
+                        case "Encountered":
+                            return $"Đối mặt {messageInfos.PokemonId} CP {messageInfos.CP} IV {messageInfos.IV:0.00}% Xác xuất {messageInfos.Probability}%.";
+                        case "Thrown":
+                            return $"Đã ném {messageInfos.ItemId}. Còn lại: {messageInfos.BerryCount}.";
+                        case "NoMessingMasterBalls":
+                            return "Không mất thời giờ với bóng Master nữa! Dùng vũ lực với mục tiêu!";
+                        case "NotWastingUltraBalls":
+                            return "Không lãng phí bóng Ultra nữa! Dùng vũ lực với mục tiêu!";
+                        case "EnoughMisses":
+                            return "Hụt đủ rồi! Dùng vũ lực với mục tiêu!";
+                        case "Missed":
+                            return $"Hụt {messageInfos.PokemonId} khi sử dụng {messageInfos.ItemId}.";
+                        case "Escaped":
+                            return $"{messageInfos.PokemonId} thoát ra khi sử dụng {messageInfos.ItemId}.";
+                        case "CaughtNew":
+                            return $"Đã thu phục Pokemon mới: {messageInfos.PokemonId} (CP {messageInfos.CP} - IV {messageInfos.IV:0.00}% - {messageInfos.Move1} - {messageInfos.Move2}) khi dùng {messageInfos.ItemId} nhận được {messageInfos.XP}.";
+                        case "Caught":
+                            return $"Đã thu phục {messageInfos.PokemonId} (CP {messageInfos.CP} - IV {messageInfos.IV:0.00}% - {messageInfos.Move1} - {messageInfos.Move2}) khi dùng {messageInfos.ItemId} nhận được {messageInfos.XP}.";
+                        case "GotAway":
+                            return $"{messageInfos.PokemonId} CP {messageInfos.CP} IV {messageInfos.IV:0.00}% đã trốn thoát khi sử dụng {messageInfos.ItemId}...";
+                        case "SoftBan":
+                            return "Có dấu hiệu Soft Ban. Dừng việc bắt lại ngay nếu bạn không muốn Perma Ban. Thử lại sau 4-24 giờ và cẩn thận ở lần sau!";
+                        case "ErrorCatching":
+                            return $"Có lỗi {messageInfos.ErrorMessage} trong quá trình bắt.";
+                        case "Error":
+                            return $"Lỗi {messageInfos.ErrorMessage}.";
+                        default:
+                            return defaultMessage;
+                    }
+                default:
+                    return defaultMessage;
+            }
+        }
     }
 }

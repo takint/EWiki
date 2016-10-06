@@ -36,7 +36,7 @@ namespace EWiki.SignalR.Hubs
             var connectionId = Context.ConnectionId;
             SendMessage(connectionId, new SniperMessage()
             {
-                Color = "Green",
+                Color = "Magenta",
                 Content = "Connected",
                 CreatedDate = DateTime.Now
             });
@@ -96,7 +96,7 @@ namespace EWiki.SignalR.Hubs
                     logic = new Logic(settings, new LogicInfoObservable());
                 }
                 
-                await logic.SnipePokemon(snipeRq.PokemonId, snipeRq.Latitude, snipeRq.Longitude, connectionId, this);
+                await logic.SnipePokemon(snipeRq.PokemonId, snipeRq.Latitude, snipeRq.Longitude, connectionId, this, snipeRq.Language);
             });
         }
     }
