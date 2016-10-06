@@ -649,7 +649,7 @@ namespace PokemonGo.RocketAPI.Logic.Utils
                     {
                         case "Connected":
                             return "Đã kết nối!";
-                        case "LogingIn":
+                        case "LoggingIn":
                             return "Đang đăng nhập...";
                         case "NoPokemonHere":
                             return $"Không có {messageInfos.PokemonId} nào ở đây.";

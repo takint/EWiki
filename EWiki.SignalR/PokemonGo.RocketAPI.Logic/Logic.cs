@@ -2330,7 +2330,7 @@ namespace PokemonGo.RocketAPI.Logic
         {
             try
             {
-                Logger.ColoredConsoleWrite(ConsoleColor.Magenta, StringUtils.GetMessageByLanguage(language, "LogingIn", $"Loging in...", new MessageInfos()), LogLevel.Info, connectionId, hub);
+                Logger.ColoredConsoleWrite(ConsoleColor.Magenta, StringUtils.GetMessageByLanguage(language, "LoggingIn", $"Logging in...", new MessageInfos()), LogLevel.Info, connectionId, hub);
                 await _client.Login.DoLogin();
                 await _client.Player.UpdatePlayerLocation(latitude, longitude, 10);
                 var mapObjects = await _client.Map.GetMapObjects();
