@@ -9,15 +9,16 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
 {
     public class SniperInfo
     {
+        public PokemonId PokemonId { get; set; } = PokemonId.Missingno;
         public string Number {
             get
             {
                 var number = "";
-                for(var i = 0; i < 3 - Id.ToString().Length; i++)
+                for(var i = 0; i < 3 - PokemonId.ToString().Length; i++)
                 {
                     number += "0";
                 }
-                return $"{number}{(int)Id}";
+                return $"{number}{(int)PokemonId}";
             }
         }
         [JsonIgnore]
@@ -25,7 +26,6 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
         public DateTime ExpirationTimestamp { get; set; } = default(DateTime);
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public PokemonId Id { get; set; } = PokemonId.Missingno;
         [JsonIgnore]
         public string SpawnPointId { get; set; } = null;
         public PokemonMove Move1 { get; set; }
@@ -47,7 +47,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
         private static string FormatPokemonLog(SniperInfo sniperInfo)
         {
             const string timeFormat = "HH:mm:ss";
-            return $"{sniperInfo.ChannelInfo}: {sniperInfo.Id} at {sniperInfo.Latitude.ToString("N6", CultureInfo.InvariantCulture)},{sniperInfo.Longitude.ToString("N6", CultureInfo.InvariantCulture)}"
+            return $"{sniperInfo.ChannelInfo}: {sniperInfo.PokemonId} at {sniperInfo.Latitude.ToString("N6", CultureInfo.InvariantCulture)},{sniperInfo.Longitude.ToString("N6", CultureInfo.InvariantCulture)}"
                    + " with " +
                    (!sniperInfo.IV.Equals(default(double))
                        ? $"{sniperInfo.IV}% IV"
@@ -94,11 +94,11 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
             if (Math.Abs(a.Latitude - b.Latitude) <= Constants.CoordinatesOffsetAllowed
                 && Math.Abs(a.Longitude - b.Longitude) <= Constants.CoordinatesOffsetAllowed)
             {
-                if (a.Id.Equals(PokemonId.Missingno) || b.Id.Equals(PokemonId.Missingno))
+                if (a.PokemonId.Equals(PokemonId.Missingno) || b.PokemonId.Equals(PokemonId.Missingno))
                 {
                     return true;
                 }
-                if (a.Id.Equals(b.Id))
+                if (a.PokemonId.Equals(b.PokemonId))
                 {
                     return true;
                 }

@@ -19,17 +19,18 @@ namespace EWiki.XF.Models
 {
     public class SniperInfo : BindableBase
     {
-        public string Name { get; set; }
+        public PokemonId PokemonId { get; set; }
+        public string Name => PokemonId.ToString();
         public string Number
         {
             get
             {
                 var number = "";
-                for (var i = 0; i < 3 - ((int)Id).ToString().Length; i++)
+                for (var i = 0; i < 3 - ((int)PokemonId).ToString().Length; i++)
                 {
                     number += "0";
                 }
-                return $"{number}{(int)Id}";
+                return $"{number}{(int)PokemonId}";
             }
         }
         public string Avatar => $"http://res.cloudinary.com/ewiki-io/image/upload/v1475134451/Pokemons/Avatars/{Number}{Name}.png";
@@ -54,7 +55,6 @@ namespace EWiki.XF.Models
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public PokemonId Id { get; set; }
         public string SpawnPointId { get; set; } = null;
 
         private PokemonMove _move1;
@@ -180,7 +180,7 @@ namespace EWiki.XF.Models
                     {
                         BindingContext = new SnipePokemonPopupViewModel()
                         {
-                            PokemonId = Id,
+                            PokemonId = PokemonId,
                             Latitude = Latitude,
                             Longitude = Longitude
                         }

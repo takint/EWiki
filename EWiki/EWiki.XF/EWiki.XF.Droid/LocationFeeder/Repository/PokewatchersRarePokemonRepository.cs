@@ -163,7 +163,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
         {
             var sniperInfo = new SniperInfo();
             var pokemonId = PokemonParser.ParsePokemon(result.name);
-            sniperInfo.Id = pokemonId;
+            sniperInfo.PokemonId = pokemonId;
             var geoCoordinates = GeoCoordinatesParser.ParseGeoCoordinates(result.coords);
             if (geoCoordinates == null)
             {

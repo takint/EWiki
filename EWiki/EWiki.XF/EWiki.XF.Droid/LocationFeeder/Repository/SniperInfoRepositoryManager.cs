@@ -24,24 +24,12 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         public bool AddToRepository(SniperInfo sniperInfo)
         {
-            //Ignore this for clients because it could be causing some problems.
-            if (GlobalSettings.IsServer)
-            {
-                if (sniperInfo.ReceivedTimeStamp > DateTime.Now || sniperInfo.VerifiedOn > DateTime.Now
-                    || sniperInfo.ExpirationTimestamp > DateTime.Now.AddMinutes(20))
-                {
-                    return false;
-                }
-            }
             var oldSniperInfo = _sniperInfoRepository.Find(sniperInfo);
             if (oldSniperInfo != null)
             {
-                if (sniperInfo.ChannelInfo != null && sniperInfo.ChannelInfo.server == Constants.Bot)
+                if (!ValidateVerifiedSniperInfo(oldSniperInfo))
                 {
-                    if (!ValidateVerifiedSniperInfo(oldSniperInfo))
-                    {
-                        AddCaptureExisting(oldSniperInfo, sniperInfo);
-                    }
+                    AddCaptureExisting(oldSniperInfo, sniperInfo);
                 }
                 else
                 {
@@ -58,9 +46,9 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         private void AddCaptureExisting(SniperInfo oldSniperInfo, SniperInfo sniperInfo)
         {
-            if (PokemonId.Missingno.Equals(oldSniperInfo.Id))
+            if (PokemonId.Missingno.Equals(oldSniperInfo.PokemonId))
             {
-                oldSniperInfo.Id = sniperInfo.Id;
+                oldSniperInfo.PokemonId = sniperInfo.PokemonId;
             }
             if (oldSniperInfo.IV <= 0 && sniperInfo.IV > 0)
             {
@@ -125,7 +113,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         public static bool ValidateVerifiedSniperInfo(SniperInfo sniperInfo)
         {
-            return !PokemonId.Missingno.Equals(sniperInfo.Id)
+            return !PokemonId.Missingno.Equals(sniperInfo.PokemonId)
                 && sniperInfo.Verified
                 && sniperInfo.EncounterId != default(ulong)
                 && sniperInfo.Move1 != PokemonMove.MoveUnset
@@ -137,9 +125,9 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
         private void AddDuplicateDiscovery(SniperInfo oldSniperInfo, SniperInfo sniperInfo)
         {
             bool updated = false;
-            if (PokemonId.Missingno.Equals(oldSniperInfo.Id) && !PokemonId.Missingno.Equals(sniperInfo.Id))
+            if (PokemonId.Missingno.Equals(oldSniperInfo.PokemonId) && !PokemonId.Missingno.Equals(sniperInfo.PokemonId))
             {
-                oldSniperInfo.Id = sniperInfo.Id;
+                oldSniperInfo.PokemonId = sniperInfo.PokemonId;
                 updated = true;
             }
             if (sniperInfo.ChannelInfo != null && !oldSniperInfo.GetAllChannelInfos().Any(ci => object.Equals(ci.server, sniperInfo.ChannelInfo.server)
@@ -157,10 +145,6 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         private void AddNew(SniperInfo sniperInfo)
         {
-            if (sniperInfo.ExpirationTimestamp > DateTime.Now.AddHours(2) || sniperInfo.ExpirationTimestamp < DateTime.Now)
-            {
-                sniperInfo.ExpirationTimestamp = default(DateTime);
-            }
             var captures = _sniperInfoRepository.Update(sniperInfo);
             Log.Info("", $"Discovered: {FormatPokemonLog(sniperInfo, captures)}");
 
@@ -170,9 +154,8 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
                 {
                     new Models.SniperInfo
                     {
-                        Id = sniperInfo.Id,
-                        Name = sniperInfo.Id.ToString(),
-                        ChannelName = sniperInfo.ChannelInfo.channel,
+                        PokemonId = sniperInfo.PokemonId,
+                        ChannelName = sniperInfo.ChannelInfo?.channel,
                         EncounterId = sniperInfo.EncounterId,
                         ExpirationTimestamp = sniperInfo.ExpirationTimestamp,
                         TrueExpirationTimestamp = sniperInfo.ExpirationTimestamp > DateTime.MinValue,
@@ -196,7 +179,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
 
         private static string FormatPokemonLog(SniperInfo sniperInfo, int captures)
         {
-            return $"{sniperInfo.ChannelInfo}: {sniperInfo.Id} at {sniperInfo.Latitude.ToString("N6", CultureInfo.InvariantCulture)},{sniperInfo.Longitude.ToString("N6", CultureInfo.InvariantCulture)}"
+            return $"{sniperInfo.ChannelInfo}: {sniperInfo.PokemonId} at {sniperInfo.Latitude.ToString("N6", CultureInfo.InvariantCulture)},{sniperInfo.Longitude.ToString("N6", CultureInfo.InvariantCulture)}"
                    + " with " +
                    (!sniperInfo.IV.Equals(default(double))
                        ? $"{sniperInfo.IV}% IV"

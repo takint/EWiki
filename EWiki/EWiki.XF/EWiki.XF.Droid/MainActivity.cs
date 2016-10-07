@@ -49,7 +49,7 @@ namespace EWiki.XF.Droid
 
             LoadApplication(new App(new AndroidInitializer()));
 
-            StartLocationFeeder();
+            //StartLocationFeeder();
             SetupBackgroundServices();
         }
 
