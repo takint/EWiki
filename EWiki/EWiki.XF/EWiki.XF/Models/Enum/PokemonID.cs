@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace EWiki.XF.Models.Enum
 {
     public enum PokemonId
@@ -151,6 +153,41 @@ namespace EWiki.XF.Models.Enum
         Moltres = 146,
         Dratini = 147,
         Dragonair = 148,
+        Dragonite = 149,
+        Mewtwo = 150,
+        Mew = 151
+    }
+
+    public enum RarePokemon
+    {
+        Venusaur = 003,
+        Charizard = 006,
+        Blastoise = 009,
+        Nidoqueen = 031,
+        Nidoking = 034,
+        Ninetales = 038,
+        Arcanine = 059,
+        Alakazam = 065,
+        Machamp = 068,
+        Rapidash = 078,
+        Farfetchd = 083,
+        Gengar = 094,
+        Exeggutor = 103,
+        Kangaskhan = 115,
+        MrMime = 122,
+        Tauros = 128,
+        Gyarados = 130,
+        Lapras = 131,
+        Ditto = 132,
+        Vaporeon = 134,
+        Jolteon = 135,
+        Flareon = 136,
+        Porygon = 137,
+        Aerodactyl = 142,
+        Snorlax = 143,
+        Articuno = 144,
+        Zapdos = 145,
+        Moltres = 146,
         Dragonite = 149,
         Mewtwo = 150,
         Mew = 151

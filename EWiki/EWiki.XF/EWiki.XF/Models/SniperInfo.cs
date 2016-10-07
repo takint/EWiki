@@ -95,7 +95,7 @@ namespace EWiki.XF.Models
         public DateTime ReceivedTimeStamp { get; set; }
         public bool NeedVerification { get; set; } = false;
         public DateTime CreatedDate { get; set; }
-
+        public bool IsRarePokemon => System.Enum.IsDefined(typeof(RarePokemon), (int)PokemonId);
 
         public DelegateCommand SnipCommand { get; set; }
         public DelegateCommand OpenMapCommand { get; set; }
@@ -178,32 +178,13 @@ namespace EWiki.XF.Models
                         }
                     }
 
-                    var tracking = LocalDataStorage.GetPokemonCaptureTracking(authData.Username);
-                    if (CheckUserCanCapturePokemon(Id, tracking))
+                    if (CheckUserCanCapturePokemon(authData.Username))
                     {
-                        // TODO: check pokemon type
-                        if (tracking == null || tracking.Date.Date != DateTime.Now.Date)
-                        {
-                            tracking = new UserPokemonCaptureTracking
-                            {
-                                Date = DateTime.Now,
-                                RareCount = 1,
-                                NormalCount = 1
-                            };
-                        }
-                        else
-                        {
-                            tracking.RareCount++;
-                            tracking.NormalCount++;
-                        }
-
-                        LocalDataStorage.SavePokemonCaptureTracking(authData.Username, tracking);
-
                         var snipePokemonPopup = new SnipePokemonPopup()
                         {
                             BindingContext = new SnipePokemonPopupViewModel()
                             {
-                                PokemonId = Id,
+                                PokemonId = PokemonId,
                                 Latitude = Latitude,
                                 Longitude = Longitude
                             }
@@ -219,17 +200,36 @@ namespace EWiki.XF.Models
             }
         }
 
-        private bool CheckUserCanCapturePokemon(PokemonId pokemonId, UserPokemonCaptureTracking tracking)
+        private bool CheckUserCanCapturePokemon(string userName)
         {
-            if (tracking != null)
-            {
-                // TODO: check pokemon type
-                if (tracking.Date.Date == DateTime.Now.Date && tracking.RareCount > 5)
-                    return false;
+            var tracking = LocalDataStorage.GetPokemonCaptureTracking(userName);
 
-                if (tracking.Date.Date == DateTime.Now.Date && tracking.NormalCount > 20)
-                    return false;
+            if (tracking == null || tracking.Date.Date != DateTime.Now.Date)
+            {
+                tracking = new UserPokemonCaptureTracking
+                {
+                    Date = DateTime.Now,
+                    RareCount = 0,
+                    NormalCount = 0
+                };
             }
+
+            if (IsRarePokemon && tracking.Date.Date == DateTime.Now.Date && tracking.RareCount >= 5)
+                return false;
+
+            if (!IsRarePokemon && tracking.Date.Date == DateTime.Now.Date && tracking.NormalCount >= 20)
+                return false;
+
+            if (IsRarePokemon)
+            {
+                tracking.RareCount++;
+            }
+            else
+            {
+                tracking.NormalCount++;
+            }
+
+            LocalDataStorage.SavePokemonCaptureTracking(userName, tracking);
 
             return true;
         }
