@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EWiki.XF.Models.Enum;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using EWiki.XF.Services;
 using EWiki.XF.Utilities;
@@ -89,7 +90,7 @@ namespace EWiki.XF.Models
             set { SetProperty(ref _verified, value); }
         }
 
-        public DateTime VerifiedOn { get; set; } 
+        public DateTime VerifiedOn { get; set; }
         public string ChannelName { get; set; }
         public DateTime ReceivedTimeStamp { get; set; }
         public bool NeedVerification { get; set; } = false;
@@ -121,7 +122,8 @@ namespace EWiki.XF.Models
             else
             {
                 var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(authData.Username);
-                if (pokemonAccounts == null || pokemonAccounts.Count == 0)                {
+                if (pokemonAccounts == null || pokemonAccounts.Count == 0)
+                {
                     var pokemonGoAccountPopup = new PokemonGoAccountPopup
                     {
                         BindingContext = new PokemonGoAccountPopupViewModel
@@ -176,18 +178,60 @@ namespace EWiki.XF.Models
                         }
                     }
 
-                    var snipePokemonPopup = new SnipePokemonPopup()
+                    var tracking = LocalDataStorage.GetPokemonCaptureTracking(authData.Username);
+                    if (CheckUserCanCapturePokemon(Id, tracking))
                     {
-                        BindingContext = new SnipePokemonPopupViewModel()
+                        // TODO: check pokemon type
+                        if (tracking == null || tracking.Date.Date != DateTime.Now.Date)
                         {
-                            PokemonId = PokemonId,
-                            Latitude = Latitude,
-                            Longitude = Longitude
+                            tracking = new UserPokemonCaptureTracking
+                            {
+                                Date = DateTime.Now,
+                                RareCount = 1,
+                                NormalCount = 1
+                            };
                         }
-                    };
-                    await PopupNavigation.PushAsync(snipePokemonPopup);
+                        else
+                        {
+                            tracking.RareCount++;
+                            tracking.NormalCount++;
+                        }
+
+                        LocalDataStorage.SavePokemonCaptureTracking(authData.Username, tracking);
+
+                        var snipePokemonPopup = new SnipePokemonPopup()
+                        {
+                            BindingContext = new SnipePokemonPopupViewModel()
+                            {
+                                PokemonId = Id,
+                                Latitude = Latitude,
+                                Longitude = Longitude
+                            }
+                        };
+                        await PopupNavigation.PushAsync(snipePokemonPopup);
+                    }
+                    else
+                    {
+                        await UserDialogs.Instance.AlertAsync(Resource.MaximumRarePokemonsCaptured);
+                        await UserDialogs.Instance.AlertAsync(Resource.MaximumNormalPokemonsCaptured);
+                    }
                 }
             }
+        }
+
+        private bool CheckUserCanCapturePokemon(PokemonId pokemonId, UserPokemonCaptureTracking tracking)
+        {
+            if (tracking != null)
+            {
+                // TODO: check pokemon type
+                if (tracking.Date.Date == DateTime.Now.Date && tracking.RareCount > 5)
+                    return false;
+
+                if (tracking.Date.Date == DateTime.Now.Date && tracking.NormalCount > 20)
+                    return false;
+            }
+
+            return true;
         }
 
         public void ExecuteOpenMapCommand()

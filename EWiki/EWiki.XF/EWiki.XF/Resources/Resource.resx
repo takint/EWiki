@@ -282,4 +282,10 @@
   <data name="WhoIs" xml:space="preserve">
     <value>Who is {0}?</value>
   </data>
+  <data name="MaximumNormalPokemonsCaptured" xml:space="preserve">
+    <value>You have captured maximum normal pokemons today, please wait until tommorow to get more</value>
+  </data>
+  <data name="MaximumRarePokemonsCaptured" xml:space="preserve">
+    <value>You have captured maximum rare pokemons today, please wait until tommorow to get more</value>
+  </data>
 </root>
