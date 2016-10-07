@@ -37,13 +37,7 @@ namespace EWiki.XF.Service.Models
         public ObservableCollection<MoveSM> NormalMoves { get; set; }
         public ObservableCollection<MoveSM> SpecialMoves { get; set; }
         public ObservableCollection<LocationSM> Locations { get; set; }
-        //[JsonProperty("EvolveIntos")]
-        //public string EvolveIntosString { get; set; }
-        //[JsonIgnore]
-        public List<List<EvolveInfo>> EvolveIntos { get; set; }
-        //[JsonProperty("EvolveFroms")]
-        //public string EvolveFromsString { get; set; }
-        //[JsonIgnore]
-        public List<List<EvolveInfo>> EvolveFroms { get; set; }
+        public ObservableCollection<ObservableCollection<EvolveInfo>> EvolveIntos { get; set; }
+        public ObservableCollection<EvolveInfo> EvolveFroms { get; set; }
     }
 }

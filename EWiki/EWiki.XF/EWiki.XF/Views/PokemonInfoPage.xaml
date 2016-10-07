@@ -206,24 +206,18 @@
                     <extendedControls:HorizontalListView ItemsSource="{Binding EvolveFroms}">
                       <extendedControls:HorizontalListView.ItemTemplate>
                         <DataTemplate>
-                          <extendedControls:VerticalListView ItemsSource="{Binding EvolveInfos}">
-                            <extendedControls:VerticalListView.ItemTemplate>
-                              <DataTemplate>
-                                <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="50"/>
-                              </DataTemplate>
-                            </extendedControls:VerticalListView.ItemTemplate>
-                          </extendedControls:VerticalListView>
+                            <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="50"/>
                         </DataTemplate>
                       </extendedControls:HorizontalListView.ItemTemplate>
                     </extendedControls:HorizontalListView>
-                    <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="65"/>
+                    <ffimageloading:CachedImage Source="{Binding Avatar}" HeightRequest="50"/>
                     <extendedControls:HorizontalListView ItemsSource="{Binding EvolveIntos}">
                       <extendedControls:HorizontalListView.ItemTemplate>
                         <DataTemplate>
-                          <extendedControls:VerticalListView ItemsSource="{Binding EvolveInfos}">
+                          <extendedControls:VerticalListView ItemsSource="{Binding .}">
                             <extendedControls:VerticalListView.ItemTemplate>
                               <DataTemplate>
-                                <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="80"/>
+                                <ffimageloading:CachedImage Source="{Binding EvolveAvatar}" HeightRequest="50"/>
                               </DataTemplate>
                             </extendedControls:VerticalListView.ItemTemplate>
                           </extendedControls:VerticalListView>

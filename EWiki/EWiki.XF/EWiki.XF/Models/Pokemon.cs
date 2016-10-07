@@ -32,7 +32,7 @@ namespace EWiki.XF.Models
         public ObservableCollection<MoveSM> NormalMoves { get; set; }
         public ObservableCollection<MoveSM> SpecialMoves { get; set; }
         public string Locations { get; set; }
-        public ObservableCollection<EvolveSM> EvolveIntos { get; set; }
-        public ObservableCollection<EvolveSM> EvolveFroms { get; set; }
+        public ObservableCollection<ObservableCollection<EvolveInfo>> EvolveIntos { get; set; }
+        public ObservableCollection<EvolveInfo> EvolveFroms { get; set; }
     }
 }

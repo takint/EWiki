@@ -12,21 +12,5 @@ namespace EWiki.XF.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            UserDialogs.Instance.HideLoading();
-            base.OnAppearing();
-        }
-
-        protected override void OnBindingContextChanged()
-        {
-            var pokemonInfoPageViewModel = BindingContext as PokemonInfoPageViewModel;
-            if (pokemonInfoPageViewModel != null && pokemonInfoPageViewModel.Pokemons.Any())
-            {
-                UserDialogs.Instance.Loading(Resource.Loading);
-            }
-            base.OnBindingContextChanged();
-        }
     }
 }

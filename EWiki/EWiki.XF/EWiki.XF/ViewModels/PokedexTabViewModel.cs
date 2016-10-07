@@ -94,8 +94,6 @@ namespace EWiki.XF.ViewModels
         {
             var selectedPosition = Pokemons.IndexOf(pokemon);
 
-            UserDialogs.Instance.ShowLoading(Resource.Loading);
-
             var pokemonInfoPage = new PokemonInfoPage()
             {
                 BindingContext = new PokemonInfoPageViewModel()
