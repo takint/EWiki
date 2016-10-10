@@ -288,4 +288,10 @@
   <data name="MaximumRarePokemonsCaptured" xml:space="preserve">
     <value>You have captured maximum rare pokemons today, please wait until tommorow to get more</value>
   </data>
+  <data name="CopyLongitudeToClipboard" xml:space="preserve">
+    <value>Longitude copied to clipboard!</value>
+  </data>
+  <data name="CopyLatitudeToClipboard" xml:space="preserve">
+    <value>Latitude copied to clipboard!</value>
+  </data>
 </root>
