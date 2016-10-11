@@ -288,4 +288,10 @@
   <data name="MaximumRarePokemonsCaptured" xml:space="preserve">
     <value>Bạn đã sử dụng hết số lần bắt Pokemon hiếm hôm vào nay, vui lòng bắt tiếp vào ngày mai</value>
   </data>
+  <data name="CopyLongitudeToClipboard" xml:space="preserve">
+    <value>Tọa độ đã được copy!</value>
+  </data>
+  <data name="CopyLatitudeToClipboard" xml:space="preserve">
+    <value>Tọa độ đã được copy!</value>
+  </data>
 </root>

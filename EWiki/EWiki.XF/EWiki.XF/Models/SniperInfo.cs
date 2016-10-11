@@ -9,6 +9,7 @@ using EWiki.XF.Services;
 using EWiki.XF.Utilities;
 using EWiki.XF.ViewModels;
 using EWiki.XF.Views.Popups;
+using Plugin.Share;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -99,12 +100,16 @@ namespace EWiki.XF.Models
 
         public DelegateCommand SnipCommand { get; set; }
         public DelegateCommand OpenMapCommand { get; set; }
+        public DelegateCommand CopyLongitudeCommand { get; set; }
+        public DelegateCommand CopyLatitudeCommand { get; set; }
 
         public SniperInfo()
         {
             CreatedDate = DateTime.Now;
             SnipCommand = DelegateCommand.FromAsyncHandler(ExecuteSnipCommand);
             OpenMapCommand = new DelegateCommand(ExecuteOpenMapCommand);
+            CopyLongitudeCommand = new DelegateCommand(ExecuteCopyLongitudeCommand);
+            CopyLatitudeCommand = new DelegateCommand(ExecuteCopyLatitudeCommand);
         }
 
         public async Task ExecuteSnipCommand()
@@ -237,6 +242,18 @@ namespace EWiki.XF.Models
         public void ExecuteOpenMapCommand()
         {
             Device.OpenUri(new Uri($"http://maps.google.com/maps?q=loc:{Latitude},{Longitude}"));
+        }
+
+        public void ExecuteCopyLongitudeCommand()
+        {
+            CrossShare.Current.SetClipboardText($"{Longitude}");
+            UserDialogs.Instance.Toast(Resource.CopyLongitudeToClipboard);
+        }
+
+        public void ExecuteCopyLatitudeCommand()
+        {
+            CrossShare.Current.SetClipboardText($"{Latitude}");
+            UserDialogs.Instance.Toast(Resource.CopyLatitudeToClipboard);
         }
     }
 }

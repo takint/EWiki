@@ -152,6 +152,24 @@ namespace EWiki.XF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latitude copied to clipboard!.
+        /// </summary>
+        internal static string CopyLatitudeToClipboard {
+            get {
+                return ResourceManager.GetString("CopyLatitudeToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude copied to clipboard!.
+        /// </summary>
+        internal static string CopyLongitudeToClipboard {
+            get {
+                return ResourceManager.GetString("CopyLongitudeToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CP RATING (IV).
         /// </summary>
         internal static string CPRATING {
