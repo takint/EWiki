@@ -15,7 +15,8 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.Owin": "2.1.0",
-    "Owin": "1.0.0"
+    "Owin": "1.0.0",
+    "SocketIoClientDotNet": "0.9.13"
   },
 
   "tools": {

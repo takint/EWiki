@@ -8,6 +8,8 @@ using PokemonGo.RocketAPI;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Exceptions;
 using PokemonGo.RocketAPI.Logic;
+using EWiki.Sniper.PokeFeeder;
+using System.Collections.Generic;
 
 namespace EWiki.SignalR.Hubs
 {
@@ -29,6 +31,25 @@ namespace EWiki.SignalR.Hubs
             {
                 Logger.Error($"Error: {e.Message}");
             }
+        }
+
+        public void FetchSniperInfos()
+        {
+            try
+            {
+                var sniperInfos = PokeFeeder.FetchPokemon();
+                SendSniperInfos(sniperInfos);
+            }
+            catch(Exception e)
+            {
+                Logger.Error($"Error: {e.Message}");
+            }
+        }
+
+        private void SendSniperInfos(List<SniperInfo> sniperInfos)
+        {
+            var connectionId = Context.ConnectionId;
+            Clients.Client(connectionId).GetSniperInfos(JsonConvert.SerializeObject(sniperInfos));
         }
 
         public override Task OnConnected()
