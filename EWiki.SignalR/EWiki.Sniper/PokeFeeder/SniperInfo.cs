@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Newtonsoft.Json;
-using EWiki.XF.Droid.LocationFeeder.Common;
-using EWiki.XF.Models.Enum;
 
-namespace EWiki.XF.Droid.LocationFeeder.Helper
+namespace EWiki.Sniper.PokeFeeder
 {
     public class SniperInfo
     {
         public PokemonId PokemonId { get; set; } = PokemonId.Missingno;
-        public string Number {
+        public string Number
+        {
             get
             {
                 var number = "";
-                for(var i = 0; i < 3 - PokemonId.ToString().Length; i++)
+                for (var i = 0; i < 3 - PokemonId.ToString().Length; i++)
                 {
                     number += "0";
                 }
@@ -78,7 +77,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Helper
             {
                 return false;
             }
-            return SniperInfoEquals(this, (SniperInfo) obj);
+            return SniperInfoEquals(this, (SniperInfo)obj);
         }
 
         public override int GetHashCode()

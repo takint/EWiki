@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -1095,7 +1096,20 @@ namespace EWiki.XF.Service
             {
                 var language = CultureInfo.CurrentCulture.Name.Split('-')[0] == "vi" ? "vi" : "en";
                 var response = await client.GetStringAsync($"{AppSettings.WEB_API_URL}pokedex?skip={rq.Skip}&lang={language}");
-                var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response); ;
+                var pokemons = JsonConvert.DeserializeObject<List<PokemonSM>>(response);
+                //foreach (var pokemonSm in pokemons)
+                //{
+                //    var evolveFroms = JsonConvert.DeserializeObject<List<List<EvolveInfo>>>(pokemonSm.EvolveFromsString);
+                //    foreach (var evolveFrom in evolveFroms)
+                //    {
+                //        var evolveSm = new EvolveSM();
+                //        foreach (var evolveInfo in evolveFrom)
+                //        {
+                //            evolveSm.EvolveInfos.Add(evolveInfo);
+                //        }
+                //        pokemonSm.EvolveFroms.Add(evolveSm);
+                //    }
+                //}
                 return pokemons;
             }
             catch (Exception e)

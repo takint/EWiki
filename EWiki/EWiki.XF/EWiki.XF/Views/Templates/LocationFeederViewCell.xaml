@@ -8,47 +8,55 @@
           xmlns:converters="clr-namespace:EWiki.XF.Converters;assembly=EWiki.XF"
           prism:ViewModelLocator.AutowireViewModel="True"
           x:Class="EWiki.XF.Views.Templates.LocationFeederViewCell">
-    <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="5" BackgroundColor="#FAFAFA">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-      <ffimageloading:CachedImage Source="{Binding Avatar}" 
-                                    Aspect="AspectFit"
-                                    Grid.Row="0" Grid.Column="0"
-                                    Grid.RowSpan="3"/>
-        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#45686E" Grid.Row="0"
-               Margin="5,0,0,0"
-               Grid.Column="1" VerticalOptions="Center" />
-        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="FillAndExpand"
-                       VerticalOptions="CenterAndExpand">
-          <iconize:IconLabel Text="{Binding Verified, Converter={x:Static converters:VerifiedIconConverter.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{Binding Verified, Converter={x:Static converters:VerifiedColorConverter.Instance}}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-          <Label Text="{Binding ExpirationSeconds}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-        </StackLayout>
-        <StackLayout Grid.Row="1" Grid.Column="1">
-          <Label Text="{Binding IV, StringFormat='IV {0}%', Converter={x:Static converters:IVConverter.Instance}}" FontSize="12" TextColor="{Binding IV, Converter={x:Static converters:IVColorConverter.Instance}}"  Margin="5,0,0,0" VerticalOptions="Center" />
-          <Label Text="{Binding Move1}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
-          <Label Text="{Binding Move2}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="5,0,0,5"
-                     VerticalOptions="CenterAndExpand">
-            <Label Text="{Binding Latitude}" LineBreakMode="TailTruncation" FontSize="14" TextColor="#212121" FontAttributes="Bold" 
-                   VerticalOptions="Center" />
-            <Label Text="{Binding Longitude}" LineBreakMode="TailTruncation" FontSize="14" FontAttributes="Bold" TextColor="#212121" 
-                   VerticalOptions="Center" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Spacing="0" Margin="0,0,5,5" HorizontalOptions="End"
-                       VerticalOptions="CenterAndExpand">
-          <iconize:IconButton Text="md-person-pin-circle" WidthRequest="50" BackgroundColor="#009688" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding OpenMapCommand}"
-                 VerticalOptions="Center" /> 
-          <iconize:IconButton Text="md-my-location" WidthRequest="50" BackgroundColor="#FF5252" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding SnipCommand}"
-                 VerticalOptions="Center" />
-        </StackLayout>
-    </Grid>
+  <Grid x:Name="Main" RowSpacing="0" ColumnSpacing="0" Margin="5" BackgroundColor="#FAFAFA">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="30" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="80" />
+      <ColumnDefinition Width="1.5*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <ffimageloading:CachedImage Source="{Binding Avatar}"
+                                  Aspect="AspectFit"
+                                  Grid.Row="0" Grid.Column="0"
+                                  Grid.RowSpan="3"/>
+    <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="0" >
+      <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#45686E"
+             Margin="5,0,0,0"
+             VerticalOptions="Center" />
+      <Label Text="{Binding IV, StringFormat='IV {0}%', Converter={x:Static converters:IVConverter.Instance}}" FontSize="12" FontAttributes="Bold" TextColor="{Binding IV, Converter={x:Static converters:IVColorConverter.Instance}}"  Margin="5,0,0,0" VerticalOptions="Center" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand">
+      <iconize:IconLabel Text="{Binding Verified, Converter={x:Static converters:VerifiedIconConverter.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{Binding Verified, Converter={x:Static converters:VerifiedColorConverter.Instance}}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+      <Label Text="{Binding ExpirationSeconds}" FontSize="16" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+      <Label Text="{Binding Move1, Converter={x:Static converters:MoveConverter.Instance}}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
+      <Label Text="{Binding Move2, Converter={x:Static converters:MoveConverter.Instance}}" FontSize="12" TextColor="#212121" LineBreakMode="TailTruncation" Margin="5,0,0,0" VerticalOptions="Center" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="5,0,0,5"
+                 VerticalOptions="CenterAndExpand">
+      <Label Text="{Binding Latitude}" LineBreakMode="TailTruncation" FontSize="14" TextColor="#212121" FontAttributes="Bold" VerticalOptions="Center" >
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding CopyLatitudeCommand}"/>
+        </Label.GestureRecognizers>
+      </Label>
+      <Label Text="{Binding Longitude}" LineBreakMode="TailTruncation" FontSize="14" FontAttributes="Bold" TextColor="#212121" VerticalOptions="Center">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding CopyLongitudeCommand}"/>
+        </Label.GestureRecognizers>
+      </Label>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Spacing="0" Margin="0,0,5,5" HorizontalOptions="End"
+                   VerticalOptions="CenterAndExpand">
+      <iconize:IconButton Text="md-person-pin-circle" WidthRequest="50" BackgroundColor="#009688" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding OpenMapCommand}"
+             VerticalOptions="Center" />
+      <iconize:IconButton Text="md-my-location" WidthRequest="50" BackgroundColor="#FF5252" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" Command="{Binding SnipCommand}"
+             VerticalOptions="Center" />
+    </StackLayout>
+  </Grid>
 </ViewCell>

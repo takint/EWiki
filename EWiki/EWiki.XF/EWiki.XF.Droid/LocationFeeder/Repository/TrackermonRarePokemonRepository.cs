@@ -92,7 +92,7 @@ namespace EWiki.XF.Droid.LocationFeeder.Repository
         {
             var sniperInfo = new SniperInfo();
             var pokemonId = PokemonParser.ParseById(result.id);
-            sniperInfo.Id = pokemonId;
+            sniperInfo.PokemonId = pokemonId;
 
             sniperInfo.Latitude = Math.Round(result.latitude, 7);
             sniperInfo.Longitude = Math.Round(result.longitude, 7);

@@ -106,6 +106,7 @@ namespace EWiki.XF.ViewModels
             _cts = new CancellationTokenSource();
             try
             {
+                IsBusy = true;
                 await Task.Run(async () =>
                 {
                     while (_connection.State == ConnectionState.Disconnected)

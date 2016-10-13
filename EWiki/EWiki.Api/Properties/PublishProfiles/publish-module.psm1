@@ -222,7 +222,6 @@ function GetInternal-SharedMSDeployParametersFrom{
         $sharedArgs.ExtraArgs += (GetInternal-ExcludeFilesArg -publishProperties $publishProperties)
         # add replacements
         $sharedArgs.ExtraArgs += (GetInternal-ReplacementsMSDeployArgs -publishProperties $publishProperties)
-	$sharedArgs.ExtraArgs += '-allowUntrusted'
 
         # add EF Migration
         if (($publishProperties['EfMigrations'] -ne $null) -and $publishProperties['EfMigrations'].Count -gt 0){

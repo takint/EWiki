@@ -3,11 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EWiki.XF.Models.Enum;
+using EWiki.XF.Resources;
 using EWiki.XF.Service;
 using EWiki.XF.Services;
 using EWiki.XF.Utilities;
 using EWiki.XF.ViewModels;
 using EWiki.XF.Views.Popups;
+using Plugin.Share;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -19,17 +21,18 @@ namespace EWiki.XF.Models
 {
     public class SniperInfo : BindableBase
     {
-        public string Name { get; set; }
+        public PokemonId PokemonId { get; set; }
+        public string Name => PokemonId.ToString();
         public string Number
         {
             get
             {
                 var number = "";
-                for (var i = 0; i < 3 - ((int)Id).ToString().Length; i++)
+                for (var i = 0; i < 3 - ((int)PokemonId).ToString().Length; i++)
                 {
                     number += "0";
                 }
-                return $"{number}{(int)Id}";
+                return $"{number}{(int)PokemonId}";
             }
         }
         public string Avatar => $"http://res.cloudinary.com/ewiki-io/image/upload/v1475134451/Pokemons/Avatars/{Number}{Name}.png";
@@ -54,7 +57,6 @@ namespace EWiki.XF.Models
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public PokemonId Id { get; set; }
         public string SpawnPointId { get; set; } = null;
 
         private PokemonMove _move1;
@@ -89,21 +91,25 @@ namespace EWiki.XF.Models
             set { SetProperty(ref _verified, value); }
         }
 
-        public DateTime VerifiedOn { get; set; } 
+        public DateTime VerifiedOn { get; set; }
         public string ChannelName { get; set; }
         public DateTime ReceivedTimeStamp { get; set; }
         public bool NeedVerification { get; set; } = false;
         public DateTime CreatedDate { get; set; }
-
+        public bool IsRarePokemon => System.Enum.IsDefined(typeof(RarePokemon), (int)PokemonId);
 
         public DelegateCommand SnipCommand { get; set; }
         public DelegateCommand OpenMapCommand { get; set; }
+        public DelegateCommand CopyLongitudeCommand { get; set; }
+        public DelegateCommand CopyLatitudeCommand { get; set; }
 
         public SniperInfo()
         {
             CreatedDate = DateTime.Now;
             SnipCommand = DelegateCommand.FromAsyncHandler(ExecuteSnipCommand);
             OpenMapCommand = new DelegateCommand(ExecuteOpenMapCommand);
+            CopyLongitudeCommand = new DelegateCommand(ExecuteCopyLongitudeCommand);
+            CopyLatitudeCommand = new DelegateCommand(ExecuteCopyLatitudeCommand);
         }
 
         public async Task ExecuteSnipCommand()
@@ -121,7 +127,8 @@ namespace EWiki.XF.Models
             else
             {
                 var pokemonAccounts = LocalDataStorage.GetPokemonAccounts(authData.Username);
-                if (pokemonAccounts == null || pokemonAccounts.Count == 0)                {
+                if (pokemonAccounts == null || pokemonAccounts.Count == 0)
+                {
                     var pokemonGoAccountPopup = new PokemonGoAccountPopup
                     {
                         BindingContext = new PokemonGoAccountPopupViewModel
@@ -176,23 +183,77 @@ namespace EWiki.XF.Models
                         }
                     }
 
-                    var snipePokemonPopup = new SnipePokemonPopup()
+                    if (CheckUserCanCapturePokemon(authData.Username))
                     {
-                        BindingContext = new SnipePokemonPopupViewModel()
+                        var snipePokemonPopup = new SnipePokemonPopup()
                         {
-                            PokemonId = Id,
-                            Latitude = Latitude,
-                            Longitude = Longitude
-                        }
-                    };
-                    await PopupNavigation.PushAsync(snipePokemonPopup);
+                            BindingContext = new SnipePokemonPopupViewModel()
+                            {
+                                PokemonId = PokemonId,
+                                Latitude = Latitude,
+                                Longitude = Longitude
+                            }
+                        };
+                        await PopupNavigation.PushAsync(snipePokemonPopup);
+                    }
+                    else
+                    {
+                        await UserDialogs.Instance.AlertAsync(Resource.MaximumRarePokemonsCaptured);
+                        await UserDialogs.Instance.AlertAsync(Resource.MaximumNormalPokemonsCaptured);
+                    }
                 }
             }
+        }
+
+        private bool CheckUserCanCapturePokemon(string userName)
+        {
+            var tracking = LocalDataStorage.GetPokemonCaptureTracking(userName);
+
+            if (tracking == null || tracking.Date.Date != DateTime.Now.Date)
+            {
+                tracking = new UserPokemonCaptureTracking
+                {
+                    Date = DateTime.Now,
+                    RareCount = 0,
+                    NormalCount = 0
+                };
+            }
+
+            if (IsRarePokemon && tracking.Date.Date == DateTime.Now.Date && tracking.RareCount >= 5)
+                return false;
+
+            if (!IsRarePokemon && tracking.Date.Date == DateTime.Now.Date && tracking.NormalCount >= 20)
+                return false;
+
+            if (IsRarePokemon)
+            {
+                tracking.RareCount++;
+            }
+            else
+            {
+                tracking.NormalCount++;
+            }
+
+            LocalDataStorage.SavePokemonCaptureTracking(userName, tracking);
+
+            return true;
         }
 
         public void ExecuteOpenMapCommand()
         {
             Device.OpenUri(new Uri($"http://maps.google.com/maps?q=loc:{Latitude},{Longitude}"));
+        }
+
+        public void ExecuteCopyLongitudeCommand()
+        {
+            CrossShare.Current.SetClipboardText($"{Longitude}");
+            UserDialogs.Instance.Toast(Resource.CopyLongitudeToClipboard);
+        }
+
+        public void ExecuteCopyLatitudeCommand()
+        {
+            CrossShare.Current.SetClipboardText($"{Latitude}");
+            UserDialogs.Instance.Toast(Resource.CopyLatitudeToClipboard);
         }
     }
 }

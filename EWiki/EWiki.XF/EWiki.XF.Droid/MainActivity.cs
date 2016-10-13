@@ -49,7 +49,7 @@ namespace EWiki.XF.Droid
 
             LoadApplication(new App(new AndroidInitializer()));
 
-            StartLocationFeeder();
+            //StartLocationFeeder();
             SetupBackgroundServices();
         }
 
@@ -83,17 +83,17 @@ namespace EWiki.XF.Droid
                 StopService(intent);
             });
 
-            MessagingCenter.Subscribe<App>(this, "StartDownloadImages", sender =>
-            {
-                var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
-                StartService(intent);
-            });
+            //MessagingCenter.Subscribe<App>(this, "StartDownloadImages", sender =>
+            //{
+            //    var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
+            //    StartService(intent);
+            //});
 
-            MessagingCenter.Subscribe<App>(this, "StopDownloadImages", sender =>
-            {
-                var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
-                StopService(intent);
-            });
+            //MessagingCenter.Subscribe<App>(this, "StopDownloadImages", sender =>
+            //{
+            //    var intent = new Intent(this, typeof(DownloadImagesBackgroundService));
+            //    StopService(intent);
+            //});
         }
     }
 

@@ -29,7 +29,6 @@ namespace EWiki.XF.Views.Popups
             var runningCts = new CancellationTokenSource();
             try
             {
-                context.IsBusy = true;
                 await Task.Run(async () =>
                  {
                      while (!runningCts.IsCancellationRequested && context.IsBusy)

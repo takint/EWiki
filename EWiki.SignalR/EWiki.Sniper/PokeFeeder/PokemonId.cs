@@ -1,6 +1,4 @@
-using System.Collections;
-
-namespace EWiki.XF.Models.Enum
+﻿namespace EWiki.Sniper.PokeFeeder
 {
     public enum PokemonId
     {
