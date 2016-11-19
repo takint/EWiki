@@ -106,6 +106,16 @@ namespace EWiki.XF.Utilities
             return Settings.Local.Get<AuthData>("AuthData");
         }
 
+        public static void SaveSniperStatus(bool isAvailable)
+        {
+            Settings.Local.Set("SniperStatus", isAvailable);
+        }
+
+        public static bool GetSniperStatus()
+        {
+            return Settings.Local.Get<bool>("SniperStatus");
+        }
+
         class PokemonAccountsData
         {
             public string Username { get; set; }

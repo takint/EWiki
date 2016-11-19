@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Services\DownloadImagesService.cs" />
     <Compile Include="Services\ILocalizationProvider.cs" />
+    <Compile Include="Services\INotificationService.cs" />
     <Compile Include="Services\ISniperService.cs" />
     <Compile Include="Utilities\LocalDataStorage.cs" />
     <Compile Include="Utilities\ObservableRangeCollection.cs" />

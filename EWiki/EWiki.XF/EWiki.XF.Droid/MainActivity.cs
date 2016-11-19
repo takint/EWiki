@@ -83,6 +83,9 @@ namespace EWiki.XF.Droid
                 StopService(intent);
             });
 
+            var sniperStatusCheckingIntent = new Intent(this, typeof(SniperStatusCheckingBackgroundService));
+            StartService(sniperStatusCheckingIntent);
+
             //MessagingCenter.Subscribe<App>(this, "StartDownloadImages", sender =>
             //{
             //    var intent = new Intent(this, typeof(DownloadImagesBackgroundService));

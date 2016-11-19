@@ -365,6 +365,7 @@
   <ItemGroup>
     <Compile Include="BackgroundServices\DownloadImagesBackgroundService.cs" />
     <Compile Include="BackgroundServices\PokeFeederBackgroundService.cs" />
+    <Compile Include="BackgroundServices\SniperStatusCheckingBackgroundService.cs" />
     <Compile Include="LocationFeeder\Common\ChannelInfo.cs" />
     <Compile Include="LocationFeeder\Common\ChannelParser.cs" />
     <Compile Include="LocationFeeder\Common\Constants.cs" />
@@ -379,6 +380,7 @@
     <Compile Include="LocationFeeder\Helper\Partitioner.cs" />
     <Compile Include="LocationFeeder\Helper\PokemonParser.cs" />
     <Compile Include="LocationFeeder\Helper\SniperInfo.cs" />
+    <Compile Include="LocationFeeder\Helper\SniperStatus.cs" />
     <Compile Include="LocationFeeder\Helper\StringHelper.cs" />
     <Compile Include="LocationFeeder\Helper\UserAgentHelper.cs" />
     <Compile Include="LocationFeeder\Common\PokemonFilterToBinary.cs" />
@@ -405,6 +407,7 @@
     <Compile Include="BackgroundServices\LocationFeederBackgroundService.cs" />
     <Compile Include="Services\BaseRq.cs" />
     <Compile Include="Services\LocalizationProvider.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\SnipeRq.cs" />
     <Compile Include="Services\SniperService.cs" />
     <Compile Include="SplashActivity.cs" />
